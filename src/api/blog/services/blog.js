@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * project-tag service
+ * blog service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::project-tag.project-tag');
+module.exports = createCoreService('api::blog.blog');

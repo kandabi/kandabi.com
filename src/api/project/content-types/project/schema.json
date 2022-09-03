@@ -19,7 +19,8 @@
       "maxLength": 80
     },
     "Description": {
-      "type": "richtext"
+      "type": "richtext",
+      "maxLength": 400
     },
     "Video": {
       "type": "media",
@@ -29,23 +30,33 @@
         "videos"
       ]
     },
-    "Images": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+    "IsFeatured": {
+      "type": "boolean",
+      "default": false,
+      "required": true
     },
-    "project_type": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::project-type.project-type"
-    },
-    "project_tags": {
+    "Tags": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::project-tag.project-tag"
+      "target": "api::tag.tag"
+    },
+    "ProjectType": {
+      "type": "enumeration",
+      "enum": [
+        "Web",
+        "Graphics",
+        "Other"
+      ],
+      "required": true,
+      "default": "Web"
+    },
+    "Thumbnail": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
     }
   }
 }

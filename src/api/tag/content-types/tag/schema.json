@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "project_types",
+  "collectionName": "tags",
   "info": {
-    "singularName": "project-type",
-    "pluralName": "project-types",
-    "displayName": "ProjectType"
+    "singularName": "tag",
+    "pluralName": "tags",
+    "displayName": "Tag"
   },
   "options": {
     "draftAndPublish": false
@@ -13,9 +13,9 @@
   "attributes": {
     "Title": {
       "type": "string",
-      "required": true,
       "unique": true,
-      "maxLength": 15
+      "required": true,
+      "maxLength": 80
     },
     "Color": {
       "type": "string"
