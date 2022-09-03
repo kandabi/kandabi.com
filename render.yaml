@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: strapi
+    name: kandabi-cms
     env: node
     plan: starter
     region: frankfurt # optional (defaults to oregon)
@@ -8,7 +8,7 @@ services:
     startCommand: rsync -a public/ /data/public/ && yarn start
     healthCheckPath: /_health
     disk:
-      name: strapi-data
+      name: kandabi-data
       mountPath: /data
       sizeGB: 1
     envVars:
