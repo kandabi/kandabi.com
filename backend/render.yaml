@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: kandabi-strapi
+    name: kandabi.com
     env: node
     plan: starter
     region: frankfurt # optional (defaults to oregon)
