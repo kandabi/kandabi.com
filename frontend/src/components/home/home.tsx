@@ -10,7 +10,7 @@ const HomeStyled = styled.div``;
 
 const Home = () => {
    return (
-      <ParallaxViewport>
+      <ParallaxViewport distanceToCamera={6}>
          <Hero />
          <Projects />
          <Contact />

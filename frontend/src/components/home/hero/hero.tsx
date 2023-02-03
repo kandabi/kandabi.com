@@ -18,7 +18,7 @@ const TitleStyled = styled.h1`
 
 const Hero = () => {
    return (
-      <ParallaxScroll distanceToCamera={1.5} height="115vh" scale={1.75}>
+      <ParallaxScroll distanceToCamera={6} height="120vh" scale={2}>
          <HeroStyled>
             <TitleStyled>Hello!!!!!!!!!!</TitleStyled>
          </HeroStyled>
