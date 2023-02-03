@@ -23,7 +23,7 @@ const TitleStyled = styled.h1`
 
 const Contact = () => {
    return (
-      <ParallaxScroll distanceToCamera={3} scale={1.5} height="110vh">
+      <ParallaxScroll distanceToCamera={3} height="105vh" scale={1.5}>
          <ContactStyled>
             <TitleStyled>Hello!!!!!!!!!!</TitleStyled>
          </ContactStyled>
