@@ -1,7 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import { colors } from 'styles/colors';
 
 const FooterStyled = styled.div`
-   background-color: rgba(100, 0, 0);
+   background-color: ${colors.blue_5};
    justify-content: center;
    align-items: center;
    display: flex;
@@ -17,7 +18,7 @@ const TitleStyled = styled.h1`
 const Footer = () => {
    return (
       <FooterStyled>
-         <TitleStyled>footer</TitleStyled>
+         <TitleStyled>Footer</TitleStyled>
       </FooterStyled>
    );
 };

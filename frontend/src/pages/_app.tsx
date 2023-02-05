@@ -1,12 +1,14 @@
-import type { AppProps } from "next/app";
-import { Seo } from "components/seo";
-import "./globals.scss";
+import type { AppProps } from 'next/app';
+import { Seo } from 'components/common/seo';
+import { GlobalStyles } from 'styles/globals';
+import { AppThemeProvider } from 'styles/theme';
 
 export default function App({ Component, pageProps }: AppProps) {
    return (
-      <>
+      <AppThemeProvider>
          <Seo />
-         <Component {...pageProps} />;
-      </>
+         <GlobalStyles />
+         <Component {...pageProps} />
+      </AppThemeProvider>
    );
 }
