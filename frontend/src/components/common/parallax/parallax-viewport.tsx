@@ -38,17 +38,17 @@ const ParallaxViewport = ({ distanceToCamera, onMouseScroll, children }: IParall
    }, [viewport, onMouseScroll]);
 
    useEffect(() => {
-      const throttledScroll = throttle(handleOnScroll, 120);
-      viewport?.addEventListener('scroll', throttledScroll);
-      return () => viewport?.removeEventListener('scroll', throttledScroll);
-   }, [viewport, handleOnScroll]);
-
-   useEffect(() => {
       if (viewport && scrollToPercent > -1) {
          const clientHeight = viewport.scrollHeight - viewport.clientHeight;
          viewport?.scrollTo(0, clientHeight * scrollToPercent);
       }
    }, [viewport, scrollToPercent]);
+
+   useEffect(() => {
+      const throttledScroll = throttle(handleOnScroll, 120);
+      viewport?.addEventListener('scroll', throttledScroll);
+      return () => viewport?.removeEventListener('scroll', throttledScroll);
+   }, [viewport, handleOnScroll]);
 
    return (
       <ViewportStyled ref={viewportRef} distanceToCamera={distanceToCamera}>
