@@ -1,5 +1,4 @@
 import * as styled from 'styled-components';
-import { colors } from './colors';
 
 const GlobalStyles = styled.createGlobalStyle`
    html,
@@ -7,17 +6,17 @@ const GlobalStyles = styled.createGlobalStyle`
       font-family: 'Roboto', Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      background-color: ${colors.blue_5};
       font-style: 'normal';
-      line-height: 1.2;
+      color: ${({ theme: { color } }) => color.white_1};
       font-weight: 400;
+      line-height: 1.2;
       font-size: 14px;
       padding: 0;
       margin: 0;
    }
 
-   footer,
    header,
+   footer,
    ul,
    li,
    h1,
@@ -77,22 +76,26 @@ const GlobalStyles = styled.createGlobalStyle`
       font-display: swap;
    }
 
+   :root {
+      --scrollbar-width: 12px;
+   }
+
    * {
+      scrollbar-color: ${({ theme: { color } }) => `${color.white_2} ${color.blue_2}`};
       scrollbar-width: auto;
-      scrollbar-color: ${colors.white_2} ${colors.blue_4};
    }
 
    *::-webkit-scrollbar {
-      width: 12px;
+      width: var(--scrollbar-width);
    }
 
    *::-webkit-scrollbar-track {
-      background: ${colors.blue_4};
+      background: ${({ theme: { color } }) => color.blue_4};
    }
 
    *::-webkit-scrollbar-thumb {
-      background-color: ${colors.white_2};
-      border: 2px solid ${colors.blue_4};
+      background-color: ${({ theme: { color } }) => color.white_2};
+      border: 2px solid ${({ theme: { color } }) => color.blue_4};
       border-radius: 10px;
    }
 `;

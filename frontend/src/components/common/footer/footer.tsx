@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import { colors } from 'styles/colors';
 
-const FooterStyled = styled.div`
-   background-color: ${colors.blue_5};
+const FooterStyled = styled.footer`
+   background-color: ${({ theme: { color } }) => color.blue_5};
    justify-content: center;
    align-items: center;
    display: flex;

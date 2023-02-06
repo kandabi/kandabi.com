@@ -7,7 +7,7 @@ enum Breakpoints {
    xxl = 'xxl',
 }
 
-const breakpoints: { [key in Breakpoints]: string } = {
+const breakpointsConfig: { [key in Breakpoints]: string } = {
    [Breakpoints.xs]: '@media (min-width: 320px)',
    [Breakpoints.sm]: '@media (min-width: 576px)',
    [Breakpoints.md]: '@media (min-width: 768px)',
@@ -16,4 +16,4 @@ const breakpoints: { [key in Breakpoints]: string } = {
    [Breakpoints.xxl]: '@media (min-width: 1400px)',
 };
 
-export { Breakpoints, breakpoints };
+export { Breakpoints, breakpointsConfig };

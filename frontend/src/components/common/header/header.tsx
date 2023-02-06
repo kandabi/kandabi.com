@@ -1,41 +1,39 @@
 import styled, { css } from 'styled-components';
 
 import logoFull from 'assets/logo-full.svg';
-import { breakpoints } from 'styles/breakpoints';
-import { colors } from 'styles/colors';
+import { Gutters } from 'components/common/css/gutters';
+import { Navbar } from 'components/common/navbar';
+import { INavItem } from 'components/common/navbar';
+import { useMemo } from 'react';
+import { useStore } from 'store';
+import { NavItemVariant } from 'components/common/navbar/nav-item';
 
 interface IHeaderStyled {
-   scrollPercentage: number;
+   scrollPercent: number;
    background?: string;
    progress?: boolean;
-   opacity?: number;
+   $opacity?: number;
    top?: string;
 }
 
-const HeaderStyled = styled.div<IHeaderStyled>`
+const HeaderStyled = styled.header<IHeaderStyled>`
    background: ${({ background = 'transparent' }) => background};
    transition: top 0.65s ease-out, opacity 0.5s ease-out;
-   opacity: ${({ opacity = 1 }) => opacity};
+   opacity: ${({ $opacity = 1 }) => $opacity};
    top: ${({ top = '0' }) => top};
    position: absolute;
    z-index: 100;
    height: 60px;
-   width: calc(100% - 56px - 12px);
-   padding: 0 28px;
-
-   ${breakpoints.md} {
-      width: calc(100% - 380px - 12px);
-      padding: 0 190px;
-   }
 
    ${({ theme: { flex } }) => flex.between};
+   ${Gutters}
 
-   ${({ scrollPercentage, progress = false }) =>
+   ${({ scrollPercent, progress = false }) =>
       progress &&
       css`
          &::after {
             transition: width 0.4s ease-out;
-            width: ${scrollPercentage * 100}%;
+            width: ${scrollPercent * 100}%;
             border-bottom: 2px solid #d3d3d3;
             border-radius: 1px;
             position: absolute;
@@ -46,26 +44,13 @@ const HeaderStyled = styled.div<IHeaderStyled>`
       `};
 `;
 
-const NavbarStyled = styled.div`
-   overflow: hidden;
-   display: flex;
-   gap: 50px;
-`;
-
-const NavStyled = styled.nav`
-   cursor: pointer;
-   color: ${colors.white_1};
-`;
-
 const LogoStyled = styled.img`
    height: 26px;
 `;
 
-const navItems = ['Home', 'Projects', 'About', 'Contact', 'Github'];
-
 enum HeaderVariant {
-   DEFAULT = 'DEFAULT',
-   SCROLL = 'SCROLL',
+   FIXED = 'FIXED',
+   STICKY = 'STICKY',
 }
 
 interface IHeaderVariant {
@@ -76,7 +61,7 @@ interface IHeaderVariant {
 }
 
 const headerConfig: { [key in HeaderVariant]: { visible: IHeaderVariant; hidden?: IHeaderVariant } } = {
-   [HeaderVariant.DEFAULT]: {
+   [HeaderVariant.FIXED]: {
       visible: {
          background: 'transparent',
          progress: false,
@@ -84,7 +69,7 @@ const headerConfig: { [key in HeaderVariant]: { visible: IHeaderVariant; hidden?
          top: '5.5vh',
       },
    },
-   [HeaderVariant.SCROLL]: {
+   [HeaderVariant.STICKY]: {
       visible: {
          background: 'linear-gradient(180.1deg, #212E52 0.09%, #344982 99.92%);',
          progress: true,
@@ -102,24 +87,36 @@ const headerConfig: { [key in HeaderVariant]: { visible: IHeaderVariant; hidden?
 
 interface IHeader {
    headerVariant: HeaderVariant;
-   scrollPercentage: number;
+   scrollPercent: number;
 }
 
-const Header = ({ scrollPercentage, headerVariant = HeaderVariant.DEFAULT }: IHeader) => {
+const Header = ({ scrollPercent, headerVariant = HeaderVariant.FIXED }: IHeader) => {
    const config = headerConfig[headerVariant];
-   const isActive = headerVariant === HeaderVariant.DEFAULT || scrollPercentage > 0.15;
+   const isActive = headerVariant === HeaderVariant.FIXED || scrollPercent > 0.15;
    const styles = isActive ? config.visible : config.hidden;
+   const setScrollToPercent = useStore((state) => state.setScrollToPercent);
+
+   const navItems: INavItem[] = useMemo(
+      () => [
+         { title: 'Home', onClick: () => setScrollToPercent(0) },
+         { title: 'Projects', onClick: () => setScrollToPercent(0.35) },
+         { title: 'About', onClick: () => setScrollToPercent(0.6) },
+         { title: 'Contact', onClick: () => setScrollToPercent(0.9) },
+         { title: 'Github', link: 'https://example.com', variant: NavItemVariant.Link },
+      ],
+      [setScrollToPercent]
+   );
 
    return (
-      <HeaderStyled scrollPercentage={scrollPercentage} {...styles}>
+      <HeaderStyled
+         scrollPercent={scrollPercent}
+         background={styles?.background}
+         progress={styles?.progress}
+         $opacity={styles?.opacity}
+         top={styles?.top}
+      >
          <LogoStyled src={logoFull.src} />
-         {
-            <NavbarStyled>
-               {navItems.map((item, index) => (
-                  <NavStyled key={index}>{item}</NavStyled>
-               ))}
-            </NavbarStyled>
-         }
+         <Navbar navItems={navItems} />
       </HeaderStyled>
    );
 };

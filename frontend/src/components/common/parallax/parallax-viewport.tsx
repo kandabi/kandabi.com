@@ -1,16 +1,18 @@
-import { useCallback, useEffect, useRef } from "react";
-import { DebouncedFunc, throttle } from "lodash";
-import styled from "styled-components";
+import { useCallback, useEffect, useRef } from 'react';
+import { DebouncedFunc, throttle } from 'lodash';
+import styled from 'styled-components';
+import { useStore } from 'store';
 
 interface IViewportStyled {
-   $distanceToCamera?: number;
+   distanceToCamera?: number;
 }
 
 const ViewportStyled = styled.div<IViewportStyled>`
-   perspective: ${({ $distanceToCamera = 2 }) => `${$distanceToCamera}px`};
+   perspective: ${({ distanceToCamera = 2 }) => `${distanceToCamera}px`};
+   scroll-behavior: smooth;
+   position: absolute;
    overflow-x: hidden;
    overflow-y: auto;
-   position: absolute;
    bottom: 0;
    right: 0;
    left: 0;
@@ -18,31 +20,38 @@ const ViewportStyled = styled.div<IViewportStyled>`
 `;
 
 interface IParallaxViewport {
-   onScroll: (scrollPercentage: number) => void;
+   onMouseScroll: (scrollPercentage: number) => void;
    distanceToCamera?: number;
    children?: any;
 }
 
-const ParallaxViewport = ({ distanceToCamera, onScroll, children }: IParallaxViewport) => {
+const ParallaxViewport = ({ distanceToCamera, onMouseScroll, children }: IParallaxViewport) => {
    const viewportRef = useRef<HTMLDivElement>(null);
+   const scrollToPercent = useStore((state) => state.scrollToPercent);
+   const viewport = viewportRef.current;
 
-   const handleScroll = useCallback(() => {
-      let viewport = viewportRef.current;
+   const handleOnScroll = useCallback(() => {
       if (viewport) {
          const clientHeight = viewport.scrollHeight - viewport.clientHeight;
-         onScroll(viewport.scrollTop / clientHeight);
+         onMouseScroll(viewport.scrollTop / clientHeight);
       }
-   }, [viewportRef, onScroll]);
+   }, [viewport, onMouseScroll]);
 
    useEffect(() => {
-      const viewport = viewportRef.current;
-      const throttledScroll = throttle(handleScroll, 80);
-      viewport?.addEventListener("scroll", throttledScroll);
-      return () => viewport?.removeEventListener("scroll", throttledScroll);
-   }, [viewportRef, handleScroll]);
+      const throttledScroll = throttle(handleOnScroll, 120);
+      viewport?.addEventListener('scroll', throttledScroll);
+      return () => viewport?.removeEventListener('scroll', throttledScroll);
+   }, [viewport, handleOnScroll]);
+
+   useEffect(() => {
+      if (viewport && scrollToPercent > -1) {
+         const clientHeight = viewport.scrollHeight - viewport.clientHeight;
+         viewport?.scrollTo(0, clientHeight * scrollToPercent);
+      }
+   }, [viewport, scrollToPercent]);
 
    return (
-      <ViewportStyled ref={viewportRef} $distanceToCamera={distanceToCamera}>
+      <ViewportStyled ref={viewportRef} distanceToCamera={distanceToCamera}>
          {children}
       </ViewportStyled>
    );
