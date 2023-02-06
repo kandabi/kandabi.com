@@ -15,20 +15,20 @@ const HeroStyled = styled.div`
 `;
 
 const TitleStyled = styled.h1`
+   text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.75);
    color: ${({ theme: { color } }) => color.white_1};
-   font-size: 5rem;
+   line-height: 116%;
+   font-size: 55px;
 `;
 
-interface IHero {
-   scrollPercent: number;
-}
+interface IHero {}
 
-const Hero = ({ scrollPercent }: IHero) => {
+const Hero = ({}: IHero) => {
    return (
       <ParallaxScroll distanceToCamera={6} height='115vh' scale={2}>
-         <Header headerVariant={HeaderVariant.FIXED} scrollPercent={scrollPercent} />
+         <Header headerVariant={HeaderVariant.FIXED} />
          <HeroStyled>
-            <TitleStyled>Hello!!!!!!!!!!</TitleStyled>
+            <TitleStyled>Aviv Kandabi</TitleStyled>
          </HeroStyled>
       </ParallaxScroll>
    );

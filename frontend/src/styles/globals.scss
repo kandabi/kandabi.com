@@ -1,0 +1,114 @@
+html,
+body {
+   font-family: 'Rubik', Arial, sans-serif;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   font-style: normal;
+   font-weight: 300;
+   line-height: 1.2;
+   font-size: 14px;
+   color: #ffffff;
+   padding: 0;
+   margin: 0;
+}
+
+header,
+footer,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+   padding: 0;
+   margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+   font-family: 'Catamaran', Arial, sans-serif;
+}
+
+a {
+   text-decoration: none;
+   color: inherit;
+   margin: 0;
+}
+
+ul,
+li {
+   list-style-type: none;
+}
+
+button {
+   background: none;
+   border: none;
+   padding: 0;
+}
+
+img {
+   max-width: 100%;
+   display: block;
+   height: auto;
+}
+
+input,
+p {
+   margin: 0;
+}
+
+button,
+a {
+   cursor: pointer;
+   display: block;
+}
+
+button,
+input {
+   border: none;
+}
+
+:root {
+   --scrollbar-width: 12px;
+}
+
+@font-face {
+   font-family: 'Rubik';
+   src: url('/fonts/rubik.ttf');
+   font-style: normal;
+   font-weight: 300;
+   font-display: fallback;
+}
+
+@font-face {
+   font-family: 'Catamaran';
+   src: url('/fonts/catamaran.ttf');
+   font-style: normal;
+   font-weight: 800;
+   font-display: fallback;
+}
+
+* {
+   scrollbar-color: #f2f8ff #344982;
+   scrollbar-width: auto;
+}
+
+*::-webkit-scrollbar {
+   width: var(--scrollbar-width);
+}
+
+*::-webkit-scrollbar-track {
+   background: #182339;
+}
+
+*::-webkit-scrollbar-thumb {
+   background-color: #f2f8ff;
+   border: 2px solid #182339;
+   border-radius: 10px;
+}

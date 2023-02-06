@@ -87,14 +87,15 @@ const headerConfig: { [key in HeaderVariant]: { visible: IHeaderVariant; hidden?
 
 interface IHeader {
    headerVariant: HeaderVariant;
-   scrollPercent: number;
 }
 
-const Header = ({ scrollPercent, headerVariant = HeaderVariant.FIXED }: IHeader) => {
+const Header = ({ headerVariant = HeaderVariant.FIXED }: IHeader) => {
+   const scrollPercent = useStore((state) => state.mouseScroll);
+   const setScrollToPercent = useStore((state) => state.setScrollToPercent);
+
    const config = headerConfig[headerVariant];
    const isActive = headerVariant === HeaderVariant.FIXED || scrollPercent > 0.15;
    const styles = isActive ? config.visible : config.hidden;
-   const setScrollToPercent = useStore((state) => state.setScrollToPercent);
 
    const navItems: INavItem[] = useMemo(
       () => [

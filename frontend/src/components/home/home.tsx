@@ -1,4 +1,3 @@
-import { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import { Header, HeaderVariant } from 'components/common/header';
@@ -11,14 +10,11 @@ import { Footer } from 'components/common/footer';
 const HomeStyled = styled.div``;
 
 const Home = () => {
-   const [scrollPercent, setScrollPercent] = useState<number>(0);
-   const handleMouseScroll = useCallback((percentage: number) => setScrollPercent(percentage), [setScrollPercent]);
-
    return (
       <HomeStyled>
-         <Header headerVariant={HeaderVariant.STICKY} scrollPercent={scrollPercent} />
-         <ParallaxViewport distanceToCamera={6} onMouseScroll={handleMouseScroll}>
-            <Hero scrollPercent={scrollPercent} />
+         <Header headerVariant={HeaderVariant.STICKY} />
+         <ParallaxViewport distanceToCamera={6}>
+            <Hero />
             <Projects />
             <Contact />
             <Footer />

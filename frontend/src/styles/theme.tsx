@@ -8,12 +8,22 @@ type IFlex = {
    display: string;
 };
 
+type IFont = {
+   fontFamily: string;
+   fontWeight: string;
+   fontStyle: string;
+};
+
 type IGuttersBreakpoints = Breakpoints.xs | Breakpoints.md | Breakpoints.lg;
 
 interface IThemeConfig {
    breakpoints: { [key in Breakpoints]: string };
    color: { [key in Colors]: HexColor };
    gutters: { [key in IGuttersBreakpoints]: { width: string; padding: string } };
+   font: {
+      catamaran: IFont;
+      rubik: IFont;
+   };
    flex: {
       center: IFlex;
       between: IFlex;
@@ -37,6 +47,19 @@ const themeConfig: IThemeConfig = {
       [Breakpoints.lg]: {
          width: 'calc(100% - 20vw - var(--scrollbar-width))',
          padding: '0 10vw',
+      },
+   },
+
+   font: {
+      catamaran: {
+         fontFamily: '"Catamaran", sans-serif',
+         fontWeight: '800',
+         fontStyle: 'normal',
+      },
+      rubik: {
+         fontFamily: '"Rubik", sans-serif',
+         fontWeight: '300',
+         fontStyle: 'normal',
       },
    },
 

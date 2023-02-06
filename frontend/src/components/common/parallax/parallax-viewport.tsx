@@ -20,35 +20,40 @@ const ViewportStyled = styled.div<IViewportStyled>`
 `;
 
 interface IParallaxViewport {
-   onMouseScroll: (scrollPercentage: number) => void;
    distanceToCamera?: number;
    children?: any;
 }
 
-const ParallaxViewport = ({ distanceToCamera, onMouseScroll, children }: IParallaxViewport) => {
+const ParallaxViewport = ({ distanceToCamera, children }: IParallaxViewport) => {
    const viewportRef = useRef<HTMLDivElement>(null);
    const scrollToPercent = useStore((state) => state.scrollToPercent);
-   const viewport = viewportRef.current;
+   const setMouseScroll = useStore((state) => state.setMouseScroll);
 
-   const handleOnScroll = useCallback(() => {
-      if (viewport) {
-         const clientHeight = viewport.scrollHeight - viewport.clientHeight;
-         onMouseScroll(viewport.scrollTop / clientHeight);
-      }
-   }, [viewport, onMouseScroll]);
+   const handleOnScroll = useCallback(
+      (event: any) => {
+         const viewport = event.target;
+         if (viewport) {
+            const clientHeight = viewport.scrollHeight - viewport.clientHeight;
+            setMouseScroll(viewport.scrollTop / clientHeight);
+         }
+      },
+      [setMouseScroll]
+   );
 
    useEffect(() => {
+      const viewport = viewportRef.current;
+      const throttledScroll = throttle(handleOnScroll, 120);
+      viewport?.addEventListener('scroll', throttledScroll);
+      return () => viewport?.removeEventListener('scroll', throttledScroll);
+   }, [viewportRef, handleOnScroll]);
+
+   useEffect(() => {
+      let viewport = viewportRef.current;
       if (viewport && scrollToPercent > -1) {
          const clientHeight = viewport.scrollHeight - viewport.clientHeight;
          viewport?.scrollTo(0, clientHeight * scrollToPercent);
       }
-   }, [viewport, scrollToPercent]);
-
-   useEffect(() => {
-      const throttledScroll = throttle(handleOnScroll, 120);
-      viewport?.addEventListener('scroll', throttledScroll);
-      return () => viewport?.removeEventListener('scroll', throttledScroll);
-   }, [viewport, handleOnScroll]);
+   }, [viewportRef, scrollToPercent]);
 
    return (
       <ViewportStyled ref={viewportRef} distanceToCamera={distanceToCamera}>
