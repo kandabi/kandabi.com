@@ -9,7 +9,8 @@ const ContactStyled = styled.div`
    align-items: center;
    position: relative;
    display: flex;
-   height: 100%;
+   /* height: 100%; */
+   height: 1000px;
    width: 100%;
 `;
 
@@ -20,7 +21,7 @@ const TitleStyled = styled.h1`
 
 const Contact = () => {
    return (
-      <ParallaxScroll distanceToCamera={2} height='100%' scale={1.5}>
+      <ParallaxScroll distanceToCamera={2} height='1000px' scale={1.5}>
          <ContactStyled>
             <TitleStyled>Hello!!!!!!!!!!</TitleStyled>
             <Footer />
