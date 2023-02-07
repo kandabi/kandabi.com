@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import logoFull from 'assets/logo-full.svg';
-import { Gutters } from 'components/common/css/gutters';
+import { Gutters } from 'components/common/gutters';
 import { Navbar } from 'components/common/navbar';
 import { INavItem } from 'components/common/navbar';
 import { useMemo } from 'react';
@@ -68,7 +68,7 @@ const headerConfig: { [key in HeaderVariant]: { visible: IHeaderVariant; hidden?
          background: 'transparent',
          progress: false,
          opacity: 1,
-         top: '5.5vh',
+         top: '6.5vh',
       },
    },
    [HeaderVariant.STICKY]: {

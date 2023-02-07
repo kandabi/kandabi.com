@@ -25,9 +25,9 @@ interface IThemeConfig {
       rubik: IFont;
    };
    flex: {
-      center: IFlex;
       between: IFlex;
-      evenly: IFlex;
+      center: IFlex;
+      start: IFlex;
    };
 }
 
@@ -64,19 +64,19 @@ const themeConfig: IThemeConfig = {
    },
 
    flex: {
-      center: {
-         justifyContent: 'center',
-         alignItems: 'center',
-         display: 'flex',
-      },
       between: {
          justifyContent: 'space-between',
          alignItems: 'center',
          display: 'flex',
       },
-      evenly: {
-         justifyContent: 'space-evenly',
+      center: {
+         justifyContent: 'center',
          alignItems: 'center',
+         display: 'flex',
+      },
+      start: {
+         justifyContent: 'center',
+         alignItems: 'start',
          display: 'flex',
       },
    },

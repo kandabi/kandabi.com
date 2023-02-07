@@ -6,7 +6,7 @@ const ProjectsStyled = styled.div`
 `;
 
 const Projects = () => {
-   return <ProjectsStyled>Projects</ProjectsStyled>;
+   return <ProjectsStyled></ProjectsStyled>;
 };
 
 export { Projects };
