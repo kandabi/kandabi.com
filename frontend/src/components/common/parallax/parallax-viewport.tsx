@@ -14,13 +14,13 @@ const ViewportStyled = styled.div<IViewportStyled>`
    overflow-x: hidden;
    overflow-y: auto;
 
-   /* position: fixed;
+   position: fixed;
    height: 100%;
-   width: 100%; */
+   width: 100%;
 
    /* position: -webkit-sticky; */
-   position: absolute;
-   inset: 0px;
+   /* position: absolute;
+   inset: 0px; */
 `;
 
 interface IParallaxViewport {
