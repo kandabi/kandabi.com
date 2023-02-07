@@ -19,7 +19,7 @@ const ViewportStyled = styled.div<IViewportStyled>`
    width: 100%; */
 
    /* position: -webkit-sticky; */
-   position: fixed;
+   position: absolute;
    inset: 0px;
 `;
 
