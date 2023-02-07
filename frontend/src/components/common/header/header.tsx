@@ -22,6 +22,7 @@ const HeaderStyled = styled.header<IHeaderStyled>`
    transition: top 0.65s ease-out, opacity 0.5s ease-out;
    opacity: ${({ $opacity = 1 }) => $opacity};
    top: ${({ top = '0' }) => top};
+   pointer-events: none;
    position: absolute;
    z-index: 100;
    height: 60px;
