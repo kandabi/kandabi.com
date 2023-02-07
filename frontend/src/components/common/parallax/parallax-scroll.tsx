@@ -25,7 +25,7 @@ interface IParallaxScroll {
    scale?: number;
 }
 
-const ParallaxScroll: FC<IParallaxScroll> = ({ distanceToCamera, height, scale, children }) => {
+const ParallaxScroll = ({ distanceToCamera, height, scale, children }: IParallaxScroll) => {
    return (
       <ParallaxScrollStyled $distanceToCamera={distanceToCamera} $height={height} $scale={scale}>
          {children}
