@@ -8,9 +8,10 @@ interface IParallaxScrollStyled {
 }
 
 const ParallaxScrollStyled = styled.div<IParallaxScrollStyled>`
-   transform: ${({ $distanceToCamera = 1, $scale = 2 }) => `translateZ(-${$distanceToCamera}px) scale(${$scale})`};
    /* transform: ${({ $distanceToCamera = 1, $scale = 2 }) =>
-      `translateY(-50%) translateZ(-${$distanceToCamera}px) scale(${$scale})`}; */
+      `translateZ(-${$distanceToCamera}px) scale(${$scale})`}; */
+   transform: ${({ $distanceToCamera = 1, $scale = 2 }) =>
+      `translateY(-50%) translateZ(-${$distanceToCamera}px) scale(${$scale})`};
    height: ${({ $height = '100%' }) => $height};
    /* transform-style: preserve-3d; */
    justify-content: center;
