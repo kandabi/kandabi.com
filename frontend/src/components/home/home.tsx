@@ -12,7 +12,7 @@ const HomeStyled = styled.div``;
 const Home = () => {
    return (
       <HomeStyled>
-         {/* <Header headerVariant={HeaderVariant.STICKY} /> */}
+         <Header headerVariant={HeaderVariant.STICKY} />
          <ParallaxViewport distanceToCamera={6}>
             <Hero />
             <Projects />
