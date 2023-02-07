@@ -8,7 +8,8 @@ interface IParallaxScrollStyled {
 }
 
 const ParallaxScrollStyled = styled.div<IParallaxScrollStyled>`
-   transform: ${({ $distanceToCamera = 1, $scale = 2 }) => `translateZ(-${$distanceToCamera}px) scale(${$scale})`};
+   /* transform: ${({ $distanceToCamera = 1, $scale = 2 }) =>
+      `translateZ(-${$distanceToCamera}px) scale(${$scale})`}; */
    justify-content: center;
    align-items: center;
    position: relative;
