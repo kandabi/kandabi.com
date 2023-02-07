@@ -14,8 +14,8 @@ const ViewportStyled = styled.div<IViewportStyled>`
    overflow-y: auto;
 
    position: fixed;
-   width: 100%;
    height: 100%;
+   width: 100%;
 
    /* position: absolute; */
    /* bottom: 0;

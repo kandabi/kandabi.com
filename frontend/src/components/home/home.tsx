@@ -17,7 +17,7 @@ const Home = () => {
             <Hero />
             <Projects />
             <Contact />
-            <Footer />
+            {/* <Footer /> */}
          </ParallaxViewport>
       </HomeStyled>
    );
