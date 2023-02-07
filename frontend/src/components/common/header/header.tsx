@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import logoFull from 'assets/logo-full.svg';
+import logoFull from 'assets/images/logo-full.svg';
 import { Gutters } from 'components/common/gutters';
 import { Navbar } from 'components/common/navbar';
 import { INavItem } from 'components/common/navbar';

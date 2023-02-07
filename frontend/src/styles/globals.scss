@@ -1,7 +1,7 @@
 html,
 body {
    font-family: 'Rubik', Arial, sans-serif;
-   -webkit-font-smoothing: antialiased;
+   -webkit-font-smoothing: subpixel-antialiased;
    -moz-osx-font-smoothing: grayscale;
    font-style: normal;
    font-weight: 300;
@@ -39,6 +39,7 @@ h6 {
 
 a {
    text-decoration: none;
+   cursor: pointer;
    color: inherit;
    margin: 0;
 }
@@ -54,17 +55,13 @@ button {
    border-width: 2px;
    background: none;
    padding: 8px 32px;
+   cursor: pointer;
 }
 
 img {
    max-width: 100%;
    display: block;
    height: auto;
-}
-
-a {
-   cursor: pointer;
-   display: block;
 }
 
 input {

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const NavItemStyled = styled.li`
+   font-size: 18px;
    cursor: pointer;
 `;
 

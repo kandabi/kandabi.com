@@ -13,7 +13,7 @@ const HeroStyled = styled.div`
    align-items: center;
    position: relative;
    display: flex;
-   height: 115vh;
+   height: 120vh;
    width: 100%;
 `;
 
@@ -35,7 +35,8 @@ const SubtitleStyled = styled.p`
 
 const Hero = () => {
    return (
-      <ParallaxScroll distanceToCamera={6} height='115vh' scale={2}>
+      //<ParallaxScroll distanceToCamera={6} height='115vh' scale={2}>
+      <ParallaxScroll distanceToCamera={3} height='120vh' scale={1.5}>
          <Header headerVariant={HeaderVariant.FIXED} />
          <HeroStyled>
             <Section gap='20px'>
