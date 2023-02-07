@@ -25,7 +25,7 @@ interface IHero {}
 
 const Hero = ({}: IHero) => {
    return (
-      <ParallaxScroll distanceToCamera={6} height='115vh' scale={2}>
+      <ParallaxScroll distanceToCamera={6} height='115%' scale={2}>
          <Header headerVariant={HeaderVariant.FIXED} />
          <HeroStyled>
             <TitleStyled>Aviv Kandabi</TitleStyled>
