@@ -10,7 +10,7 @@ const HeroStyled = styled.div`
    align-items: center;
    position: relative;
    display: flex;
-   height: 100%;
+   height: 115vh;
    width: 100%;
 `;
 
@@ -25,7 +25,7 @@ interface IHero {}
 
 const Hero = ({}: IHero) => {
    return (
-      <ParallaxScroll distanceToCamera={6} height='100%' scale={2}>
+      <ParallaxScroll distanceToCamera={6} height='115vh' scale={2}>
          <Header headerVariant={HeaderVariant.FIXED} />
          <HeroStyled>
             <TitleStyled>Aviv Kandabi</TitleStyled>
