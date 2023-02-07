@@ -10,7 +10,7 @@ const ContactStyled = styled.div`
    position: relative;
    display: flex;
 
-   position: -webkit-sticky;
+   /* position: -webkit-sticky; */
    height: 100%;
    width: 100%;
 `;
