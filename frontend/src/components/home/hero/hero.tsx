@@ -10,8 +10,6 @@ import { useIsMobile } from 'hooks/useIsMobile';
 
 const HeroStyled = styled.div`
    background: radial-gradient(110% 80% at 120% 30%, #4867b1 0%, #060b13 115%);
-   justify-content: center;
-   align-items: center;
    position: relative;
    display: flex;
    height: 120vh;
@@ -27,15 +25,16 @@ const TitleStyled = styled.h1`
    text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.75);
    color: ${({ theme: { color } }) => color.white_1};
    line-height: 1.16em;
-   font-size: 45px;
-
+   font-size: 42px;
+   margin-top: 20vh;
    ${({ theme: { breakpoints } }) => breakpoints.md} {
+      margin-top: initial;
       font-size: 55px;
    }
 `;
 
 const SubtitleStyled = styled.p`
-   font-size: 24px;
+   font-size: 20px;
    ${({ theme: { breakpoints } }) => breakpoints.md} {
       font-size: 32px;
    }
@@ -43,37 +42,39 @@ const SubtitleStyled = styled.p`
 
 const TechStyled = styled(CoolText)`
    ${({ theme: { breakpoints } }) => breakpoints.md} {
+      margin-top: 20px;
       font-size: 20px;
    }
+   line-height: 1.5rem;
+   margin-top: 10px;
+   font-size: 14px;
 `;
 
 interface IHeroParallax {
    distanceToCamera: number;
    scale: number;
+   gap: string;
 }
 
 const parallaxConfig: { desktop: IHeroParallax; mobile: IHeroParallax } = {
-   desktop: { distanceToCamera: 4, scale: 1.7 },
-   mobile: { distanceToCamera: 1, scale: 1.25 },
+   desktop: { distanceToCamera: 4, scale: 1.7, gap: '20px' },
+   mobile: { distanceToCamera: 2, scale: 1.35, gap: '8px' },
 };
 
 const Hero = () => {
    const { isMobile } = useIsMobile();
-   const { distanceToCamera, scale } = isMobile ? parallaxConfig.mobile : parallaxConfig.desktop;
+   const { distanceToCamera, scale, gap } = isMobile ? parallaxConfig.mobile : parallaxConfig.desktop;
 
    return (
       <ParallaxScroll distanceToCamera={distanceToCamera} scale={scale} height='120vh'>
          <Header headerVariant={HeaderVariant.FIXED} />
          <HeroStyled>
-            <Section gap='20px'>
+            <Section gap={gap}>
                <TitleStyled>
                   <YellowStyled>A</YellowStyled>viv <YellowStyled>K</YellowStyled>andabi
                </TitleStyled>
                <SubtitleStyled>Freelance Software Developer</SubtitleStyled>
-               <TechStyled
-                  text='Javascript | Typescript | React | C# | Node.js | Three.js'
-                  styles={{ margin: '20px 0 0 0', fontSize: 16 }}
-               />
+               <TechStyled text='Javascript | Typescript | React | C# | Node.js | Three.js' />
                <Button text='My Work' styles={{ margin: '15px 0 0 0' }} />
             </Section>
          </HeroStyled>

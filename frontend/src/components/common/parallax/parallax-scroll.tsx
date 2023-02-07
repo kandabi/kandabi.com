@@ -2,14 +2,14 @@ import { FC, PropsWithChildren } from 'react';
 import styled from 'styled-components';
 
 interface IParallaxScrollStyled {
-   $distanceToCamera?: number;
-   $height?: string;
-   $scale?: number;
+   $_distanceToCamera?: number;
+   $_height?: string;
+   $_scale?: number;
 }
 
 const ParallaxScrollStyled = styled.div<IParallaxScrollStyled>`
-   transform: ${({ $distanceToCamera = 1, $scale = 2 }) => `translateZ(-${$distanceToCamera}px) scale(${$scale})`};
-   height: ${({ $height = '100%' }) => $height};
+   transform: ${({ $_distanceToCamera = 1, $_scale = 2 }) => `translateZ(-${$_distanceToCamera}px) scale(${$_scale})`};
+   height: ${({ $_height = '100%' }) => $_height};
    justify-content: center;
    align-items: center;
    position: relative;
@@ -27,7 +27,7 @@ interface IParallaxScroll {
 
 const ParallaxScroll = ({ distanceToCamera, height, scale, children }: IParallaxScroll) => {
    return (
-      <ParallaxScrollStyled $distanceToCamera={distanceToCamera} $height={height} $scale={scale}>
+      <ParallaxScrollStyled $_distanceToCamera={distanceToCamera} $_height={height} $_scale={scale}>
          {children}
       </ParallaxScrollStyled>
    );

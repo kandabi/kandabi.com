@@ -13,6 +13,7 @@ const ButtonStyled = styled.button<IButtonStyled>`
 interface IButton {
    className?: string;
    styles?: {
+      fontSize?: number;
       margin?: string;
    };
    text: string;
@@ -21,7 +22,7 @@ interface IButton {
 const Button = ({ className, styles, text }: IButton) => {
    return (
       <ButtonStyled className={className} margin={styles?.margin}>
-         <CoolText text={text} styles={{ fontSize: 18 }} />
+         <CoolText text={text} styles={{ fontSize: styles?.fontSize ?? 18 }} />
       </ButtonStyled>
    );
 };

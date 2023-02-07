@@ -24,34 +24,38 @@ interface IParallaxViewport {
 
 const ParallaxViewport = ({ distanceToCamera, children }: IParallaxViewport) => {
    const viewportRef = useRef<HTMLDivElement>(null);
-   const scrollToPercent = useStore((state) => state.scrollToPercent);
-   const setMouseScroll = useStore((state) => state.setMouseScroll);
+   const { scrollToPagePosition, setScrollToPagePosition, setCurrentScrollPosition } = useStore((state) => ({
+      scrollToPagePosition: state.scrollToPagePosition,
+      setScrollToPagePosition: state.setScrollToPagePosition,
+      setCurrentScrollPosition: state.setCurrentScrollPosition,
+   }));
 
-   const handleOnScroll = useCallback(
+   const handleMouseScroll = useCallback(
       (event: any) => {
          const viewport = event.target;
          if (viewport) {
             const clientHeight = viewport.scrollHeight - viewport.clientHeight;
-            setMouseScroll(viewport.scrollTop / clientHeight);
+            setCurrentScrollPosition(viewport.scrollTop / clientHeight);
          }
       },
-      [setMouseScroll]
+      [setCurrentScrollPosition]
    );
 
    useEffect(() => {
       const viewport = viewportRef.current;
-      const throttledScroll = throttle(handleOnScroll, 120);
+      const throttledScroll = throttle(handleMouseScroll, 120);
       viewport?.addEventListener('scroll', throttledScroll);
       return () => viewport?.removeEventListener('scroll', throttledScroll);
-   }, [viewportRef, handleOnScroll]);
+   }, [viewportRef, handleMouseScroll]);
 
    useEffect(() => {
       let viewport = viewportRef.current;
-      if (viewport && scrollToPercent > -1) {
+      if (viewport && scrollToPagePosition > -1) {
          const clientHeight = viewport.scrollHeight - viewport.clientHeight;
-         viewport?.scrollTo(0, clientHeight * scrollToPercent);
+         viewport?.scrollTo(0, clientHeight * scrollToPagePosition);
+         setScrollToPagePosition(-1);
       }
-   }, [viewportRef, scrollToPercent]);
+   }, [viewportRef, scrollToPagePosition, setScrollToPagePosition]);
 
    return (
       <ViewportStyled ref={viewportRef} distanceToCamera={distanceToCamera}>

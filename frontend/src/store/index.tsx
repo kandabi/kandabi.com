@@ -1,23 +1,23 @@
 import { create } from 'zustand';
 
 interface StoreState {
-   mouseScroll: number;
-   setMouseScroll: (percent: number) => void;
-   scrollToPercent: number;
-   setScrollToPercent: (percent: number) => void;
+   currentScrollPosition: number;
+   setCurrentScrollPosition: (position: number) => void;
+   scrollToPagePosition: number;
+   setScrollToPagePosition: (position: number) => void;
 }
 
 const useStore = create<StoreState>((set: any) => ({
-   mouseScroll: 0,
-   setMouseScroll: (percent: number) =>
+   currentScrollPosition: 0,
+   setCurrentScrollPosition: (position: number) =>
       set(() => {
-         return { mouseScroll: percent };
+         return { currentScrollPosition: position } as StoreState;
       }),
 
-   scrollToPercent: -1,
-   setScrollToPercent: (percent: number) =>
+   scrollToPagePosition: -1,
+   setScrollToPagePosition: (position: number) =>
       set(() => {
-         return { scrollToPercent: percent };
+         return { scrollToPagePosition: position } as StoreState;
       }),
 }));
 

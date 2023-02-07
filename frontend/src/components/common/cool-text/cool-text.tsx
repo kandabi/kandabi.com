@@ -1,16 +1,15 @@
 import styled from 'styled-components';
 
 interface ICoolTextStyled {
-   $fontSize?: number;
+   $_fontSize?: number;
    margin?: string;
 }
 
 const CoolTextStyled = styled.span<ICoolTextStyled>`
-   ${({ theme: { font } }) => font.rubik};
+   font-size: ${({ $_fontSize = 18 }) => `${$_fontSize}px`};
    color: ${({ theme: { color } }) => color.white_1};
-   font-size: ${({ $fontSize = 20 }) => `${$fontSize}px`};
-   margin: ${({ margin }) => margin};
    letter-spacing: 0.15em;
+   ${({ theme: { font } }) => font.rubik};
 `;
 
 interface ICoolText {
@@ -18,13 +17,12 @@ interface ICoolText {
    text: string;
    styles?: {
       fontSize?: number;
-      margin?: string;
    };
 }
 
 const CoolText = ({ text, className, styles }: ICoolText) => {
    return (
-      <CoolTextStyled className={className} $fontSize={styles?.fontSize}>
+      <CoolTextStyled className={className} $_fontSize={styles?.fontSize}>
          {text}
       </CoolTextStyled>
    );

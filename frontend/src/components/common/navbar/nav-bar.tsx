@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { INavItem, NavItem } from './nav-item';
 
 const NavItemsStyled = styled.ul`
+   pointer-events: initial;
    display: flex;
    gap: 50px;
 `;

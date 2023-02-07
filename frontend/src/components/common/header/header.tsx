@@ -10,7 +10,7 @@ import { NavItemVariant } from 'components/common/navbar/nav-item';
 import { useIsMobile } from 'hooks/useIsMobile';
 
 interface IHeaderStyled {
-   scrollPercent: number;
+   currentScrollPosition: number;
    background?: string;
    progress?: boolean;
    $opacity?: number;
@@ -30,12 +30,12 @@ const HeaderStyled = styled.header<IHeaderStyled>`
    ${({ theme: { flex } }) => flex.between};
    ${Gutters}
 
-   ${({ scrollPercent, progress = false }) =>
+   ${({ currentScrollPosition, progress = false }) =>
       progress &&
       css`
          &::after {
             transition: width 0.4s ease-out;
-            width: ${scrollPercent * 100}%;
+            width: ${currentScrollPosition * 100}%;
             border-bottom: 2px solid #d3d3d3;
             border-radius: 1px;
             position: absolute;
@@ -47,6 +47,8 @@ const HeaderStyled = styled.header<IHeaderStyled>`
 `;
 
 const LogoStyled = styled.img`
+   pointer-events: initial;
+   cursor: pointer;
    height: 26px;
 `;
 
@@ -92,36 +94,36 @@ interface IHeader {
 }
 
 const Header = ({ headerVariant = HeaderVariant.FIXED }: IHeader) => {
-   const [scrollPercent, setScrollToPercent] = useStore(({ mouseScroll, setScrollToPercent }) => [
-      mouseScroll,
-      setScrollToPercent,
-   ]);
+   const { currentScrollPosition, setScrollToPagePosition } = useStore((state) => ({
+      currentScrollPosition: state.currentScrollPosition,
+      setScrollToPagePosition: state.setScrollToPagePosition,
+   }));
    const { isMobile } = useIsMobile();
 
    const config = headerConfig[headerVariant];
-   const isActive = headerVariant === HeaderVariant.FIXED || scrollPercent > 0.15;
+   const isActive = headerVariant === HeaderVariant.FIXED || currentScrollPosition > 0.15;
    const styles = isActive ? config.visible : config.hidden;
 
    const navItems: INavItem[] = useMemo(
       () => [
-         { title: 'Home', onClick: () => setScrollToPercent(0) },
-         { title: 'Projects', onClick: () => setScrollToPercent(0.35) },
-         { title: 'About', onClick: () => setScrollToPercent(0.6) },
-         { title: 'Contact', onClick: () => setScrollToPercent(0.9) },
+         { title: 'Home', onClick: () => setScrollToPagePosition(0) },
+         { title: 'Projects', onClick: () => setScrollToPagePosition(0.35) },
+         { title: 'About', onClick: () => setScrollToPagePosition(0.6) },
+         { title: 'Contact', onClick: () => setScrollToPagePosition(0.9) },
          { title: 'Github', link: 'https://example.com', variant: NavItemVariant.Link },
       ],
-      [setScrollToPercent]
+      [setScrollToPagePosition]
    );
 
    return (
       <HeaderStyled
-         scrollPercent={scrollPercent}
+         currentScrollPosition={currentScrollPosition}
          background={styles?.background}
          progress={styles?.progress}
          $opacity={styles?.opacity}
          top={styles?.top}
       >
-         <LogoStyled src={logoFull.src} />
+         <LogoStyled src={logoFull.src} onClick={() => setScrollToPagePosition(0)} />
          {!isMobile ? <Navbar navItems={navItems} /> : null}
       </HeaderStyled>
    );
