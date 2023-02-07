@@ -13,20 +13,22 @@ const ProjectsStyled = styled.div`
    height: 200%;
 `;
 
-interface IWaveStyled {
-   isMobile: boolean;
-}
-
-const TopWaveStyled = styled.img<IWaveStyled>`
-   top: ${({ isMobile }) => (isMobile ? '-75px' : '-100px')};
-   width: 100%;
+const TopWaveStyled = styled.img`
    position: absolute;
+   width: 100%;
+   top: -75px;
+   ${({ theme: { breakpoints } }) => breakpoints.md} {
+      top: -100px;
+   }
 `;
 
-const BottomWaveStyled = styled.img<IWaveStyled>`
-   bottom: ${({ isMobile }) => (isMobile ? '-100px' : '-120px')};
-   width: 100%;
+const BottomWaveStyled = styled.img`
    position: absolute;
+   bottom: -100px;
+   width: 100%;
+   ${({ theme: { breakpoints } }) => breakpoints.md} {
+      bottom: -120px;
+   }
 `;
 
 const Projects = () => {
@@ -34,8 +36,8 @@ const Projects = () => {
 
    return (
       <ProjectsStyled>
-         <TopWaveStyled src={isMobile ? waveMobile_1.src : waveDesktop_1.src} isMobile={isMobile} />
-         <BottomWaveStyled src={isMobile ? waveMobile_2.src : waveDesktop_2.src} isMobile={isMobile} />
+         <TopWaveStyled src={isMobile ? waveMobile_1.src : waveDesktop_1.src} />
+         <BottomWaveStyled src={isMobile ? waveMobile_2.src : waveDesktop_2.src} />
       </ProjectsStyled>
    );
 };
