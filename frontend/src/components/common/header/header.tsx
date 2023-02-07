@@ -7,6 +7,7 @@ import { INavItem } from 'components/common/navbar';
 import { useMemo } from 'react';
 import { useStore } from 'store';
 import { NavItemVariant } from 'components/common/navbar/nav-item';
+import { useIsMobile } from 'hooks/useIsMobile';
 
 interface IHeaderStyled {
    scrollPercent: number;
@@ -90,6 +91,7 @@ interface IHeader {
 }
 
 const Header = ({ headerVariant = HeaderVariant.FIXED }: IHeader) => {
+   const { isMobile } = useIsMobile();
    const scrollPercent = useStore((state) => state.mouseScroll);
    const setScrollToPercent = useStore((state) => state.setScrollToPercent);
 
@@ -117,7 +119,7 @@ const Header = ({ headerVariant = HeaderVariant.FIXED }: IHeader) => {
          top={styles?.top}
       >
          <LogoStyled src={logoFull.src} />
-         <Navbar navItems={navItems} />
+         {!isMobile ? <Navbar navItems={navItems} /> : null}
       </HeaderStyled>
    );
 };
