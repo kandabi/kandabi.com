@@ -37,7 +37,7 @@ const themeConfig: IThemeConfig = {
 
    gutters: {
       [Breakpoints.xs]: {
-         width: 'calc(100% - 56px - var(--scrollbar-width))',
+         width: 'calc(100% - 56px)',
          padding: '0 28px',
       },
       [Breakpoints.md]: {
