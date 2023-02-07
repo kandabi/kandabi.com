@@ -9,11 +9,11 @@ interface IParallaxScrollStyled {
 
 const ParallaxScrollStyled = styled.div<IParallaxScrollStyled>`
    transform: ${({ $distanceToCamera = 1, $scale = 2 }) => `translateZ(-${$distanceToCamera}px) scale(${$scale})`};
+   height: ${({ $height = '100%' }) => $height};
    justify-content: center;
    align-items: center;
    position: relative;
    display: block;
-   height: ${({ $height = '100%' }) => $height};
    width: 100vw;
    z-index: -1;
 `;
