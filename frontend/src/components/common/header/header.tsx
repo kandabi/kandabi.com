@@ -91,9 +91,11 @@ interface IHeader {
 }
 
 const Header = ({ headerVariant = HeaderVariant.FIXED }: IHeader) => {
+   const [scrollPercent, setScrollToPercent] = useStore(({ mouseScroll, setScrollToPercent }) => [
+      mouseScroll,
+      setScrollToPercent,
+   ]);
    const { isMobile } = useIsMobile();
-   const scrollPercent = useStore((state) => state.mouseScroll);
-   const setScrollToPercent = useStore((state) => state.setScrollToPercent);
 
    const config = headerConfig[headerVariant];
    const isActive = headerVariant === HeaderVariant.FIXED || scrollPercent > 0.15;

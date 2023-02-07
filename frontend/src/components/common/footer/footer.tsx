@@ -4,6 +4,7 @@ const FooterStyled = styled.footer`
    background-color: ${({ theme: { color } }) => color.blue_5};
    justify-content: center;
    align-items: center;
+   position: relative;
    display: flex;
    height: 250px;
    width: 100%;
