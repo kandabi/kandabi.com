@@ -9,6 +9,8 @@ const ContactStyled = styled.div`
    align-items: center;
    position: relative;
    display: flex;
+
+   position: -webkit-sticky;
    height: 100%;
    width: 100%;
 `;
@@ -23,7 +25,7 @@ const Contact = () => {
       <ParallaxScroll distanceToCamera={2} height='100%' scale={1.5}>
          <ContactStyled>
             <TitleStyled>Hello!!!!!!!!!!</TitleStyled>
-            <Footer />
+            {/* <Footer /> */}
          </ContactStyled>
       </ParallaxScroll>
    );

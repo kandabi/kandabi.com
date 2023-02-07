@@ -9,6 +9,8 @@ interface IViewportStyled {
 
 const ViewportStyled = styled.div<IViewportStyled>`
    perspective: ${({ distanceToCamera = 2 }) => `${distanceToCamera}px`};
+   transform-style: preserve-3d;
+   perspective-origin: bottom;
    scroll-behavior: smooth;
    overflow-x: hidden;
    overflow-y: auto;
@@ -17,11 +19,9 @@ const ViewportStyled = styled.div<IViewportStyled>`
    height: 100%;
    width: 100%; */
 
-   position: absolute;
-   bottom: 0;
-   right: 0;
-   left: 0;
-   top: 0;
+   /* position: -webkit-sticky; */
+   position: fixed;
+   inset: 0px;
 `;
 
 interface IParallaxViewport {

@@ -8,8 +8,8 @@ const FooterStyled = styled.footer`
    display: flex;
    height: 250px;
    width: 100%;
-   position: absolute;
-   bottom: 0;
+   /* position: absolute; */
+   /* bottom: 0; */
 `;
 
 const TitleStyled = styled.h1`
