@@ -9,7 +9,7 @@ interface IViewportStyled {
 
 const ViewportStyled = styled.div<IViewportStyled>`
    perspective: ${({ distanceToCamera = 2 }) => `${distanceToCamera}px`};
-   perspective-origin: bottom;
+   /* perspective-origin: bottom; */
    scroll-behavior: smooth;
    overflow-x: hidden;
    overflow-y: auto;
