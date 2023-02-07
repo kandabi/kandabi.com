@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { ParallaxScroll } from 'components/common/parallax';
+
 const ContactStyled = styled.div`
    background: linear-gradient(13deg, rgba(131, 58, 180, 1) 0%, rgba(29, 116, 253, 1) 50%, rgba(252, 176, 69, 1) 100%);
    justify-content: center;
@@ -18,7 +19,7 @@ const TitleStyled = styled.h1`
 
 const Contact = () => {
    return (
-      <ParallaxScroll distanceToCamera={6} height='100%' scale={2}>
+      <ParallaxScroll distanceToCamera={2} height='100%' scale={1.5}>
          <ContactStyled>
             <TitleStyled>Hello!!!!!!!!!!</TitleStyled>
          </ContactStyled>
