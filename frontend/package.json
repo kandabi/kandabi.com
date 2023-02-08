@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "yarn open-browser && next dev",
     "build": "next build",
-    "export": "next build && next export && next-export-optimize-images",
+    "export": "next build && next export",
     "start": "next start",
     "lint": "next lint",
     "open-browser": "start http://localhost:3000"
@@ -30,7 +30,6 @@
     "@types/react-dom": "^18.0.10",
     "@types/styled-components": "^5.1.26",
     "@types/three": "^0.149.0",
-    "next-export-optimize-images": "^2.0.0",
     "sass": "^1.58.0"
   }
 }
