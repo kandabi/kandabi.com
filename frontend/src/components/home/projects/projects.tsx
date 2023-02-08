@@ -14,7 +14,7 @@ const ProjectsStyled = styled.div`
    height: 200%;
 `;
 
-const TopWaveStyled = styled(Image)`
+const TopWaveStyled = styled.img`
    position: absolute;
    width: 100%;
    top: -75px;
@@ -23,7 +23,7 @@ const TopWaveStyled = styled(Image)`
    }
 `;
 
-const BottomWaveStyled = styled(Image)`
+const BottomWaveStyled = styled.img`
    position: absolute;
    bottom: -100px;
    width: 100%;
@@ -37,17 +37,18 @@ const Projects = () => {
 
    return (
       <ProjectsStyled>
-         {!isMobile ? (
-            <>
-               <TopWaveStyled src={waveDesktop_1.src} alt='Wave top decoration' height={270} width={1920} />
-               <BottomWaveStyled src={waveDesktop_2.src} alt='Wave bottom decoration' height={250} width={1920} />
-            </>
-         ) : (
-            <>
-               <TopWaveStyled src={waveMobile_1.src} alt='Wave top decoration' height={270} width={1920} />
-               <BottomWaveStyled src={waveMobile_2.src} alt='Wave bottom decoration' height={250} width={1920} />
-            </>
-         )}
+         <TopWaveStyled
+            src={isMobile ? waveMobile_1.src : waveDesktop_1.src}
+            alt='Wave top decoration'
+            height={270}
+            width={1920}
+         />
+         <BottomWaveStyled
+            src={isMobile ? waveMobile_2.src : waveDesktop_2.src}
+            alt='Wave bottom decoration'
+            height={250}
+            width={1920}
+         />
       </ProjectsStyled>
    );
 };

@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
-import { isIOS, isMobile as isMobileDevice, isMobileSafari } from 'react-device-detect';
+import { isMobile as isMobileDevice } from 'is-mobile';
 
 const useIsMobile = () => {
    const [isMobile, setIsMobile] = useState<boolean>(false);
-   useEffect(() => setIsMobile(isIOS || isMobileSafari || isMobileDevice), []);
+   useEffect(() => setIsMobile(isMobileDevice()), []);
 
-   return {
-      isMobile,
-   };
+   return { isMobile };
 };
 
 export { useIsMobile };
