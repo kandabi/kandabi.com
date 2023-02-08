@@ -13,11 +13,13 @@ interface IHeaderStyled {
    currentScrollPosition: number;
    background?: string;
    progress?: boolean;
+   shadow?: boolean;
    $opacity?: number;
    top?: string;
 }
 
 const HeaderStyled = styled.header<IHeaderStyled>`
+   filter: ${({ shadow = false }) => shadow && 'drop-shadow(0px 3px 4px rgba(0, 0, 0, 0.2))'};
    background: ${({ background = 'transparent' }) => background};
    transition: top 0.65s ease-out, opacity 0.5s ease-out;
    opacity: ${({ $opacity = 1 }) => $opacity};
@@ -34,9 +36,9 @@ const HeaderStyled = styled.header<IHeaderStyled>`
       progress &&
       css`
          &::after {
-            transition: width 0.4s ease-out;
+            border-bottom: 2px solid ${({ theme: { color } }) => color.white_1};
             width: ${currentScrollPosition * 100}%;
-            border-bottom: 2px solid #d3d3d3;
+            transition: width 0.4s ease-out;
             border-radius: 1px;
             position: absolute;
             content: ' ';
@@ -61,6 +63,7 @@ interface IHeaderVariant {
    background?: string;
    progress?: boolean;
    opacity?: number;
+   shadow?: boolean;
    top?: string;
 }
 
@@ -75,14 +78,16 @@ const headerConfig: { [key in HeaderVariant]: { visible: IHeaderVariant; hidden?
    },
    [HeaderVariant.STICKY]: {
       visible: {
-         background: 'linear-gradient(180.1deg, #212E52 0.09%, #344982 99.92%);',
+         background: 'linear-gradient(184deg, #5589d3 10%, #7da4cb 90%)',
          progress: true,
+         shadow: true,
          opacity: 1,
          top: '0',
       },
       hidden: {
-         background: 'linear-gradient(180.1deg, #212E52 0.09%, #344982 99.92%);',
+         background: 'linear-gradient(184deg, #5589d3 10%, #7da4cb 90%)',
          progress: true,
+         shadow: true,
          opacity: 0,
          top: '-60px',
       },
@@ -121,6 +126,7 @@ const Header = ({ headerVariant = HeaderVariant.FIXED }: IHeader) => {
          background={styles?.background}
          progress={styles?.progress}
          $opacity={styles?.opacity}
+         shadow={styles?.shadow}
          top={styles?.top}
       >
          <LogoStyled src={logoFull.src} onClick={() => setScrollToPagePosition(0)} />

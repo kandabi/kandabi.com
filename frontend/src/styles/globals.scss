@@ -77,15 +77,24 @@ input {
    src: url('/fonts/rubik.ttf');
    font-style: normal;
    font-weight: 300;
-   font-display: fallback;
+}
+
+@font-face {
+   font-family: 'Rubik';
+   font-style: normal;
+   font-weight: 300;
+   font-display: swap;
+   src: url('/fonts/rubik.woff2') format('woff2'), url('/fonts/rubik.woff') format('woff'),
+      url('/fonts/rubik.ttf') format('truetype');
 }
 
 @font-face {
    font-family: 'Catamaran';
-   src: url('/fonts/catamaran.ttf');
    font-style: normal;
    font-weight: 800;
-   font-display: fallback;
+   font-display: swap;
+   src: url('/fonts/catamaran.woff2') format('woff2'), url('/fonts/catamaran.woff') format('woff'),
+      url('/fonts/catamaran.ttf') format('truetype');
 }
 
 * {

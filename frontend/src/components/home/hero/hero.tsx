@@ -7,6 +7,7 @@ import { Section } from 'components/common/section';
 import { CoolText } from 'components/common/cool-text';
 import { Button } from 'components/common/button';
 import { useIsMobile } from 'hooks/useIsMobile';
+import { useStore } from 'store';
 
 const HeroStyled = styled.div`
    background: radial-gradient(110% 80% at 120% 30%, #4867b1 0%, #060b13 115%);
@@ -58,12 +59,18 @@ interface IHeroParallax {
 
 const parallaxConfig: { desktop: IHeroParallax; mobile: IHeroParallax } = {
    desktop: { distanceToCamera: 4, scale: 1.7, gap: '20px' },
-   mobile: { distanceToCamera: 2, scale: 1.35, gap: '8px' },
+   mobile: { distanceToCamera: 3, scale: 1.5, gap: '8px' },
 };
 
 const Hero = () => {
    const { isMobile } = useIsMobile();
    const { distanceToCamera, scale, gap } = isMobile ? parallaxConfig.mobile : parallaxConfig.desktop;
+
+   const { setScrollToPagePosition } = useStore((state) => ({
+      setScrollToPagePosition: state.setScrollToPagePosition,
+   }));
+
+   const handleMyWorkClick = () => setScrollToPagePosition(0.35);
 
    return (
       <ParallaxScroll distanceToCamera={distanceToCamera} scale={scale} height='120vh'>
@@ -75,7 +82,7 @@ const Hero = () => {
                </TitleStyled>
                <SubtitleStyled>Freelance Software Developer</SubtitleStyled>
                <TechStyled text='Javascript | Typescript | React | C# | Node.js | Three.js' />
-               <Button text='My Work' styles={{ margin: '15px 0 0 0' }} />
+               <Button onClick={handleMyWorkClick} text='My Work' styles={{ margin: '15px 0 0 0' }} />
             </Section>
          </HeroStyled>
       </ParallaxScroll>

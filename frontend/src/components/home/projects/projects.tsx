@@ -17,8 +17,8 @@ const TopWaveStyled = styled.img`
    position: absolute;
    width: 100%;
    top: -75px;
-   ${({ theme: { breakpoints } }) => breakpoints.md} {
-      top: -100px;
+   ${({ theme: { breakpoints } }) => breakpoints.sm} {
+      top: -5vw;
    }
 `;
 
