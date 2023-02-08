@@ -37,17 +37,18 @@ const Projects = () => {
 
    return (
       <ProjectsStyled>
-         {!isMobile ? (
-            <>
-               <TopWaveStyled src={waveDesktop_1.src} alt='Wave top decoration' height={270} width={1920} />
-               <BottomWaveStyled src={waveDesktop_2.src} alt='Wave bottom decoration' height={250} width={1920} />
-            </>
-         ) : (
-            <>
-               <TopWaveStyled src={waveMobile_1.src} alt='Wave top decoration' height={270} width={1920} />
-               <BottomWaveStyled src={waveMobile_2.src} alt='Wave bottom decoration' height={250} width={1920} />
-            </>
-         )}
+         <TopWaveStyled
+            src={!isMobile ? waveDesktop_1.src : waveMobile_1.src}
+            alt='Wave top decoration'
+            height={270}
+            width={1920}
+         />
+         <BottomWaveStyled
+            src={!isMobile ? waveDesktop_2.src : waveMobile_2.src}
+            alt='Wave bottom decoration'
+            height={250}
+            width={1920}
+         />
       </ProjectsStyled>
    );
 };
