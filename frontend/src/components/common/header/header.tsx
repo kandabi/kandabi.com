@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import logoFull from 'assets/images/logo-full.svg';
 import { Gutters } from 'components/common/gutters';
 import { Navbar } from 'components/common/navbar';
 import { INavItem } from 'components/common/navbar';
@@ -8,7 +7,7 @@ import { useMemo } from 'react';
 import { useStore } from 'store';
 import { NavItemVariant } from 'components/common/navbar/nav-item';
 import { useIsMobile } from 'hooks/useIsMobile';
-import Image from 'next/image';
+import { Logo } from 'components/common/logo';
 
 interface IHeaderStyled {
    currentScrollPosition: number;
@@ -49,12 +48,6 @@ const HeaderStyled = styled.header<IHeaderStyled>`
       `};
 `;
 
-const LogoStyled = styled(Image)`
-   pointer-events: initial;
-   cursor: pointer;
-   height: 26px;
-`;
-
 enum HeaderVariant {
    FIXED = 'FIXED',
    STICKY = 'STICKY',
@@ -79,14 +72,14 @@ const headerConfig: { [key in HeaderVariant]: { visible: IHeaderVariant; hidden?
    },
    [HeaderVariant.STICKY]: {
       visible: {
-         background: 'linear-gradient(184deg, #7da4cb 10%, #5589d3  90%)',
+         background: 'linear-gradient(346deg,#6a9ed1 10%,#4279c8 65%)',
          progress: true,
          shadow: true,
          opacity: 1,
          top: '0',
       },
       hidden: {
-         background: 'linear-gradient(184deg, #7da4cb 10%, #5589d3 90%)',
+         background: 'linear-gradient(346deg,#6a9ed1 10%,#4279c8 65%)',
          progress: true,
          shadow: true,
          opacity: 0,
@@ -100,11 +93,11 @@ interface IHeader {
 }
 
 const Header = ({ headerVariant = HeaderVariant.FIXED }: IHeader) => {
+   const { isMobile } = useIsMobile();
    const { currentScrollPosition, setScrollToPagePosition } = useStore((state) => ({
       currentScrollPosition: state.currentScrollPosition,
       setScrollToPagePosition: state.setScrollToPagePosition,
    }));
-   const { isMobile } = useIsMobile();
 
    const config = headerConfig[headerVariant];
    const isActive = headerVariant === HeaderVariant.FIXED || currentScrollPosition > 0.15;
@@ -130,13 +123,7 @@ const Header = ({ headerVariant = HeaderVariant.FIXED }: IHeader) => {
          shadow={styles?.shadow}
          top={styles?.top}
       >
-         <LogoStyled
-            onClick={() => setScrollToPagePosition(0)}
-            src={logoFull.src}
-            alt='main logo'
-            height={26}
-            width={142}
-         />
+         <Logo />
          {!isMobile ? <Navbar navItems={navItems} /> : null}
       </HeaderStyled>
    );
