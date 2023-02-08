@@ -11,10 +11,14 @@ const ViewportStyled = styled.div<IViewportStyled>`
    perspective: ${({ distanceToCamera = 2 }) => `${distanceToCamera}px`};
    scroll-behavior: smooth;
    overflow-x: hidden;
+   min-height: 600px;
    overflow-y: auto;
    position: fixed;
    height: 100%;
    width: 100%;
+   ${({ theme: { breakpoints } }) => breakpoints.md} {
+      min-height: 1080px;
+   }
 `;
 
 interface IParallaxViewport {
