@@ -8,6 +8,7 @@ import { useMemo } from 'react';
 import { useStore } from 'store';
 import { NavItemVariant } from 'components/common/navbar/nav-item';
 import { useIsMobile } from 'hooks/useIsMobile';
+import Image from 'next/image';
 
 interface IHeaderStyled {
    currentScrollPosition: number;
@@ -48,7 +49,7 @@ const HeaderStyled = styled.header<IHeaderStyled>`
       `};
 `;
 
-const LogoStyled = styled.img`
+const LogoStyled = styled(Image)`
    pointer-events: initial;
    cursor: pointer;
    height: 26px;
@@ -78,14 +79,14 @@ const headerConfig: { [key in HeaderVariant]: { visible: IHeaderVariant; hidden?
    },
    [HeaderVariant.STICKY]: {
       visible: {
-         background: 'linear-gradient(184deg, #5589d3 10%, #7da4cb 90%)',
+         background: 'linear-gradient(184deg, #7da4cb 10%, #5589d3  90%)',
          progress: true,
          shadow: true,
          opacity: 1,
          top: '0',
       },
       hidden: {
-         background: 'linear-gradient(184deg, #5589d3 10%, #7da4cb 90%)',
+         background: 'linear-gradient(184deg, #7da4cb 10%, #5589d3 90%)',
          progress: true,
          shadow: true,
          opacity: 0,
@@ -129,7 +130,13 @@ const Header = ({ headerVariant = HeaderVariant.FIXED }: IHeader) => {
          shadow={styles?.shadow}
          top={styles?.top}
       >
-         <LogoStyled src={logoFull.src} onClick={() => setScrollToPagePosition(0)} />
+         <LogoStyled
+            onClick={() => setScrollToPagePosition(0)}
+            src={logoFull.src}
+            alt='main logo'
+            height={26}
+            width={142}
+         />
          {!isMobile ? <Navbar navItems={navItems} /> : null}
       </HeaderStyled>
    );
