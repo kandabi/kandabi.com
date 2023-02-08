@@ -3,7 +3,7 @@ import MobileDetect from 'is-mobile';
 
 const useIsMobile = () => {
    const [isMobile, setIsMobile] = useState<boolean>(false);
-   useEffect(() => setIsMobile(MobileDetect()), []);
+   useEffect(() => setIsMobile(MobileDetect({ featureDetect: true })), []);
 
    return {
       isMobile,
