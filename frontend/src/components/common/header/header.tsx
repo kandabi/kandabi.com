@@ -5,7 +5,7 @@ import { Navbar } from 'components/common/navbar';
 import { INavItem } from 'components/common/navbar';
 import { useMemo } from 'react';
 import { useStore } from 'store';
-import { NavItemVariant } from 'components/common/navbar/nav-item';
+import { NavbarItemVariant } from 'components/common/navbar/navbar-item';
 import { useIsMobile } from 'hooks/useIsMobile';
 import { Logo } from 'components/common/logo';
 
@@ -109,7 +109,7 @@ const Header = ({ headerVariant = HeaderVariant.FIXED }: IHeader) => {
          { title: 'Projects', onClick: () => setScrollToPagePosition(0.35) },
          { title: 'About', onClick: () => setScrollToPagePosition(0.6) },
          { title: 'Contact', onClick: () => setScrollToPagePosition(0.9) },
-         { title: 'Github', link: 'https://example.com', variant: NavItemVariant.Link },
+         { title: 'Github', link: 'https://example.com', variant: NavbarItemVariant.Link },
       ],
       [setScrollToPagePosition]
    );

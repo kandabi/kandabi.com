@@ -3,7 +3,7 @@ services:
     name: kandabi.com
     env: node
     plan: starter
-    region: frankfurt # optional (defaults to oregon)
+    region: frankfurt 
     buildCommand: yarn install && yarn build
     startCommand: rsync -a public/ /data/public/ && yarn start
     healthCheckPath: /_health

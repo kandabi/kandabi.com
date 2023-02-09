@@ -12,17 +12,17 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string",
       "required": true,
       "unique": true,
       "maxLength": 80
     },
-    "Description": {
+    "description": {
       "type": "richtext",
       "maxLength": 300
     },
-    "Video": {
+    "video": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -30,33 +30,39 @@
         "videos"
       ]
     },
-    "IsFeatured": {
-      "type": "boolean",
-      "default": false,
-      "required": true
-    },
-    "Tags": {
+    "tags": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::tag.tag"
     },
-    "ProjectType": {
+    "projectType": {
       "type": "enumeration",
       "enum": [
         "Web",
-        "Graphics",
+        "Game",
         "Other"
       ],
       "required": true,
       "default": "Web"
     },
-    "Thumbnail": {
+    "thumbnail": {
       "type": "media",
       "multiple": false,
       "required": true,
       "allowedTypes": [
         "images"
       ]
+    },
+    "link": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer",
+      "default": 0,
+      "required": true,
+      "unique": true,
+      "min": 0,
+      "max": 256
     }
   }
 }

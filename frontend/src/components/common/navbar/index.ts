@@ -1,5 +1,5 @@
-import { Navbar } from './nav-bar';
-import { NavItem, INavItem } from './nav-item';
+import { Navbar } from './navbar';
+import { NavbarItem, INavbarItem } from './navbar-item';
 
-export { Navbar, NavItem };
-export type { INavItem };
+export { Navbar, NavbarItem };
+export type { INavbarItem };
