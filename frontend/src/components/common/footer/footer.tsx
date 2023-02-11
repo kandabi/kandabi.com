@@ -6,6 +6,7 @@ import { Section } from 'components/common/section';
 import { Logo } from 'components/common/logo';
 import { Navbar, INavbarItem } from 'components/common/navbar';
 import { NavbarItemVariant } from '../navbar/navbar-item';
+import { Link } from '../link';
 
 const FooterStyled = styled.footer`
    background-color: ${({ theme: { color } }) => color.blue_5};
@@ -22,14 +23,14 @@ const CopyrightStyled = styled.p`
    }
 `;
 
-const PreviousWebsiteStyled = styled.a`
+const PreviousWebsiteStyled = styled(Link)`
    font-size: 12px;
    ${({ theme: { breakpoints } }) => breakpoints.md} {
       font-size: 14px;
    }
 `;
 
-const SitemapStyled = styled.a`
+const SitemapStyled = styled(Link)`
    color: ${({ theme: { color } }) => color.grey_1};
    font-size: 12px;
    ${({ theme: { breakpoints } }) => breakpoints.md} {
@@ -40,7 +41,7 @@ const SitemapStyled = styled.a`
 const Footer = () => {
    const setScrollToPagePosition = useStore((state) => state.setScrollToPagePosition);
 
-   const navItems: INavbarItem[] = useMemo(
+   const navbarItems: INavbarItem[] = useMemo(
       () => [
          { title: 'Home', onClick: () => setScrollToPagePosition(0) },
          { title: 'Github', link: 'https://example.com', variant: NavbarItemVariant.Link },
@@ -55,14 +56,10 @@ const Footer = () => {
       <FooterStyled>
          <Section gap='12px'>
             <Logo />
-            <Navbar navItems={navItems} />
+            <Navbar items={navbarItems} />
             <CopyrightStyled>© 2017 - {new Date().getFullYear()} Aviv Kandabi, All rights reserved.</CopyrightStyled>
-            <PreviousWebsiteStyled href='https://kandabi-2020.netlify.app/' target='_blank' rel='noreferrer'>
-               Previous website
-            </PreviousWebsiteStyled>
-            <SitemapStyled href='https://kandabi-2020.netlify.app/' target='_blank' rel='noreferrer'>
-               Sitemap
-            </SitemapStyled>
+            <PreviousWebsiteStyled href='https://kandabi-2020.netlify.app/' text='Previous Website' />
+            <SitemapStyled href='https://kandabi-2020.netlify.app/' text='Sitemap' />
          </Section>
       </FooterStyled>
    );

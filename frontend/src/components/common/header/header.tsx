@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { Gutters } from 'components/common/gutters';
 import { Navbar } from 'components/common/navbar';
-import { INavItem } from 'components/common/navbar';
+import { INavbarItem } from 'components/common/navbar';
 import { useMemo } from 'react';
 import { useStore } from 'store';
 import { NavbarItemVariant } from 'components/common/navbar/navbar-item';
@@ -103,7 +103,7 @@ const Header = ({ headerVariant = HeaderVariant.FIXED }: IHeader) => {
    const isActive = headerVariant === HeaderVariant.FIXED || currentScrollPosition > 0.15;
    const styles = isActive ? config.visible : config.hidden;
 
-   const navItems: INavItem[] = useMemo(
+   const navbarItems: INavbarItem[] = useMemo(
       () => [
          { title: 'Home', onClick: () => setScrollToPagePosition(0) },
          { title: 'Projects', onClick: () => setScrollToPagePosition(0.35) },
@@ -124,7 +124,7 @@ const Header = ({ headerVariant = HeaderVariant.FIXED }: IHeader) => {
          top={styles?.top}
       >
          <Logo />
-         {!isMobile ? <Navbar navItems={navItems} /> : null}
+         {!isMobile ? <Navbar items={navbarItems} /> : null}
       </HeaderStyled>
    );
 };

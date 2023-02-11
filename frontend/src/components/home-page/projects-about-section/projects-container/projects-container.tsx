@@ -8,7 +8,6 @@ interface IProjectsContainer {
 }
 
 const ProjectsContainer = ({ projects }: IProjectsContainer) => {
-   console.log('projects', projects);
    return <ProjectsStyled></ProjectsStyled>;
 };
 

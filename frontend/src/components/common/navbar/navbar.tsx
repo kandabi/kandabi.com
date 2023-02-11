@@ -2,24 +2,24 @@ import styled from 'styled-components';
 
 import { NavbarItem, INavbarItem } from './navbar-item';
 
-const NavItemsStyled = styled.ul`
+const NavbarItemsStyled = styled.ul`
    pointer-events: initial;
    display: flex;
    gap: 50px;
 `;
 
 interface INavbar {
-   navItems: INavbarItem[];
+   items: INavbarItem[];
 }
 
-const Navbar = ({ navItems }: INavbar) => {
+const Navbar = ({ items }: INavbar) => {
    return (
       <nav>
-         <NavItemsStyled>
-            {navItems.map((item, index) => (
+         <NavbarItemsStyled>
+            {items.map((item, index) => (
                <NavbarItem key={index} {...item} />
             ))}
-         </NavItemsStyled>
+         </NavbarItemsStyled>
       </nav>
    );
 };
