@@ -4,20 +4,21 @@
   "info": {
     "singularName": "tag",
     "pluralName": "tags",
-    "displayName": "Tag"
+    "displayName": "Tag",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string",
       "unique": true,
       "required": true,
       "maxLength": 80
     },
-    "Color": {
+    "color": {
       "type": "string"
     }
   }

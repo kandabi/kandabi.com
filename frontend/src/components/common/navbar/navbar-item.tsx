@@ -1,9 +1,15 @@
 import styled from 'styled-components';
+import { Link } from '../link';
 
-const NavItemStyled = styled.li`
+const NavbarItemStyled = styled.li`
    font-size: 18px;
    cursor: pointer;
 `;
+
+enum NavbarItemVariant {
+   Link = 'Link',
+   Scroll = 'Scroll',
+}
 
 interface INavbarItem {
    onClick?: () => void;
@@ -12,22 +18,15 @@ interface INavbarItem {
    title: string;
 }
 
-enum NavbarItemVariant {
-   Link = 'Link',
-   Scroll = 'Scroll',
-}
-
 const NavbarItem = ({ title, link, onClick, variant = NavbarItemVariant.Scroll }: INavbarItem) => {
    return (
-      <NavItemStyled>
+      <NavbarItemStyled>
          {variant === NavbarItemVariant.Link ? (
-            <a href={link} target='_blank' rel='noreferrer'>
-               {title}
-            </a>
+            <Link text={title} href={link!} />
          ) : (
             <span onClick={() => onClick?.()}>{title}</span>
          )}
-      </NavItemStyled>
+      </NavbarItemStyled>
    );
 };
 
