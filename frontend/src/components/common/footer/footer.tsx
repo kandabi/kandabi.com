@@ -30,7 +30,7 @@ const PreviousWebsiteStyled = styled(Link)`
    }
 `;
 
-const SitemapStyled = styled.a`
+const SitemapStyled = styled(Link)`
    color: ${({ theme: { color } }) => color.grey_1};
    font-size: 12px;
    ${({ theme: { breakpoints } }) => breakpoints.md} {
@@ -59,9 +59,7 @@ const Footer = () => {
             <Navbar items={navbarItems} />
             <CopyrightStyled>© 2017 - {new Date().getFullYear()} Aviv Kandabi, All rights reserved.</CopyrightStyled>
             <PreviousWebsiteStyled href='https://kandabi-2020.netlify.app/' text='Previous Website' />
-            <SitemapStyled href='https://kandabi-2020.netlify.app/' target='_blank' rel='noreferrer'>
-               Sitemap
-            </SitemapStyled>
+            <SitemapStyled href='https://kandabi-2020.netlify.app/' text='Sitemap' />
          </Section>
       </FooterStyled>
    );
