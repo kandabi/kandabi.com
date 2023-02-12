@@ -8,6 +8,9 @@ import { CoolText } from 'components/common/cool-text';
 import { Button } from 'components/common/button';
 import { useIsMobile } from 'hooks/useIsMobile';
 import { useStore } from 'store';
+import { Image } from 'components/common/image';
+
+import arrowDown from 'assets/images/arrow-down.svg';
 
 const HeroStyled = styled.div`
    background: radial-gradient(110% 80% at 120% 30%, #4867b1 0%, #060b13 115%);
@@ -51,6 +54,34 @@ const TechStyled = styled(CoolText)`
    font-size: 14px;
 `;
 
+const CenterContaineStyled = styled.div`
+   ${({ theme: { flex } }) => flex.center}
+   width: 100%;
+`;
+
+const ScrollDownContainerStyled = styled.div`
+   ${({ theme: { flex } }) => flex.center}
+   transition: transform 0.2s ease-out;
+   flex-direction: column;
+   position: relative;
+   cursor: pointer;
+   padding: 6px 10px;
+   top: 100px;
+   gap: 6px;
+
+   &:hover {
+      transform: scale(1.06) translateY(-8px);
+   }
+
+   &:active {
+      transform: scale(0.8) translateY(4px);
+   }
+`;
+
+const ScrollDownTextStyled = styled.span`
+   font-size: 20px;
+`;
+
 interface IHeroParallax {
    distanceToCamera: number;
    scale: number;
@@ -67,7 +98,7 @@ const HeroSection = () => {
    const { distanceToCamera, scale, gap } = isMobile ? parallaxConfig.mobile : parallaxConfig.desktop;
 
    const setScrollToPagePosition = useStore((state) => state.setScrollToPagePosition);
-   const handleMyWorkClick = () => setScrollToPagePosition(0.35);
+   const handleScrollDown = () => setScrollToPagePosition(0.35);
 
    return (
       <ParallaxScroll distanceToCamera={distanceToCamera} scale={scale} height='120vh'>
@@ -79,7 +110,13 @@ const HeroSection = () => {
                </TitleStyled>
                <SubtitleStyled>Freelance Software Developer</SubtitleStyled>
                <TechStyled text='Javascript | Typescript | React | C# | Node.js | Three.js' />
-               <Button onClick={handleMyWorkClick} text='My Work' styles={{ margin: '15px 0 0 0' }} />
+               <Button onClick={handleScrollDown} text='My Work' styles={{ margin: '15px 0 0 0' }} />
+               <CenterContaineStyled>
+                  <ScrollDownContainerStyled onClick={handleScrollDown}>
+                     <ScrollDownTextStyled>Scroll Down</ScrollDownTextStyled>
+                     <Image src={arrowDown.src} width={20} height={20} alt='down arrow' />
+                  </ScrollDownContainerStyled>
+               </CenterContaineStyled>
             </Section>
          </HeroStyled>
       </ParallaxScroll>

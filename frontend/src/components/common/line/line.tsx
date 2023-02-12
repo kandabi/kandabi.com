@@ -53,7 +53,7 @@ const lineConfig: {
       `,
    },
    [LineVariant.CENTER]: {
-      width: '110%',
+      width: '108%',
       animation: css`
          transform: translate(-50%, 0);
          left: 50%;

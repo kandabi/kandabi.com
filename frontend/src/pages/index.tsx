@@ -14,17 +14,16 @@ const getStaticProps: GetStaticProps<IProjectsContainer> = async () => {
    const jwtToken = process.env.JWT_API_TOKEN!;
    if (!jwtToken) {
       console.error('Missing JWT_API_TOKEN, have you added it to environment variables??');
-   } else {
-      try {
-         projects = await ProjectsApi.get(jwtToken);
-      } catch (ex) {
-         console.error('Failed to fetch projects.', ex);
-      }
+      return { props: { projects } };
    }
 
-   return {
-      props: { projects },
-   };
+   try {
+      projects = await ProjectsApi.get(jwtToken);
+   } catch (ex) {
+      console.error('Failed to fetch projects.', ex);
+   }
+
+   return { props: { projects } };
 };
 
 export default Index;

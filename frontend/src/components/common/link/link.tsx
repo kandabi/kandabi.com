@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import linkIcon from 'assets/images/link.svg';
 import { Line, LineVariant } from 'components/common/line';
+import { Image } from 'components/common/image';
 
 interface ILinkStyled {
    fontSize?: number;
@@ -13,14 +14,6 @@ const LinkStyled = styled.a<ILinkStyled>`
    position: relative;
    cursor: pointer;
    gap: 3px;
-`;
-
-interface ILinkIconStyled {
-   iconWidth?: number;
-}
-
-const LinkIconStyled = styled.img<ILinkIconStyled>`
-   width: ${({ width = 12 }) => `${width}px`};
 `;
 
 interface ILink {
@@ -40,7 +33,7 @@ const Link = ({ className, text, href, styles, lineVariant }: ILink) => {
       <LinkStyled href={href} className={className} target='_blank'>
          <Line variant={lineVariant} styles={{ bottom: styles?.lineBottom }}>
             <span>{text}</span>
-            <LinkIconStyled src={linkIcon.src} iconWidth={styles?.iconWidth} />
+            <Image src={linkIcon.src} width={styles?.iconWidth ?? 12} height={14} alt='Outside link' />
          </Line>
       </LinkStyled>
    );
