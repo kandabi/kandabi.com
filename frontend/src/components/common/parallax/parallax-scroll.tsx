@@ -1,4 +1,3 @@
-import { FC, PropsWithChildren } from 'react';
 import styled from 'styled-components';
 
 interface IParallaxScrollStyled {
@@ -8,7 +7,8 @@ interface IParallaxScrollStyled {
 }
 
 const ParallaxScrollStyled = styled.div<IParallaxScrollStyled>`
-   transform: ${({ $_distanceToCamera = 1, $_scale = 2 }) => `translateZ(-${$_distanceToCamera}px) scale(${$_scale})`};
+   transform: ${({ $_distanceToCamera = 1, $_scale = 2 }) =>
+      `translateZ(-${$_distanceToCamera}px) scale(${$_scale})`};
    height: ${({ $_height = '100%' }) => $_height};
    justify-content: center;
    align-items: center;
