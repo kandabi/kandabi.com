@@ -63,14 +63,18 @@ const ScrollDownContainerStyled = styled.div`
    ${({ theme: { flex } }) => flex.center}
    transition: transform 0.2s ease-out;
    flex-direction: column;
-   position: relative;
-   cursor: pointer;
+   position: absolute;
    padding: 6px 10px;
-   top: 100px;
+   cursor: pointer;
+   bottom: 160px;
    gap: 6px;
 
+   ${({ theme: { breakpoints } }) => breakpoints.lg} {
+      bottom: 200px;
+   }
+
    &:hover {
-      transform: scale(1.06) translateY(-8px);
+      transform: scale(1.06) translateY(-6px);
    }
 
    &:active {
