@@ -18,15 +18,16 @@ const FooterStyled = styled.footer`
 `;
 
 const LogoFooterStyled = styled(Logo)`
-   margin-bottom: 12px;
+   margin-bottom: 14px;
 `;
 
 const NavbarFooterStyled = styled(Navbar)`
-   margin-bottom: 12px;
+   margin-bottom: 14px;
 `;
 
 const CopyrightStyled = styled.p`
    font-size: 12px;
+   padding: 4px 6px;
    ${({ theme: { breakpoints } }) => breakpoints.md} {
       font-size: 14px;
    }
@@ -62,7 +63,7 @@ const Footer = () => {
 
    return (
       <FooterStyled>
-         <Section gap='12px'>
+         <Section gap='6px'>
             <LogoFooterStyled />
             <NavbarFooterStyled items={navbarItems} />
             <CopyrightStyled>

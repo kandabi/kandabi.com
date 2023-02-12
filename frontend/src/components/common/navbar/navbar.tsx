@@ -6,7 +6,7 @@ const NavbarItemsStyled = styled.ul`
    pointer-events: initial;
    flex-wrap: wrap;
    display: flex;
-   gap: 5px 50px;
+   gap: 5px 40px;
 `;
 
 interface INavbar {

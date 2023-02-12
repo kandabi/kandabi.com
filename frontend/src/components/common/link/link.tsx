@@ -29,6 +29,7 @@ interface ILink {
    text: string;
    href: string;
    styles?: {
+      lineBottom?: string;
       iconWidth?: number;
       fontSize?: number;
    };
@@ -37,7 +38,7 @@ interface ILink {
 const Link = ({ className, text, href, styles, lineVariant }: ILink) => {
    return (
       <LinkStyled href={href} className={className} target='_blank'>
-         <Line variant={lineVariant}>
+         <Line variant={lineVariant} styles={{ bottom: styles?.lineBottom }}>
             <span>{text}</span>
             <LinkIconStyled src={linkIcon.src} iconWidth={styles?.iconWidth} />
          </Line>

@@ -8,8 +8,9 @@ interface ILineStyled {
    $width: string;
 }
 
-const LineStyled = styled.span<ILineStyled>`
+const LineStyled = styled.div<ILineStyled>`
    ${({ theme: { flex } }) => flex.center}
+   padding: 4px 6px;
    gap: 3px;
 
    &:hover::after {

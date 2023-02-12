@@ -25,13 +25,13 @@ interface INavbarItem {
 const NavbarItem = ({ title, link, onClick, lineStyles, variant = NavbarItemVariant.Scroll }: INavbarItem) => {
    return (
       <NavbarItemStyled>
-         <Line styles={{ bottom: lineStyles?.bottom }} variant={LineVariant.CENTER}>
-            {variant === NavbarItemVariant.Link ? (
-               <Link text={title} href={link!} />
-            ) : (
+         {variant === NavbarItemVariant.Link ? (
+            <Link styles={{ lineBottom: lineStyles?.bottom }} text={title} href={link!} />
+         ) : (
+            <Line styles={{ bottom: lineStyles?.bottom }} variant={LineVariant.CENTER}>
                <span onClick={onClick}>{title}</span>
-            )}
-         </Line>
+            </Line>
+         )}
       </NavbarItemStyled>
    );
 };
