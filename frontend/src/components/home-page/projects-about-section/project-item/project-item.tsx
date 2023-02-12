@@ -16,7 +16,7 @@ interface IProjectItem {
    };
 }
 
-const ProjectItem = ({}) => {
+const ProjectItem = () => {
    return <ProjectStyled></ProjectStyled>;
 };
 

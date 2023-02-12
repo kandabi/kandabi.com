@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import linkIcon from 'assets/images/link.svg';
+import { Line, LineVariant } from 'components/common/line';
 
 interface ILinkStyled {
    fontSize?: number;
@@ -9,6 +10,7 @@ interface ILinkStyled {
 const LinkStyled = styled.a<ILinkStyled>`
    font-size: ${({ fontSize = 18 }) => `${fontSize}px`};
    ${({ theme: { flex } }) => flex.center};
+   position: relative;
    cursor: pointer;
    gap: 3px;
 `;
@@ -22,6 +24,7 @@ const LinkIconStyled = styled.img<ILinkIconStyled>`
 `;
 
 interface ILink {
+   lineVariant?: LineVariant;
    className?: string;
    text: string;
    href: string;
@@ -31,11 +34,13 @@ interface ILink {
    };
 }
 
-const Link = ({ className, text, href, styles }: ILink) => {
+const Link = ({ className, text, href, styles, lineVariant }: ILink) => {
    return (
       <LinkStyled href={href} className={className} target='_blank'>
-         <span>{text}</span>
-         <LinkIconStyled src={linkIcon.src} iconWidth={styles?.iconWidth} />
+         <Line variant={lineVariant}>
+            <span>{text}</span>
+            <LinkIconStyled src={linkIcon.src} iconWidth={styles?.iconWidth} />
+         </Line>
       </LinkStyled>
    );
 };

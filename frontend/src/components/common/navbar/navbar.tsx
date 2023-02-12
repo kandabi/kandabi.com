@@ -4,20 +4,23 @@ import { NavbarItem, INavbarItem } from './navbar-item';
 
 const NavbarItemsStyled = styled.ul`
    pointer-events: initial;
+   flex-wrap: wrap;
    display: flex;
-   gap: 50px;
+   gap: 5px 50px;
 `;
 
 interface INavbar {
+   lineStyles?: { bottom: string };
+   className?: string;
    items: INavbarItem[];
 }
 
-const Navbar = ({ items }: INavbar) => {
+const Navbar = ({ className, lineStyles, items }: INavbar) => {
    return (
-      <nav>
+      <nav className={className}>
          <NavbarItemsStyled>
             {items.map((item, index) => (
-               <NavbarItem key={index} {...item} />
+               <NavbarItem key={index} lineStyles={lineStyles} {...item} />
             ))}
          </NavbarItemsStyled>
       </nav>

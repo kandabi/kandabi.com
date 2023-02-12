@@ -9,13 +9,17 @@ const Index = ({ projects }: IProjectsContainer) => {
    return <HomePage projects={projects} />;
 };
 
-const getStaticProps: GetStaticProps<IProjectsContainer> = async (context) => {
+const getStaticProps: GetStaticProps<IProjectsContainer> = async () => {
    let projects: IProjectItem[] = [];
    const jwtToken = process.env.JWT_API_TOKEN!;
    if (!jwtToken) {
       console.error('Missing JWT_API_TOKEN, have you added it to environment variables??');
-   } else {
+   }
+
+   try {
       projects = await ProjectsApi.get(jwtToken);
+   } catch (ex) {
+      console.error('Failed to fetch projects.', ex);
    }
 
    return {

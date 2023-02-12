@@ -5,8 +5,9 @@ import { useStore } from 'store';
 import { Section } from 'components/common/section';
 import { Logo } from 'components/common/logo';
 import { Navbar, INavbarItem } from 'components/common/navbar';
-import { NavbarItemVariant } from '../navbar/navbar-item';
-import { Link } from '../link';
+import { NavbarItemVariant } from 'components/common/navbar/navbar-item';
+import { LineVariant } from 'components/common/line';
+import { Link } from 'components/common/link';
 
 const FooterStyled = styled.footer`
    background-color: ${({ theme: { color } }) => color.blue_5};
@@ -14,6 +15,14 @@ const FooterStyled = styled.footer`
    ${({ theme: { flex } }) => flex.center};
    height: 250px;
    width: 100%;
+`;
+
+const LogoFooterStyled = styled(Logo)`
+   margin-bottom: 12px;
+`;
+
+const NavbarFooterStyled = styled(Navbar)`
+   margin-bottom: 12px;
 `;
 
 const CopyrightStyled = styled.p`
@@ -40,7 +49,6 @@ const SitemapStyled = styled(Link)`
 
 const Footer = () => {
    const setScrollToPagePosition = useStore((state) => state.setScrollToPagePosition);
-
    const navbarItems: INavbarItem[] = useMemo(
       () => [
          { title: 'Home', onClick: () => setScrollToPagePosition(0) },
@@ -55,11 +63,21 @@ const Footer = () => {
    return (
       <FooterStyled>
          <Section gap='12px'>
-            <Logo />
-            <Navbar items={navbarItems} />
-            <CopyrightStyled>© 2017 - {new Date().getFullYear()} Aviv Kandabi, All rights reserved.</CopyrightStyled>
-            <PreviousWebsiteStyled href='https://kandabi-2020.netlify.app/' text='Previous Website' />
-            <SitemapStyled href='https://kandabi-2020.netlify.app/' text='Sitemap' />
+            <LogoFooterStyled />
+            <NavbarFooterStyled items={navbarItems} />
+            <CopyrightStyled>
+               © 2017 - {new Date().getFullYear()} Aviv Kandabi, All rights reserved.
+            </CopyrightStyled>
+            <PreviousWebsiteStyled
+               href='https://kandabi-2020.netlify.app/'
+               lineVariant={LineVariant.LEFT}
+               text='Previous Website'
+            />
+            <SitemapStyled
+               href='https://kandabi-2020.netlify.app/'
+               lineVariant={LineVariant.LEFT}
+               text='Sitemap'
+            />
          </Section>
       </FooterStyled>
    );

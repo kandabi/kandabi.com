@@ -27,7 +27,7 @@ const HeaderStyled = styled.header<IHeaderStyled>`
    pointer-events: none;
    position: absolute;
    z-index: 100;
-   height: 60px;
+   height: 68px;
 
    ${({ theme: { flex } }) => flex.between};
    ${Gutters}
@@ -36,7 +36,7 @@ const HeaderStyled = styled.header<IHeaderStyled>`
       progress &&
       css`
          &::after {
-            border-bottom: 2px solid ${({ theme: { color } }) => color.white_1};
+            border-bottom: 2px solid ${({ theme: { color } }) => color.grey_2};
             width: ${currentScrollPosition * 100}%;
             transition: width 0.4s ease-out;
             border-radius: 1px;
@@ -54,6 +54,7 @@ enum HeaderVariant {
 }
 
 interface IHeaderVariant {
+   lineStyles: { bottom: string };
    background?: string;
    progress?: boolean;
    opacity?: number;
@@ -64,6 +65,7 @@ interface IHeaderVariant {
 const headerConfig: { [key in HeaderVariant]: { visible: IHeaderVariant; hidden?: IHeaderVariant } } = {
    [HeaderVariant.FIXED]: {
       visible: {
+         lineStyles: { bottom: '-12px' },
          background: 'transparent',
          progress: false,
          opacity: 1,
@@ -73,6 +75,7 @@ const headerConfig: { [key in HeaderVariant]: { visible: IHeaderVariant; hidden?
    [HeaderVariant.STICKY]: {
       visible: {
          background: 'linear-gradient(346deg,#6a9ed1 10%,#4279c8 65%)',
+         lineStyles: { bottom: '-8px' },
          progress: true,
          shadow: true,
          opacity: 1,
@@ -80,6 +83,7 @@ const headerConfig: { [key in HeaderVariant]: { visible: IHeaderVariant; hidden?
       },
       hidden: {
          background: 'linear-gradient(346deg,#6a9ed1 10%,#4279c8 65%)',
+         lineStyles: { bottom: '-8px' },
          progress: true,
          shadow: true,
          opacity: 0,
@@ -124,7 +128,7 @@ const Header = ({ headerVariant = HeaderVariant.FIXED }: IHeader) => {
          top={styles?.top}
       >
          <Logo />
-         {!isMobile ? <Navbar items={navbarItems} /> : null}
+         {!isMobile ? <Navbar items={navbarItems} lineStyles={styles?.lineStyles} /> : null}
       </HeaderStyled>
    );
 };

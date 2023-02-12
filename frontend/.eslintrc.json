@@ -1,3 +1,27 @@
 {
-   "extends": ["next", "next/core-web-vitals"]
+  "extends": [ 
+    "eslint:recommended",
+    "next/core-web-vitals",
+    "next", 
+    "prettier"
+  ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2021": true
+  },
+  "rules": {
+    "no-unused-vars": "off",
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          {
+            "group": ["../*"],
+            "message": "Dynamic imports from parent components are restricted. Use absolute imports instead. Example: \"import Component from 'components/Component'\"."
+          }
+        ]
+      }
+    ]
+  }
 }

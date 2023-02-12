@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import Image from 'next/image';
 
 import { useStore } from 'store';
 import logoFull from 'assets/images/logo-full.svg';
+import { Image } from 'components/common/image';
 
 const LogoStyled = styled(Image)`
    pointer-events: initial;
@@ -10,15 +10,20 @@ const LogoStyled = styled(Image)`
    height: 26px;
 `;
 
-const Logo = () => {
+interface ILogo {
+   className?: string;
+}
+
+const Logo = ({ className }: ILogo) => {
    const setScrollToPagePosition = useStore((state) => state.setScrollToPagePosition);
 
    return (
       <LogoStyled
          onClick={() => setScrollToPagePosition(0)}
          alt='aviv kandabi main logo'
+         className={className}
          src={logoFull.src}
-         priority={true}
+         loading='eager'
          height={26}
          width={142}
       />

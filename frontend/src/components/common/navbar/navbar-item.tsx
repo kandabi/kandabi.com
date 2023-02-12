@@ -1,7 +1,10 @@
 import styled from 'styled-components';
-import { Link } from '../link';
+
+import { Link } from 'components/common/link';
+import { Line, LineVariant } from 'components/common/line';
 
 const NavbarItemStyled = styled.li`
+   position: relative;
    font-size: 18px;
    cursor: pointer;
 `;
@@ -12,20 +15,23 @@ enum NavbarItemVariant {
 }
 
 interface INavbarItem {
-   onClick?: () => void;
+   lineStyles?: { bottom: string };
    variant?: NavbarItemVariant;
-   link?: string;
+   onClick?: () => void;
    title: string;
+   link?: string;
 }
 
-const NavbarItem = ({ title, link, onClick, variant = NavbarItemVariant.Scroll }: INavbarItem) => {
+const NavbarItem = ({ title, link, onClick, lineStyles, variant = NavbarItemVariant.Scroll }: INavbarItem) => {
    return (
       <NavbarItemStyled>
-         {variant === NavbarItemVariant.Link ? (
-            <Link text={title} href={link!} />
-         ) : (
-            <span onClick={() => onClick?.()}>{title}</span>
-         )}
+         <Line styles={{ bottom: lineStyles?.bottom }} variant={LineVariant.CENTER}>
+            {variant === NavbarItemVariant.Link ? (
+               <Link text={title} href={link!} />
+            ) : (
+               <span onClick={onClick}>{title}</span>
+            )}
+         </Line>
       </NavbarItemStyled>
    );
 };

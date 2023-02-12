@@ -13,6 +13,7 @@ enum Colors {
    blue_4 = 'blue_4',
    blue_5 = 'blue_5',
    grey_1 = 'grey_1',
+   grey_2 = 'grey_2',
 }
 
 const colorConfig: { [key in Colors]: HexColor } = {
@@ -28,6 +29,7 @@ const colorConfig: { [key in Colors]: HexColor } = {
    [Colors.blue_4]: '#182339',
    [Colors.blue_5]: '#090E15',
    [Colors.grey_1]: '#7B7B7B',
+   [Colors.grey_2]: '#cccccc',
 };
 
 export { colorConfig, Colors };

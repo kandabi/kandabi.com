@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef } from 'react';
-import { DebouncedFunc, throttle } from 'lodash';
+import { throttle } from 'lodash';
 import styled from 'styled-components';
 import { useStore } from 'store';
 
