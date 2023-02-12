@@ -111,12 +111,14 @@ const HeroSection = () => {
                <SubtitleStyled>Freelance Software Developer</SubtitleStyled>
                <TechStyled text='Javascript | Typescript | React | C# | Node.js | Three.js' />
                <Button onClick={handleScrollDown} text='My Work' styles={{ margin: '15px 0 0 0' }} />
-               <CenterContaineStyled>
-                  <ScrollDownContainerStyled onClick={handleScrollDown}>
-                     <ScrollDownTextStyled>Scroll Down</ScrollDownTextStyled>
-                     <Image src={arrowDown.src} width={20} height={20} alt='down arrow' />
-                  </ScrollDownContainerStyled>
-               </CenterContaineStyled>
+               {!isMobile && (
+                  <CenterContaineStyled>
+                     <ScrollDownContainerStyled onClick={handleScrollDown}>
+                        <ScrollDownTextStyled>Scroll Down</ScrollDownTextStyled>
+                        <Image src={arrowDown.src} width={20} height={20} alt='down arrow' />
+                     </ScrollDownContainerStyled>
+                  </CenterContaineStyled>
+               )}
             </Section>
          </HeroStyled>
       </ParallaxScroll>
