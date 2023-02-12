@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { Link } from 'components/common/link';
-import { Line, LineVariant } from 'components/common/line';
+import { Line } from 'components/common/line';
 
 const NavbarItemStyled = styled.li`
    position: relative;
@@ -28,7 +28,7 @@ const NavbarItem = ({ title, link, onClick, lineStyles, variant = NavbarItemVari
          {variant === NavbarItemVariant.Link ? (
             <Link styles={{ lineBottom: lineStyles?.bottom }} text={title} href={link!} />
          ) : (
-            <Line styles={{ bottom: lineStyles?.bottom }} variant={LineVariant.CENTER}>
+            <Line styles={{ bottom: lineStyles?.bottom }}>
                <span onClick={onClick}>{title}</span>
             </Line>
          )}

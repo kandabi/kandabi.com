@@ -6,7 +6,6 @@ import { Section } from 'components/common/section';
 import { Logo } from 'components/common/logo';
 import { Navbar, INavbarItem } from 'components/common/navbar';
 import { NavbarItemVariant } from 'components/common/navbar/navbar-item';
-import { LineVariant } from 'components/common/line';
 import { Link } from 'components/common/link';
 
 const FooterStyled = styled.footer`
@@ -71,14 +70,10 @@ const Footer = () => {
             </CopyrightStyled>
             <PreviousWebsiteStyled
                href='https://kandabi-2020.netlify.app/'
-               lineVariant={LineVariant.LEFT}
                text='Previous Website'
+               showLine={false}
             />
-            <SitemapStyled
-               href='https://kandabi-2020.netlify.app/'
-               lineVariant={LineVariant.LEFT}
-               text='Sitemap'
-            />
+            <SitemapStyled href='https://kandabi-2020.netlify.app/' text='Sitemap' showLine={false} />
          </Section>
       </FooterStyled>
    );

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import linkIcon from 'assets/images/link.svg';
-import { Line, LineVariant } from 'components/common/line';
+import { Line } from 'components/common/line';
 import { Image } from 'components/common/image';
 
 interface ILinkStyled {
@@ -17,10 +17,10 @@ const LinkStyled = styled.a<ILinkStyled>`
 `;
 
 interface ILink {
-   lineVariant?: LineVariant;
    className?: string;
    text: string;
    href: string;
+   showLine?: boolean;
    styles?: {
       lineBottom?: string;
       iconWidth?: number;
@@ -28,13 +28,19 @@ interface ILink {
    };
 }
 
-const Link = ({ className, text, href, styles, lineVariant }: ILink) => {
-   return (
-      <LinkStyled href={href} className={className} target='_blank'>
-         <Line variant={lineVariant} styles={{ bottom: styles?.lineBottom }}>
+const Link = ({ className, text, href, styles, showLine = true }: ILink) => {
+   const renderLink = () => {
+      return (
+         <>
             <span>{text}</span>
             <Image src={linkIcon.src} width={styles?.iconWidth ?? 12} height={14} alt='Outside link' />
-         </Line>
+         </>
+      );
+   };
+
+   return (
+      <LinkStyled href={href} className={className} target='_blank'>
+         {showLine ? <Line styles={{ bottom: styles?.lineBottom }}>{renderLink()}</Line> : renderLink()}
       </LinkStyled>
    );
 };

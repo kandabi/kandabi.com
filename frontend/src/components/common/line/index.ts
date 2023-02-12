@@ -1,3 +1,3 @@
-import { Line, LineVariant } from './line';
+import { Line } from './line';
 
-export { Line, LineVariant };
+export { Line };
