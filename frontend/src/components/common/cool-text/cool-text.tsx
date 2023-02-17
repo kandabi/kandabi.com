@@ -8,8 +8,8 @@ interface ICoolTextStyled {
 const CoolTextStyled = styled.span<ICoolTextStyled>`
    font-size: ${({ $_fontSize = 18 }) => `${$_fontSize}px`};
    color: ${({ theme: { color } }) => color.white_1};
-   letter-spacing: 0.15em;
    ${({ theme: { font } }) => font.rubik};
+   letter-spacing: 0.15em;
 `;
 
 interface ICoolText {

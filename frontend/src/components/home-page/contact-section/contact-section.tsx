@@ -12,8 +12,9 @@ const ContactStyled = styled.div`
    width: 100%;
 `;
 
+// color: $ {({ theme: { color } }) => color.white_1};
 const TitleStyled = styled.h1`
-   color: ${({ theme: { color } }) => color.white_1};
+   color: white;
    font-size: 5rem;
 `;
 

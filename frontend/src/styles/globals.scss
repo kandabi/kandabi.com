@@ -38,6 +38,11 @@ h6 {
    font-family: 'Catamaran', Arial, sans-serif;
 }
 
+canvas {
+   position: absolute;
+   top: 0;
+}
+
 a {
    text-decoration: none;
    cursor: pointer;

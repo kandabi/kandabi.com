@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import { ProjectsContainer } from 'components/home-page/projects-about-section/projects-container';
-import { IProjectItem } from 'components/home-page/projects-about-section/project-item';
+import { IProjectItem } from 'components/home-page/center-section/projects-section/project-item';
+import { ProjectsSection } from './projects-section';
 
 import waveDesktop_1 from 'assets/images/wave-desktop-1.svg';
 import waveDesktop_2 from 'assets/images/wave-desktop-2.svg';
@@ -10,7 +10,7 @@ import waveMobile_2 from 'assets/images/wave-mobile-2.svg';
 import { mediaSizesConfig } from 'styles/breakpoints';
 import { Image } from 'components/common/image';
 
-const ProjectsStyled = styled.div`
+const CenterSectionStyled = styled.div`
    background: linear-gradient(180deg, #0b1327 0%, #0e1e35 30.21%, #0e1e35 64.06%, #0b1327 100%);
    position: relative;
    height: 200%;
@@ -41,9 +41,9 @@ interface IProjectsAboutSection {
    projects: IProjectItem[];
 }
 
-const ProjectsAboutSection = ({ projects }: IProjectsAboutSection) => {
+const CenterSection = ({ projects }: IProjectsAboutSection) => {
    return (
-      <ProjectsStyled>
+      <CenterSectionStyled>
          <TopWaveStyled
             sources={[{ src: waveDesktop_1.src, media: mediaSizesConfig.lg }]}
             alt='Wave top decoration'
@@ -51,7 +51,7 @@ const ProjectsAboutSection = ({ projects }: IProjectsAboutSection) => {
             height={230}
             width={1920}
          />
-         <ProjectsContainer projects={projects} />
+         <ProjectsSection projects={projects} />
          <BottomWaveStyled
             sources={[{ src: waveDesktop_2.src, media: mediaSizesConfig.lg }]}
             alt='Wave bottom decoration'
@@ -59,8 +59,8 @@ const ProjectsAboutSection = ({ projects }: IProjectsAboutSection) => {
             height={150}
             width={1920}
          />
-      </ProjectsStyled>
+      </CenterSectionStyled>
    );
 };
 
-export { ProjectsAboutSection };
+export { CenterSection };

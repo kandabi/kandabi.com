@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, FlattenInterpolation, ThemeProps } from 'styled-components';
 
 import { Gutters } from 'components/common/gutters';
 import { Navbar } from 'components/common/navbar';
@@ -9,18 +9,23 @@ import { NavbarItemVariant } from 'components/common/navbar/navbar-item';
 import { useIsMobile } from 'hooks/useIsMobile';
 import { Logo } from 'components/common/logo';
 
+const headerStyles = css`
+   /* background: linear-gradient(346deg, rgba(27, 43, 75, 0.65) 10%, rgba(26, 42, 73, 0.65) 65%); */
+   background: linear-gradient(173deg, rgba(93, 145, 255, 0.6) 10%, rgba(77, 133, 255, 0.5) 65%);
+   filter: drop-shadow(0px 3px 4px rgba(40, 40, 40, 0.15));
+   backdrop-filter: blur(6px);
+   /* backdrop-filter: blur(4px); */
+`;
+
 interface IHeaderStyled {
+   headerStyles?: FlattenInterpolation<ThemeProps<any>>;
    currentScrollPosition: number;
-   background?: string;
    progress?: boolean;
-   shadow?: boolean;
    $opacity?: number;
    top?: string;
 }
 
 const HeaderStyled = styled.header<IHeaderStyled>`
-   filter: ${({ shadow = false }) => shadow && 'drop-shadow(0px 3px 4px rgba(0, 0, 0, 0.2))'};
-   background: ${({ background = 'transparent' }) => background};
    transition: top 0.65s ease-out, opacity 0.5s ease-out;
    opacity: ${({ $opacity = 1 }) => $opacity};
    top: ${({ top = '0' }) => top};
@@ -29,6 +34,7 @@ const HeaderStyled = styled.header<IHeaderStyled>`
    z-index: 100;
    height: 68px;
 
+   ${({ headerStyles }) => headerStyles};
    ${({ theme: { flex } }) => flex.between};
    ${Gutters}
 
@@ -54,11 +60,10 @@ enum HeaderVariant {
 }
 
 interface IHeaderVariant {
+   headerStyles?: FlattenInterpolation<ThemeProps<any>>;
    lineStyles: { bottom: string };
-   background?: string;
    progress?: boolean;
    opacity?: number;
-   shadow?: boolean;
    top?: string;
 }
 
@@ -66,7 +71,9 @@ const headerConfig: { [key in HeaderVariant]: { visible: IHeaderVariant; hidden?
    [HeaderVariant.FIXED]: {
       visible: {
          lineStyles: { bottom: '-12px' },
-         background: 'transparent',
+         headerStyles: css`
+            background: transparent;
+         `,
          progress: false,
          opacity: 1,
          top: '6.5vh',
@@ -74,18 +81,16 @@ const headerConfig: { [key in HeaderVariant]: { visible: IHeaderVariant; hidden?
    },
    [HeaderVariant.STICKY]: {
       visible: {
-         background: 'linear-gradient(346deg,#6a9ed1 10%,#4279c8 65%)',
          lineStyles: { bottom: '-8px' },
          progress: true,
-         shadow: true,
+         headerStyles,
          opacity: 1,
          top: '0',
       },
       hidden: {
-         background: 'linear-gradient(346deg,#6a9ed1 10%,#4279c8 65%)',
          lineStyles: { bottom: '-8px' },
          progress: true,
-         shadow: true,
+         headerStyles,
          opacity: 0,
          top: '-60px',
       },
@@ -121,10 +126,9 @@ const Header = ({ headerVariant = HeaderVariant.FIXED }: IHeader) => {
    return (
       <HeaderStyled
          currentScrollPosition={currentScrollPosition}
-         background={styles?.background}
+         headerStyles={styles?.headerStyles}
          progress={styles?.progress}
          $opacity={styles?.opacity}
-         shadow={styles?.shadow}
          top={styles?.top}
       >
          <Logo />
