@@ -3,7 +3,7 @@ body {
    font-family: 'Rubik', Arial, sans-serif;
    -webkit-font-smoothing: subpixel-antialiased;
    -moz-osx-font-smoothing: grayscale;
-   background: #060b13;
+   background: #4867b1;
    user-select: none;
    font-style: normal;
    font-weight: 300;
@@ -49,6 +49,12 @@ a {
 ul,
 li {
    list-style-type: none;
+}
+
+canvas {
+   pointer-events: none;
+   position: fixed;
+   z-index: 5;
 }
 
 button {

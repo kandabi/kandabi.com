@@ -15,7 +15,7 @@ import { Image } from 'components/common/image';
 import arrowDown from 'assets/images/arrow-down.svg';
 
 const HeroStyled = styled.div`
-   /* background: radial-gradient(110% 80% at 120% 30%, #4867b1 0%, #060b13 115%); */
+   background: radial-gradient(110% 80% at 120% 30%, #4867b1 0%, #060b13 115%);
    position: relative;
    display: flex;
    height: 120vh;
@@ -61,9 +61,10 @@ const CenterContaineStyled = styled.div`
    width: 100%;
 `;
 
-const LaptopViewStyled = styled.div`
+const GlViewStyled = styled.div`
    margin-right: 5vw;
    position: absolute;
+   min-width: 300px;
    height: 100%;
    width: 100%;
 `;
@@ -119,7 +120,7 @@ const HeroSection = ({ glViewport }: IHeroSection) => {
 
    return (
       <ParallaxScroll distanceToCamera={distanceToCamera} scale={scale} height='120vh'>
-         <LaptopViewStyled ref={glViewport} />
+         <GlViewStyled ref={glViewport} />
          <Header headerVariant={HeaderVariant.FIXED} />
          <HeroStyled>
             <Section gap={gap}>

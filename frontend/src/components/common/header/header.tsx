@@ -11,24 +11,20 @@ import { Logo } from 'components/common/logo';
 import { theme } from 'styles';
 
 const headerStyles = css`
-   /* background: linear-gradient(346deg, rgba(27, 43, 75, 0.65) 10%, rgba(26, 42, 73, 0.65) 65%); */
-   background: linear-gradient(173deg, rgba(93, 145, 255, 0.75) 10%, rgba(77, 133, 255, 0.6) 65%);
-   filter: drop-shadow(0px 3px 4px rgba(40, 40, 40, 0.15));
+   background: linear-gradient(346deg, rgba(15, 23, 42, 0.75) 10%, rgba(15, 23, 42, 0.75) 65%);
+   filter: drop-shadow(0px 3px 4px rgba(144, 149, 255, 0.15));
    backdrop-filter: blur(6px);
-   /* backdrop-filter: blur(4px); */
 `;
 
 interface IHeaderStyled {
    headerStyles?: FlattenInterpolation<ThemeProps<any>>;
-   currentScrollPosition: number;
-   progress?: boolean;
-   $opacity?: number;
+   $_opacity?: number;
    top?: string;
 }
 
 const HeaderStyled = styled.header<IHeaderStyled>`
    transition: top 0.65s ease-out, opacity 0.5s ease-out;
-   opacity: ${({ $opacity = 1 }) => $opacity};
+   opacity: ${({ $_opacity = 1 }) => $_opacity};
    top: ${({ top = '0' }) => top};
    pointer-events: none;
    position: absolute;
@@ -38,21 +34,20 @@ const HeaderStyled = styled.header<IHeaderStyled>`
    ${({ headerStyles }) => headerStyles};
    ${theme.flex.between};
    ${Gutters}
+`;
 
-   ${({ currentScrollPosition, progress = false }) =>
-      progress &&
-      css`
-         &::after {
-            border-bottom: 2px solid ${theme.color.grey_2};
-            width: ${currentScrollPosition * 100}%;
-            transition: width 0.4s ease-out;
-            border-radius: 1px;
-            position: absolute;
-            content: ' ';
-            bottom: 0;
-            left: 0;
-         }
-      `};
+interface IHeaderProgressStyled {
+   $_width: string;
+}
+
+const HeaderProgressStyled = styled.div<IHeaderProgressStyled>`
+   border-bottom: 2px solid ${theme.color.grey_2};
+   width: ${({ $_width }) => $_width};
+   transition: width 0.6s ease-out;
+   border-radius: 1px;
+   position: absolute;
+   bottom: 0;
+   left: 0;
 `;
 
 enum HeaderVariant {
@@ -125,15 +120,10 @@ const Header = ({ headerVariant = HeaderVariant.FIXED }: IHeader) => {
    );
 
    return (
-      <HeaderStyled
-         currentScrollPosition={currentScrollPosition}
-         headerStyles={styles?.headerStyles}
-         progress={styles?.progress}
-         $opacity={styles?.opacity}
-         top={styles?.top}
-      >
+      <HeaderStyled headerStyles={styles?.headerStyles} $_opacity={styles?.opacity} top={styles?.top}>
          <Logo />
          {!isMobile ? <Navbar items={navbarItems} lineStyles={styles?.lineStyles} /> : null}
+         {styles?.progress && <HeaderProgressStyled $_width={`${Math.round(currentScrollPosition * 100)}%`} />}
       </HeaderStyled>
    );
 };

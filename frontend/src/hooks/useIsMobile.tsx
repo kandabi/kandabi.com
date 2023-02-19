@@ -5,7 +5,7 @@ const useIsMobile = () => {
    const [isMobile, setIsMobile] = useState<boolean>(false);
    useEffect(() => setIsMobile(isMobileDevice()), []);
 
-   return { isMobile };
+   return { isMobile, isDesktop: !isMobile };
 };
 
 export { useIsMobile };
