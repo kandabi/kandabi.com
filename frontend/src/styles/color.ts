@@ -16,7 +16,7 @@ enum Colors {
    grey_2 = 'grey_2',
 }
 
-const colorConfig: { [key in Colors]: HexColor } = {
+const colors: { [key in Colors]: HexColor } = {
    [Colors.white_1]: '#FFFFFF',
    [Colors.white_2]: '#f2f8ff',
    [Colors.white_3]: '#AEBCCC',
@@ -32,5 +32,5 @@ const colorConfig: { [key in Colors]: HexColor } = {
    [Colors.grey_2]: '#cccccc',
 };
 
-export { colorConfig, Colors };
+export { colors, Colors };
 export type { HexColor };

@@ -8,10 +8,11 @@ import { useStore } from 'store';
 import { NavbarItemVariant } from 'components/common/navbar/navbar-item';
 import { useIsMobile } from 'hooks/useIsMobile';
 import { Logo } from 'components/common/logo';
+import { theme } from 'styles';
 
 const headerStyles = css`
    /* background: linear-gradient(346deg, rgba(27, 43, 75, 0.65) 10%, rgba(26, 42, 73, 0.65) 65%); */
-   background: linear-gradient(173deg, rgba(93, 145, 255, 0.6) 10%, rgba(77, 133, 255, 0.5) 65%);
+   background: linear-gradient(173deg, rgba(93, 145, 255, 0.75) 10%, rgba(77, 133, 255, 0.6) 65%);
    filter: drop-shadow(0px 3px 4px rgba(40, 40, 40, 0.15));
    backdrop-filter: blur(6px);
    /* backdrop-filter: blur(4px); */
@@ -35,14 +36,14 @@ const HeaderStyled = styled.header<IHeaderStyled>`
    height: 68px;
 
    ${({ headerStyles }) => headerStyles};
-   ${({ theme: { flex } }) => flex.between};
+   ${theme.flex.between};
    ${Gutters}
 
    ${({ currentScrollPosition, progress = false }) =>
       progress &&
       css`
          &::after {
-            border-bottom: 2px solid ${({ theme: { color } }) => color.grey_2};
+            border-bottom: 2px solid ${theme.color.grey_2};
             width: ${currentScrollPosition * 100}%;
             transition: width 0.4s ease-out;
             border-radius: 1px;
@@ -103,9 +104,9 @@ interface IHeader {
 
 const Header = ({ headerVariant = HeaderVariant.FIXED }: IHeader) => {
    const { isMobile } = useIsMobile();
-   const { currentScrollPosition, setScrollToPagePosition } = useStore((state) => ({
+   const { currentScrollPosition, setGoToScrollPosition } = useStore((state) => ({
       currentScrollPosition: state.currentScrollPosition,
-      setScrollToPagePosition: state.setScrollToPagePosition,
+      setGoToScrollPosition: state.setGoToScrollPosition,
    }));
 
    const config = headerConfig[headerVariant];
@@ -114,13 +115,13 @@ const Header = ({ headerVariant = HeaderVariant.FIXED }: IHeader) => {
 
    const navbarItems: INavbarItem[] = useMemo(
       () => [
-         { title: 'Home', onClick: () => setScrollToPagePosition(0) },
-         { title: 'Projects', onClick: () => setScrollToPagePosition(0.35) },
-         { title: 'About', onClick: () => setScrollToPagePosition(0.6) },
-         { title: 'Contact', onClick: () => setScrollToPagePosition(0.9) },
+         { title: 'Home', onClick: () => setGoToScrollPosition(0) },
+         { title: 'Projects', onClick: () => setGoToScrollPosition(0.35) },
+         { title: 'About', onClick: () => setGoToScrollPosition(0.6) },
+         { title: 'Contact', onClick: () => setGoToScrollPosition(0.9) },
          { title: 'Github', link: 'https://example.com', variant: NavbarItemVariant.Link },
       ],
-      [setScrollToPagePosition]
+      [setGoToScrollPosition]
    );
 
    return (

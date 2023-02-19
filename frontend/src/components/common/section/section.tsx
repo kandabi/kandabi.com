@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 import { Gutters } from 'components/common/gutters';
+import { theme } from 'styles';
 
 interface ISectionStyled {
    gap?: string;
@@ -10,7 +11,7 @@ const SectionStyled = styled.section<ISectionStyled>`
    gap: ${({ gap = '10px' }) => gap};
    flex-direction: column;
 
-   ${({ theme: { flex } }) => flex.start};
+   ${theme.flex.start};
    ${Gutters}
 `;
 

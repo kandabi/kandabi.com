@@ -1,6 +1,5 @@
-import { ThemeProvider } from 'styled-components';
-import { breakpointsConfig, Breakpoints } from './breakpoints';
-import { colorConfig, Colors, HexColor } from './color';
+import { breakpoints, Breakpoints } from './breakpoints';
+import { colors, Colors, HexColor } from './color';
 
 type IFlex = {
    justifyContent: string;
@@ -16,7 +15,7 @@ type IFont = {
 
 type IGuttersBreakpoints = Breakpoints.xs | Breakpoints.md | Breakpoints.lg;
 
-interface IThemeConfig {
+interface ITheme {
    breakpoints: { [key in Breakpoints]: string };
    color: { [key in Colors]: HexColor };
    gutters: { [key in IGuttersBreakpoints]: { width: string; padding: string } };
@@ -31,9 +30,9 @@ interface IThemeConfig {
    };
 }
 
-const themeConfig: IThemeConfig = {
-   breakpoints: breakpointsConfig,
-   color: colorConfig,
+const theme: ITheme = {
+   breakpoints: breakpoints,
+   color: colors,
 
    gutters: {
       [Breakpoints.xs]: {
@@ -82,15 +81,5 @@ const themeConfig: IThemeConfig = {
    },
 };
 
-type IAppTheme = typeof themeConfig;
-
-interface IAppThemeProvider {
-   children: any;
-}
-
-const AppThemeProvider = ({ children }: IAppThemeProvider) => {
-   return <ThemeProvider theme={themeConfig}>{children}</ThemeProvider>;
-};
-
-export { AppThemeProvider, themeConfig };
-export type { IAppTheme };
+export { theme };
+export type { ITheme };

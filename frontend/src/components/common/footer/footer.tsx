@@ -7,11 +7,12 @@ import { Logo } from 'components/common/logo';
 import { Navbar, INavbarItem } from 'components/common/navbar';
 import { NavbarItemVariant } from 'components/common/navbar/navbar-item';
 import { Link } from 'components/common/link';
+import { theme } from 'styles';
 
 const FooterStyled = styled.footer`
-   background-color: ${({ theme: { color } }) => color.blue_5};
+   background-color: ${theme.color.blue_5};
    filter: drop-shadow(0px -3px 5px rgba(0, 0, 0, 0.3));
-   ${({ theme: { flex } }) => flex.center};
+   ${theme.flex.center};
    height: 250px;
    width: 100%;
 `;
@@ -27,37 +28,37 @@ const NavbarFooterStyled = styled(Navbar)`
 const CopyrightStyled = styled.p`
    font-size: 12px;
    padding: 4px 6px;
-   ${({ theme: { breakpoints } }) => breakpoints.md} {
+   ${theme.breakpoints.md} {
       font-size: 14px;
    }
 `;
 
 const PreviousWebsiteStyled = styled(Link)`
    font-size: 12px;
-   ${({ theme: { breakpoints } }) => breakpoints.md} {
+   ${theme.breakpoints.md} {
       font-size: 14px;
    }
 `;
 
 const SitemapStyled = styled(Link)`
-   color: ${({ theme: { color } }) => color.grey_1};
+   color: ${theme.color.grey_1};
    font-size: 12px;
-   ${({ theme: { breakpoints } }) => breakpoints.md} {
+   ${theme.breakpoints.md} {
       font-size: 14px;
    }
 `;
 
 const Footer = () => {
-   const setScrollToPagePosition = useStore((state) => state.setScrollToPagePosition);
+   const setGoToScrollPosition = useStore((state) => state.setGoToScrollPosition);
    const navbarItems: INavbarItem[] = useMemo(
       () => [
-         { title: 'Home', onClick: () => setScrollToPagePosition(0) },
+         { title: 'Home', onClick: () => setGoToScrollPosition(0) },
          { title: 'Github', link: 'https://example.com', variant: NavbarItemVariant.Link },
          { title: 'LinkedIn', link: 'https://example.com', variant: NavbarItemVariant.Link },
          { title: 'Facebook', link: 'https://example.com', variant: NavbarItemVariant.Link },
          { title: 'Upwork', link: 'https://example.com', variant: NavbarItemVariant.Link },
       ],
-      [setScrollToPagePosition]
+      [setGoToScrollPosition]
    );
 
    return (

@@ -1,7 +1,7 @@
-import { Canvas } from '@react-three/fiber';
+import { useRef } from 'react';
+import dynamic from 'next/dynamic';
 import styled from 'styled-components';
 
-import { FastHtml } from 'components/common/fast-html';
 import { Header, HeaderVariant } from 'components/common/header';
 import { HeroSection } from 'components/home-page/hero-section';
 import { CenterSection } from 'components/home-page/center-section';
@@ -9,6 +9,9 @@ import { IProjectsContainer } from 'components/home-page/center-section/projects
 import { ContactSection } from 'components/home-page/contact-section';
 import { ParallaxViewport } from 'components/common/parallax';
 import { Footer } from 'components/common/footer';
+import { Ball } from 'components/common/ball';
+
+const Canvas = dynamic(() => import('@react-three/fiber').then((module) => module.Canvas), { ssr: false });
 
 const HomePageStyled = styled.div`
    position: absolute;
@@ -17,24 +20,22 @@ const HomePageStyled = styled.div`
 `;
 
 const HomePage = ({ projects }: IProjectsContainer) => {
+   const glLaptopViewport = useRef<HTMLDivElement>(null);
+
+   console.log('render', Canvas.displayName);
+
    return (
       <HomePageStyled>
          <Header headerVariant={HeaderVariant.STICKY} />
          <ParallaxViewport distanceToCamera={6}>
-            <HeroSection />
+            <HeroSection glViewport={glLaptopViewport} />
             <CenterSection projects={projects} />
             <ContactSection />
             <Footer />
          </ParallaxViewport>
-         {/* <Canvas>
-            <FastHtml>
-            </FastHtml>
-            <pointLight position={[10, 10, 10]} />
-            <mesh>
-               <sphereGeometry />
-               <meshStandardMaterial color='hotpink' />
-            </mesh>
-         </Canvas> */}
+         <Canvas>
+            <Ball glViewport={glLaptopViewport} />
+         </Canvas>
       </HomePageStyled>
    );
 };

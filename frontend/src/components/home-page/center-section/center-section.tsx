@@ -7,11 +7,12 @@ import waveDesktop_1 from 'assets/images/wave-desktop-1.svg';
 import waveDesktop_2 from 'assets/images/wave-desktop-2.svg';
 import waveMobile_1 from 'assets/images/wave-mobile-1.svg';
 import waveMobile_2 from 'assets/images/wave-mobile-2.svg';
-import { mediaSizesConfig } from 'styles/breakpoints';
+import { mediaSizes } from 'styles/breakpoints';
 import { Image } from 'components/common/image';
+import { theme } from 'styles';
 
 const CenterSectionStyled = styled.div`
-   background: linear-gradient(180deg, #0b1327 0%, #0e1e35 30.21%, #0e1e35 64.06%, #0b1327 100%);
+   /* background: linear-gradient(180deg, #0b1327 0%, #0e1e35 30.21%, #0e1e35 64.06%, #0b1327 100%); */
    position: relative;
    height: 200%;
 `;
@@ -20,10 +21,10 @@ const TopWaveStyled = styled(Image)`
    position: absolute;
    width: 100%;
    top: -75px;
-   ${({ theme: { breakpoints } }) => breakpoints.sm} {
+   ${theme.breakpoints.sm} {
       top: -7%;
    }
-   ${({ theme: { breakpoints } }) => breakpoints.lg} {
+   ${theme.breakpoints.lg} {
       top: -5%;
    }
 `;
@@ -32,7 +33,7 @@ const BottomWaveStyled = styled(Image)`
    position: absolute;
    bottom: -100px;
    width: 100%;
-   ${({ theme: { breakpoints } }) => breakpoints.md} {
+   ${theme.breakpoints.md} {
       bottom: -120px;
    }
 `;
@@ -45,7 +46,7 @@ const CenterSection = ({ projects }: IProjectsAboutSection) => {
    return (
       <CenterSectionStyled>
          <TopWaveStyled
-            sources={[{ src: waveDesktop_1.src, media: mediaSizesConfig.lg }]}
+            sources={[{ src: waveDesktop_1.src, media: mediaSizes.lg }]}
             alt='Wave top decoration'
             src={waveMobile_1.src}
             height={230}
@@ -53,7 +54,7 @@ const CenterSection = ({ projects }: IProjectsAboutSection) => {
          />
          <ProjectsSection projects={projects} />
          <BottomWaveStyled
-            sources={[{ src: waveDesktop_2.src, media: mediaSizesConfig.lg }]}
+            sources={[{ src: waveDesktop_2.src, media: mediaSizes.lg }]}
             alt='Wave bottom decoration'
             src={waveMobile_2.src}
             height={150}

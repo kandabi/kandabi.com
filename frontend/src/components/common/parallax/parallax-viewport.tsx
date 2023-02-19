@@ -25,9 +25,9 @@ interface IParallaxViewport {
 
 const ParallaxViewport = ({ distanceToCamera, children }: IParallaxViewport) => {
    const viewportRef = useRef<HTMLDivElement>(null);
-   const { scrollToPagePosition, setScrollToPagePosition, setCurrentScrollPosition } = useStore((state) => ({
-      scrollToPagePosition: state.scrollToPagePosition,
-      setScrollToPagePosition: state.setScrollToPagePosition,
+   const { goToScrollPosition, setGoToScrollPosition, setCurrentScrollPosition } = useStore((state) => ({
+      goToScrollPosition: state.goToScrollPosition,
+      setGoToScrollPosition: state.setGoToScrollPosition,
       setCurrentScrollPosition: state.setCurrentScrollPosition,
    }));
 
@@ -44,19 +44,19 @@ const ParallaxViewport = ({ distanceToCamera, children }: IParallaxViewport) => 
 
    useEffect(() => {
       const viewport = viewportRef.current;
-      const throttledScroll = throttle(handleMouseScroll, 120);
+      const throttledScroll = throttle(handleMouseScroll, 100);
       viewport?.addEventListener('scroll', throttledScroll);
       return () => viewport?.removeEventListener('scroll', throttledScroll);
    }, [viewportRef, handleMouseScroll]);
 
    useEffect(() => {
       let viewport = viewportRef.current;
-      if (viewport && scrollToPagePosition > -1) {
+      if (viewport && goToScrollPosition > -1) {
          const clientHeight = viewport.scrollHeight - viewport.clientHeight;
-         viewport?.scrollTo(0, clientHeight * scrollToPagePosition);
-         setScrollToPagePosition(-1);
+         viewport?.scrollTo(0, clientHeight * goToScrollPosition);
+         setGoToScrollPosition(-1);
       }
-   }, [viewportRef, scrollToPagePosition, setScrollToPagePosition]);
+   }, [viewportRef, goToScrollPosition, setGoToScrollPosition]);
 
    return (
       <ViewportStyled ref={viewportRef} distanceToCamera={distanceToCamera}>

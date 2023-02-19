@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import { CoolText } from 'components/common/cool-text';
+import { theme } from 'styles';
 
 interface IButtonStyled {
    margin?: string;
 }
 
 const ButtonStyled = styled.button<IButtonStyled>`
-   border: 2px solid ${({ theme: { color } }) => color.yellow_1};
+   border: 2px solid ${theme.color.yellow_1};
    margin: ${({ margin }) => margin};
 `;
 

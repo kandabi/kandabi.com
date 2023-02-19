@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import linkIcon from 'assets/images/link.svg';
 import { Line } from 'components/common/line';
 import { Image } from 'components/common/image';
+import { theme } from 'styles';
 
 interface ILinkStyled {
    fontSize?: number;
@@ -10,7 +11,7 @@ interface ILinkStyled {
 
 const LinkStyled = styled.a<ILinkStyled>`
    font-size: ${({ fontSize = 18 }) => `${fontSize}px`};
-   ${({ theme: { flex } }) => flex.center};
+   ${theme.flex.center};
    position: relative;
    cursor: pointer;
    gap: 3px;

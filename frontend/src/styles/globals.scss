@@ -3,6 +3,7 @@ body {
    font-family: 'Rubik', Arial, sans-serif;
    -webkit-font-smoothing: subpixel-antialiased;
    -moz-osx-font-smoothing: grayscale;
+   background: #060b13;
    user-select: none;
    font-style: normal;
    font-weight: 300;
@@ -36,11 +37,6 @@ h4,
 h5,
 h6 {
    font-family: 'Catamaran', Arial, sans-serif;
-}
-
-canvas {
-   position: absolute;
-   top: 0;
 }
 
 a {

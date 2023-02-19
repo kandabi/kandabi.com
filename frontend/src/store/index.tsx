@@ -3,8 +3,8 @@ import { create } from 'zustand';
 interface StoreState {
    currentScrollPosition: number;
    setCurrentScrollPosition: (position: number) => void;
-   scrollToPagePosition: number;
-   setScrollToPagePosition: (position: number) => void;
+   goToScrollPosition: number;
+   setGoToScrollPosition: (position: number) => void;
 }
 
 const useStore = create<StoreState>((set: any) => ({
@@ -14,10 +14,10 @@ const useStore = create<StoreState>((set: any) => ({
          return { currentScrollPosition: position } as StoreState;
       }),
 
-   scrollToPagePosition: -1,
-   setScrollToPagePosition: (position: number) =>
+   goToScrollPosition: -1,
+   setGoToScrollPosition: (position: number) =>
       set(() => {
-         return { scrollToPagePosition: position } as StoreState;
+         return { goToScrollPosition: position } as StoreState;
       }),
 }));
 

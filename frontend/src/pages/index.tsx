@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next';
 
-import { ProjectsApi } from 'api/projects';
+// import { ProjectsApi } from 'api/projects';
 import { HomePage } from 'components/home-page';
 import { IProjectItem } from 'components/home-page/center-section/projects-section/project-item';
 import { IProjectsContainer } from 'components/home-page/center-section/projects-section/projects-container';
@@ -17,13 +17,13 @@ const getStaticProps: GetStaticProps<IProjectsContainer> = async () => {
    }
    return { props: { projects } };
 
-   try {
-      projects = await ProjectsApi.get(jwtToken);
-   } catch (ex) {
-      console.error('Failed to fetch projects.', ex);
-   }
+   // try {
+   //    projects = await ProjectsApi.get(jwtToken);
+   // } catch (ex) {
+   //    console.error('Failed to fetch projects.', ex);
+   // }
 
-   return { props: { projects } };
+   // return { props: { projects } };
 };
 
 export default Index;

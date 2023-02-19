@@ -1,12 +1,13 @@
 import { ReactNode } from 'react';
 import styled from 'styled-components';
+import { theme } from 'styles';
 
 interface ILineStyled {
    bottom?: string;
 }
 
 const LineStyled = styled.div<ILineStyled>`
-   ${({ theme: { flex } }) => flex.center}
+   ${theme.flex.center}
    padding: 4px 6px;
    gap: 3px;
 
@@ -16,7 +17,7 @@ const LineStyled = styled.div<ILineStyled>`
    }
 
    &::after {
-      border-bottom: 2px solid ${({ theme: { color } }) => color.white_1};
+      border-bottom: 2px solid ${theme.color.white_1};
       transition: width 0.4s, opacity 0.5s ease-out;
       bottom: ${({ bottom = '-8px' }) => bottom};
       transform: translate(-50%, 0);

@@ -1,5 +1,8 @@
+import { RefObject } from 'react';
 import styled from 'styled-components';
 
+import { useStore } from 'store';
+import { theme } from 'styles';
 import { ParallaxScroll } from 'components/common/parallax';
 import { Header } from 'components/common/header';
 import { HeaderVariant } from 'components/common/header';
@@ -7,13 +10,12 @@ import { Section } from 'components/common/section';
 import { CoolText } from 'components/common/cool-text';
 import { Button } from 'components/common/button';
 import { useIsMobile } from 'hooks/useIsMobile';
-import { useStore } from 'store';
 import { Image } from 'components/common/image';
 
 import arrowDown from 'assets/images/arrow-down.svg';
 
 const HeroStyled = styled.div`
-   background: radial-gradient(110% 80% at 120% 30%, #4867b1 0%, #060b13 115%);
+   /* background: radial-gradient(110% 80% at 120% 30%, #4867b1 0%, #060b13 115%); */
    position: relative;
    display: flex;
    height: 120vh;
@@ -21,17 +23,17 @@ const HeroStyled = styled.div`
 `;
 
 const YellowStyled = styled.i`
-   color: ${({ theme: { color } }) => color.yellow_1};
+   color: ${theme.color.yellow_1};
    font-style: normal;
 `;
 
 const TitleStyled = styled.h1`
    text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.75);
-   color: ${({ theme: { color } }) => color.white_1};
+   color: ${theme.color.white_1};
    line-height: 1.16em;
    font-size: 42px;
    margin-top: 20vh;
-   ${({ theme: { breakpoints } }) => breakpoints.md} {
+   ${theme.breakpoints.md} {
       margin-top: initial;
       font-size: 55px;
    }
@@ -39,13 +41,13 @@ const TitleStyled = styled.h1`
 
 const SubtitleStyled = styled.p`
    font-size: 20px;
-   ${({ theme: { breakpoints } }) => breakpoints.md} {
+   ${theme.breakpoints.md} {
       font-size: 32px;
    }
 `;
 
 const TechStyled = styled(CoolText)`
-   ${({ theme: { breakpoints } }) => breakpoints.md} {
+   ${theme.breakpoints.md} {
       margin-top: 20px;
       font-size: 20px;
    }
@@ -55,12 +57,18 @@ const TechStyled = styled(CoolText)`
 `;
 
 const CenterContaineStyled = styled.div`
-   ${({ theme: { flex } }) => flex.center}
+   ${theme.flex.center}
+   width: 100%;
+`;
+
+const LaptopViewStyled = styled.div`
+   margin-right: 5vw;
+   position: absolute;
+   height: 100%;
    width: 100%;
 `;
 
 const ScrollDownContainerStyled = styled.div`
-   ${({ theme: { flex } }) => flex.center}
    transition: transform 0.2s ease-out;
    flex-direction: column;
    position: absolute;
@@ -68,8 +76,9 @@ const ScrollDownContainerStyled = styled.div`
    cursor: pointer;
    bottom: 160px;
    gap: 6px;
+   ${theme.flex.center}
 
-   ${({ theme: { breakpoints } }) => breakpoints.lg} {
+   ${theme.breakpoints.lg} {
       bottom: 200px;
    }
 
@@ -97,15 +106,20 @@ const parallaxConfig: { desktop: IHeroParallax; mobile: IHeroParallax } = {
    mobile: { distanceToCamera: 3, scale: 1.5, gap: '8px' },
 };
 
-const HeroSection = () => {
+interface IHeroSection {
+   glViewport: RefObject<HTMLDivElement>;
+}
+
+const HeroSection = ({ glViewport }: IHeroSection) => {
    const { isMobile } = useIsMobile();
    const { distanceToCamera, scale, gap } = isMobile ? parallaxConfig.mobile : parallaxConfig.desktop;
 
-   const setScrollToPagePosition = useStore((state) => state.setScrollToPagePosition);
-   const handleScrollDown = () => setScrollToPagePosition(0.35);
+   const setGoToScrollPosition = useStore((state) => state.setGoToScrollPosition);
+   const handleScrollDown = () => setGoToScrollPosition(0.35);
 
    return (
       <ParallaxScroll distanceToCamera={distanceToCamera} scale={scale} height='120vh'>
+         <LaptopViewStyled ref={glViewport} />
          <Header headerVariant={HeaderVariant.FIXED} />
          <HeroStyled>
             <Section gap={gap}>

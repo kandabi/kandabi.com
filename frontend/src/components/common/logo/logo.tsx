@@ -15,11 +15,11 @@ interface ILogo {
 }
 
 const Logo = ({ className }: ILogo) => {
-   const setScrollToPagePosition = useStore((state) => state.setScrollToPagePosition);
+   const setGoToScrollPosition = useStore((state) => state.setGoToScrollPosition);
 
    return (
       <LogoStyled
-         onClick={() => setScrollToPagePosition(0)}
+         onClick={() => setGoToScrollPosition(0)}
          alt='aviv kandabi main logo'
          className={className}
          src={logoFull.src}
