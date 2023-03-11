@@ -3,9 +3,9 @@ import { GetStaticProps } from 'next';
 // import { ProjectsApi } from 'api/projects';
 import { TagsApi } from 'api/tags';
 import { HomePage } from 'components/home-page';
-import { IProjectItem } from 'components/home-page/center-section/projects-section/project-item';
+import { IProjectItem } from 'components/common/project/project-card';
 import { IProjectsContainer } from 'components/home-page/center-section/projects-section/projects-container';
-import { IProjectTag } from 'components/common/project-tag/project-tag-button';
+import { IProjectTag } from 'components/common/project/project-tag/project-tag';
 
 interface IIndex {
    projects: IProjectItem[];

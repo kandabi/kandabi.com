@@ -1,5 +1,5 @@
 // import styled from 'styled-components';
-import { IProjectItem } from 'components/home-page/center-section/projects-section/project-item';
+import { IProjectItem } from 'components/common/project/project-card';
 // import { Canvas } from 'react-three-fiber';
 
 // const ProjectsStyled = styled.div``;

@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import { theme } from 'styles';
-import { IProjectItem } from 'components/home-page/center-section/projects-section/project-item';
+import { ProjectTypes, ProjectTypeContainer } from 'components/common/project/project-type';
+import { ProjectTagContainer } from 'components/common/project/project-tag';
+import { IProjectCard } from 'components/common/project/project-card';
+import { IProjectTag } from 'components/common/project/project-tag';
 import { Section } from 'components/common/section';
-import { IProjectTag } from 'components/common/project-tag/project-tag-button';
-import { ProjectType, ProjectTypesContainer } from 'components/common/project-type';
-import { ProjectTagsContainer } from 'components/common/project-tag';
+import { theme } from 'styles';
 
 const ProjectsStyled = styled.div`
    ${theme.flex.center}
@@ -30,13 +30,13 @@ const ProjectFiltersStyled = styled.div`
 `;
 
 interface IProjectsSection {
-   projects: IProjectItem[];
+   projects: IProjectCard[];
    projectTags: IProjectTag[];
 }
 
 const ProjectsSection = ({ projects, projectTags }: IProjectsSection) => {
-   const [activeProjectType, setActiveProjectType] = useState<ProjectType>();
    const [activeProjectTags, setActiveProjectTags] = useState<IProjectTag[]>([]);
+   const [activeProjectType, setActiveProjectType] = useState<ProjectTypes>();
 
    console.log('projects', projects);
    return (
@@ -44,11 +44,11 @@ const ProjectsSection = ({ projects, projectTags }: IProjectsSection) => {
          <Section gap='26px'>
             <TitleStyled>Projects</TitleStyled>
             <ProjectFiltersStyled>
-               <ProjectTypesContainer
+               <ProjectTypeContainer
                   setActiveProjectType={setActiveProjectType}
                   activeProjectType={activeProjectType}
                />
-               <ProjectTagsContainer
+               <ProjectTagContainer
                   setActiveProjectTags={setActiveProjectTags}
                   activeProjectTags={activeProjectTags}
                   projectTags={projectTags}

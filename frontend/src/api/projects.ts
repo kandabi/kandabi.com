@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { IProjectItem } from 'components/home-page/center-section/projects-section/project-item';
+import { IProjectItem } from 'components/common/project/project-card';
 import { NEXT_PUBLIC_API_URL } from 'utils/constants';
 
 const projectsUrl = `${NEXT_PUBLIC_API_URL}/api/projects?populate=*&sort=order`;

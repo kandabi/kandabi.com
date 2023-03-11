@@ -4,14 +4,14 @@ import styled from 'styled-components';
 import { theme } from 'styles';
 import { mediaSizes } from 'styles/breakpoints';
 import { ProjectsSection } from './projects-section';
-import { IProjectItem } from 'components/home-page/center-section/projects-section/project-item';
+import { IProjectCard } from 'components/common/project/project-card';
 import { Image } from 'components/common/image';
 
 import waveDesktop_1 from 'assets/images/wave-desktop-1.svg';
 import waveDesktop_2 from 'assets/images/wave-desktop-2.svg';
 import waveMobile_1 from 'assets/images/wave-mobile-1.svg';
 import waveMobile_2 from 'assets/images/wave-mobile-2.svg';
-import { IProjectTag } from 'components/common/project-tag/project-tag-button';
+import { IProjectTag } from 'components/common/project/project-tag/project-tag';
 
 const CenterSectionStyled = styled.div`
    background: linear-gradient(180deg, #0b1327 0%, #0e1e35 30.21%, #0e1e35 64.06%, #0b1327 100%);
@@ -49,7 +49,7 @@ const GlViewStyled = styled.div`
 
 interface IProjectsAboutSection {
    glViewport: RefObject<HTMLDivElement>;
-   projects: IProjectItem[];
+   projects: IProjectCard[];
    projectTags: IProjectTag[];
 }
 

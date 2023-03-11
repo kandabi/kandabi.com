@@ -6,12 +6,12 @@ import { Header, HeaderVariant } from 'components/common/header';
 import { HeroSection } from 'components/home-page/hero-section';
 import { CenterSection } from 'components/home-page/center-section';
 import { ContactSection } from 'components/home-page/contact-section';
+import { IProjectCard } from 'components/common/project/project-card';
+import { IProjectTag } from 'components/common/project/project-tag';
 import { ParallaxViewport } from 'components/common/parallax';
 import { Footer } from 'components/common/footer';
 import { Ball } from 'components/common/ball';
 import { Shapes } from 'components/common/shapes';
-import { IProjectItem } from './center-section/projects-section/project-item';
-import { IProjectTag } from 'components/common/project-tag/project-tag-button';
 
 const Canvas = dynamic(() => import('@react-three/fiber').then((module) => module.Canvas), { ssr: false });
 
@@ -22,7 +22,7 @@ const HomePageStyled = styled.div`
 `;
 
 interface IHomePage {
-   projects: IProjectItem[];
+   projects: IProjectCard[];
    projectTags: IProjectTag[];
 }
 

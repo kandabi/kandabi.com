@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { IProjectTag } from 'components/common/project-tag/project-tag-button';
+import { IProjectTag } from 'components/common/project/project-tag/project-tag';
 import { NEXT_PUBLIC_API_URL } from 'utils/constants';
 
 const tagsUrl = `${NEXT_PUBLIC_API_URL}/api/tags?populate=*&sort=order`;

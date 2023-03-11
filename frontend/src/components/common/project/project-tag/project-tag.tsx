@@ -9,13 +9,13 @@ interface IProjectTag {
    };
 }
 
-interface IProjectTypeButton {
+interface IProjectType {
    projectTag: IProjectTag;
    onClick?: () => void;
    isSelected?: boolean;
 }
 
-const ProjectTagButton = ({ projectTag, onClick, isSelected }: IProjectTypeButton) => {
+const ProjectTag = ({ projectTag, onClick, isSelected }: IProjectType) => {
    const { title, color } = projectTag.attributes;
    return (
       <Button
@@ -27,5 +27,5 @@ const ProjectTagButton = ({ projectTag, onClick, isSelected }: IProjectTypeButto
    );
 };
 
-export { ProjectTagButton };
+export { ProjectTag };
 export type { IProjectTag };
