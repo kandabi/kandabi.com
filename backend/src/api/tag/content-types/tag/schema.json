@@ -20,6 +20,14 @@
     },
     "color": {
       "type": "string"
+    },
+    "order": {
+      "type": "integer",
+      "max": 256,
+      "min": 0,
+      "unique": true,
+      "required": true,
+      "default": 0
     }
   }
 }

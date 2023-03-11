@@ -10,6 +10,7 @@ interface ISectionStyled {
 const SectionStyled = styled.section<ISectionStyled>`
    gap: ${({ gap = '10px' }) => gap};
    flex-direction: column;
+   z-index: 1;
 
    ${theme.flex.start};
    ${Gutters}

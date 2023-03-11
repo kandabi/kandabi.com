@@ -1,21 +1,41 @@
 import { GetStaticProps } from 'next';
 
 // import { ProjectsApi } from 'api/projects';
+import { TagsApi } from 'api/tags';
 import { HomePage } from 'components/home-page';
 import { IProjectItem } from 'components/home-page/center-section/projects-section/project-item';
 import { IProjectsContainer } from 'components/home-page/center-section/projects-section/projects-container';
+import { IProjectTag } from 'components/common/project-tag/project-tag-button';
 
-const Index = ({ projects }: IProjectsContainer) => {
-   return <HomePage projects={projects} />;
+interface IIndex {
+   projects: IProjectItem[];
+   projectTags: IProjectTag[];
+}
+
+const Index = ({ projects, projectTags }: IIndex) => {
+   return <HomePage projects={projects} projectTags={projectTags} />;
 };
 
 const getStaticProps: GetStaticProps<IProjectsContainer> = async () => {
    let projects: IProjectItem[] = [];
+   let projectTags: IProjectTag[] = [];
    const jwtToken = process.env.JWT_API_TOKEN!;
    if (!jwtToken) {
       console.error('Missing JWT_API_TOKEN, have you added it to environment variables??');
    }
-   return { props: { projects } };
+
+   try {
+      projectTags = await TagsApi.get(jwtToken);
+   } catch (ex) {
+      console.error('Failed to fetch projects.', ex);
+   }
+
+   return {
+      props: {
+         projects,
+         projectTags,
+      },
+   };
 
    // try {
    //    projects = await ProjectsApi.get(jwtToken);

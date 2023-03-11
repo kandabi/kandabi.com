@@ -17,7 +17,7 @@ const LineStyled = styled.div<ILineStyled>`
    }
 
    &::after {
-      border-bottom: 2px solid ${theme.color.white_1};
+      border-bottom: 2px solid ${theme.color.white_100};
       transition: width 0.4s, opacity 0.5s ease-out;
       bottom: ${({ bottom = '-8px' }) => bottom};
       transform: translate(-50%, 0);

@@ -23,13 +23,13 @@ const HeroStyled = styled.div`
 `;
 
 const YellowStyled = styled.i`
-   color: ${theme.color.yellow_1};
+   color: ${theme.color.yellow_100};
    font-style: normal;
 `;
 
 const TitleStyled = styled.h1`
    text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.75);
-   color: ${theme.color.white_1};
+   color: ${theme.color.white_100};
    line-height: 1.16em;
    font-size: 42px;
    margin-top: 20vh;

@@ -10,8 +10,8 @@ import { Link } from 'components/common/link';
 import { theme } from 'styles';
 
 const FooterStyled = styled.footer`
-   background-color: ${theme.color.blue_5};
    filter: drop-shadow(0px -3px 5px rgba(0, 0, 0, 0.3));
+   background-color: ${theme.color.blue_900};
    ${theme.flex.center};
    height: 250px;
    width: 100%;
@@ -41,7 +41,7 @@ const PreviousWebsiteStyled = styled(Link)`
 `;
 
 const SitemapStyled = styled(Link)`
-   color: ${theme.color.grey_1};
+   color: ${theme.color.grey_100};
    font-size: 12px;
    ${theme.breakpoints.md} {
       font-size: 14px;

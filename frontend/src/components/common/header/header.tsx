@@ -41,7 +41,7 @@ interface IHeaderProgressStyled {
 }
 
 const HeaderProgressStyled = styled.div<IHeaderProgressStyled>`
-   border-bottom: 2px solid ${theme.color.grey_2};
+   border-bottom: 2px solid ${theme.color.grey_200};
    width: ${({ $_width }) => $_width};
    transition: width 0.6s ease-out;
    border-radius: 1px;

@@ -11,6 +11,7 @@ import waveDesktop_1 from 'assets/images/wave-desktop-1.svg';
 import waveDesktop_2 from 'assets/images/wave-desktop-2.svg';
 import waveMobile_1 from 'assets/images/wave-mobile-1.svg';
 import waveMobile_2 from 'assets/images/wave-mobile-2.svg';
+import { IProjectTag } from 'components/common/project-tag/project-tag-button';
 
 const CenterSectionStyled = styled.div`
    background: linear-gradient(180deg, #0b1327 0%, #0e1e35 30.21%, #0e1e35 64.06%, #0b1327 100%);
@@ -49,9 +50,10 @@ const GlViewStyled = styled.div`
 interface IProjectsAboutSection {
    glViewport: RefObject<HTMLDivElement>;
    projects: IProjectItem[];
+   projectTags: IProjectTag[];
 }
 
-const CenterSection = ({ glViewport, projects }: IProjectsAboutSection) => {
+const CenterSection = ({ glViewport, projects, projectTags }: IProjectsAboutSection) => {
    return (
       <CenterSectionStyled>
          <GlViewStyled ref={glViewport as any} />
@@ -62,7 +64,7 @@ const CenterSection = ({ glViewport, projects }: IProjectsAboutSection) => {
             height={230}
             width={1920}
          />
-         <ProjectsSection projects={projects} />
+         <ProjectsSection projects={projects} projectTags={projectTags} />
          <BottomWaveStyled
             sources={[{ src: waveDesktop_2.src, media: mediaSizes.lg }]}
             alt='Wave bottom decoration'
