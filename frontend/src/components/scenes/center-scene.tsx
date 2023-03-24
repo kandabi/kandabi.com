@@ -1,5 +1,5 @@
 import { RefObject } from 'react';
-import { Gradient, Shapes, Viewport } from 'components/common/webgl';
+import { LinearGradient, Shapes, Viewport } from 'components/common/webgl';
 
 interface IHeroScene {
    glViewport: RefObject<HTMLDivElement>;
@@ -9,7 +9,7 @@ const CenterScene = ({ glViewport }: IHeroScene) => {
    return (
       <Viewport glViewport={glViewport}>
          <Shapes />
-         <Gradient />
+         <LinearGradient strength={16} fromColor='blue_800' toColor='blue_700' />
       </Viewport>
    );
 };

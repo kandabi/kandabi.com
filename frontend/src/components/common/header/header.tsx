@@ -6,7 +6,7 @@ import { INavbarItem } from 'components/common/navbar';
 import { useMemo } from 'react';
 import { useStore } from 'store';
 import { NavbarItemVariant } from 'components/common/navbar/navbar-item';
-import { useIsMobile } from 'hooks/useIsMobile';
+import { useDeviceDetector } from 'hooks/useDeviceDetector';
 import { Logo } from 'components/common/logo';
 import { theme } from 'styles';
 
@@ -98,7 +98,7 @@ interface IHeader {
 }
 
 const Header = ({ headerVariant = HeaderVariant.FIXED }: IHeader) => {
-   const { isMobile } = useIsMobile();
+   const { isMobile } = useDeviceDetector();
    const { currentScrollPosition, setGoToScrollPosition } = useStore((state) => ({
       currentScrollPosition: state.currentScrollPosition,
       setGoToScrollPosition: state.setGoToScrollPosition,

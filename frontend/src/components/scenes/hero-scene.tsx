@@ -1,5 +1,6 @@
 import { RefObject } from 'react';
-import { Gradient, Viewport } from 'components/common/webgl';
+import { LinearGradient, Viewport } from 'components/common/webgl';
+import { Vector2 } from 'three';
 
 interface IHeroScene {
    glViewport: RefObject<HTMLDivElement>;
@@ -13,7 +14,7 @@ const HeroScene = ({ glViewport }: IHeroScene) => {
             <sphereGeometry />
             <meshStandardMaterial color='yellow' />
          </mesh>
-         <Gradient />
+         <LinearGradient strength={12} fromColor='blue_800' toColor='blue_700' size={new Vector2(12, 8)} />
       </Viewport>
    );
 };

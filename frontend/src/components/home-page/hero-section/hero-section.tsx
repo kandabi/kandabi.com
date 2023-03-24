@@ -9,7 +9,7 @@ import { HeaderVariant } from 'components/common/header';
 import { Section } from 'components/common/section';
 import { CoolText } from 'components/common/cool-text';
 import { Button } from 'components/common/button';
-import { useIsMobile } from 'hooks/useIsMobile';
+import { useDeviceDetector } from 'hooks/useDeviceDetector';
 import { Image } from 'components/common/image';
 
 import arrowDown from 'assets/images/arrow-down.svg';
@@ -115,7 +115,7 @@ interface IHeroSection {
 }
 
 const HeroSection = ({ glViewport }: IHeroSection) => {
-   const { isMobile } = useIsMobile();
+   const { isMobile } = useDeviceDetector();
    const { distanceToCamera, scale, gap } = isMobile ? parallaxConfig.mobile : parallaxConfig.desktop;
    const currentScrollPosition = useStore(({ currentScrollPosition }) => currentScrollPosition);
 

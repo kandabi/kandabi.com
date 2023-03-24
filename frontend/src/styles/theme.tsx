@@ -1,5 +1,5 @@
 import { breakpoints, Breakpoints } from './breakpoints';
-import { colors, Colors, HexColor } from './colors';
+import { colorConfig, Colors, HexColor } from './colors';
 
 type IFlex = {
    justifyContent: string;
@@ -32,7 +32,7 @@ interface ITheme {
 
 const theme: ITheme = {
    breakpoints: breakpoints,
-   color: colors,
+   color: colorConfig,
 
    gutters: {
       [Breakpoints.xs]: {

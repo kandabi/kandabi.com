@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useRef } from 'react';
 import { throttle } from 'lodash';
 import styled from 'styled-components';
+
 import { useStore } from 'store';
-import { useIsMobile } from 'hooks/useIsMobile';
+import { useDeviceDetector } from 'hooks/useDeviceDetector';
 
 interface IViewportStyled {
    distanceToCamera?: number;
@@ -26,7 +27,7 @@ interface IParallaxViewport {
 
 const ParallaxViewport = ({ distanceToCamera, children }: IParallaxViewport) => {
    const viewportRef = useRef<HTMLDivElement>(null);
-   const { isDesktop } = useIsMobile();
+   const { isDesktop } = useDeviceDetector();
    const { goToScrollPosition, setGoToScrollPosition, setCurrentScrollPosition } = useStore((state) => ({
       goToScrollPosition: state.goToScrollPosition,
       setGoToScrollPosition: state.setGoToScrollPosition,
