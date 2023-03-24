@@ -24,10 +24,10 @@
     "order": {
       "type": "integer",
       "max": 256,
-      "min": 0,
+      "min": 1,
       "unique": true,
-      "required": true,
-      "default": 0
+      "required": false,
+      "default": 1
     }
   }
 }

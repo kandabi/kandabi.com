@@ -17,7 +17,7 @@ const ButtonBackgroundStyled = styled.div<IButtonBackgroundStyled>`
    transform: translate(-50%, -50%);
    border-radius: 25px;
    position: absolute;
-   height: 102%;
+   height: 105%;
    opacity: 0;
    width: 0;
    left: 50%;
@@ -57,7 +57,7 @@ const ButtonStyled = styled.button<IButtonStyled>`
       transform: scale(0.9);
 
       ${ButtonBackgroundStyled} {
-         opacity: 0.75;
+         opacity: 0.8;
       }
    }
 `;

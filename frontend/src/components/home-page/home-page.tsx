@@ -1,19 +1,17 @@
 import { useRef } from 'react';
-import dynamic from 'next/dynamic';
+import { Canvas } from '@react-three/fiber';
 import styled from 'styled-components';
+import { Leva } from 'leva';
 
+import { HeroScene, CenterScene } from 'components/scenes';
 import { Header, HeaderVariant } from 'components/common/header';
 import { HeroSection } from 'components/home-page/hero-section';
 import { CenterSection } from 'components/home-page/center-section';
 import { ContactSection } from 'components/home-page/contact-section';
+import { ParallaxViewport } from 'components/common/parallax';
 import { IProjectCard } from 'components/common/project/project-card';
 import { IProjectTag } from 'components/common/project/project-tag';
-import { ParallaxViewport } from 'components/common/parallax';
 import { Footer } from 'components/common/footer';
-import { Ball } from 'components/common/ball';
-import { Shapes } from 'components/common/shapes';
-
-const Canvas = dynamic(() => import('@react-three/fiber').then((module) => module.Canvas), { ssr: false });
 
 const HomePageStyled = styled.div`
    position: absolute;
@@ -40,9 +38,10 @@ const HomePage = ({ projects, projectTags }: IHomePage) => {
             <Footer />
          </ParallaxViewport>
          <Canvas>
-            <Ball glViewport={glHeroViewport} />
-            <Shapes glViewport={glCenterViewport} />
+            <HeroScene glViewport={glHeroViewport} />
+            <CenterScene glViewport={glCenterViewport} />
          </Canvas>
+         <Leva />
       </HomePageStyled>
    );
 };

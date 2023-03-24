@@ -15,7 +15,6 @@ import { Image } from 'components/common/image';
 import arrowDown from 'assets/images/arrow-down.svg';
 
 const HeroStyled = styled.div`
-   background: radial-gradient(110% 80% at 120% 30%, #4867b1 0%, #060b13 115%);
    position: relative;
    display: flex;
    height: 120vh;
@@ -56,16 +55,14 @@ const TechStyled = styled(CoolText)`
    font-size: 14px;
 `;
 
-const CenterContaineStyled = styled.div`
-   ${theme.flex.center}
-   width: 100%;
-`;
+interface ICenterContaineStyled {
+   $_isVisible: boolean;
+}
 
-const GlViewStyled = styled.div`
-   margin-right: 5vw;
-   position: absolute;
-   min-width: 300px;
-   height: 100%;
+const CenterContaineStyled = styled.div<ICenterContaineStyled>`
+   opacity: ${({ $_isVisible }) => ($_isVisible ? 1 : 0)};
+   transition: opacity 0.2s ease-out;
+   ${theme.flex.center}
    width: 100%;
 `;
 
@@ -96,6 +93,12 @@ const ScrollDownTextStyled = styled.span`
    font-size: 20px;
 `;
 
+const GlViewStyled = styled.div`
+   position: absolute;
+   height: 100%;
+   width: 100%;
+`;
+
 interface IHeroParallax {
    distanceToCamera: number;
    scale: number;
@@ -114,13 +117,13 @@ interface IHeroSection {
 const HeroSection = ({ glViewport }: IHeroSection) => {
    const { isMobile } = useIsMobile();
    const { distanceToCamera, scale, gap } = isMobile ? parallaxConfig.mobile : parallaxConfig.desktop;
+   const currentScrollPosition = useStore(({ currentScrollPosition }) => currentScrollPosition);
 
    const setGoToScrollPosition = useStore((state) => state.setGoToScrollPosition);
    const handleScrollDown = () => setGoToScrollPosition(0.35);
 
    return (
       <ParallaxScroll distanceToCamera={distanceToCamera} scale={scale} height='120vh'>
-         <GlViewStyled ref={glViewport} />
          <Header headerVariant={HeaderVariant.FIXED} />
          <HeroStyled>
             <Section gap={gap}>
@@ -131,7 +134,7 @@ const HeroSection = ({ glViewport }: IHeroSection) => {
                <TechStyled text='Javascript | Typescript | React | C# | Node.js | Three.js' />
                <Button onClick={handleScrollDown} text='My Work' styles={{ margin: '15px 0 0 0' }} />
                {!isMobile && (
-                  <CenterContaineStyled>
+                  <CenterContaineStyled $_isVisible={currentScrollPosition < 0.2}>
                      <ScrollDownContainerStyled onClick={handleScrollDown}>
                         <ScrollDownTextStyled>Scroll Down</ScrollDownTextStyled>
                         <Image src={arrowDown.src} width={20} height={20} alt='down arrow' />
@@ -139,6 +142,7 @@ const HeroSection = ({ glViewport }: IHeroSection) => {
                   </CenterContaineStyled>
                )}
             </Section>
+            <GlViewStyled ref={glViewport} />
          </HeroStyled>
       </ParallaxScroll>
    );

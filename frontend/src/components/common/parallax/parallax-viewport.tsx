@@ -16,7 +16,7 @@ const ViewportStyled = styled.div<IViewportStyled>`
    position: fixed;
    height: 100%;
    width: 100%;
-   z-index: 1;
+   z-index: 5;
 `;
 
 interface IParallaxViewport {

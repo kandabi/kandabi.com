@@ -29,20 +29,34 @@ const ProjectTagContainer = ({ projectTags, activeProjectTags, setActiveProjectT
       setActiveProjectTags(newProjectTags);
    };
 
+   const displayTags = projectTags.slice(0, 4);
+
    return (
       <ProjectTypeContainerStyled>
          <span>Project Tags -</span>
          <ButtonContainerStyled>
-            {projectTags.map((projectTag) => {
+            {displayTags.map((projectTag) => {
                return (
                   <ProjectTag
-                     onClick={() => handleProjectTagClick(projectTag)}
                      isSelected={activeProjectTags.includes(projectTag)}
+                     onClick={() => handleProjectTagClick(projectTag)}
+                     styles={{ padding: '0 16px' }}
                      projectTag={projectTag}
                      key={projectTag.id}
                   />
                );
             })}
+
+            <ProjectTag
+               onClick={() => console.log('Show More')}
+               styles={{ padding: '0 16px' }}
+               projectTag={{
+                  attributes: {
+                     color: 'white_100',
+                     title: 'Show More',
+                  },
+               }}
+            />
          </ButtonContainerStyled>
       </ProjectTypeContainerStyled>
    );

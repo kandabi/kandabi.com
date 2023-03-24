@@ -2,7 +2,7 @@ import { RefObject } from 'react';
 import styled from 'styled-components';
 
 import { theme } from 'styles';
-import { mediaSizes } from 'styles/breakpoints';
+import { Breakpoints, mediaSizes } from 'styles/breakpoints';
 import { ProjectsSection } from './projects-section';
 import { IProjectCard } from 'components/common/project/project-card';
 import { Image } from 'components/common/image';
@@ -14,7 +14,6 @@ import waveMobile_2 from 'assets/images/wave-mobile-2.svg';
 import { IProjectTag } from 'components/common/project/project-tag/project-tag';
 
 const CenterSectionStyled = styled.div`
-   background: linear-gradient(180deg, #0b1327 0%, #0e1e35 30.21%, #0e1e35 64.06%, #0b1327 100%);
    position: relative;
    height: 200%;
 `;
@@ -23,6 +22,7 @@ const TopWaveStyled = styled(Image)`
    position: absolute;
    width: 100%;
    top: -75px;
+   z-index: 15;
    ${theme.breakpoints.sm} {
       top: -7%;
    }
@@ -35,6 +35,7 @@ const BottomWaveStyled = styled(Image)`
    position: absolute;
    bottom: -100px;
    width: 100%;
+   z-index: 15;
    ${theme.breakpoints.md} {
       bottom: -120px;
    }
@@ -44,7 +45,7 @@ const GlViewStyled = styled.div`
    position: absolute;
    height: 100%;
    width: 100%;
-   z-index: 1;
+   top: 0;
 `;
 
 interface IProjectsAboutSection {
@@ -56,9 +57,8 @@ interface IProjectsAboutSection {
 const CenterSection = ({ glViewport, projects, projectTags }: IProjectsAboutSection) => {
    return (
       <CenterSectionStyled>
-         <GlViewStyled ref={glViewport as any} />
          <TopWaveStyled
-            sources={[{ src: waveDesktop_1.src, media: mediaSizes.lg }]}
+            sources={[{ src: waveDesktop_1.src, breakpoint: Breakpoints.lg }]}
             alt='Wave top decoration'
             src={waveMobile_1.src}
             height={230}
@@ -66,12 +66,13 @@ const CenterSection = ({ glViewport, projects, projectTags }: IProjectsAboutSect
          />
          <ProjectsSection projects={projects} projectTags={projectTags} />
          <BottomWaveStyled
-            sources={[{ src: waveDesktop_2.src, media: mediaSizes.lg }]}
+            sources={[{ src: waveDesktop_2.src, breakpoint: Breakpoints.lg }]}
             alt='Wave bottom decoration'
             src={waveMobile_2.src}
             height={150}
             width={1920}
          />
+         <GlViewStyled ref={glViewport as any} />
       </CenterSectionStyled>
    );
 };

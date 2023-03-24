@@ -1,5 +1,5 @@
 import { breakpoints, Breakpoints } from './breakpoints';
-import { colors, Colors, HexColor } from './color';
+import { colors, Colors, HexColor } from './colors';
 
 type IFlex = {
    justifyContent: string;

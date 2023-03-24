@@ -58,7 +58,7 @@ enum HeaderVariant {
 interface IHeaderVariant {
    headerStyles?: FlattenInterpolation<ThemeProps<any>>;
    lineStyles: { bottom: string };
-   progress?: boolean;
+   showProgress?: boolean;
    opacity?: number;
    top?: string;
 }
@@ -70,7 +70,7 @@ const headerConfig: { [key in HeaderVariant]: { visible: IHeaderVariant; hidden?
          headerStyles: css`
             background: transparent;
          `,
-         progress: false,
+         showProgress: false,
          opacity: 1,
          top: '6.5vh',
       },
@@ -78,14 +78,14 @@ const headerConfig: { [key in HeaderVariant]: { visible: IHeaderVariant; hidden?
    [HeaderVariant.STICKY]: {
       visible: {
          lineStyles: { bottom: '-8px' },
-         progress: true,
+         showProgress: true,
          headerStyles,
          opacity: 1,
          top: '0',
       },
       hidden: {
          lineStyles: { bottom: '-8px' },
-         progress: true,
+         showProgress: true,
          headerStyles,
          opacity: 0,
          top: '-60px',
@@ -123,7 +123,7 @@ const Header = ({ headerVariant = HeaderVariant.FIXED }: IHeader) => {
       <HeaderStyled headerStyles={styles?.headerStyles} $_opacity={styles?.opacity} top={styles?.top}>
          <Logo />
          {!isMobile ? <Navbar items={navbarItems} lineStyles={styles?.lineStyles} /> : null}
-         {styles?.progress && <HeaderProgressStyled $_width={`${Math.round(currentScrollPosition * 100)}%`} />}
+         {styles?.showProgress && <HeaderProgressStyled $_width={`${Math.round(currentScrollPosition * 100)}%`} />}
       </HeaderStyled>
    );
 };
