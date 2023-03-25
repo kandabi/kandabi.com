@@ -1,11 +1,11 @@
 // import styled from 'styled-components';
-import { IProjectItem } from 'components/common/project/project-card';
+import { IProjectCard } from 'components/common/project/project-card';
 // import { Canvas } from 'react-three-fiber';
 
 // const ProjectsStyled = styled.div``;
 
 interface IProjectsContainer {
-   projects: IProjectItem[];
+   projects: IProjectCard[];
 }
 
 const ProjectsContainer = ({ projects }: IProjectsContainer) => {

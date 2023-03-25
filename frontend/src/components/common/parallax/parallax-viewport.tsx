@@ -50,7 +50,7 @@ const ParallaxViewport = ({ distanceToCamera, children }: IParallaxViewport) => 
       const throttledScroll = throttle(handleMouseScroll, isDesktop ? 100 : 200);
       viewport?.addEventListener('scroll', throttledScroll);
       return () => viewport?.removeEventListener('scroll', throttledScroll);
-   }, [viewportRef, handleMouseScroll]);
+   }, [viewportRef, handleMouseScroll, isDesktop]);
 
    useEffect(() => {
       let viewport = viewportRef.current;

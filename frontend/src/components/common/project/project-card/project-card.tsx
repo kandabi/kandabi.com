@@ -1,4 +1,4 @@
-import { ProjectType } from 'components/common/project/project-type';
+import { ProjectTypes } from 'components/common/project/project-type';
 import styled from 'styled-components';
 
 const ProjectCardStyled = styled.div``;
@@ -7,7 +7,7 @@ interface IProjectCard {
    id: number;
    attributes: {
       title: string;
-      projectType: ProjectType;
+      projectType: ProjectTypes;
       description: string;
       link?: string;
       tags: any;

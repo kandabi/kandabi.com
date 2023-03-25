@@ -3,12 +3,12 @@ import { GetStaticProps } from 'next';
 // import { ProjectsApi } from 'api/projects';
 import { TagsApi } from 'api/tags';
 import { HomePage } from 'components/home-page';
-import { IProjectItem } from 'components/common/project/project-card';
+import { IProjectCard } from 'components/common/project/project-card';
 import { IProjectsContainer } from 'components/home-page/center-section/projects-section/projects-container';
 import { IProjectTag } from 'components/common/project/project-tag/project-tag';
 
 interface IIndex {
-   projects: IProjectItem[];
+   projects: IProjectCard[];
    projectTags: IProjectTag[];
 }
 
@@ -17,7 +17,7 @@ const Index = ({ projects, projectTags }: IIndex) => {
 };
 
 const getStaticProps: GetStaticProps<IProjectsContainer> = async () => {
-   let projects: IProjectItem[] = [];
+   let projects: IProjectCard[] = [];
    let projectTags: IProjectTag[] = [];
    const jwtToken = process.env.JWT_API_TOKEN!;
    if (!jwtToken) {

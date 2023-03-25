@@ -9,7 +9,6 @@ import { Image } from 'components/common/image';
 
 import waveDesktop_1 from 'assets/svgs/wave-desktop-1.svg';
 import waveDesktop_2 from 'assets/svgs/wave-desktop-2.svg';
-import waveDesktop_3 from 'assets/svgs/wave-desktop-3.svg';
 import waveMobile_1 from 'assets/svgs/wave-mobile-1.svg';
 import waveMobile_2 from 'assets/svgs/wave-mobile-2.svg';
 import { IProjectTag } from 'components/common/project/project-tag/project-tag';
@@ -71,7 +70,7 @@ const CenterSection = ({ glViewport, projects, projectTags }: IProjectsAboutSect
          />
          <ProjectsSection projects={projects} projectTags={projectTags} />
          <BottomWaveStyled
-            sources={[{ src: waveDesktop_3.src, breakpoint: Breakpoints.lg }]}
+            sources={[{ src: waveDesktop_2.src, breakpoint: Breakpoints.lg }]}
             alt='Wave bottom decoration'
             src={waveMobile_2.src}
             height={150}
