@@ -37,7 +37,7 @@ interface ILinearGradient {
    size?: Vector2;
 }
 
-const LinearGradient = ({ fromColor, toColor, strength = 1, size = new Vector2(8, 8) }: ILinearGradient) => {
+const LinearGradient = ({ fromColor, toColor, strength = 1, size = new Vector2(14, 8) }: ILinearGradient) => {
    return (
       <mesh>
          <planeGeometry args={[size.x, size.y]} />
