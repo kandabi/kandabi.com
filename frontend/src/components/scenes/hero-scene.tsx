@@ -14,7 +14,7 @@ const HeroScene = ({ glViewport }: IHeroScene) => {
             <sphereGeometry />
             <meshStandardMaterial color='yellow' />
          </mesh>
-         <LinearGradient strength={12} fromColor='blue_800' toColor='blue_700' size={new Vector2(12, 8)} />
+         {/* <LinearGradient strength={12} fromColor='blue_800' toColor='blue_700' size={new Vector2(12, 8)} /> */}
       </Viewport>
    );
 };

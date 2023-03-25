@@ -2,14 +2,13 @@ import { useRef } from 'react';
 
 import { useTexture } from '@react-three/drei';
 
-// import snowflakeTexture from 'assets/textures/snowflake.png';
 import triangleTexturer from 'assets/textures/triangle.png';
 import { useControls } from 'leva';
 import { BufferGeometry, Float32BufferAttribute, ShaderMaterial, Vector3 } from 'three';
 import { useFrame } from '@react-three/fiber';
 
-const MAX_SHAPES = 40;
-const opacity = 0.3;
+const MAX_SHAPES = 15;
+const opacity = 0.25;
 const offset = 0;
 
 const vertexShader = /* glsl */ `
@@ -40,7 +39,7 @@ const fragmentShader = /* glsl */ `
       coords.x += uOffset;
       coords = coords * mat2(vAngle.x, vAngle.y, -vAngle.y, vAngle.x) + 0.5;
       
-      gl_FragColor = texture2D(uTexture, coords);
+      gl_FragColor = texture2D(uTexture, coords) * uOpacity;
    }
 `;
 
@@ -52,7 +51,7 @@ interface IShape {
 
 const updateShapes = (time: number, shapes: IShape[]) => {
    for (const shape of shapes) {
-      shape.rotation = (time * -shape.size * 0.01) / (shape.size + 0.5);
+      shape.rotation = (time * -shape.size * 0.1) / (shape.size + 0.5);
       shape.position.y += shape.size * 0.0015;
       shape.position.x += Math.sin(shape.position.y + time) * 0.0005;
    }
@@ -63,7 +62,7 @@ const addShapes = (shapes: IShape[]) => {
 
    for (let i = newShapes.length; i < MAX_SHAPES; i++) {
       newShapes.push({
-         position: new Vector3((0.5 - Math.random()) * 7, -5.0 + 2.0 * (0.5 - Math.random()), 0),
+         position: new Vector3((0.5 - Math.random()) * 7, -8.0 + 8.0 * (0.5 - Math.random()), 0),
          size: (Math.random() + 0.5) * 1.5,
          rotation: 0,
       });
@@ -121,7 +120,7 @@ const Shapes = () => {
          },
       },
       uPointSize: {
-         value: 10,
+         value: 20,
          min: 0,
          max: 100,
          step: 1,
@@ -130,7 +129,7 @@ const Shapes = () => {
 
    useFrame(({ clock: { elapsedTime } }) => {
       shapesRef.current = addShapes(shapesRef.current);
-      updateShapes(elapsedTime * 10.0, shapesRef.current);
+      updateShapes(elapsedTime + 100000, shapesRef.current);
       updateGeometry(shapesRef.current, geometryRef.current, uPointSize);
    });
 

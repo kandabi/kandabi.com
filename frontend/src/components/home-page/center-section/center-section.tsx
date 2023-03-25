@@ -36,9 +36,9 @@ const BottomWaveStyled = styled(Image)`
    bottom: -100px;
    width: 100%;
    z-index: 15;
-   ${theme.breakpoints.md} {
+   /* ${theme.breakpoints.xxl} {
       bottom: -120px;
-   }
+   } */
 `;
 
 const GlViewStyled = styled.div`

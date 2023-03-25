@@ -25,7 +25,7 @@ const fragmentShader = /* glsl */ `
 
    void main() {
       vec3 colorMix = mix(uTopColor, uBottomColor, vUv.y) * uStrength;
-      colorMix += mix(-NOISE_GRANULARITY, NOISE_GRANULARITY, random(vUv)) * uStrength * 0.1; // Solves gradient color banding by dithering.
+      // colorMix += mix(-NOISE_GRANULARITY, NOISE_GRANULARITY, random(vUv)) * uStrength * 0.1; // Solves gradient color banding by dithering.
       gl_FragColor = vec4(colorMix , 1.0);
    }
 `;
@@ -45,8 +45,8 @@ const LinearGradient = ({ fromColor, toColor, strength = 1, size = new Vector2(8
             vertexShader={vertexShader}
             fragmentShader={fragmentShader}
             uniforms={{
-               uBottomColor: { value: new Color(colorConfig[toColor]) },
-               uTopColor: { value: new Color(colorConfig[fromColor]) },
+               uBottomColor: { value: new Color(colorConfig[toColor] || toColor) },
+               uTopColor: { value: new Color(colorConfig[fromColor] || fromColor) },
                uStrength: { value: strength },
             }}
          />
