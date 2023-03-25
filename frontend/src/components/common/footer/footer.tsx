@@ -5,7 +5,7 @@ import { useStore } from 'store';
 import { Section } from 'components/common/section';
 import { Logo } from 'components/common/logo';
 import { Navbar, INavbarItem } from 'components/common/navbar';
-import { NavbarItemVariant } from 'components/common/navbar/navbar-item';
+import { NavbarItemVariants } from 'components/common/navbar/navbar-item';
 import { Link } from 'components/common/link';
 import { theme } from 'styles';
 
@@ -53,10 +53,10 @@ const Footer = () => {
    const navbarItems: INavbarItem[] = useMemo(
       () => [
          { title: 'Home', onClick: () => setGoToScrollPosition(0) },
-         { title: 'Github', link: 'https://example.com', variant: NavbarItemVariant.Link },
-         { title: 'LinkedIn', link: 'https://example.com', variant: NavbarItemVariant.Link },
-         { title: 'Facebook', link: 'https://example.com', variant: NavbarItemVariant.Link },
-         { title: 'Upwork', link: 'https://example.com', variant: NavbarItemVariant.Link },
+         { title: 'Github', link: 'https://example.com', variant: NavbarItemVariants.Link },
+         { title: 'LinkedIn', link: 'https://example.com', variant: NavbarItemVariants.Link },
+         { title: 'Facebook', link: 'https://example.com', variant: NavbarItemVariants.Link },
+         { title: 'Upwork', link: 'https://example.com', variant: NavbarItemVariants.Link },
       ],
       [setGoToScrollPosition]
    );

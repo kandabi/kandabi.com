@@ -9,23 +9,23 @@ const NavbarItemStyled = styled.li`
    cursor: pointer;
 `;
 
-enum NavbarItemVariant {
+enum NavbarItemVariants {
    Link = 'Link',
    Scroll = 'Scroll',
 }
 
 interface INavbarItem {
    lineStyles?: { bottom: string };
-   variant?: NavbarItemVariant;
+   variant?: NavbarItemVariants;
    onClick?: () => void;
    title: string;
    link?: string;
 }
 
-const NavbarItem = ({ title, link, onClick, lineStyles, variant = NavbarItemVariant.Scroll }: INavbarItem) => {
+const NavbarItem = ({ title, link, onClick, lineStyles, variant = NavbarItemVariants.Scroll }: INavbarItem) => {
    return (
       <NavbarItemStyled>
-         {variant === NavbarItemVariant.Link ? (
+         {variant === NavbarItemVariants.Link ? (
             <Link styles={{ lineBottom: lineStyles?.bottom }} text={title} href={link!} />
          ) : (
             <Line styles={{ bottom: lineStyles?.bottom }}>
@@ -36,5 +36,5 @@ const NavbarItem = ({ title, link, onClick, lineStyles, variant = NavbarItemVari
    );
 };
 
-export { NavbarItem, NavbarItemVariant };
+export { NavbarItem, NavbarItemVariants };
 export type { INavbarItem };

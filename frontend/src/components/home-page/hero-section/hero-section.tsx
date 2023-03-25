@@ -5,14 +5,14 @@ import { useStore } from 'store';
 import { theme } from 'styles';
 import { ParallaxScroll } from 'components/common/parallax';
 import { Header } from 'components/common/header';
-import { HeaderVariant } from 'components/common/header';
+import { HeaderVariants } from 'components/common/header';
 import { Section } from 'components/common/section';
 import { CoolText } from 'components/common/cool-text';
 import { Button } from 'components/common/button';
 import { useDeviceDetector } from 'hooks/useDeviceDetector';
 import { Image } from 'components/common/image';
 
-import arrowDown from 'assets/images/arrow-down.svg';
+import arrowDown from 'assets/svgs/arrow-down.svg';
 
 const HeroStyled = styled.div`
    position: relative;
@@ -124,7 +124,7 @@ const HeroSection = ({ glViewport }: IHeroSection) => {
 
    return (
       <ParallaxScroll distanceToCamera={distanceToCamera} scale={scale} height='120vh'>
-         <Header headerVariant={HeaderVariant.FIXED} />
+         <Header variant={HeaderVariants.FIXED} />
          <HeroStyled>
             <Section gap={gap}>
                <TitleStyled>

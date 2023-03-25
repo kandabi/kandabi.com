@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Leva } from 'leva';
 
 import { HeroScene, CenterScene } from 'components/scenes';
-import { Header, HeaderVariant } from 'components/common/header';
+import { Header, HeaderVariants } from 'components/common/header';
 import { HeroSection } from 'components/home-page/hero-section';
 import { CenterSection } from 'components/home-page/center-section';
 import { ContactSection } from 'components/home-page/contact-section';
@@ -30,7 +30,7 @@ const HomePage = ({ projects, projectTags }: IHomePage) => {
 
    return (
       <HomePageStyled>
-         <Header headerVariant={HeaderVariant.STICKY} />
+         <Header variant={HeaderVariants.STICKY} />
          <ParallaxViewport distanceToCamera={6}>
             <HeroSection glViewport={glHeroViewport} />
             <CenterSection glViewport={glCenterViewport} projects={projects} projectTags={projectTags} />

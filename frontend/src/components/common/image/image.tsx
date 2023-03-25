@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Breakpoints, mediaSizes } from 'styles';
+import { Breakpoints, mediaSizesConfig } from 'styles';
 
 interface IImageStyled {
    width: number;
@@ -24,7 +24,7 @@ const Image = ({ onClick, className, height, width, alt, src, sources, loading =
    return (
       <picture>
          {sources?.map((item, index) => (
-            <source key={index} srcSet={item.src} media={mediaSizes[item.breakpoint]} />
+            <source key={index} srcSet={item.src} media={mediaSizesConfig[item.breakpoint]} />
          ))}
          <ImageStyled
             className={className}

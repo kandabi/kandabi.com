@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 import { useStore } from 'store';
-import logoFull from 'assets/images/logo-full.svg';
 import { Image } from 'components/common/image';
+
+import logoFull from 'assets/svgs/logo-full.svg';
 
 const LogoStyled = styled(Image)`
    pointer-events: initial;

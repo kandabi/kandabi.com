@@ -2,15 +2,15 @@ import { RefObject } from 'react';
 import styled from 'styled-components';
 
 import { theme } from 'styles';
-import { Breakpoints, mediaSizes } from 'styles/breakpoints';
+import { Breakpoints } from 'styles/breakpoints';
 import { ProjectsSection } from './projects-section';
 import { IProjectCard } from 'components/common/project/project-card';
 import { Image } from 'components/common/image';
 
-import waveDesktop_1 from 'assets/images/wave-desktop-1.svg';
-import waveDesktop_2 from 'assets/images/wave-desktop-2.svg';
-import waveMobile_1 from 'assets/images/wave-mobile-1.svg';
-import waveMobile_2 from 'assets/images/wave-mobile-2.svg';
+import waveDesktop_1 from 'assets/svgs/wave-desktop-1.svg';
+import waveDesktop_2 from 'assets/svgs/wave-desktop-2.svg';
+import waveMobile_1 from 'assets/svgs/wave-mobile-1.svg';
+import waveMobile_2 from 'assets/svgs/wave-mobile-2.svg';
 import { IProjectTag } from 'components/common/project/project-tag/project-tag';
 
 const CenterSectionStyled = styled.div`

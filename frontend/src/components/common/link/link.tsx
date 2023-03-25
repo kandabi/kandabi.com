@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
-import linkIcon from 'assets/images/link.svg';
 import { Line } from 'components/common/line';
 import { Image } from 'components/common/image';
 import { theme } from 'styles';
+
+import linkIcon from 'assets/svgs/link.svg';
 
 interface ILinkStyled {
    fontSize?: number;
