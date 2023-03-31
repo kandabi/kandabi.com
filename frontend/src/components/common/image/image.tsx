@@ -2,11 +2,14 @@ import styled from 'styled-components';
 import { Breakpoints, mediaSizesConfig } from 'styles';
 
 interface IImageStyled {
-   width: number;
+   width: number | string;
 }
 
 const ImageStyled = styled.img<IImageStyled>`
-   width: ${({ width }) => `${width}px`};
+   width: ${({ width = '100%' }) => {
+      if (typeof width === 'string') return width;
+      else return `${width}px`;
+   }};
 `;
 
 interface IImage {
@@ -14,8 +17,8 @@ interface IImage {
    loading?: 'eager' | 'lazy';
    onClick?: () => void;
    className?: string;
-   height: number;
-   width: number;
+   height: number | string;
+   width: number | string;
    src: string;
    alt: string;
 }

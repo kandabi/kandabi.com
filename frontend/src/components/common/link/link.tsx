@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { Line } from 'components/common/line';
 import { Image } from 'components/common/image';
-import { theme } from 'styles';
+import { styles } from 'styles';
 
 import linkIcon from 'assets/svgs/link.svg';
 
@@ -12,7 +12,7 @@ interface ILinkStyled {
 
 const LinkStyled = styled.a<ILinkStyled>`
    font-size: ${({ fontSize = 18 }) => `${fontSize}px`};
-   ${theme.flex.center};
+   ${styles.flex.center};
    position: relative;
    cursor: pointer;
    gap: 3px;

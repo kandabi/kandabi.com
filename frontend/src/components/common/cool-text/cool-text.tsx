@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme } from 'styles';
+import { styles } from 'styles';
 
 interface ICoolTextStyled {
    $_fontSize?: number;
@@ -8,9 +8,9 @@ interface ICoolTextStyled {
 
 const CoolTextStyled = styled.span<ICoolTextStyled>`
    font-size: ${({ $_fontSize = 18 }) => `${$_fontSize}px`};
-   color: ${theme.color.white_100};
+   color: ${styles.color.white_100};
    letter-spacing: 0.15em;
-   ${theme.font.rubik};
+   ${styles.font.rubik};
 `;
 
 interface ICoolText {

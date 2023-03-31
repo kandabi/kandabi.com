@@ -1,36 +1,42 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import { ProjectTypes, ProjectTypeContainer } from 'components/common/project/project-type';
-import { ProjectTagContainer } from 'components/common/project/project-tag';
-import { IProjectCard } from 'components/common/project/project-card';
-import { IProjectTag } from 'components/common/project/project-tag';
+import { ProjectTypesContainer } from 'components/common/project/project-type';
+import { ProjectTagsContainer } from 'components/common/project/project-tag';
 import { Section } from 'components/common/section';
-import { theme } from 'styles';
+import { styles } from 'styles';
+import { IProject, IProjectTag, ProjectTypes } from 'types/project';
+import { ProjectItemsContainer } from 'components/common/project/project-item';
 
 const ProjectsStyled = styled.div`
-   ${theme.flex.center}
+   ${styles.flex.center}
    position: relative;
    top: 200px;
 `;
 
 const TitleStyled = styled.h2`
    text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.75);
-   color: ${theme.color.white_100};
+   color: ${styles.color.white_100};
    line-height: 1.16em;
    font-size: 40px;
-   ${theme.breakpoints.md} {
+   ${styles.breakpoints.md} {
       font-size: 52px;
    }
 `;
 
+const ProjectsContainerStyled = styled.div`
+   ${styles.flex.between}
+   height: 800px;
+   width: 100%;
+`;
+
 const ProjectFiltersStyled = styled.div`
-   ${theme.flex.start}
+   ${styles.flex.start}
    gap: 40px;
 `;
 
 interface IProjectsSection {
-   projects: IProjectCard[];
+   projects: IProject[];
    projectTags: IProjectTag[];
 }
 
@@ -38,22 +44,24 @@ const ProjectsSection = ({ projects, projectTags }: IProjectsSection) => {
    const [activeProjectTags, setActiveProjectTags] = useState<IProjectTag[]>([]);
    const [activeProjectType, setActiveProjectType] = useState<ProjectTypes>();
 
-   console.log('projects', projects);
    return (
       <ProjectsStyled>
          <Section gap='26px'>
             <TitleStyled>Projects</TitleStyled>
             <ProjectFiltersStyled>
-               <ProjectTypeContainer
+               <ProjectTypesContainer
                   setActiveProjectType={setActiveProjectType}
                   activeProjectType={activeProjectType}
                />
-               <ProjectTagContainer
+               <ProjectTagsContainer
                   setActiveProjectTags={setActiveProjectTags}
                   activeProjectTags={activeProjectTags}
                   projectTags={projectTags}
                />
             </ProjectFiltersStyled>
+            <ProjectsContainerStyled>
+               <ProjectItemsContainer projects={projects} />
+            </ProjectsContainerStyled>
          </Section>
       </ProjectsStyled>
    );

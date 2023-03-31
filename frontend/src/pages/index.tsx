@@ -1,14 +1,13 @@
 import { GetStaticProps } from 'next';
 
-// import { ProjectsApi } from 'api/projects';
 import { TagsApi } from 'api/tags';
+import { ProjectsApi } from 'api/projects';
 import { HomePage } from 'components/home-page';
-import { IProjectCard } from 'components/common/project/project-card';
 import { IProjectsContainer } from 'components/home-page/center-section/projects-section/projects-container';
-import { IProjectTag } from 'components/common/project/project-tag/project-tag';
+import { IProject, IProjectTag } from 'types/project';
 
 interface IIndex {
-   projects: IProjectCard[];
+   projects: IProject[];
    projectTags: IProjectTag[];
 }
 
@@ -17,7 +16,7 @@ const Index = ({ projects, projectTags }: IIndex) => {
 };
 
 const getStaticProps: GetStaticProps<IProjectsContainer> = async () => {
-   let projects: IProjectCard[] = [];
+   let projects: IProject[] = [];
    let projectTags: IProjectTag[] = [];
    const jwtToken = process.env.JWT_API_TOKEN!;
    if (!jwtToken) {
@@ -30,20 +29,18 @@ const getStaticProps: GetStaticProps<IProjectsContainer> = async () => {
       console.error('Failed to fetch projects.', ex);
    }
 
+   try {
+      projects = await ProjectsApi.get(jwtToken);
+   } catch (ex) {
+      console.error('Failed to fetch projects.', ex);
+   }
+
    return {
       props: {
          projects,
          projectTags,
       },
    };
-
-   // try {
-   //    projects = await ProjectsApi.get(jwtToken);
-   // } catch (ex) {
-   //    console.error('Failed to fetch projects.', ex);
-   // }
-
-   // return { props: { projects } };
 };
 
 export default Index;

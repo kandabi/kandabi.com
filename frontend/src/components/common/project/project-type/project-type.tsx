@@ -1,11 +1,6 @@
 import { Button } from 'components/common/button';
-import { IColor } from 'styles';
-
-enum ProjectTypes {
-   WEB = 'WEB',
-   GAME = 'GAME',
-   OTHER = 'OTHER',
-}
+import { IColor } from 'types/color';
+import { ProjectTypes } from 'types/project';
 
 const projectTypeConfig: { [key in ProjectTypes]: { color: IColor; text: string } } = {
    [ProjectTypes.WEB]: { color: 'blue_100', text: 'Web' },
@@ -32,4 +27,4 @@ const ProjectType = ({ projectType, onClick, isSelected }: IProjectType) => {
    );
 };
 
-export { ProjectType, ProjectTypes };
+export { ProjectType };

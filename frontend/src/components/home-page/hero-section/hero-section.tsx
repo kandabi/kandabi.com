@@ -2,7 +2,7 @@ import { RefObject } from 'react';
 import styled from 'styled-components';
 
 import { useStore } from 'store';
-import { theme } from 'styles';
+import { styles } from 'styles';
 import { ParallaxScroll } from 'components/common/parallax';
 import { Header } from 'components/common/header';
 import { HeaderVariants } from 'components/common/header';
@@ -22,17 +22,17 @@ const HeroStyled = styled.div`
 `;
 
 const YellowStyled = styled.i`
-   color: ${theme.color.yellow_100};
+   color: ${styles.color.yellow_100};
    font-style: normal;
 `;
 
 const TitleStyled = styled.h1`
    text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.75);
-   color: ${theme.color.white_100};
+   color: ${styles.color.white_100};
    line-height: 1.16em;
    font-size: 42px;
    margin-top: 20vh;
-   ${theme.breakpoints.md} {
+   ${styles.breakpoints.md} {
       margin-top: initial;
       font-size: 55px;
    }
@@ -40,13 +40,13 @@ const TitleStyled = styled.h1`
 
 const SubtitleStyled = styled.p`
    font-size: 20px;
-   ${theme.breakpoints.md} {
+   ${styles.breakpoints.md} {
       font-size: 32px;
    }
 `;
 
 const TechStyled = styled(CoolText)`
-   ${theme.breakpoints.md} {
+   ${styles.breakpoints.md} {
       margin-top: 20px;
       font-size: 20px;
    }
@@ -62,7 +62,7 @@ interface ICenterContaineStyled {
 const CenterContaineStyled = styled.div<ICenterContaineStyled>`
    opacity: ${({ $_isVisible }) => ($_isVisible ? 1 : 0)};
    transition: opacity 0.2s ease-out;
-   ${theme.flex.center}
+   ${styles.flex.center}
    width: 100%;
 `;
 
@@ -74,9 +74,9 @@ const ScrollDownContainerStyled = styled.div`
    cursor: pointer;
    bottom: 160px;
    gap: 6px;
-   ${theme.flex.center}
+   ${styles.flex.center}
 
-   ${theme.breakpoints.lg} {
+   ${styles.breakpoints.lg} {
       bottom: 200px;
    }
 

@@ -10,7 +10,7 @@ const TOTAL_SHAPE_TYPES = 3;
 const MAX_SHAPES = 22;
 const SIZE_MULTIPLIER = 30;
 const BASE_SIZE = 12;
-const OPACITY = 0.22;
+const OPACITY = 0.25;
 
 const vertexShader = /* glsl */ `
    uniform float uSizeMultiplier;

@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
-import styled from 'styled-components';
 import { Leva } from 'leva';
+import styled from 'styled-components';
 
 import { HeroScene, CenterScene } from 'components/scenes';
 import { Header, HeaderVariants } from 'components/common/header';
@@ -9,8 +9,7 @@ import { HeroSection } from 'components/home-page/hero-section';
 import { CenterSection } from 'components/home-page/center-section';
 import { ContactSection } from 'components/home-page/contact-section';
 import { ParallaxViewport } from 'components/common/parallax';
-import { IProjectCard } from 'components/common/project/project-card';
-import { IProjectTag } from 'components/common/project/project-tag';
+import { IProject, IProjectTag } from 'types/project';
 import { Footer } from 'components/common/footer';
 
 const HomePageStyled = styled.div`
@@ -20,7 +19,7 @@ const HomePageStyled = styled.div`
 `;
 
 interface IHomePage {
-   projects: IProjectCard[];
+   projects: IProject[];
    projectTags: IProjectTag[];
 }
 
@@ -41,7 +40,7 @@ const HomePage = ({ projects, projectTags }: IHomePage) => {
             <HeroScene glViewport={glHeroViewport} />
             <CenterScene glViewport={glCenterViewport} />
          </Canvas>
-         <Leva />
+         <Leva hidden />
       </HomePageStyled>
    );
 };

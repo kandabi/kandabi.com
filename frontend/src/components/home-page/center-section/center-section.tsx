@@ -1,17 +1,16 @@
 import { RefObject } from 'react';
 import styled from 'styled-components';
 
-import { theme } from 'styles';
+import { styles } from 'styles';
 import { Breakpoints } from 'styles/breakpoints';
 import { ProjectsSection } from './projects-section';
-import { IProjectCard } from 'components/common/project/project-card';
+import { IProject, IProjectTag } from 'types/project';
 import { Image } from 'components/common/image';
 
 import waveDesktop_1 from 'assets/svgs/wave-desktop-1.svg';
 import waveDesktop_2 from 'assets/svgs/wave-desktop-2.svg';
 import waveMobile_1 from 'assets/svgs/wave-mobile-1.svg';
 import waveMobile_2 from 'assets/svgs/wave-mobile-2.svg';
-import { IProjectTag } from 'components/common/project/project-tag/project-tag';
 
 const CenterSectionStyled = styled.div`
    position: relative;
@@ -23,10 +22,10 @@ const TopWaveStyled = styled(Image)`
    width: 100%;
    top: -75px;
    z-index: 15;
-   ${theme.breakpoints.sm} {
+   ${styles.breakpoints.sm} {
       top: -7%;
    }
-   ${theme.breakpoints.lg} {
+   ${styles.breakpoints.lg} {
       top: -5%;
    }
 `;
@@ -36,11 +35,11 @@ const BottomWaveStyled = styled(Image)`
    top: 98%;
    width: 100%;
    z-index: 15;
-   ${theme.breakpoints.md} {
+   ${styles.breakpoints.md} {
       top: 95%;
    }
 
-   ${theme.breakpoints.lg} {
+   ${styles.breakpoints.lg} {
       top: 92%;
    }
 `;
@@ -54,7 +53,7 @@ const GlViewStyled = styled.div`
 
 interface IProjectsAboutSection {
    glViewport: RefObject<HTMLDivElement>;
-   projects: IProjectCard[];
+   projects: IProject[];
    projectTags: IProjectTag[];
 }
 

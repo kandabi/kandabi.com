@@ -8,7 +8,7 @@ import { useStore } from 'store';
 import { NavbarItemVariants } from 'components/common/navbar/navbar-item';
 import { useDeviceDetector } from 'hooks/useDeviceDetector';
 import { Logo } from 'components/common/logo';
-import { theme } from 'styles';
+import { styles } from 'styles';
 
 const headerStyles = css`
    background: linear-gradient(346deg, rgba(15, 23, 42, 0.75) 10%, rgba(15, 23, 42, 0.75) 65%);
@@ -32,7 +32,7 @@ const HeaderStyled = styled.header<IHeaderStyled>`
    height: 68px;
 
    ${({ headerStyles }) => headerStyles};
-   ${theme.flex.between};
+   ${styles.flex.between};
    ${Gutters}
 `;
 
@@ -41,7 +41,7 @@ interface IHeaderProgressStyled {
 }
 
 const HeaderProgressStyled = styled.div<IHeaderProgressStyled>`
-   border-bottom: 2px solid ${theme.color.grey_200};
+   border-bottom: 2px solid ${styles.color.grey_200};
    width: ${({ $_width }) => $_width};
    transition: width 0.6s ease-out;
    border-radius: 1px;

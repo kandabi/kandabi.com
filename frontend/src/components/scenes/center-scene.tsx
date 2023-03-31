@@ -9,7 +9,7 @@ const CenterScene = ({ glViewport }: IHeroScene) => {
    return (
       <Viewport glViewport={glViewport}>
          <Shapes />
-         <LinearGradient strength={6} fromColor='blue_1000' toColor='blue_600' />
+         <LinearGradient strength={8} fromColor='blue_1000' toColor='blue_600' />
       </Viewport>
    );
 };

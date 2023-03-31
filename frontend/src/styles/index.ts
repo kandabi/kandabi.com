@@ -1,6 +1,5 @@
-import { theme, ITheme } from './theme';
-import { colorConfig, Colors, IColor, HexColor } from './colors';
+import { styles } from './styles';
+import { colorConfig } from './colors';
 import { breakpointConfig, mediaSizesConfig, Breakpoints } from './breakpoints';
 
-export { theme, colorConfig, breakpointConfig, mediaSizesConfig, Colors, Breakpoints };
-export type { ITheme, IColor, HexColor };
+export { styles, colorConfig, breakpointConfig, mediaSizesConfig, Breakpoints };

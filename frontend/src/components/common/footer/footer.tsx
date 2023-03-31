@@ -7,12 +7,12 @@ import { Logo } from 'components/common/logo';
 import { Navbar, INavbarItem } from 'components/common/navbar';
 import { NavbarItemVariants } from 'components/common/navbar/navbar-item';
 import { Link } from 'components/common/link';
-import { theme } from 'styles';
+import { styles } from 'styles';
 
 const FooterStyled = styled.footer`
    filter: drop-shadow(0px -3px 5px rgba(0, 0, 0, 0.3));
-   background-color: ${theme.color.blue_900};
-   ${theme.flex.center};
+   background-color: ${styles.color.blue_900};
+   ${styles.flex.center};
    height: 250px;
    width: 100%;
 `;
@@ -28,22 +28,22 @@ const NavbarFooterStyled = styled(Navbar)`
 const CopyrightStyled = styled.p`
    font-size: 12px;
    padding: 4px 6px;
-   ${theme.breakpoints.md} {
+   ${styles.breakpoints.md} {
       font-size: 14px;
    }
 `;
 
 const PreviousWebsiteStyled = styled(Link)`
    font-size: 12px;
-   ${theme.breakpoints.md} {
+   ${styles.breakpoints.md} {
       font-size: 14px;
    }
 `;
 
 const SitemapStyled = styled(Link)`
-   color: ${theme.color.grey_100};
+   color: ${styles.color.grey_100};
    font-size: 12px;
-   ${theme.breakpoints.md} {
+   ${styles.breakpoints.md} {
       font-size: 14px;
    }
 `;

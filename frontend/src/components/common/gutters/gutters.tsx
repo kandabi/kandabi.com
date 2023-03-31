@@ -1,15 +1,15 @@
 import { css, FlattenInterpolation, ThemeProps } from 'styled-components';
-import { theme } from 'styles';
+import { styles } from 'styles';
 
 const Gutters: FlattenInterpolation<ThemeProps<any>> = css`
-   ${theme.gutters.xs};
+   ${styles.gutters.xs};
 
-   ${theme.breakpoints.md} {
-      ${theme.gutters.md};
+   ${styles.breakpoints.md} {
+      ${styles.gutters.md};
    }
 
-   ${theme.breakpoints.lg} {
-      ${theme.gutters.lg};
+   ${styles.breakpoints.lg} {
+      ${styles.gutters.lg};
    }
 `;
 

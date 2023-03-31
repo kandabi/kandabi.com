@@ -1,15 +1,7 @@
 import { Button } from 'components/common/button';
-import { IColor } from 'styles';
+import { IProjectTag } from 'types/project';
 
-interface IProjectTag {
-   id?: number;
-   attributes: {
-      title: string;
-      color: IColor;
-   };
-}
-
-interface IProjectType {
+interface Props {
    projectTag: IProjectTag;
    onClick?: () => void;
    isSelected?: boolean;
@@ -25,7 +17,7 @@ const ProjectTag = ({
    styles = {
       padding: '0 24px',
    },
-}: IProjectType) => {
+}: Props) => {
    const { title, color } = projectTag.attributes;
    return (
       <Button
@@ -38,4 +30,3 @@ const ProjectTag = ({
 };
 
 export { ProjectTag };
-export type { IProjectTag };

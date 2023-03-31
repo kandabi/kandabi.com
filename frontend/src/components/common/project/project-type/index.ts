@@ -1,4 +1,4 @@
-import { ProjectTypeContainer } from './project-type-container';
-import { ProjectType, ProjectTypes } from './project-type';
+import { ProjectTypesContainer } from './project-types-container';
+import { ProjectType } from './project-type';
 
-export { ProjectTypeContainer, ProjectType, ProjectTypes };
+export { ProjectTypesContainer, ProjectType };

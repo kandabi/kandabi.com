@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { CoolText } from 'components/common/cool-text';
-import { IColor, theme } from 'styles';
+import { IColor } from 'types/color';
+import { styles } from 'styles';
 
 const ButtonTextStyled = styled(CoolText)`
    position: relative;
@@ -12,7 +13,7 @@ interface IButtonBackgroundStyled {
 }
 
 const ButtonBackgroundStyled = styled.div<IButtonBackgroundStyled>`
-   background-color: ${({ backgroundColor = 'yellow_100' }) => theme.color[backgroundColor] || backgroundColor};
+   background-color: ${({ backgroundColor = 'yellow_100' }) => styles.color[backgroundColor] || backgroundColor};
    transition: width 0.35s ease-out, opacity 0.25s ease-out;
    transform: translate(-50%, -50%);
    border-radius: 25px;
@@ -33,7 +34,7 @@ interface IButtonStyled {
 }
 
 const ButtonStyled = styled.button<IButtonStyled>`
-   border: 2px solid ${({ borderColor = 'yellow_100' }) => theme.color[borderColor] || borderColor};
+   border: 2px solid ${({ borderColor = 'yellow_100' }) => styles.color[borderColor] || borderColor};
    padding: ${({ $_padding = '0 32px' }) => $_padding};
    height: ${({ $_height = '40px' }) => $_height};
    transition: transform 0.2s ease-out;
