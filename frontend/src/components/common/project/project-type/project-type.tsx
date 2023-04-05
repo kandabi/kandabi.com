@@ -12,15 +12,17 @@ interface IProjectType {
    projectType: ProjectTypes;
    onClick?: () => void;
    isSelected?: boolean;
+   isDisabled?: boolean;
 }
 
-const ProjectType = ({ projectType, onClick, isSelected }: IProjectType) => {
+const ProjectType = ({ projectType, onClick, isSelected, isDisabled }: IProjectType) => {
    const { color, text } = projectTypeConfig[projectType];
 
    return (
       <Button
          styles={{ color, fontSize: 13, height: '32px', padding: '0 24px' }}
          isSelected={isSelected}
+         isDisabled={isDisabled}
          onClick={onClick}
          text={text}
       />

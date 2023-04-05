@@ -9,6 +9,7 @@ enum Colors {
    yellow_100 = 'yellow_100',
    orange_100 = 'orange_100',
    blue_100 = 'blue_100',
+   blue_500 = 'blue_500',
    blue_600 = 'blue_600',
    blue_700 = 'blue_700',
    blue_800 = 'blue_800',

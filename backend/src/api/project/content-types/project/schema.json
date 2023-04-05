@@ -38,12 +38,12 @@
     "projectType": {
       "type": "enumeration",
       "enum": [
-        "Web",
-        "Game",
-        "Other"
+        "WEB",
+        "GAME",
+        "OTHER"
       ],
       "required": true,
-      "default": "Web"
+      "default": "WEB"
     },
     "thumbnail": {
       "type": "media",

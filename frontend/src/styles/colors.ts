@@ -9,6 +9,7 @@ const colorConfig: { [key in Colors]: HexColor } = {
    [Colors.yellow_100]: '#FCE46A',
    [Colors.orange_100]: '#FA7828',
    [Colors.blue_100]: '#00B2FF',
+   [Colors.blue_500]: '#1a3d70',
    [Colors.blue_600]: '#0E1E35',
    [Colors.blue_700]: '#0A1120',
    [Colors.blue_800]: '#0F243D',

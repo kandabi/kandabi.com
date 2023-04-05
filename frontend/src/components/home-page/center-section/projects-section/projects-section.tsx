@@ -6,10 +6,10 @@ import { ProjectTagsContainer } from 'components/common/project/project-tag';
 import { Section } from 'components/common/section';
 import { styles } from 'styles';
 import { IProject, IProjectTag, ProjectTypes } from 'types/project';
-import { ProjectItemsContainer } from 'components/common/project/project-item';
+import { ProjectItemSelection, ProjectItemsContainer } from 'components/common/project/project-item';
 
 const ProjectsStyled = styled.div`
-   ${styles.flex.center}
+   ${styles.flex.start}
    position: relative;
    top: 200px;
 `;
@@ -26,8 +26,9 @@ const TitleStyled = styled.h2`
 
 const ProjectsContainerStyled = styled.div`
    ${styles.flex.between}
-   height: 800px;
+   height: 640px;
    width: 100%;
+   gap: 25px;
 `;
 
 const ProjectFiltersStyled = styled.div`
@@ -61,6 +62,7 @@ const ProjectsSection = ({ projects, projectTags }: IProjectsSection) => {
             </ProjectFiltersStyled>
             <ProjectsContainerStyled>
                <ProjectItemsContainer projects={projects} />
+               <ProjectItemSelection project={projects[0]} />
             </ProjectsContainerStyled>
          </Section>
       </ProjectsStyled>
