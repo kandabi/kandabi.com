@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Breakpoints, mediaSizesConfig } from 'styles';
 
 interface IImageStyled {
+   height?: number | string;
    width: number | string;
 }
 
@@ -10,6 +11,10 @@ const ImageStyled = styled.img<IImageStyled>`
       if (typeof width === 'string') return width;
       else return `${width}px`;
    }};
+   height: ${({ height }) => {
+      if (typeof height === 'string') return height;
+      else return `${height}px`;
+   }};
 `;
 
 interface IImage {
@@ -17,7 +22,7 @@ interface IImage {
    loading?: 'eager' | 'lazy';
    onClick?: () => void;
    className?: string;
-   height: number | string;
+   height?: number | string;
    width: number | string;
    src: string;
    alt: string;

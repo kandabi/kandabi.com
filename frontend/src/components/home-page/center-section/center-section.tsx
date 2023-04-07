@@ -64,7 +64,6 @@ const CenterSection = ({ glViewport, projects, projectTags }: IProjectsAboutSect
             sources={[{ src: waveDesktop_1.src, breakpoint: Breakpoints.lg }]}
             alt='Wave top decoration'
             src={waveMobile_1.src}
-            height={230}
             width={1920}
          />
          <ProjectsSection projects={projects} projectTags={projectTags} />
@@ -72,7 +71,6 @@ const CenterSection = ({ glViewport, projects, projectTags }: IProjectsAboutSect
             sources={[{ src: waveDesktop_2.src, breakpoint: Breakpoints.lg }]}
             alt='Wave bottom decoration'
             src={waveMobile_2.src}
-            height={150}
             width={1920}
          />
          <GlViewStyled ref={glViewport as any} />

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { Image } from 'components/common/image';
-import { ProjectItem } from './project-item';
+import { Link } from 'components/common/link';
 import { IProject } from 'types/project';
 import { getMediaItemUrl } from 'utils/getMediaItemUrl';
 import { styles } from 'styles';
@@ -19,6 +19,11 @@ const ProjectItemSelectionStyled = styled.div`
 `;
 
 const TitleStyled = styled.b`
+   text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.5);
+   font-size: 22px;
+`;
+
+const LinkStyled = styled(Link)`
    text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.5);
    font-size: 22px;
 `;
@@ -54,14 +59,18 @@ interface IProjectItemSelection {
 }
 
 const ProjectItemSelection = ({ project }: IProjectItemSelection) => {
-   const { thumbnail, title, description, projectType, tags } = project.attributes;
+   const { thumbnail, title, description, projectType, tags, link } = project.attributes;
+   // console.log('link', link);
 
    return (
       <ProjectItemSelectionStyled>
-         <Image src={getMediaItemUrl(thumbnail)} width='100%' height={165} alt='Project thumbnail' />
-
+         <Image src={getMediaItemUrl(thumbnail)} width='100%' height={315} alt='Project thumbnail' />
          <ContentStyled>
-            <TitleStyled>{title}</TitleStyled>
+            {link ? (
+               <LinkStyled text={title} href={link!} styles={{ lineBottom: '-2px', iconWidth: 16 }} />
+            ) : (
+               <TitleStyled>{title}</TitleStyled>
+            )}
             <SeperatorStyled />
             <DescriptionStyled>{description}</DescriptionStyled>
             <SeperatorStyled />

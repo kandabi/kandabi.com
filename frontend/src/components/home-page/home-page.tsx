@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Leva } from 'leva';
+import useRefs from 'react-use-refs';
 import styled from 'styled-components';
 
 import { HeroScene, CenterScene } from 'components/scenes';
@@ -11,6 +12,7 @@ import { ContactSection } from 'components/home-page/contact-section';
 import { ParallaxViewport } from 'components/common/parallax';
 import { IProject, IProjectTag } from 'types/project';
 import { Footer } from 'components/common/footer';
+import { Preload } from '@react-three/drei';
 
 const HomePageStyled = styled.div`
    position: absolute;
@@ -24,21 +26,21 @@ interface IHomePage {
 }
 
 const HomePage = ({ projects, projectTags }: IHomePage) => {
-   const glHeroViewport = useRef<HTMLDivElement>(null);
-   const glCenterViewport = useRef<HTMLDivElement>(null);
+   const [containerRef, glHeroRef, glCenterRef] = useRefs<HTMLDivElement>(null);
 
    return (
-      <HomePageStyled>
+      <HomePageStyled ref={containerRef}>
          <Header variant={HeaderVariants.STICKY} />
          <ParallaxViewport distanceToCamera={6}>
-            <HeroSection glViewport={glHeroViewport} />
-            <CenterSection glViewport={glCenterViewport} projects={projects} projectTags={projectTags} />
+            <HeroSection glViewport={glHeroRef} />
+            <CenterSection glViewport={glCenterRef} projects={projects} projectTags={projectTags} />
             <ContactSection />
             <Footer />
          </ParallaxViewport>
-         <Canvas>
-            <HeroScene glViewport={glHeroViewport} />
-            <CenterScene glViewport={glCenterViewport} />
+         <Canvas eventSource={containerRef as any}>
+            <HeroScene glViewport={glHeroRef} />
+            <CenterScene glViewport={glCenterRef} />
+            <Preload all />
          </Canvas>
          <Leva hidden />
       </HomePageStyled>

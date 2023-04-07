@@ -10,16 +10,16 @@ import { ProjectType } from '../project-type';
 import { ProjectTag } from '../project-tag';
 
 const cardHoverStyles = [
-   'rotateX(0deg) rotateY(0deg) translate3d(-10px, 0, -8px)',
-   'rotateX(2deg) rotateY(1deg) translate3d(-10px, 0, -4px)',
-   'rotateX(1deg) rotateY(0deg) translate3d(-10px, 0, 0px)',
-   'rotateX(0deg) rotateY(0deg) translate3d(-10px, 0, 0px)',
+   'rotateX(0deg) rotateY(0deg) translate3d(-10px, -8px, -8px)',
+   'rotateX(2deg) rotateY(1deg) translate3d(-10px, -8px, -4px)',
+   'rotateX(1deg) rotateY(0deg) translate3d(-10px, -8px, 0px)',
+   'rotateX(0deg) rotateY(0deg) translate3d(-10px, -8px, 0px)',
 ];
 
 const ProjectItemStyled = styled(animated.div)`
-   transition: box-shadow 0.5s ease-out;
    background: linear-gradient(180deg, #212e52 57.76%, #344982 100%);
    box-shadow: 1px 2px 2px 2px rgba(0, 0, 0, 0.3);
+   transition: box-shadow 0.5s ease-out;
    transform-style: preserve-3d;
    border-radius: 0px 25px;
    pointer-events: initial;

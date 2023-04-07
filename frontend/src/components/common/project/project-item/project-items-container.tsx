@@ -8,6 +8,7 @@ const ContainerStyled = styled.div`
    height: 100%;
    width: 68%;
    left: -15px;
+   top: -10px;
 `;
 
 const ItemsContainerStyled = styled.div`
@@ -16,12 +17,17 @@ const ItemsContainerStyled = styled.div`
    border-radius: 0px 25px;
    padding-right: 5px;
    padding-left: 10px;
+   padding-top: 10px;
    perspective: 300px;
    overflow-y: scroll;
    position: relative;
    display: grid;
    height: 100%;
    gap: 25px 0;
+
+   &::-webkit-scrollbar-track {
+      margin-top: 8px;
+   }
 `;
 
 const InnerShadowStyled = styled.div`
