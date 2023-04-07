@@ -62,7 +62,7 @@ const ProjectsSection = ({ projects, projectTags }: IProjectsSection) => {
             </ProjectFiltersStyled>
             <ProjectsContainerStyled>
                <ProjectItemsContainer projects={projects} />
-               <ProjectItemSelection project={projects[0]} />
+               {projects.length > 0 && <ProjectItemSelection project={projects[0]} />}
             </ProjectsContainerStyled>
          </Section>
       </ProjectsStyled>
