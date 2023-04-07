@@ -3,7 +3,7 @@ import { GetStaticProps } from 'next';
 import { TagsApi } from 'api/tags';
 import { ProjectsApi } from 'api/projects';
 import { HomePage } from 'components/home-page';
-import { IProjectsContainer } from 'components/home-page/center-section/projects-section/projects-container';
+import { IProjectsSection } from 'components/home-page/center-section/projects-section';
 import { IProject, IProjectTag } from 'types/project';
 
 interface IIndex {
@@ -15,7 +15,7 @@ const Index = ({ projects, projectTags }: IIndex) => {
    return <HomePage projects={projects} projectTags={projectTags} />;
 };
 
-const getStaticProps: GetStaticProps<IProjectsContainer> = async () => {
+const getStaticProps: GetStaticProps<IProjectsSection> = async () => {
    let projects: IProject[] = [];
    let projectTags: IProjectTag[] = [];
    const jwtToken = process.env.JWT_API_TOKEN!;

@@ -1,5 +1,5 @@
 import { RefObject } from 'react';
-import { LinearGradient, Shapes, Viewport } from 'components/common/webgl';
+import { Shapes, Viewport } from 'components/common/webgl';
 
 interface IHeroScene {
    glViewport: RefObject<HTMLDivElement>;

@@ -70,3 +70,4 @@ const ProjectsSection = ({ projects, projectTags }: IProjectsSection) => {
 };
 
 export { ProjectsSection };
+export type { IProjectsSection };

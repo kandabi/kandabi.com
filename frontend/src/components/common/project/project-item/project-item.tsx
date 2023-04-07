@@ -6,8 +6,8 @@ import { Image } from 'components/common/image';
 import { getMediaItemUrl } from 'utils/getMediaItemUrl';
 import { IProject } from 'types/project';
 import { styles } from 'styles';
-import { ProjectType } from '../project-type';
-import { ProjectTag } from '../project-tag';
+import { ProjectType } from 'components/common/project/project-type';
+import { ProjectTag } from 'components/common/project/project-tag';
 
 const cardHoverStyles = [
    'rotateX(0deg) rotateY(0deg) translate3d(-10px, -8px, -8px)',
