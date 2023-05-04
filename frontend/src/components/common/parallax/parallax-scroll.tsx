@@ -7,9 +7,10 @@ interface IParallaxScrollStyled {
 }
 
 const ParallaxScrollStyled = styled.div<IParallaxScrollStyled>`
-   transform: ${({ $_distanceToCamera = 1, $_scale = 2 }) =>
-      `translateZ(-${$_distanceToCamera}px) scale(${$_scale})`};
+   /* transform: ${({ $_distanceToCamera = 1, $_scale = 2 }) =>
+      `translateZ(-${$_distanceToCamera}px) scale(${$_scale})`}; */
    height: ${({ $_height = '100%' }) => $_height};
+   transform-style: preserve-3d;
    justify-content: center;
    align-items: center;
    position: relative;

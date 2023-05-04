@@ -2,7 +2,6 @@ import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { useTexture } from '@react-three/drei';
 import { BufferGeometry, Float32BufferAttribute, ShaderMaterial, Vector3 } from 'three';
-import { useControls } from 'leva';
 
 import shapesTexture from 'assets/textures/shapes.png';
 
@@ -56,7 +55,7 @@ interface IShape {
    size: number;
 }
 
-const updateShapes = (time: number, shapes: IShape[]) => {
+const updateShapes = (shapes: IShape[], time: number) => {
    for (const shape of shapes) {
       shape.rotation = time * shape.speed * 0.25;
       shape.position.y += shape.speed * 0.001;
@@ -90,8 +89,8 @@ const updateGeometry = (shapes: IShape[], geometry: BufferGeometry) => {
    for (let s of shapes) {
       positions.push(s.position.x, s.position.y, s.position.z);
       angles.push(s.rotation);
-      sizes.push(s.size);
       types.push(s.type);
+      sizes.push(s.size);
    }
 
    geometry.setAttribute('position', new Float32BufferAttribute(positions, 3));
@@ -100,8 +99,8 @@ const updateGeometry = (shapes: IShape[], geometry: BufferGeometry) => {
    geometry.setAttribute('size', new Float32BufferAttribute(sizes, 1));
 
    geometry.attributes.position.needsUpdate = true;
-   geometry.attributes.type.needsUpdate = true;
    geometry.attributes.angle.needsUpdate = true;
+   geometry.attributes.type.needsUpdate = true;
    geometry.attributes.size.needsUpdate = true;
 };
 
@@ -111,23 +110,9 @@ const Shapes = () => {
    const shapesRef = useRef<IShape[]>([]);
    const texture = useTexture(shapesTexture.src);
 
-   useControls('Shapes', {
-      sizeMultiplier: {
-         value: SIZE_MULTIPLIER,
-         min: 0,
-         max: 100,
-         step: 1,
-         onChange: (value) => {
-            if (shaderRef?.current) {
-               shaderRef.current.uniforms.uSizeMultiplier.value = value;
-            }
-         },
-      },
-   });
-
    useFrame(({ clock: { elapsedTime } }) => {
       shapesRef.current = addShapes(shapesRef.current);
-      updateShapes(elapsedTime, shapesRef.current);
+      updateShapes(shapesRef.current, elapsedTime);
       updateGeometry(shapesRef.current, geometryRef.current);
    });
 
@@ -137,12 +122,12 @@ const Shapes = () => {
          <shaderMaterial
             uniforms={{
                uTexture: { value: texture },
-               uCount: { value: 1 / TOTAL_SHAPE_TYPES },
                uSizeMultiplier: { value: SIZE_MULTIPLIER },
+               uCount: { value: 1 / TOTAL_SHAPE_TYPES },
                uOpacity: { value: OPACITY },
             }}
-            vertexShader={vertexShader}
             fragmentShader={fragmentShader}
+            vertexShader={vertexShader}
             transparent={true}
             depthWrite={false}
             depthTest={true}

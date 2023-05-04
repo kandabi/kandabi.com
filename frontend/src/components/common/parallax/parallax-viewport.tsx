@@ -11,6 +11,7 @@ interface IViewportStyled {
 
 const ViewportStyled = styled.div<IViewportStyled>`
    perspective: ${({ distanceToCamera = 2 }) => `${distanceToCamera}px`};
+   transform-style: preserve-3d;
    scroll-behavior: smooth;
    overflow-x: hidden;
    overflow-y: auto;

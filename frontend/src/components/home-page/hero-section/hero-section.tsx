@@ -13,11 +13,13 @@ import { useDeviceDetector } from 'hooks/useDeviceDetector';
 import { Image } from 'components/common/image';
 
 import arrowDown from 'assets/svgs/arrow-down.svg';
+import { ParallaxLayer } from '@react-spring/parallax';
 
 const HeroStyled = styled.div`
    position: relative;
    display: flex;
-   height: 120vh;
+   /* height: 120vh; */
+   height: 100%;
    width: 100%;
 `;
 
@@ -123,7 +125,9 @@ const HeroSection = ({ glViewport }: IHeroSection) => {
    const handleScrollDown = () => setGoToScrollPosition(0.35);
 
    return (
-      <ParallaxScroll distanceToCamera={distanceToCamera} scale={scale} height='120vh'>
+      // <ParallaxScroll distanceToCamera={distanceToCamera} scale={scale} height='120vh'>
+
+      <ParallaxLayer factor={1.0} offset={0} speed={0.4}>
          <Header variant={HeaderVariants.FIXED} />
          <HeroStyled>
             <Section gap={gap}>
@@ -144,7 +148,8 @@ const HeroSection = ({ glViewport }: IHeroSection) => {
             </Section>
             <GlViewStyled ref={glViewport} />
          </HeroStyled>
-      </ParallaxScroll>
+      </ParallaxLayer>
+      // </ParallaxScroll>
    );
 };
 
