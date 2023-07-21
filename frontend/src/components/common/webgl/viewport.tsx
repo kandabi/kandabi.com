@@ -1,13 +1,13 @@
-import { ReactNode, RefObject } from 'react';
+import { MutableRefObject, ReactNode } from 'react';
 import { View } from '@react-three/drei';
 
 interface IViewport {
-   glViewport: RefObject<HTMLDivElement>;
+   glViewport: MutableRefObject<HTMLDivElement>;
    children: ReactNode;
 }
 
 const Viewport = ({ glViewport, children }: IViewport) => {
-   return <View track={glViewport as any}>{children}</View>;
+   return <View track={glViewport}>{children}</View>;
 };
 
 export { Viewport };

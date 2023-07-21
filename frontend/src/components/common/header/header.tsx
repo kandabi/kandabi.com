@@ -119,6 +119,8 @@ const Header = ({ variant = HeaderVariants.FIXED }: IHeader) => {
       [setGoToScrollPosition]
    );
 
+   console.log('currentScrollPosition', currentScrollPosition, isActive);
+
    return (
       <HeaderStyled headerStyles={styles?.headerStyles} $_opacity={styles?.opacity} top={styles?.top}>
          <Logo />

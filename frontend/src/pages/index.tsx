@@ -26,13 +26,13 @@ const getStaticProps: GetStaticProps<IProjectsSection> = async () => {
    try {
       projectTags = await TagsApi.get(jwtToken);
    } catch (ex) {
-      console.error('Failed to fetch projects.', ex);
+      // console.error('Failed to fetch projects.', ex);
    }
 
    try {
       projects = await ProjectsApi.get(jwtToken);
    } catch (ex) {
-      console.error('Failed to fetch projects.', ex);
+      // console.error('Failed to fetch projects.', ex);
    }
 
    return {

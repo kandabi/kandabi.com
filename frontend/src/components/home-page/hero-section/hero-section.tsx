@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import { useStore } from 'store';
 import { styles } from 'styles';
-import { ParallaxScroll } from 'components/common/parallax';
 import { Header } from 'components/common/header';
 import { HeaderVariants } from 'components/common/header';
 import { Section } from 'components/common/section';
@@ -18,7 +17,6 @@ import { ParallaxLayer } from '@react-spring/parallax';
 const HeroStyled = styled.div`
    position: relative;
    display: flex;
-   /* height: 120vh; */
    height: 100%;
    width: 100%;
 `;
@@ -57,11 +55,11 @@ const TechStyled = styled(CoolText)`
    font-size: 14px;
 `;
 
-interface ICenterContaineStyled {
+interface ICenterContainerStyled {
    $_isVisible: boolean;
 }
 
-const CenterContaineStyled = styled.div<ICenterContaineStyled>`
+const CenterContainerStyled = styled.div<ICenterContainerStyled>`
    opacity: ${({ $_isVisible }) => ($_isVisible ? 1 : 0)};
    transition: opacity 0.2s ease-out;
    ${styles.flex.center}
@@ -125,8 +123,6 @@ const HeroSection = ({ glViewport }: IHeroSection) => {
    const handleScrollDown = () => setGoToScrollPosition(0.35);
 
    return (
-      // <ParallaxScroll distanceToCamera={distanceToCamera} scale={scale} height='120vh'>
-
       <ParallaxLayer factor={1.0} offset={0} speed={0.4}>
          <Header variant={HeaderVariants.FIXED} />
          <HeroStyled>
@@ -138,18 +134,17 @@ const HeroSection = ({ glViewport }: IHeroSection) => {
                <TechStyled text='Javascript | Typescript | React | C# | Node.js | Three.js' />
                <Button onClick={handleScrollDown} text='My Work' styles={{ margin: '15px 0 0 0' }} />
                {!isMobile && (
-                  <CenterContaineStyled $_isVisible={currentScrollPosition < 0.2}>
+                  <CenterContainerStyled $_isVisible={currentScrollPosition < 0.2}>
                      <ScrollDownContainerStyled onClick={handleScrollDown}>
                         <ScrollDownTextStyled>Scroll Down</ScrollDownTextStyled>
                         <Image src={arrowDown.src} width={20} height={20} alt='down arrow' />
                      </ScrollDownContainerStyled>
-                  </CenterContaineStyled>
+                  </CenterContainerStyled>
                )}
             </Section>
             <GlViewStyled ref={glViewport} />
          </HeroStyled>
       </ParallaxLayer>
-      // </ParallaxScroll>
    );
 };
 

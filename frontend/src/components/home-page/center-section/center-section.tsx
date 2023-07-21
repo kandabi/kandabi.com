@@ -14,11 +14,8 @@ import waveMobile_2 from 'assets/svgs/wave-mobile-2.svg';
 import { ParallaxLayer } from '@react-spring/parallax';
 
 const CenterSectionStyled = styled.div`
-   /* position: absolute; */
    position: relative;
-   /* display: flex; */
-   height: 200%;
-   /* height: 200%; */
+   height: 100%;
    width: 100%;
 `;
 
@@ -26,7 +23,6 @@ const TopWaveStyled = styled(Image)`
    position: absolute;
    width: 100%;
    top: -75px;
-   z-index: 15;
    ${styles.breakpoints.sm} {
       top: -7%;
    }
@@ -37,9 +33,8 @@ const TopWaveStyled = styled(Image)`
 
 const BottomWaveStyled = styled(Image)`
    position: absolute;
-   top: 98%;
    width: 100%;
-   z-index: 15;
+   top: 98%;
    ${styles.breakpoints.md} {
       top: 95%;
    }
@@ -65,22 +60,22 @@ interface IProjectsAboutSection {
 const CenterSection = ({ glViewport, projects, projectTags }: IProjectsAboutSection) => {
    return (
       <ParallaxLayer factor={2.0} offset={0.99} speed={1.2}>
-         {/* <CenterSectionStyled> */}
-         <TopWaveStyled
-            sources={[{ src: waveDesktop_1.src, breakpoint: Breakpoints.lg }]}
-            alt='Wave top decoration'
-            src={waveMobile_1.src}
-            width={1920}
-         />
-         <ProjectsSection projects={projects} projectTags={projectTags} />
-         <BottomWaveStyled
-            sources={[{ src: waveDesktop_2.src, breakpoint: Breakpoints.lg }]}
-            alt='Wave bottom decoration'
-            src={waveMobile_2.src}
-            width={1920}
-         />
-         <GlViewStyled ref={glViewport as any} />
-         {/* </CenterSectionStyled> */}
+         <CenterSectionStyled>
+            <TopWaveStyled
+               sources={[{ src: waveDesktop_1.src, breakpoint: Breakpoints.lg }]}
+               alt='Wave top decoration'
+               src={waveMobile_1.src}
+               width={1920}
+            />
+            <ProjectsSection projects={projects} projectTags={projectTags} />
+            <BottomWaveStyled
+               sources={[{ src: waveDesktop_2.src, breakpoint: Breakpoints.lg }]}
+               alt='Wave bottom decoration'
+               src={waveMobile_2.src}
+               width={1920}
+            />
+            <GlViewStyled ref={glViewport} />
+         </CenterSectionStyled>
       </ParallaxLayer>
    );
 };

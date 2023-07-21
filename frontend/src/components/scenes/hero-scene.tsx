@@ -1,9 +1,9 @@
-import { RefObject } from 'react';
+import { MutableRefObject } from 'react';
 import { Viewport } from 'components/common/webgl';
 // import { Vector2 } from 'three';
 
 interface IHeroScene {
-   glViewport: RefObject<HTMLDivElement>;
+   glViewport: MutableRefObject<HTMLDivElement>;
 }
 
 const HeroScene = ({ glViewport }: IHeroScene) => {

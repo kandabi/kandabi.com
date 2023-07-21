@@ -1,8 +1,8 @@
-import { RefObject } from 'react';
-import { LinearGradient, Shapes, Viewport } from 'components/common/webgl';
+import { MutableRefObject } from 'react';
+import { Shapes, Viewport } from 'components/common/webgl';
 
 interface IHeroScene {
-   glViewport: RefObject<HTMLDivElement>;
+   glViewport: MutableRefObject<HTMLDivElement>;
 }
 
 const CenterScene = ({ glViewport }: IHeroScene) => {

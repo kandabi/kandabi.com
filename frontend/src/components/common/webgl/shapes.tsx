@@ -23,7 +23,7 @@ const vertexShader = /* glsl */ `
    varying float vType;
    
    void main() {
-       gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+       gl_Position = projectionMatrix * modelViewMatrix * vec4(position.xy, 0.0, 1.0);
        gl_PointSize = (size * uSizeMultiplier) / gl_Position.w;
        vAngle = vec2(cos(angle), sin(angle));
        vType = type;
@@ -87,13 +87,13 @@ const updateGeometry = (shapes: IShape[], geometry: BufferGeometry) => {
    const sizes: number[] = [];
 
    for (let s of shapes) {
-      positions.push(s.position.x, s.position.y, s.position.z);
+      positions.push(s.position.x, s.position.y);
       angles.push(s.rotation);
       types.push(s.type);
       sizes.push(s.size);
    }
 
-   geometry.setAttribute('position', new Float32BufferAttribute(positions, 3));
+   geometry.setAttribute('position', new Float32BufferAttribute(positions, 2));
    geometry.setAttribute('angle', new Float32BufferAttribute(angles, 1));
    geometry.setAttribute('type', new Float32BufferAttribute(types, 1));
    geometry.setAttribute('size', new Float32BufferAttribute(sizes, 1));
