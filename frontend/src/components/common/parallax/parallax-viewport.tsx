@@ -5,11 +5,11 @@ import styled from 'styled-components';
 import { useStore } from 'store';
 import { useDeviceDetector } from 'hooks/useDeviceDetector';
 
-interface IViewportStyled {
+interface ViewportStyledProps {
    distanceToCamera?: number;
 }
 
-const ViewportStyled = styled.div<IViewportStyled>`
+const ViewportStyled = styled.div<ViewportStyledProps>`
    perspective: ${({ distanceToCamera = 2 }) => `${distanceToCamera}px`};
    transform-style: preserve-3d;
    scroll-behavior: smooth;
@@ -21,12 +21,12 @@ const ViewportStyled = styled.div<IViewportStyled>`
    z-index: 5;
 `;
 
-interface IParallaxViewport {
+interface Props {
    distanceToCamera?: number;
    children?: any;
 }
 
-const ParallaxViewport = ({ distanceToCamera, children }: IParallaxViewport) => {
+export const ParallaxViewport = ({ distanceToCamera, children }: Props) => {
    const viewportRef = useRef<HTMLDivElement>(null);
    const { isDesktop } = useDeviceDetector();
    const { goToScrollPosition, setGoToScrollPosition, setCurrentScrollPosition } = useStore((state) => ({
@@ -68,5 +68,3 @@ const ParallaxViewport = ({ distanceToCamera, children }: IParallaxViewport) => 
       </ViewportStyled>
    );
 };
-
-export { ParallaxViewport };

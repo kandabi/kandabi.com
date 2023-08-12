@@ -1,6 +1,4 @@
-type HexColor = `#${string}`;
-
-enum Colors {
+export enum Color {
    white_100 = 'white_100',
    white_200 = 'white_200',
    white_300 = 'white_300',
@@ -24,7 +22,5 @@ enum Colors {
    red_200 = 'red_200',
 }
 
-type IColor = keyof typeof Colors | HexColor;
-
-export { Colors };
-export type { HexColor, IColor };
+export type HexColor = `#${string}`;
+export type ColorType = keyof typeof Color | HexColor;

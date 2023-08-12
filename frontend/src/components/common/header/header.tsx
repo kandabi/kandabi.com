@@ -2,7 +2,7 @@ import styled, { css, FlattenInterpolation, ThemeProps } from 'styled-components
 
 import { Gutters } from 'components/common/gutters';
 import { Navbar } from 'components/common/navbar';
-import { INavbarItem } from 'components/common/navbar';
+import { NavbarItemProps } from 'components/common/navbar';
 import { useMemo } from 'react';
 import { useStore } from 'store';
 import { NavbarItemVariants } from 'components/common/navbar/navbar-item';
@@ -16,13 +16,13 @@ const headerStyles = css`
    backdrop-filter: blur(6px);
 `;
 
-interface IHeaderStyled {
+interface HeaderStyledProps {
    headerStyles?: FlattenInterpolation<ThemeProps<any>>;
    $_opacity?: number;
    top?: string;
 }
 
-const HeaderStyled = styled.header<IHeaderStyled>`
+const HeaderStyled = styled.header<HeaderStyledProps>`
    transition: top 0.65s ease-out, opacity 0.5s ease-out;
    opacity: ${({ $_opacity = 1 }) => $_opacity};
    top: ${({ top = '0' }) => top};
@@ -36,11 +36,11 @@ const HeaderStyled = styled.header<IHeaderStyled>`
    ${Gutters}
 `;
 
-interface IHeaderProgressStyled {
+interface HeaderProgressStyledProps {
    $_width: string;
 }
 
-const HeaderProgressStyled = styled.div<IHeaderProgressStyled>`
+const HeaderProgressStyled = styled.div<HeaderProgressStyledProps>`
    border-bottom: 2px solid ${styles.color.grey_200};
    width: ${({ $_width }) => $_width};
    transition: width 0.6s ease-out;
@@ -50,7 +50,7 @@ const HeaderProgressStyled = styled.div<IHeaderProgressStyled>`
    left: 0;
 `;
 
-enum HeaderVariants {
+export enum HeaderVariants {
    FIXED = 'FIXED',
    STICKY = 'STICKY',
 }
@@ -93,11 +93,11 @@ const headerConfig: { [key in HeaderVariants]: { visible: IHeaderVariants; hidde
    },
 };
 
-interface IHeader {
+interface Props {
    variant: HeaderVariants;
 }
 
-const Header = ({ variant = HeaderVariants.FIXED }: IHeader) => {
+export const Header = ({ variant = HeaderVariants.FIXED }: Props) => {
    const { isMobile } = useDeviceDetector();
    const { currentScrollPosition, setGoToScrollPosition } = useStore((state) => ({
       currentScrollPosition: state.currentScrollPosition,
@@ -108,7 +108,7 @@ const Header = ({ variant = HeaderVariants.FIXED }: IHeader) => {
    const isActive = variant === HeaderVariants.FIXED || currentScrollPosition > 0.15;
    const styles = isActive ? config.visible : config.hidden;
 
-   const navbarItems: INavbarItem[] = useMemo(
+   const navbarItems: NavbarItemProps[] = useMemo(
       () => [
          { title: 'Home', onClick: () => setGoToScrollPosition(0) },
          { title: 'Projects', onClick: () => setGoToScrollPosition(0.35) },
@@ -129,5 +129,3 @@ const Header = ({ variant = HeaderVariants.FIXED }: IHeader) => {
       </HeaderStyled>
    );
 };
-
-export { Header, HeaderVariants };

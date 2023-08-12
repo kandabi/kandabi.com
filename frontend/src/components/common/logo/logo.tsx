@@ -11,11 +11,11 @@ const LogoStyled = styled(Image)`
    height: 26px;
 `;
 
-interface ILogo {
+interface Props {
    className?: string;
 }
 
-const Logo = ({ className }: ILogo) => {
+export const Logo = ({ className }: Props) => {
    const setGoToScrollPosition = useStore((state) => state.setGoToScrollPosition);
 
    return (
@@ -30,5 +30,3 @@ const Logo = ({ className }: ILogo) => {
       />
    );
 };
-
-export { Logo };

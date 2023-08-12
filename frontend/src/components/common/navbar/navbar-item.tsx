@@ -3,18 +3,18 @@ import styled from 'styled-components';
 import { Link } from 'components/common/link';
 import { Line } from 'components/common/line';
 
+export enum NavbarItemVariants {
+   Link = 'Link',
+   Scroll = 'Scroll',
+}
+
 const NavbarItemStyled = styled.li`
    position: relative;
    font-size: 18px;
    cursor: pointer;
 `;
 
-enum NavbarItemVariants {
-   Link = 'Link',
-   Scroll = 'Scroll',
-}
-
-interface INavbarItem {
+export interface NavbarItemProps {
    lineStyles?: { bottom: string };
    variant?: NavbarItemVariants;
    onClick?: () => void;
@@ -22,7 +22,13 @@ interface INavbarItem {
    link?: string;
 }
 
-const NavbarItem = ({ title, link, onClick, lineStyles, variant = NavbarItemVariants.Scroll }: INavbarItem) => {
+export const NavbarItem = ({
+   title,
+   link,
+   onClick,
+   lineStyles,
+   variant = NavbarItemVariants.Scroll,
+}: NavbarItemProps) => {
    return (
       <NavbarItemStyled>
          {variant === NavbarItemVariants.Link ? (
@@ -35,6 +41,3 @@ const NavbarItem = ({ title, link, onClick, lineStyles, variant = NavbarItemVari
       </NavbarItemStyled>
    );
 };
-
-export { NavbarItem, NavbarItemVariants };
-export type { INavbarItem };

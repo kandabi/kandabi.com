@@ -17,7 +17,7 @@ const TitleStyled = styled.h1`
    font-size: 5rem;
 `;
 
-const ContactSection = () => {
+export const ContactSection = () => {
    return (
       <ParallaxLayer offset={1.5} speed={0.4}>
          <ContactStyled>
@@ -27,5 +27,3 @@ const ContactSection = () => {
       </ParallaxLayer>
    );
 };
-
-export { ContactSection };

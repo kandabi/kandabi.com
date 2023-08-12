@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useStore } from 'store';
 import { Section } from 'components/common/section';
 import { Logo } from 'components/common/logo';
-import { Navbar, INavbarItem } from 'components/common/navbar';
+import { Navbar, NavbarItemProps } from 'components/common/navbar';
 import { NavbarItemVariants } from 'components/common/navbar/navbar-item';
 import { Link } from 'components/common/link';
 import { styles } from 'styles';
@@ -28,14 +28,14 @@ const NavbarFooterStyled = styled(Navbar)`
 const CopyrightStyled = styled.p`
    font-size: 12px;
    padding: 4px 6px;
-   ${styles.breakpoints.md} {
+   ${styles.breakpoint.md} {
       font-size: 14px;
    }
 `;
 
 const PreviousWebsiteStyled = styled(Link)`
    font-size: 12px;
-   ${styles.breakpoints.md} {
+   ${styles.breakpoint.md} {
       font-size: 14px;
    }
 `;
@@ -43,14 +43,14 @@ const PreviousWebsiteStyled = styled(Link)`
 const SitemapStyled = styled(Link)`
    color: ${styles.color.grey_100};
    font-size: 12px;
-   ${styles.breakpoints.md} {
+   ${styles.breakpoint.md} {
       font-size: 14px;
    }
 `;
 
-const Footer = () => {
+export const Footer = () => {
    const setGoToScrollPosition = useStore((state) => state.setGoToScrollPosition);
-   const navbarItems: INavbarItem[] = useMemo(
+   const navbarItems: NavbarItemProps[] = useMemo(
       () => [
          { title: 'Home', onClick: () => setGoToScrollPosition(0) },
          { title: 'Github', link: 'https://example.com', variant: NavbarItemVariants.Link },
@@ -79,5 +79,3 @@ const Footer = () => {
       </FooterStyled>
    );
 };
-
-export { Footer };

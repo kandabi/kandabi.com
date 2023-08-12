@@ -32,7 +32,7 @@ const TitleStyled = styled.h1`
    line-height: 1.16em;
    font-size: 42px;
    margin-top: 20vh;
-   ${styles.breakpoints.md} {
+   ${styles.breakpoint.md} {
       margin-top: initial;
       font-size: 55px;
    }
@@ -40,13 +40,13 @@ const TitleStyled = styled.h1`
 
 const SubtitleStyled = styled.p`
    font-size: 20px;
-   ${styles.breakpoints.md} {
+   ${styles.breakpoint.md} {
       font-size: 32px;
    }
 `;
 
 const TechStyled = styled(CoolText)`
-   ${styles.breakpoints.md} {
+   ${styles.breakpoint.md} {
       margin-top: 20px;
       font-size: 20px;
    }
@@ -55,11 +55,11 @@ const TechStyled = styled(CoolText)`
    font-size: 14px;
 `;
 
-interface ICenterContainerStyled {
+interface CenterContainerStyledProps {
    $_isVisible: boolean;
 }
 
-const CenterContainerStyled = styled.div<ICenterContainerStyled>`
+const CenterContainerStyled = styled.div<CenterContainerStyledProps>`
    opacity: ${({ $_isVisible }) => ($_isVisible ? 1 : 0)};
    transition: opacity 0.2s ease-out;
    ${styles.flex.center}
@@ -76,7 +76,7 @@ const ScrollDownContainerStyled = styled.div`
    gap: 6px;
    ${styles.flex.center}
 
-   ${styles.breakpoints.lg} {
+   ${styles.breakpoint.lg} {
       bottom: 200px;
    }
 
@@ -99,22 +99,22 @@ const GlViewStyled = styled.div`
    width: 100%;
 `;
 
-interface IHeroParallax {
+interface ParallaxConfigType {
    distanceToCamera: number;
    scale: number;
    gap: string;
 }
 
-const parallaxConfig: { desktop: IHeroParallax; mobile: IHeroParallax } = {
+const parallaxConfig: { desktop: ParallaxConfigType; mobile: ParallaxConfigType } = {
    desktop: { distanceToCamera: 4, scale: 1.7, gap: '20px' },
    mobile: { distanceToCamera: 3, scale: 1.5, gap: '8px' },
 };
 
-interface IHeroSection {
+interface Props {
    glViewport: RefObject<HTMLDivElement>;
 }
 
-const HeroSection = ({ glViewport }: IHeroSection) => {
+export const HeroSection = ({ glViewport }: Props) => {
    const { isMobile } = useDeviceDetector();
    const { distanceToCamera, scale, gap } = isMobile ? parallaxConfig.mobile : parallaxConfig.desktop;
    const currentScrollPosition = useStore(({ currentScrollPosition }) => currentScrollPosition);
@@ -147,5 +147,3 @@ const HeroSection = ({ glViewport }: IHeroSection) => {
       </ParallaxLayer>
    );
 };
-
-export { HeroSection };

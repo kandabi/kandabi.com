@@ -15,12 +15,12 @@ const ButtonContainerStyled = styled.div`
    gap: 6px;
 `;
 
-interface IProjectTypesContainer {
+interface Props {
    activeProjectType?: ProjectTypes;
    setActiveProjectType: (projectType: ProjectTypes | undefined) => void;
 }
 
-const ProjectTypesContainer = ({ activeProjectType, setActiveProjectType }: IProjectTypesContainer) => {
+const ProjectTypesContainer = ({ activeProjectType, setActiveProjectType }: Props) => {
    const handleProjectTypeClick = (projectType: ProjectTypes) => {
       setActiveProjectType(projectType !== activeProjectType ? projectType : undefined);
    };

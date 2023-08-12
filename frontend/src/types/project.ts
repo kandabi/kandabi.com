@@ -1,32 +1,29 @@
-import { IMediaItem } from './media-item';
-import { IColor } from './color';
+import { MediaItemProps } from './media-item';
+import { ColorType } from './color';
 
-enum ProjectTypes {
+export enum ProjectTypes {
    WEB = 'WEB',
    GAME = 'GAME',
    OTHER = 'OTHER',
 }
 
-interface IProjectTag {
+export interface ProjectTagProps {
    id?: number;
    attributes: {
       title: string;
-      color: IColor;
+      color: ColorType;
    };
 }
 
-interface IProject {
+export interface IProject {
    id: number;
    attributes: {
       description: string;
       title: string;
       link?: string;
       projectType: ProjectTypes;
-      tags: { data: IProjectTag[] };
-      thumbnail: IMediaItem;
-      video?: IMediaItem;
+      tags: { data: ProjectTagProps[] };
+      thumbnail: MediaItemProps;
+      video?: MediaItemProps;
    };
 }
-
-export { ProjectTypes };
-export type { IProject, IProjectTag };

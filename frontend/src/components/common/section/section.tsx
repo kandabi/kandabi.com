@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import { Gutters } from 'components/common/gutters';
 import { styles } from 'styles';
 
-interface ISectionStyled {
+interface SectionStyledProps {
    gap?: string;
 }
 
-const SectionStyled = styled.section<ISectionStyled>`
+const SectionStyled = styled.section<SectionStyledProps>`
    gap: ${({ gap = '10px' }) => gap};
    flex-direction: column;
    z-index: 1;
@@ -16,12 +16,12 @@ const SectionStyled = styled.section<ISectionStyled>`
    ${Gutters}
 `;
 
-interface ISection {
+interface Props {
    children: ReactNode;
    gap?: string;
 }
 
-const Section = ({ children, gap }: ISection) => {
+const Section = ({ children, gap }: Props) => {
    return <SectionStyled gap={gap}>{children}</SectionStyled>;
 };
 

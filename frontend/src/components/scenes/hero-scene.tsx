@@ -2,11 +2,11 @@ import { MutableRefObject } from 'react';
 import { Viewport } from 'components/common/webgl';
 // import { Vector2 } from 'three';
 
-interface IHeroScene {
+interface Props {
    glViewport: MutableRefObject<HTMLDivElement>;
 }
 
-const HeroScene = ({ glViewport }: IHeroScene) => {
+export const HeroScene = ({ glViewport }: Props) => {
    return (
       <Viewport glViewport={glViewport}>
          <pointLight position={[3, 10, 15]} />
@@ -18,5 +18,3 @@ const HeroScene = ({ glViewport }: IHeroScene) => {
       </Viewport>
    );
 };
-
-export { HeroScene };

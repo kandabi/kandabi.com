@@ -1,9 +1,7 @@
 import { Color } from 'three';
 import { colorConfig } from 'styles';
-import { IColor } from 'types/color';
+import { ColorType } from 'types/color';
 
-const getColor = (color: IColor) => {
+export const getColor = (color: ColorType) => {
    return new Color(colorConfig[color] || color);
 };
-
-export { getColor };

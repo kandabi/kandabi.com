@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { NavbarItem, INavbarItem } from './navbar-item';
+import { NavbarItem, NavbarItemProps } from './navbar-item';
 
 const NavbarItemsStyled = styled.ul`
    pointer-events: initial;
@@ -9,13 +9,13 @@ const NavbarItemsStyled = styled.ul`
    gap: 5px 40px;
 `;
 
-interface INavbar {
+interface Props {
    lineStyles?: { bottom: string };
    className?: string;
-   items: INavbarItem[];
+   items: NavbarItemProps[];
 }
 
-const Navbar = ({ className, lineStyles, items }: INavbar) => {
+export const Navbar = ({ className, lineStyles, items }: Props) => {
    return (
       <nav className={className}>
          <NavbarItemsStyled>
@@ -26,5 +26,3 @@ const Navbar = ({ className, lineStyles, items }: INavbar) => {
       </nav>
    );
 };
-
-export { Navbar };

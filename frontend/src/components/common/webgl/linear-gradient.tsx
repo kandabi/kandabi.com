@@ -2,7 +2,7 @@ import { useControls } from 'leva';
 import { useRef } from 'react';
 import { colorConfig } from 'styles';
 import { Color, ShaderMaterial, Vector2 } from 'three';
-import { IColor } from 'types/color';
+import { ColorType } from 'types/color';
 import { getColor } from 'utils/getColor';
 
 const vertexShader = `
@@ -40,8 +40,8 @@ interface ILinearGradient {
    baseStrength: number;
    strength?: number;
    length?: number;
-   topColor: IColor;
-   bottomColor: IColor;
+   topColor: ColorType;
+   bottomColor: ColorType;
    size?: Vector2;
 }
 

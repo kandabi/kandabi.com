@@ -2,9 +2,9 @@ import { RefObject } from 'react';
 import styled from 'styled-components';
 
 import { styles } from 'styles';
-import { Breakpoints } from 'styles/breakpoints';
+import { Breakpoint } from 'styles/breakpoints';
 import { ProjectsSection } from './projects-section';
-import { IProject, IProjectTag } from 'types/project';
+import { IProject, ProjectTagProps } from 'types/project';
 import { Image } from 'components/common/image';
 
 import waveDesktop_1 from 'assets/svgs/wave-desktop-1.svg';
@@ -23,10 +23,10 @@ const TopWaveStyled = styled(Image)`
    position: absolute;
    width: 100%;
    top: -75px;
-   ${styles.breakpoints.sm} {
+   ${styles.breakpoint.sm} {
       top: -7%;
    }
-   ${styles.breakpoints.lg} {
+   ${styles.breakpoint.lg} {
       top: -5%;
    }
 `;
@@ -35,11 +35,11 @@ const BottomWaveStyled = styled(Image)`
    position: absolute;
    width: 100%;
    top: 98%;
-   ${styles.breakpoints.md} {
+   ${styles.breakpoint.md} {
       top: 95%;
    }
 
-   ${styles.breakpoints.lg} {
+   ${styles.breakpoint.lg} {
       top: 92%;
    }
 `;
@@ -54,7 +54,7 @@ const GlViewStyled = styled.div`
 interface IProjectsAboutSection {
    glViewport: RefObject<HTMLDivElement>;
    projects: IProject[];
-   projectTags: IProjectTag[];
+   projectTags: ProjectTagProps[];
 }
 
 const CenterSection = ({ glViewport, projects, projectTags }: IProjectsAboutSection) => {
@@ -62,14 +62,14 @@ const CenterSection = ({ glViewport, projects, projectTags }: IProjectsAboutSect
       <ParallaxLayer factor={2.0} offset={0.99} speed={1.2}>
          <CenterSectionStyled>
             <TopWaveStyled
-               sources={[{ src: waveDesktop_1.src, breakpoint: Breakpoints.lg }]}
+               sources={[{ src: waveDesktop_1.src, breakpoint: Breakpoint.lg }]}
                alt='Wave top decoration'
                src={waveMobile_1.src}
                width={1920}
             />
             <ProjectsSection projects={projects} projectTags={projectTags} />
             <BottomWaveStyled
-               sources={[{ src: waveDesktop_2.src, breakpoint: Breakpoints.lg }]}
+               sources={[{ src: waveDesktop_2.src, breakpoint: Breakpoint.lg }]}
                alt='Wave bottom decoration'
                src={waveMobile_2.src}
                width={1920}

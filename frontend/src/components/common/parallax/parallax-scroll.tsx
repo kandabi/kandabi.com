@@ -19,19 +19,17 @@ const ParallaxScrollStyled = styled.div<IParallaxScrollStyled>`
    z-index: -1;
 `;
 
-interface IParallaxScroll {
+interface Props {
    distanceToCamera?: number;
    children?: any;
    height?: string;
    scale?: number;
 }
 
-const ParallaxScroll = ({ distanceToCamera, height, scale, children }: IParallaxScroll) => {
+export const ParallaxScroll = ({ distanceToCamera, height, scale, children }: Props) => {
    return (
       <ParallaxScrollStyled $_distanceToCamera={distanceToCamera} $_height={height} $_scale={scale}>
          {children}
       </ParallaxScrollStyled>
    );
 };
-
-export { ParallaxScroll };

@@ -7,12 +7,10 @@ interface StoreState {
    setGoToScrollPosition: (position: number) => void;
 }
 
-const useStore = create<StoreState>((set) => ({
+export const useStore = create<StoreState>((set) => ({
    currentScrollPosition: 0,
    setCurrentScrollPosition: (position: number) => set(() => ({ currentScrollPosition: position })),
 
    goToScrollPosition: -1,
    setGoToScrollPosition: (position: number) => set(() => ({ goToScrollPosition: position })),
 }));
-
-export { useStore };

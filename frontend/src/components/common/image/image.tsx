@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import { Breakpoints, mediaSizesConfig } from 'styles';
 
-interface IImageStyled {
+interface ImageStyledProps {
    height?: number | string;
    width: number | string;
 }
 
-const ImageStyled = styled.img<IImageStyled>`
+const ImageStyled = styled.img<ImageStyledProps>`
    width: ${({ width = '100%' }) => {
       if (typeof width === 'string') return width;
       else return `${width}px`;
@@ -17,7 +17,7 @@ const ImageStyled = styled.img<IImageStyled>`
    }};
 `;
 
-interface IImage {
+interface Props {
    sources?: { src: string; breakpoint: Breakpoints }[];
    loading?: 'eager' | 'lazy';
    onClick?: () => void;
@@ -28,7 +28,7 @@ interface IImage {
    alt: string;
 }
 
-const Image = ({ onClick, className, height, width, alt, src, sources, loading = 'lazy' }: IImage) => {
+export const Image = ({ onClick, className, height, width, alt, src, sources, loading = 'lazy' }: Props) => {
    return (
       <picture>
          {sources?.map((item, index) => (
@@ -46,5 +46,3 @@ const Image = ({ onClick, className, height, width, alt, src, sources, loading =
       </picture>
    );
 };
-
-export { Image };

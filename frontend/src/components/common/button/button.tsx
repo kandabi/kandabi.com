@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { CoolText } from 'components/common/cool-text';
-import { IColor } from 'types/color';
+import { ColorType } from 'types/color';
 import { styles } from 'styles';
 
 const ButtonTextStyled = styled(CoolText)`
@@ -8,11 +8,11 @@ const ButtonTextStyled = styled(CoolText)`
    z-index: 1;
 `;
 
-interface IButtonBackgroundStyled {
-   backgroundColor?: IColor;
+interface ButtonBackgroundStyledProps {
+   backgroundColor?: ColorType;
 }
 
-const ButtonBackgroundStyled = styled.div<IButtonBackgroundStyled>`
+const ButtonBackgroundStyled = styled.div<ButtonBackgroundStyledProps>`
    background-color: ${({ backgroundColor = 'yellow_100' }) => styles.color[backgroundColor] || backgroundColor};
    transition: width 0.35s ease-out, opacity 0.25s ease-out;
    transform: translate(-50%, -50%);
@@ -25,15 +25,15 @@ const ButtonBackgroundStyled = styled.div<IButtonBackgroundStyled>`
    top: 50%;
 `;
 
-interface IButtonStyled {
-   borderColor?: IColor;
+interface ButtonStyledProps {
+   borderColor?: ColorType;
    isDisabled?: boolean;
    $_padding?: string;
    $_height?: string;
    $_margin?: string;
 }
 
-const ButtonStyled = styled.button<IButtonStyled>`
+const ButtonStyled = styled.button<ButtonStyledProps>`
    border: 2px solid ${({ borderColor = 'yellow_100' }) => styles.color[borderColor] || borderColor};
    padding: ${({ $_padding = '0 32px' }) => $_padding};
    height: ${({ $_height = '40px' }) => $_height};
@@ -63,7 +63,7 @@ const ButtonStyled = styled.button<IButtonStyled>`
    }
 `;
 
-interface IButton {
+interface Props {
    onClick?: () => void;
    isSelected?: boolean;
    isDisabled?: boolean;
@@ -74,11 +74,11 @@ interface IButton {
       padding?: string;
       height?: string;
       margin?: string;
-      color?: IColor;
+      color?: ColorType;
    };
 }
 
-const Button = ({ onClick, isSelected, isDisabled, className, text, styles }: IButton) => {
+export const Button = ({ onClick, isSelected, isDisabled, className, text, styles }: Props) => {
    return (
       <ButtonStyled
          data-active={isSelected && !isDisabled}
@@ -95,5 +95,3 @@ const Button = ({ onClick, isSelected, isDisabled, className, text, styles }: IB
       </ButtonStyled>
    );
 };
-
-export { Button };

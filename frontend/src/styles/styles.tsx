@@ -1,50 +1,50 @@
 import { colorConfig } from './colors';
-import { Colors, HexColor } from 'types/color';
-import { breakpointConfig, Breakpoints } from './breakpoints';
+import { Color, HexColor } from 'types/color';
+import { breakpointConfig, Breakpoint } from './breakpoints';
 
-type IFlex = {
+type FlexProps = {
    justifyContent: string;
    alignItems: string;
    display: string;
 };
 
-type IFont = {
+type FontProps = {
    fontFamily: string;
    fontWeight: string;
    fontStyle: string;
 };
 
-type IGuttersBreakpoints = Breakpoints.xs | Breakpoints.md | Breakpoints.lg;
+type GuttersBreakpoint = Breakpoint.xs | Breakpoint.md | Breakpoint.lg;
 
-interface IStyles {
-   breakpoints: { [key in Breakpoints]: string };
-   color: { [key in Colors]: HexColor };
-   gutters: { [key in IGuttersBreakpoints]: { width: string; padding: string } };
+interface StylesConfig {
+   breakpoint: { [key in Breakpoint]: string };
+   color: { [key in Color]: HexColor };
+   gutters: { [key in GuttersBreakpoint]: { width: string; padding: string } };
    font: {
-      catamaran: IFont;
-      rubik: IFont;
+      catamaran: FontProps;
+      rubik: FontProps;
    };
    flex: {
-      between: IFlex;
-      center: IFlex;
-      start: IFlex;
+      between: FlexProps;
+      center: FlexProps;
+      start: FlexProps;
    };
 }
 
-const styles: IStyles = {
-   breakpoints: breakpointConfig,
+export const styles: StylesConfig = {
+   breakpoint: breakpointConfig,
    color: colorConfig,
 
    gutters: {
-      [Breakpoints.xs]: {
+      [Breakpoint.xs]: {
          width: 'calc(100% - 56px)',
          padding: '0 28px',
       },
-      [Breakpoints.md]: {
+      [Breakpoint.md]: {
          width: 'calc(100% - 15vw - var(--scrollbar-width))',
          padding: '0 7.5vw',
       },
-      [Breakpoints.lg]: {
+      [Breakpoint.lg]: {
          width: 'calc(100% - 20vw - var(--scrollbar-width))',
          padding: '0 10vw',
       },
@@ -81,6 +81,3 @@ const styles: IStyles = {
       },
    },
 };
-
-export { styles };
-export type { IStyles };

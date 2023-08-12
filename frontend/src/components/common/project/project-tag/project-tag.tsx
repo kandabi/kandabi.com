@@ -1,8 +1,8 @@
 import { Button } from 'components/common/button';
-import { IProjectTag } from 'types/project';
+import { ProjectTagProps } from 'types/project';
 
 interface Props {
-   projectTag: IProjectTag;
+   projectTag: ProjectTagProps;
    onClick?: () => void;
    isSelected?: boolean;
    isDisabled?: boolean;

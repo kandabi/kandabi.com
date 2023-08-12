@@ -6,11 +6,11 @@ import { styles } from 'styles';
 
 import linkIcon from 'assets/svgs/link.svg';
 
-interface ILinkStyled {
+interface LinkStyledProps {
    fontSize?: number;
 }
 
-const LinkStyled = styled.a<ILinkStyled>`
+const LinkStyled = styled.a<LinkStyledProps>`
    font-size: ${({ fontSize = 18 }) => `${fontSize}px`};
    ${styles.flex.center};
    position: relative;
@@ -18,7 +18,7 @@ const LinkStyled = styled.a<ILinkStyled>`
    gap: 3px;
 `;
 
-interface ILink {
+interface Props {
    className?: string;
    text: string;
    href: string;
@@ -30,7 +30,7 @@ interface ILink {
    };
 }
 
-const Link = ({ className, text, href, styles, showLine = true }: ILink) => {
+export const Link = ({ className, text, href, styles, showLine = true }: Props) => {
    const renderLink = () => {
       return (
          <>
@@ -46,5 +46,3 @@ const Link = ({ className, text, href, styles, showLine = true }: ILink) => {
       </LinkStyled>
    );
 };
-
-export { Link };

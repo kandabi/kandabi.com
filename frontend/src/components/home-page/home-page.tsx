@@ -9,7 +9,7 @@ import { Header, HeaderVariants } from 'components/common/header';
 import { HeroSection } from 'components/home-page/hero-section';
 import { CenterSection } from 'components/home-page/center-section';
 import { ContactSection } from 'components/home-page/contact-section';
-import { IProject, IProjectTag } from 'types/project';
+import { IProject, ProjectTagProps } from 'types/project';
 import { useRef } from 'react';
 
 const HomePageStyled = styled.div`
@@ -22,12 +22,12 @@ const ParallaxStyled = styled(Parallax)`
    z-index: 1;
 `;
 
-interface IHomePage {
+interface Props {
    projects: IProject[];
-   projectTags: IProjectTag[];
+   projectTags: ProjectTagProps[];
 }
 
-const HomePage = ({ projects, projectTags }: IHomePage) => {
+export const HomePage = ({ projects, projectTags }: Props) => {
    const [containerRef, glHeroRef, glCenterRef] = useRefs<HTMLDivElement>(null!);
    const parallax = useRef<IParallax>(null);
 
@@ -47,5 +47,3 @@ const HomePage = ({ projects, projectTags }: IHomePage) => {
       </HomePageStyled>
    );
 };
-
-export { HomePage };

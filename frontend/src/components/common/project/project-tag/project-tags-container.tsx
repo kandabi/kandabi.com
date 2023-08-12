@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { styles } from 'styles';
 import { ProjectTag } from './project-tag';
-import { IProjectTag } from 'types/project';
+import { ProjectTagProps } from 'types/project';
 
 const ProjectTypesContainerStyled = styled.div`
    ${styles.flex.start};
@@ -15,15 +15,15 @@ const ButtonContainerStyled = styled.div`
    gap: 6px;
 `;
 
-interface IProjectTagsContainer {
-   projectTags: IProjectTag[];
-   activeProjectTags: IProjectTag[];
-   setActiveProjectTags: (projectType: IProjectTag[]) => void;
+interface Props {
+   projectTags: ProjectTagProps[];
+   activeProjectTags: ProjectTagProps[];
+   setActiveProjectTags: (projectType: ProjectTagProps[]) => void;
 }
 
-const ProjectTagsContainer = ({ projectTags, activeProjectTags, setActiveProjectTags }: IProjectTagsContainer) => {
-   const handleProjectTagClick = (projectTag: IProjectTag) => {
-      const newProjectTags: IProjectTag[] = activeProjectTags.includes(projectTag)
+const ProjectTagsContainer = ({ projectTags, activeProjectTags, setActiveProjectTags }: Props) => {
+   const handleProjectTagClick = (projectTag: ProjectTagProps) => {
+      const newProjectTags: ProjectTagProps[] = activeProjectTags.includes(projectTag)
          ? activeProjectTags.filter((activeTag) => projectTag !== activeTag)
          : [...activeProjectTags, projectTag];
 

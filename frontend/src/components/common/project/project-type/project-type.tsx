@@ -1,21 +1,21 @@
 import { Button } from 'components/common/button';
-import { IColor } from 'types/color';
+import { ColorType } from 'types/color';
 import { ProjectTypes } from 'types/project';
 
-const projectTypeConfig: { [key in ProjectTypes]: { color: IColor; text: string } } = {
+const projectTypeConfig: { [key in ProjectTypes]: { color: ColorType; text: string } } = {
    [ProjectTypes.WEB]: { color: 'blue_100', text: 'Web' },
    [ProjectTypes.GAME]: { color: 'orange_100', text: 'Game' },
    [ProjectTypes.OTHER]: { color: 'yellow_100', text: 'Other' },
 };
 
-interface IProjectType {
+interface Props {
    projectType: ProjectTypes;
    onClick?: () => void;
    isSelected?: boolean;
    isDisabled?: boolean;
 }
 
-const ProjectType = ({ projectType, onClick, isSelected, isDisabled }: IProjectType) => {
+const ProjectType = ({ projectType, onClick, isSelected, isDisabled }: Props) => {
    const { color, text } = projectTypeConfig[projectType];
 
    return (

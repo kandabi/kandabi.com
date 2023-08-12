@@ -1,3 +1,1 @@
-import { Header, HeaderVariants } from './header';
-
-export { Header, HeaderVariants };
+export * from './header';

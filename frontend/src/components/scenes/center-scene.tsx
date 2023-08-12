@@ -1,11 +1,11 @@
 import { MutableRefObject } from 'react';
 import { Shapes, Viewport } from 'components/common/webgl';
 
-interface IHeroScene {
+interface Props {
    glViewport: MutableRefObject<HTMLDivElement>;
 }
 
-const CenterScene = ({ glViewport }: IHeroScene) => {
+export const CenterScene = ({ glViewport }: Props) => {
    return (
       <Viewport glViewport={glViewport}>
          <Shapes />
@@ -13,5 +13,3 @@ const CenterScene = ({ glViewport }: IHeroScene) => {
       </Viewport>
    );
 };
-
-export { CenterScene };

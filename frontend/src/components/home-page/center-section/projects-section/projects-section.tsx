@@ -5,7 +5,7 @@ import { ProjectTypesContainer } from 'components/common/project/project-type';
 import { ProjectTagsContainer } from 'components/common/project/project-tag';
 import { Section } from 'components/common/section';
 import { styles } from 'styles';
-import { IProject, IProjectTag, ProjectTypes } from 'types/project';
+import { IProject, ProjectTagProps, ProjectTypes } from 'types/project';
 import { ProjectItemSelection, ProjectItemsContainer } from 'components/common/project/project-item';
 
 const ProjectsStyled = styled.div`
@@ -19,7 +19,7 @@ const TitleStyled = styled.h2`
    color: ${styles.color.white_100};
    line-height: 1.16em;
    font-size: 40px;
-   ${styles.breakpoints.md} {
+   ${styles.breakpoint.md} {
       font-size: 52px;
    }
 `;
@@ -36,13 +36,13 @@ const ProjectFiltersStyled = styled.div`
    gap: 40px;
 `;
 
-interface IProjectsSection {
+export interface ProjectsSectionProps {
    projects: IProject[];
-   projectTags: IProjectTag[];
+   projectTags: ProjectTagProps[];
 }
 
-const ProjectsSection = ({ projects, projectTags }: IProjectsSection) => {
-   const [activeProjectTags, setActiveProjectTags] = useState<IProjectTag[]>([]);
+export const ProjectsSection = ({ projects, projectTags }: ProjectsSectionProps) => {
+   const [activeProjectTags, setActiveProjectTags] = useState<ProjectTagProps[]>([]);
    const [activeProjectType, setActiveProjectType] = useState<ProjectTypes>();
 
    return (
@@ -68,6 +68,3 @@ const ProjectsSection = ({ projects, projectTags }: IProjectsSection) => {
       </ProjectsStyled>
    );
 };
-
-export { ProjectsSection };
-export type { IProjectsSection };

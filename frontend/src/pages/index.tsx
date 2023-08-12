@@ -3,21 +3,12 @@ import { GetStaticProps } from 'next';
 import { TagsApi } from 'api/tags';
 import { ProjectsApi } from 'api/projects';
 import { HomePage } from 'components/home-page';
-import { IProjectsSection } from 'components/home-page/center-section/projects-section';
-import { IProject, IProjectTag } from 'types/project';
+import { ProjectsSectionProps } from 'components/home-page/center-section/projects-section';
+import { IProject, ProjectTagProps } from 'types/project';
 
-interface IIndex {
-   projects: IProject[];
-   projectTags: IProjectTag[];
-}
-
-const Index = ({ projects, projectTags }: IIndex) => {
-   return <HomePage projects={projects} projectTags={projectTags} />;
-};
-
-const getStaticProps: GetStaticProps<IProjectsSection> = async () => {
+export const getStaticProps: GetStaticProps<ProjectsSectionProps> = async () => {
    let projects: IProject[] = [];
-   let projectTags: IProjectTag[] = [];
+   let projectTags: ProjectTagProps[] = [];
    const jwtToken = process.env.JWT_API_TOKEN!;
    if (!jwtToken) {
       console.error('Missing JWT_API_TOKEN, have you added it to environment variables??');
@@ -43,5 +34,13 @@ const getStaticProps: GetStaticProps<IProjectsSection> = async () => {
    };
 };
 
+interface Props {
+   projects: IProject[];
+   projectTags: ProjectTagProps[];
+}
+
+const Index = ({ projects, projectTags }: Props) => {
+   return <HomePage projects={projects} projectTags={projectTags} />;
+};
+
 export default Index;
-export { getStaticProps };

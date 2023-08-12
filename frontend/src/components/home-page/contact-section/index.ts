@@ -1,3 +1,1 @@
-import { ContactSection } from './contact-section';
-
-export { ContactSection };
+export * from './contact-section';

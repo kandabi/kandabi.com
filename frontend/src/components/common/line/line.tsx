@@ -2,11 +2,11 @@ import { ReactNode } from 'react';
 import styled from 'styled-components';
 import { styles } from 'styles';
 
-interface ILineStyled {
+interface LineStyledProps {
    bottom?: string;
 }
 
-const LineStyled = styled.div<ILineStyled>`
+const LineStyled = styled.div<LineStyledProps>`
    ${styles.flex.center}
    padding: 4px 6px;
    gap: 3px;
@@ -30,15 +30,13 @@ const LineStyled = styled.div<ILineStyled>`
    }
 `;
 
-interface ILine {
+interface Props {
    children: ReactNode;
    styles?: {
       bottom?: string;
    };
 }
 
-const Line = ({ children, styles }: ILine) => {
+export const Line = ({ children, styles }: Props) => {
    return <LineStyled bottom={styles?.bottom}>{children}</LineStyled>;
 };
-
-export { Line };

@@ -4,11 +4,11 @@ import { styles } from 'styles';
 const Gutters: FlattenInterpolation<ThemeProps<any>> = css`
    ${styles.gutters.xs};
 
-   ${styles.breakpoints.md} {
+   ${styles.breakpoint.md} {
       ${styles.gutters.md};
    }
 
-   ${styles.breakpoints.lg} {
+   ${styles.breakpoint.lg} {
       ${styles.gutters.lg};
    }
 `;

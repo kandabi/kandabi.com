@@ -39,11 +39,11 @@ const InnerShadowStyled = styled.div`
    inset: 0px;
 `;
 
-interface IProjectItemsContainer {
+interface Props {
    projects: IProject[];
 }
 
-const ProjectItemsContainer = ({ projects }: IProjectItemsContainer) => {
+const ProjectItemsContainer = ({ projects }: Props) => {
    return (
       <ContainerStyled>
          <ItemsContainerStyled>

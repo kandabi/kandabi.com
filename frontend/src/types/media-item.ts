@@ -1,5 +1,3 @@
-interface IMediaItem {
+export interface MediaItemProps {
    data: { attributes: { url: string } };
 }
-
-export type { IMediaItem };
