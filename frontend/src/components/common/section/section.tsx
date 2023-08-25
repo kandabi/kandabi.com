@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 import { styles } from 'styles';
-import { Gutters } from 'components/common/gutters';
+import { Gutters } from 'components/common/Gutters';
 
 interface SectionStyledProps {
     gap?: string;
@@ -21,8 +21,6 @@ interface Props {
     gap?: string;
 }
 
-const Section = ({ children, gap }: Props) => {
+export const Section = ({ children, gap }: Props) => {
     return <SectionStyled gap={gap}>{children}</SectionStyled>;
 };
-
-export { Section };

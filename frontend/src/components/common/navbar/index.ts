@@ -1,2 +1,2 @@
-export * from './navbar';
-export * from './navbar-item';
+export * from './Navbar';
+export * from './NavbarItem';

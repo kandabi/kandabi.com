@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { NavbarItem, NavbarItemProps } from './navbar-item';
+import { NavbarItem, NavbarItemProps } from './NavbarItem';
 
 const NavbarItemsStyled = styled.ul`
     pointer-events: initial;

@@ -103,7 +103,7 @@ const updateGeometry = (shapes: IShape[], geometry: BufferGeometry) => {
     geometry.attributes.size.needsUpdate = true;
 };
 
-const Shapes = () => {
+export const Shapes = () => {
     const geometryRef = useRef<BufferGeometry>(null!);
     const shaderRef = useRef<ShaderMaterial>(null);
     const shapesRef = useRef<IShape[]>([]);
@@ -135,5 +135,3 @@ const Shapes = () => {
         </points>
     );
 };
-
-export { Shapes };

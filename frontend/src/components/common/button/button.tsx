@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { styles } from 'styles';
-import { CoolText } from 'components/common/cool-text';
+import { CoolText } from 'components/common/CoolText';
 import { ColorType } from 'utils/color';
 
 const ButtonTextStyled = styled(CoolText)`

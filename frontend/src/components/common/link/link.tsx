@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { styles } from 'styles';
-import { Image } from 'components/common/image';
-import { Line } from 'components/common/line';
+import { Image } from 'components/common/Image';
+import { Line } from 'components/common/Line';
 import linkIcon from 'assets/svgs/link.svg';
 
 interface LinkStyledProps {

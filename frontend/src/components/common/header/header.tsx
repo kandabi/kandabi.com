@@ -3,11 +3,11 @@ import styled, { FlattenInterpolation, ThemeProps, css } from 'styled-components
 import { useDeviceDetector } from 'hooks/useDeviceDetector';
 import { useStore } from 'store';
 import { styles } from 'styles';
-import { Gutters } from 'components/common/gutters';
-import { Logo } from 'components/common/logo';
-import { Navbar } from 'components/common/navbar';
-import { NavbarItemProps } from 'components/common/navbar';
-import { NavbarItemVariants } from 'components/common/navbar/navbar-item';
+import { Gutters } from 'components/common/Gutters';
+import { Logo } from 'components/common/Logo';
+import { Navbar } from 'components/common/Navbar';
+import { NavbarItemProps } from 'components/common/Navbar';
+import { NavbarItemVariants } from 'components/common/Navbar/NavbarItem';
 
 const headerStyles = css`
     background: linear-gradient(346deg, rgba(15, 23, 42, 0.75) 10%, rgba(15, 23, 42, 0.75) 65%);
@@ -117,8 +117,6 @@ export const Header = ({ variant = HeaderVariants.FIXED }: Props) => {
         ],
         [setGoToScrollPosition],
     );
-
-    console.log('currentScrollPosition', currentScrollPosition, isActive);
 
     return (
         <HeaderStyled headerStyles={styles?.headerStyles} $_opacity={styles?.opacity} top={styles?.top}>

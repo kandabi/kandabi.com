@@ -1,12 +1,12 @@
 import { useMemo } from 'react';
 import styled from 'styled-components';
+import { Section } from 'Components/Common/Section';
 import { useStore } from 'store';
 import { styles } from 'styles';
-import { Link } from 'components/common/link';
-import { Logo } from 'components/common/logo';
-import { Navbar, NavbarItemProps } from 'components/common/navbar';
-import { NavbarItemVariants } from 'components/common/navbar/navbar-item';
-import { Section } from 'components/common/section';
+import { Link } from 'components/common/Link';
+import { Logo } from 'components/common/Logo';
+import { Navbar, NavbarItemProps } from 'components/common/Navbar';
+import { NavbarItemVariants } from 'components/common/Navbar/NavbarItem';
 
 const FooterStyled = styled.footer`
     filter: drop-shadow(0px -3px 5px rgba(0, 0, 0, 0.3));

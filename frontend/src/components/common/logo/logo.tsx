@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useStore } from 'store';
-import { Image } from 'components/common/image';
+import { Image } from 'components/common/Image';
 import logoFull from 'assets/svgs/logo-full.svg';
 
 const LogoStyled = styled(Image)`

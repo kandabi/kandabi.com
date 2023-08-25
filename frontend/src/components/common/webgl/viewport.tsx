@@ -6,8 +6,6 @@ interface IViewport {
     children: ReactNode;
 }
 
-const Viewport = ({ glViewport, children }: IViewport) => {
+export const Viewport = ({ glViewport, children }: IViewport) => {
     return <View track={glViewport}>{children}</View>;
 };
-
-export { Viewport };

@@ -1,3 +1,1 @@
-import { Gutters } from './gutters';
-
-export { Gutters };
+export * from './Gutters';

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Breakpoints, mediaSizesConfig } from 'styles';
+import { mediaSizesConfig } from 'styles';
 
 interface ImageStyledProps {
     height?: number | string;

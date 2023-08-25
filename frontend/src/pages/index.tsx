@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next';
-import { HomePage } from 'components/home-page';
-import { ProjectsSectionProps } from 'components/home-page/center-section/projects-section';
+import { HomePage } from 'components/HomePage';
+import { ProjectsSectionProps } from 'components/HomePage/CenterSection/ProjectsSection';
 import { IProject, ProjectTagProps } from 'types/project';
 import { ProjectsApi } from 'api/projects';
 import { TagsApi } from 'api/tags';

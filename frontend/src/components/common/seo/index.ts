@@ -1,3 +1,1 @@
-import { Seo } from './seo';
-
-export { Seo };
+export * from './Seo';
