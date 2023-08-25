@@ -1,5 +1,5 @@
-import { useControls } from 'leva';
 import { useRef } from 'react';
+import { useControls } from 'leva';
 import { Color, ShaderMaterial, Vector2 } from 'three';
 import { ColorType, colorConfig, getThreeColor } from 'utils/color';
 
@@ -35,93 +35,93 @@ const fragmentShader = `
 `;
 
 interface ILinearGradient {
-   baseStrength: number;
-   strength?: number;
-   length?: number;
-   topColor: ColorType;
-   bottomColor: ColorType;
-   size?: Vector2;
+    baseStrength: number;
+    strength?: number;
+    length?: number;
+    topColor: ColorType;
+    bottomColor: ColorType;
+    size?: Vector2;
 }
 
 const LinearGradient = ({
-   topColor,
-   bottomColor,
-   baseStrength = 0.06,
-   strength = 1,
-   length = 1,
-   size = new Vector2(14, 8),
+    topColor,
+    bottomColor,
+    baseStrength = 0.06,
+    strength = 1,
+    length = 1,
+    size = new Vector2(14, 8),
 }: ILinearGradient) => {
-   const shaderRef = useRef<ShaderMaterial>(null);
+    const shaderRef = useRef<ShaderMaterial>(null);
 
-   useControls('Gradient', {
-      uTopColor: {
-         value: colorConfig[topColor] || topColor,
-         onChange: (value) => {
-            if (shaderRef?.current) {
-               shaderRef.current.uniforms.uTopColor.value = new Color(value);
-            }
-         },
-      },
-      uBottomColor: {
-         value: colorConfig[bottomColor] || bottomColor,
-         onChange: (value) => {
-            if (shaderRef?.current) {
-               shaderRef.current.uniforms.uBottomColor.value = new Color(value);
-            }
-         },
-      },
-      length: {
-         value: length,
-         min: -3.0,
-         max: 3,
-         step: 0.01,
-         onChange: (value) => {
-            if (shaderRef?.current) {
-               shaderRef.current.uniforms.uLength.value = value;
-            }
-         },
-      },
-      strength: {
-         value: strength,
-         min: 0,
-         max: 20,
-         step: 0.01,
-         onChange: (value) => {
-            if (shaderRef?.current) {
-               shaderRef.current.uniforms.uStrength.value = value;
-            }
-         },
-      },
-      baseStrength: {
-         value: baseStrength,
-         min: 0,
-         max: 1,
-         step: 0.01,
-         onChange: (value) => {
-            if (shaderRef?.current) {
-               shaderRef.current.uniforms.uBaseStrength.value = value;
-            }
-         },
-      },
-   });
+    useControls('Gradient', {
+        uTopColor: {
+            value: colorConfig[topColor] || topColor,
+            onChange: value => {
+                if (shaderRef?.current) {
+                    shaderRef.current.uniforms.uTopColor.value = new Color(value);
+                }
+            },
+        },
+        uBottomColor: {
+            value: colorConfig[bottomColor] || bottomColor,
+            onChange: value => {
+                if (shaderRef?.current) {
+                    shaderRef.current.uniforms.uBottomColor.value = new Color(value);
+                }
+            },
+        },
+        length: {
+            value: length,
+            min: -3.0,
+            max: 3,
+            step: 0.01,
+            onChange: value => {
+                if (shaderRef?.current) {
+                    shaderRef.current.uniforms.uLength.value = value;
+                }
+            },
+        },
+        strength: {
+            value: strength,
+            min: 0,
+            max: 20,
+            step: 0.01,
+            onChange: value => {
+                if (shaderRef?.current) {
+                    shaderRef.current.uniforms.uStrength.value = value;
+                }
+            },
+        },
+        baseStrength: {
+            value: baseStrength,
+            min: 0,
+            max: 1,
+            step: 0.01,
+            onChange: value => {
+                if (shaderRef?.current) {
+                    shaderRef.current.uniforms.uBaseStrength.value = value;
+                }
+            },
+        },
+    });
 
-   return (
-      <mesh>
-         <planeGeometry args={[size.x, size.y]} />
-         <shaderMaterial
-            ref={shaderRef}
-            vertexShader={vertexShader}
-            fragmentShader={fragmentShader}
-            uniforms={{
-               uTopColor: { value: getThreeColor(topColor) },
-               uBottomColor: { value: getThreeColor(bottomColor) },
-               uBaseStrength: { value: baseStrength },
-               uStrength: { value: strength },
-               uLength: { value: 2.0 },
-            }}
-         />
-      </mesh>
-   );
+    return (
+        <mesh>
+            <planeGeometry args={[size.x, size.y]} />
+            <shaderMaterial
+                ref={shaderRef}
+                vertexShader={vertexShader}
+                fragmentShader={fragmentShader}
+                uniforms={{
+                    uTopColor: { value: getThreeColor(topColor) },
+                    uBottomColor: { value: getThreeColor(bottomColor) },
+                    uBaseStrength: { value: baseStrength },
+                    uStrength: { value: strength },
+                    uLength: { value: 2.0 },
+                }}
+            />
+        </mesh>
+    );
 };
 
 export { LinearGradient };

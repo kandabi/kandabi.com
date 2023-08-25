@@ -1,4 +1,4 @@
-import { ParallaxViewport } from "./parallax-viewport";
-import { ParallaxScroll } from "./parallax-scroll";
+import { ParallaxScroll } from './parallax-scroll';
+import { ParallaxViewport } from './parallax-viewport';
 
 export { ParallaxViewport, ParallaxScroll };

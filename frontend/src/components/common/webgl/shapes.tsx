@@ -1,8 +1,7 @@
 import { useRef } from 'react';
-import { useFrame } from '@react-three/fiber';
 import { useTexture } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
 import { BufferGeometry, Float32BufferAttribute, ShaderMaterial, Vector3 } from 'three';
-
 import shapesTexture from 'assets/textures/shapes.png';
 
 const TOTAL_SHAPE_TYPES = 3;
@@ -48,93 +47,93 @@ const fragmentShader = /* glsl */ `
 `;
 
 interface IShape {
-   position: Vector3;
-   rotation: number;
-   speed: number;
-   type: number;
-   size: number;
+    position: Vector3;
+    rotation: number;
+    speed: number;
+    type: number;
+    size: number;
 }
 
 const updateShapes = (shapes: IShape[], time: number) => {
-   for (const shape of shapes) {
-      shape.rotation = time * shape.speed * 0.25;
-      shape.position.y += shape.speed * 0.001;
-      shape.position.x += Math.sin(shape.position.y + time * 0.001) * 0.0004;
-   }
+    for (const shape of shapes) {
+        shape.rotation = time * shape.speed * 0.25;
+        shape.position.y += shape.speed * 0.001;
+        shape.position.x += Math.sin(shape.position.y + time * 0.001) * 0.0004;
+    }
 };
 
 const addShapes = (shapes: IShape[]): IShape[] => {
-   const newShapes = shapes.filter((shape) => shape.position.y < 4);
+    const newShapes = shapes.filter(shape => shape.position.y < 4);
 
-   for (let i = newShapes.length; i < MAX_SHAPES; i++) {
-      const initialSize = (Math.random() + 0.2) * 3;
-      newShapes.push({
-         position: new Vector3((0.5 - Math.random()) * 7, -5 + 2 * (0.5 - Math.random()), 0),
-         type: Math.floor(Math.random() * 3) / TOTAL_SHAPE_TYPES,
-         size: initialSize * BASE_SIZE,
-         speed: 4 / initialSize,
-         rotation: 0,
-      });
-   }
+    for (let i = newShapes.length; i < MAX_SHAPES; i++) {
+        const initialSize = (Math.random() + 0.2) * 3;
+        newShapes.push({
+            position: new Vector3((0.5 - Math.random()) * 7, -5 + 2 * (0.5 - Math.random()), 0),
+            type: Math.floor(Math.random() * 3) / TOTAL_SHAPE_TYPES,
+            size: initialSize * BASE_SIZE,
+            speed: 4 / initialSize,
+            rotation: 0,
+        });
+    }
 
-   return newShapes;
+    return newShapes;
 };
 
 const updateGeometry = (shapes: IShape[], geometry: BufferGeometry) => {
-   const positions: number[] = [];
-   const angles: number[] = [];
-   const types: number[] = [];
-   const sizes: number[] = [];
+    const positions: number[] = [];
+    const angles: number[] = [];
+    const types: number[] = [];
+    const sizes: number[] = [];
 
-   for (let s of shapes) {
-      positions.push(s.position.x, s.position.y);
-      angles.push(s.rotation);
-      types.push(s.type);
-      sizes.push(s.size);
-   }
+    for (let s of shapes) {
+        positions.push(s.position.x, s.position.y);
+        angles.push(s.rotation);
+        types.push(s.type);
+        sizes.push(s.size);
+    }
 
-   geometry.setAttribute('position', new Float32BufferAttribute(positions, 2));
-   geometry.setAttribute('angle', new Float32BufferAttribute(angles, 1));
-   geometry.setAttribute('type', new Float32BufferAttribute(types, 1));
-   geometry.setAttribute('size', new Float32BufferAttribute(sizes, 1));
+    geometry.setAttribute('position', new Float32BufferAttribute(positions, 2));
+    geometry.setAttribute('angle', new Float32BufferAttribute(angles, 1));
+    geometry.setAttribute('type', new Float32BufferAttribute(types, 1));
+    geometry.setAttribute('size', new Float32BufferAttribute(sizes, 1));
 
-   geometry.attributes.position.needsUpdate = true;
-   geometry.attributes.angle.needsUpdate = true;
-   geometry.attributes.type.needsUpdate = true;
-   geometry.attributes.size.needsUpdate = true;
+    geometry.attributes.position.needsUpdate = true;
+    geometry.attributes.angle.needsUpdate = true;
+    geometry.attributes.type.needsUpdate = true;
+    geometry.attributes.size.needsUpdate = true;
 };
 
 const Shapes = () => {
-   const geometryRef = useRef<BufferGeometry>(null!);
-   const shaderRef = useRef<ShaderMaterial>(null);
-   const shapesRef = useRef<IShape[]>([]);
-   const texture = useTexture(shapesTexture.src);
+    const geometryRef = useRef<BufferGeometry>(null!);
+    const shaderRef = useRef<ShaderMaterial>(null);
+    const shapesRef = useRef<IShape[]>([]);
+    const texture = useTexture(shapesTexture.src);
 
-   useFrame(({ clock: { elapsedTime } }) => {
-      shapesRef.current = addShapes(shapesRef.current);
-      updateShapes(shapesRef.current, elapsedTime);
-      updateGeometry(shapesRef.current, geometryRef.current);
-   });
+    useFrame(({ clock: { elapsedTime } }) => {
+        shapesRef.current = addShapes(shapesRef.current);
+        updateShapes(shapesRef.current, elapsedTime);
+        updateGeometry(shapesRef.current, geometryRef.current);
+    });
 
-   return (
-      <points frustumCulled={false}>
-         <bufferGeometry ref={geometryRef} />
-         <shaderMaterial
-            uniforms={{
-               uTexture: { value: texture },
-               uSizeMultiplier: { value: SIZE_MULTIPLIER },
-               uCount: { value: 1 / TOTAL_SHAPE_TYPES },
-               uOpacity: { value: OPACITY },
-            }}
-            fragmentShader={fragmentShader}
-            vertexShader={vertexShader}
-            transparent={true}
-            depthWrite={false}
-            depthTest={true}
-            ref={shaderRef}
-         />
-      </points>
-   );
+    return (
+        <points frustumCulled={false}>
+            <bufferGeometry ref={geometryRef} />
+            <shaderMaterial
+                uniforms={{
+                    uTexture: { value: texture },
+                    uSizeMultiplier: { value: SIZE_MULTIPLIER },
+                    uCount: { value: 1 / TOTAL_SHAPE_TYPES },
+                    uOpacity: { value: OPACITY },
+                }}
+                fragmentShader={fragmentShader}
+                vertexShader={vertexShader}
+                transparent={true}
+                depthWrite={false}
+                depthTest={true}
+                ref={shaderRef}
+            />
+        </points>
+    );
 };
 
 export { Shapes };

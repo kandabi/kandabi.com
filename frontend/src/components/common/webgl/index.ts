@@ -1,5 +1,5 @@
 import { LinearGradient } from './linear-gradient';
-import { Viewport } from './viewport';
 import { Shapes } from './shapes';
+import { Viewport } from './viewport';
 
 export { LinearGradient, Viewport, Shapes };

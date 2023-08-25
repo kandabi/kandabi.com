@@ -1,3 +1,3 @@
 export interface MediaItemProps {
-   data: { attributes: { url: string } };
+    data: { attributes: { url: string } };
 }
