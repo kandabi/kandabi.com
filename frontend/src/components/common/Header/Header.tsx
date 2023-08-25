@@ -8,6 +8,7 @@ import { Navbar } from 'components/common/Navbar';
 import { NavbarItemProps } from 'components/common/Navbar';
 import { NavbarItemVariants } from 'components/common/Navbar/NavbarItem';
 import { styles } from 'utils/styles';
+import { MapConfig } from 'utils/types';
 
 const headerStyles = css`
     background: linear-gradient(346deg, rgba(15, 23, 42, 0.75) 10%, rgba(15, 23, 42, 0.75) 65%);
@@ -62,7 +63,7 @@ interface IHeaderVariants {
     top?: string;
 }
 
-const headerConfig: { [key in HeaderVariants]: { visible: IHeaderVariants; hidden?: IHeaderVariants } } = {
+const headerConfig: MapConfig<HeaderVariants, { visible: IHeaderVariants; hidden?: IHeaderVariants }> = {
     [HeaderVariants.FIXED]: {
         visible: {
             lineStyles: { bottom: '-12px' },

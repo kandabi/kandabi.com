@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { ProjectContainer, ProjectSelection } from 'components/common/Project/ProjectCard';
-import { ProjectTagContainer } from 'components/common/Project/ProjectTag';
-import { ProjectTypeContainer } from 'components/common/Project/ProjectType';
+import { ProjectContainer, ProjectProps, ProjectSelection } from 'components/common/Project/ProjectCard';
+import { ProjectTagContainer, ProjectTagProps } from 'components/common/Project/ProjectTag';
+import { ProjectType, ProjectTypeContainer } from 'components/common/Project/ProjectType';
 import { Section } from 'components/common/Section';
 import { styles } from 'utils/styles';
 
@@ -41,7 +41,7 @@ export interface ProjectsSectionProps {
 
 export const ProjectsSection = ({ projects, projectTags }: ProjectsSectionProps) => {
     const [activeProjectTags, setActiveProjectTags] = useState<ProjectTagProps[]>([]);
-    const [activeProjectType, setActiveProjectType] = useState<ProjectTypes>();
+    const [activeProjectType, setActiveProjectType] = useState<ProjectType>();
 
     return (
         <ProjectsStyled>

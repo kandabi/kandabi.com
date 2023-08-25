@@ -1,3 +1,4 @@
+import { MapConfig } from './types';
 import { Breakpoint, breakpointConfig } from 'utils/breakpoints';
 import { Color, HexColor, colorConfig } from 'utils/colors';
 
@@ -16,9 +17,9 @@ type FontProps = {
 type GuttersBreakpoint = Breakpoint.xs | Breakpoint.md | Breakpoint.lg;
 
 interface StylesConfig {
-    breakpoint: { [key in Breakpoint]: string };
-    color: { [key in Color]: HexColor };
-    gutters: { [key in GuttersBreakpoint]: { width: string; padding: string } };
+    breakpoint: MapConfig<Breakpoint, string>;
+    color: MapConfig<Color, HexColor>;
+    gutters: MapConfig<GuttersBreakpoint, { width: string; padding: string }>;
     font: {
         catamaran: FontProps;
         rubik: FontProps;
