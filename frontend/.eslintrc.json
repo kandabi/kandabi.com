@@ -1,9 +1,10 @@
 {
-  "extends": [ 
+  "extends": [
     "eslint:recommended",
     "next/core-web-vitals",
     "next",
-    "prettier"
+    "prettier",
+    "plugin:storybook/recommended"
   ],
   "env": {
     "browser": true,

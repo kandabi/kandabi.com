@@ -3,7 +3,6 @@ body {
    font-family: 'Rubik', Arial, sans-serif;
    -webkit-font-smoothing: subpixel-antialiased;
    -moz-osx-font-smoothing: grayscale;
-   // background-color: #0f243d;
    background: linear-gradient(180deg, #070d1c 0%, #002a68 100%);
    box-sizing: border-box;
    user-select: none;
@@ -53,15 +52,6 @@ a {
 ul,
 li {
    list-style-type: none;
-}
-
-button {
-   border-radius: 40px;
-   border-style: solid;
-   border-width: 2px;
-   position: relative;
-   background: none;
-   cursor: pointer;
 }
 
 img {

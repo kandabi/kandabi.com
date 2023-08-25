@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { CoolText } from 'components/common/cool-text';
-import { ColorType } from 'types/color';
 import { styles } from 'styles';
+import { ColorType } from 'utils/color';
 
 const ButtonTextStyled = styled(CoolText)`
    position: relative;
@@ -40,11 +40,14 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
    transition: transform 0.2s ease-out;
    margin: ${({ $_margin }) => $_margin};
    pointer-events: ${({ isDisabled }) => isDisabled && 'none'};
+   border-radius: 40px;
+   position: relative;
+   background: none;
+   cursor: pointer;
 
    &[data-active='true'],
    &:hover {
       ${ButtonTextStyled} {
-         font-weight: 600;
          color: black;
       }
 
@@ -64,11 +67,11 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
 `;
 
 interface Props {
+   text: string;
    onClick?: () => void;
    isSelected?: boolean;
    isDisabled?: boolean;
    className?: string;
-   text: string;
    styles?: {
       fontSize?: number;
       padding?: string;
@@ -78,7 +81,7 @@ interface Props {
    };
 }
 
-export const Button = ({ onClick, isSelected, isDisabled, className, text, styles }: Props) => {
+export const Button = ({ text, onClick, isSelected, isDisabled, className, styles }: Props) => {
    return (
       <ButtonStyled
          data-active={isSelected && !isDisabled}

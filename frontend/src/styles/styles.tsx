@@ -1,5 +1,4 @@
-import { colorConfig } from './colors';
-import { Color, HexColor } from 'types/color';
+import { Color, HexColor, colorConfig } from 'utils/color';
 import { breakpointConfig, Breakpoint } from './breakpoints';
 
 type FlexProps = {

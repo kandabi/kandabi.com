@@ -1,9 +1,7 @@
 import { useControls } from 'leva';
 import { useRef } from 'react';
-import { colorConfig } from 'styles';
 import { Color, ShaderMaterial, Vector2 } from 'three';
-import { ColorType } from 'types/color';
-import { getColor } from 'utils/getColor';
+import { ColorType, colorConfig, getThreeColor } from 'utils/color';
 
 const vertexShader = `
    varying vec2 vUv;
@@ -115,8 +113,8 @@ const LinearGradient = ({
             vertexShader={vertexShader}
             fragmentShader={fragmentShader}
             uniforms={{
-               uTopColor: { value: getColor(topColor) },
-               uBottomColor: { value: getColor(bottomColor) },
+               uTopColor: { value: getThreeColor(topColor) },
+               uBottomColor: { value: getThreeColor(bottomColor) },
                uBaseStrength: { value: baseStrength },
                uStrength: { value: strength },
                uLength: { value: 2.0 },

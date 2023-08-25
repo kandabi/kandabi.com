@@ -7,7 +7,8 @@
     "build": "next build",
     "export": "next build && next export",
     "start": "next start",
-    "open-browser": "start http://localhost:3000"
+    "open-browser": "start http://localhost:3000",
+    "storybook": "storybook dev -p 6006",
   },
   "dependencies": {
     "@react-spring/parallax": "^9.7.2",
@@ -26,6 +27,14 @@
     "zustand": "^4.3.2"
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^7.3.2",
+    "@storybook/addon-interactions": "^7.3.2",
+    "@storybook/addon-links": "^7.3.2",
+    "@storybook/addon-onboarding": "^1.0.8",
+    "@storybook/blocks": "^7.3.2",
+    "@storybook/nextjs": "^7.3.2",
+    "@storybook/react": "^7.3.2",
+    "@storybook/testing-library": "^0.2.0",
     "@types/lodash": "^4.14.191",
     "@types/node": "^18.11.18",
     "@types/react": "^18.0.27",
@@ -35,7 +44,9 @@
     "eslint": "^8.37.0",
     "eslint-config-next": "^13.3.0",
     "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-storybook": "^0.6.13",
     "sass": "^1.58.0",
+    "storybook": "^7.3.2",
     "typescript": "^5.1.0-dev.20230405"
   }
 }
