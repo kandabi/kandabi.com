@@ -1,5 +1,5 @@
 import { MutableRefObject } from 'react';
-import { Viewport } from 'Components/Common/Webgl';
+import { Viewport } from 'components/common/Webgl';
 
 // import { Vector2 } from 'three';
 

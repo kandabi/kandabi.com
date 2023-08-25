@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { Section } from 'Components/Common/Section';
 import { styles } from 'styles';
 import { ProjectItemContainer, ProjectItemSelection } from 'components/common/Project/ProjectItem';
 import { ProjectTagContainer } from 'components/common/Project/ProjectTag';
 import { ProjectTypeContainer } from 'components/common/Project/ProjectType';
+import { Section } from 'components/common/Section';
 import { IProject, ProjectTagProps, ProjectTypes } from 'types/project';
 
 const ProjectsStyled = styled.div`

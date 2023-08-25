@@ -1,7 +1,6 @@
 import { RefObject } from 'react';
 import { ParallaxLayer } from '@react-spring/parallax';
 import styled from 'styled-components';
-import { Section } from 'Components/Common/Section';
 import { useDeviceDetector } from 'hooks/useDeviceDetector';
 import { useStore } from 'store';
 import { styles } from 'styles';
@@ -10,6 +9,7 @@ import { CoolText } from 'components/common/CoolText';
 import { Header } from 'components/common/Header';
 import { HeaderVariants } from 'components/common/Header';
 import { Image } from 'components/common/Image';
+import { Section } from 'components/common/Section';
 import arrowDown from 'assets/svgs/arrow-down.svg';
 
 const HeroStyled = styled.div`

@@ -1,5 +1,5 @@
 import { MutableRefObject } from 'react';
-import { Shapes, Viewport } from 'Components/Common/Webgl';
+import { Shapes, Viewport } from 'components/common/Webgl';
 
 interface Props {
     glViewport: MutableRefObject<HTMLDivElement>;
