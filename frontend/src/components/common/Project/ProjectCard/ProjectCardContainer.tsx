@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Project, ProjectProps } from './Project';
+import { Project, ProjectProps } from './ProjectCard';
 
 const ContainerStyled = styled.div`
     position: relative;

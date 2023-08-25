@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ProjectProps } from './Project';
+import { ProjectProps } from './ProjectCard';
 import { Image } from 'components/common/Image';
 import { Link } from 'components/common/Link';
 import { ProjectTag } from 'components/common/Project/ProjectTag';
