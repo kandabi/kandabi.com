@@ -5,7 +5,7 @@ import { Section } from 'Components/Common/Section';
 import { useDeviceDetector } from 'hooks/useDeviceDetector';
 import { useStore } from 'store';
 import { styles } from 'styles';
-import { Button } from 'components/common/Button';
+import { Button } from 'components/Button';
 import { CoolText } from 'components/common/CoolText';
 import { Header } from 'components/common/Header';
 import { HeaderVariants } from 'components/common/Header';
