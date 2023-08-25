@@ -1,6 +1,6 @@
 import type { Preview } from '@storybook/react';
-import 'styles/globals.scss';
-import { Color, colorConfig } from '../src/utils/color';
+import 'pages/globals.scss';
+import { Color, colorConfig } from '../src/utils/colors';
 
 const preview: Preview = {
     parameters: {
