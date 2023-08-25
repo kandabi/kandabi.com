@@ -2,12 +2,12 @@ import { useMemo } from 'react';
 import styled, { FlattenInterpolation, ThemeProps, css } from 'styled-components';
 import { useDeviceDetector } from 'hooks/useDeviceDetector';
 import { useStore } from 'store';
-import { styles } from 'styles';
 import { Gutters } from 'components/common/Gutters';
 import { Logo } from 'components/common/Logo';
 import { Navbar } from 'components/common/Navbar';
 import { NavbarItemProps } from 'components/common/Navbar';
 import { NavbarItemVariants } from 'components/common/Navbar/NavbarItem';
+import { styles } from 'utils/styles';
 
 const headerStyles = css`
     background: linear-gradient(346deg, rgba(15, 23, 42, 0.75) 10%, rgba(15, 23, 42, 0.75) 65%);

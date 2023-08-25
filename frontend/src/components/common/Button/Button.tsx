@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { styles } from 'styles';
 import { CoolText } from 'components/common/CoolText';
-import { ColorType } from 'utils/color';
+import { ColorType } from 'utils/colors';
+import { styles } from 'utils/styles';
 
 const ButtonTextStyled = styled(CoolText)`
     position: relative;

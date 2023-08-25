@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { ProjectType } from './ProjectType';
-import { styles } from 'styles';
 import { ProjectTypes } from 'types/project';
+import { styles } from 'utils/styles';
 
 const ProjectTypesContainerStyled = styled.div`
     ${styles.flex.start};

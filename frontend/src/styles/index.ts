@@ -1,2 +1,1 @@
-export * from './styles';
-export * from './breakpoints';
+export * from '../utils/breakpoints';

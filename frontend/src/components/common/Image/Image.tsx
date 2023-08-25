@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { mediaSizesConfig } from 'styles';
+import { Breakpoint, mediaSizesConfig } from 'utils/breakpoints';
 
 interface ImageStyledProps {
     height?: number | string;
@@ -18,7 +18,7 @@ const ImageStyled = styled.img<ImageStyledProps>`
 `;
 
 interface Props {
-    sources?: { src: string; breakpoint: Breakpoints }[];
+    sources?: { src: string; breakpoint: Breakpoint }[];
     loading?: 'eager' | 'lazy';
     onClick?: () => void;
     className?: string;

@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { styles } from 'styles';
 import { Image } from 'components/common/Image';
 import { Link } from 'components/common/Link';
 import { ProjectTag } from 'components/common/Project/ProjectTag';
 import { ProjectType } from 'components/common/Project/ProjectType';
 import { IProject } from 'types/project';
 import { getMediaItemUrl } from 'utils/getMediaItemUrl';
+import { styles } from 'utils/styles';
 
 const ProjectItemSelectionStyled = styled.div`
     background: linear-gradient(180deg, #212e52 57.76%, #344982 100%);

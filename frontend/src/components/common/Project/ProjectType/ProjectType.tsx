@@ -1,6 +1,6 @@
 import { Button } from 'components/common/Button';
 import { ProjectTypes } from 'types/project';
-import { ColorType } from 'utils/color';
+import { ColorType } from 'utils/colors';
 
 const projectTypeConfig: { [key in ProjectTypes]: { color: ColorType; text: string } } = {
     [ProjectTypes.WEB]: { color: 'blue_100', text: 'Web' },

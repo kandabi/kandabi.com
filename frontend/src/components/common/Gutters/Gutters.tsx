@@ -1,5 +1,5 @@
 import { FlattenInterpolation, ThemeProps, css } from 'styled-components';
-import { styles } from 'styles';
+import { styles } from 'utils/styles';
 
 export const Gutters: FlattenInterpolation<ThemeProps<any>> = css`
     ${styles.gutters.xs};

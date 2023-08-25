@@ -4,10 +4,10 @@ import { IParallax, Parallax } from '@react-spring/parallax';
 import { Canvas } from '@react-three/fiber';
 import styled from 'styled-components';
 import { Leva } from 'leva';
+import { CenterSection } from 'components/HomePage/CenterSection';
+import { ContactSection } from 'components/HomePage/ContactSection';
+import { HeroSection } from 'components/HomePage/HeroSection';
 import { Header, HeaderVariants } from 'components/common/Header';
-import { CenterSection } from 'components/pages/HomePage/CenterSection';
-import { ContactSection } from 'components/pages/HomePage/ContactSection';
-import { HeroSection } from 'components/pages/HomePage/HeroSection';
 import { CenterScene, HeroScene } from 'components/scenes';
 import { IProject, ProjectTagProps } from 'types/project';
 

@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { animated, easings, useSpring } from '@react-spring/web';
 import styled from 'styled-components';
-import { styles } from 'styles';
 import { Image } from 'components/common/Image';
 import { ProjectTag } from 'components/common/Project/ProjectTag';
 import { ProjectType } from 'components/common/Project/ProjectType';
 import { IProject } from 'types/project';
 import { getMediaItemUrl } from 'utils/getMediaItemUrl';
+import { styles } from 'utils/styles';
 
 const cardHoverStyles = [
     'rotateX(0deg) rotateY(0deg) translate3d(-10px, -8px, -8px)',
