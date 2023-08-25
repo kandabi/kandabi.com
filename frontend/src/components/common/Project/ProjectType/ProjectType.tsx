@@ -1,4 +1,4 @@
-import { Button } from 'components/Button';
+import { Button } from 'components/common/Button';
 import { ProjectTypes } from 'types/project';
 import { ColorType } from 'utils/color';
 
