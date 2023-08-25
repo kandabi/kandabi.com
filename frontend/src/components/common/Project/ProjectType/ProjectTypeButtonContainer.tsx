@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { ProjectType } from './ProjectTypeButton';
-import { ProjectTypes } from 'components/common/Project/projectUtils';
+import { ProjectType } from './ProjectType';
+import { ProjectTypeButton } from './ProjectTypeButton';
 import { styles } from 'utils/styles';
 
 const ProjectTypesContainerStyled = styled.div`
@@ -15,12 +15,12 @@ const ButtonContainerStyled = styled.div`
 `;
 
 interface Props {
-    activeProjectType?: ProjectTypes;
-    setActiveProjectType: (projectType: ProjectTypes | undefined) => void;
+    activeProjectType?: ProjectType;
+    setActiveProjectType: (projectType: ProjectType | undefined) => void;
 }
 
 export const ProjectTypeContainer = ({ activeProjectType, setActiveProjectType }: Props) => {
-    const handleProjectTypeClick = (projectType: ProjectTypes) => {
+    const handleProjectTypeClick = (projectType: ProjectType) => {
         setActiveProjectType(projectType !== activeProjectType ? projectType : undefined);
     };
 
@@ -28,11 +28,11 @@ export const ProjectTypeContainer = ({ activeProjectType, setActiveProjectType }
         <ProjectTypesContainerStyled>
             <span>Project Type -</span>
             <ButtonContainerStyled>
-                {Object.keys(ProjectTypes).map(key => (
-                    <ProjectType
-                        onClick={() => handleProjectTypeClick(ProjectTypes[key])}
-                        isSelected={ProjectTypes[key] === activeProjectType}
-                        projectType={ProjectTypes[key]}
+                {Object.keys(ProjectType).map(key => (
+                    <ProjectTypeButton
+                        onClick={() => handleProjectTypeClick(ProjectType[key])}
+                        isSelected={ProjectType[key] === activeProjectType}
+                        projectType={ProjectType[key]}
                         key={key}
                     />
                 ))}

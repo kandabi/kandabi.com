@@ -3,7 +3,7 @@ import { animated, easings, useSpring } from '@react-spring/web';
 import styled from 'styled-components';
 import { Image } from 'components/common/Image';
 import { ProjectTag, ProjectTagProps } from 'components/common/Project/ProjectTag';
-import { ProjectType } from 'components/common/Project/ProjectTypeButton';
+import { ProjectType, ProjectTypeButton } from 'components/common/Project/ProjectType';
 import { MediaItemProps, getMediaItemUrl } from 'utils/mediaItem';
 import { styles } from 'utils/styles';
 
@@ -67,7 +67,7 @@ export interface ProjectProps {
     };
 }
 
-export const Project = ({ attributes }: ProjectProps) => {
+export const Project = ({ id, attributes }: ProjectProps) => {
     const { title, thumbnail, projectType, tags } = attributes;
     const [isHovering, setIsHovering] = useState<boolean>(false);
 
@@ -87,13 +87,14 @@ export const Project = ({ attributes }: ProjectProps) => {
                     output: cardHoverStyles,
                 }),
             }}
+            key={id}
         >
             <Image src={getMediaItemUrl(thumbnail)} width='100%' height={165} alt='Project thumbnail' />
             <ContentStyled>
                 <TitleStyled>{title}</TitleStyled>
                 <SeparatorStyled />
                 <TypeAndTagsContainer>
-                    <ProjectType projectType={projectType} isDisabled />
+                    <ProjectTypeButton projectType={projectType} isDisabled />
                     {tags.data.map(projectTag => (
                         <ProjectTag projectTag={projectTag} key={projectTag.id} isDisabled />
                     ))}

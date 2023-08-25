@@ -1,9 +1,9 @@
 import styled from 'styled-components';
+import { ProjectProps } from './Project';
 import { Image } from 'components/common/Image';
 import { Link } from 'components/common/Link';
 import { ProjectTag } from 'components/common/Project/ProjectTag';
-import { ProjectType } from 'components/common/Project/ProjectTypeButton';
-import { ProjectProps } from 'components/common/Project/projectUtils';
+import { ProjectTypeButton } from 'components/common/Project/ProjectType';
 import { getMediaItemUrl } from 'utils/mediaItem';
 import { styles } from 'utils/styles';
 
@@ -53,11 +53,11 @@ const ProjectTagsContainer = styled.div`
     gap:8px;
 `;
 
-interface IProjectItemSelection {
+interface Props {
     project: ProjectProps;
 }
 
-export const ProjectSelection = ({ project }: IProjectItemSelection) => {
+export const ProjectSelection = ({ project }: Props) => {
     const { thumbnail, title, description, projectType, tags, link } = project.attributes;
     // console.log('link', link);
 
@@ -74,7 +74,7 @@ export const ProjectSelection = ({ project }: IProjectItemSelection) => {
                 <DescriptionStyled>{description}</DescriptionStyled>
                 <SeparatorStyled />
                 <SmallTextStyled>Project Type -</SmallTextStyled>
-                <ProjectType projectType={projectType} isDisabled />
+                <ProjectTypeButton projectType={projectType} isDisabled />
                 <SmallTextStyled>Project Tags -</SmallTextStyled>
                 <ProjectTagsContainer>
                     {tags.data.map(projectTag => (

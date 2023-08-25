@@ -1,11 +1,6 @@
+import { ProjectType } from './ProjectType';
 import { Button } from 'components/common/Button';
 import { ColorType } from 'utils/colors';
-
-export enum ProjectType {
-    WEB = 'WEB',
-    GAME = 'GAME',
-    OTHER = 'OTHER',
-}
 
 const projectTypeConfig: { [key in ProjectType]: { color: ColorType; text: string } } = {
     [ProjectType.WEB]: { color: 'blue_100', text: 'Web' },
@@ -20,7 +15,7 @@ interface Props {
     isDisabled?: boolean;
 }
 
-export const ProjectType = ({ projectType, onClick, isSelected, isDisabled }: Props) => {
+export const ProjectTypeButton = ({ projectType, onClick, isSelected, isDisabled }: Props) => {
     const { color, text } = projectTypeConfig[projectType];
 
     return (

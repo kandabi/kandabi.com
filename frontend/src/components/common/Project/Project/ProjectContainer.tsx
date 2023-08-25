@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import { Project } from './Project';
-import { ProjectProps } from 'components/common/Project/projectUtils';
+import { Project, ProjectProps } from './Project';
 
 const ContainerStyled = styled.div`
     position: relative;
@@ -46,29 +45,8 @@ export const ProjectContainer = ({ projects }: Props) => {
     return (
         <ContainerStyled>
             <ItemsContainerStyled>
-                {projects.map(project => (
-                    <Project project={project} key={project.id} />
-                ))}
-                {projects.map(project => (
-                    <Project project={project} key={project.id} />
-                ))}
-                {projects.map(project => (
-                    <Project project={project} key={project.id} />
-                ))}
-                {projects.map(project => (
-                    <Project project={project} key={project.id} />
-                ))}
-                {projects.map(project => (
-                    <Project project={project} key={project.id} />
-                ))}
-                {projects.map(project => (
-                    <Project project={project} key={project.id} />
-                ))}
-                {projects.map(project => (
-                    <Project project={project} key={project.id} />
-                ))}
-                {projects.map(project => (
-                    <Project project={project} key={project.id} />
+                {projects.map(({ id, attributes }) => (
+                    <Project id={id} attributes={attributes} />
                 ))}
             </ItemsContainerStyled>
             <InnerShadowStyled />

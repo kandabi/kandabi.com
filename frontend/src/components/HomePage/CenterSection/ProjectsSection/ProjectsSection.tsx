@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { ProjectContainer, ProjectSelection } from 'components/common/Project/Project';
 import { ProjectTagContainer } from 'components/common/Project/ProjectTag';
-import { ProjectTypeContainer } from 'components/common/Project/ProjectTypeButton';
+import { ProjectTypeContainer } from 'components/common/Project/ProjectType';
 import { ProjectProps, ProjectTagProps, ProjectTypes } from 'components/common/Project/projectUtils';
 import { Section } from 'components/common/Section';
 import { styles } from 'utils/styles';
