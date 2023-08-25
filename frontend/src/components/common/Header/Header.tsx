@@ -3,7 +3,7 @@ import styled, { FlattenInterpolation, ThemeProps, css } from 'styled-components
 import { useDeviceDetector } from 'hooks/useDeviceDetector';
 import { useStore } from 'store';
 import { styles } from 'styles';
-import { Gutters } from 'components/Gutters';
+import { Gutters } from 'components/common/Gutters';
 import { Logo } from 'components/common/Logo';
 import { Navbar } from 'components/common/Navbar';
 import { NavbarItemProps } from 'components/common/Navbar';
