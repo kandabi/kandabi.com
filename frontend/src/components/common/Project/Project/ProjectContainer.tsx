@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { ProjectItem } from './ProjectItem';
-import { IProject } from 'types/project';
+import { Project } from './Project';
+import { ProjectProps } from 'components/common/Project/projectUtils';
 
 const ContainerStyled = styled.div`
     position: relative;
@@ -39,36 +39,36 @@ const InnerShadowStyled = styled.div`
 `;
 
 interface Props {
-    projects: IProject[];
+    projects: ProjectProps[];
 }
 
-export const ProjectItemContainer = ({ projects }: Props) => {
+export const ProjectContainer = ({ projects }: Props) => {
     return (
         <ContainerStyled>
             <ItemsContainerStyled>
                 {projects.map(project => (
-                    <ProjectItem project={project} key={project.id} />
+                    <Project project={project} key={project.id} />
                 ))}
                 {projects.map(project => (
-                    <ProjectItem project={project} key={project.id} />
+                    <Project project={project} key={project.id} />
                 ))}
                 {projects.map(project => (
-                    <ProjectItem project={project} key={project.id} />
+                    <Project project={project} key={project.id} />
                 ))}
                 {projects.map(project => (
-                    <ProjectItem project={project} key={project.id} />
+                    <Project project={project} key={project.id} />
                 ))}
                 {projects.map(project => (
-                    <ProjectItem project={project} key={project.id} />
+                    <Project project={project} key={project.id} />
                 ))}
                 {projects.map(project => (
-                    <ProjectItem project={project} key={project.id} />
+                    <Project project={project} key={project.id} />
                 ))}
                 {projects.map(project => (
-                    <ProjectItem project={project} key={project.id} />
+                    <Project project={project} key={project.id} />
                 ))}
                 {projects.map(project => (
-                    <ProjectItem project={project} key={project.id} />
+                    <Project project={project} key={project.id} />
                 ))}
             </ItemsContainerStyled>
             <InnerShadowStyled />

@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { ProjectItemContainer, ProjectItemSelection } from 'components/common/Project/ProjectItem';
+import { ProjectContainer, ProjectSelection } from 'components/common/Project/Project';
 import { ProjectTagContainer } from 'components/common/Project/ProjectTag';
-import { ProjectTypeContainer } from 'components/common/Project/ProjectType';
+import { ProjectTypeContainer } from 'components/common/Project/ProjectTypeButton';
+import { ProjectProps, ProjectTagProps, ProjectTypes } from 'components/common/Project/projectUtils';
 import { Section } from 'components/common/Section';
-import { IProject, ProjectTagProps, ProjectTypes } from 'types/project';
 import { styles } from 'utils/styles';
 
 const ProjectsStyled = styled.div`
@@ -36,7 +36,7 @@ const ProjectFiltersStyled = styled.div`
 `;
 
 export interface ProjectsSectionProps {
-    projects: IProject[];
+    projects: ProjectProps[];
     projectTags: ProjectTagProps[];
 }
 
@@ -60,8 +60,8 @@ export const ProjectsSection = ({ projects, projectTags }: ProjectsSectionProps)
                     />
                 </ProjectFiltersStyled>
                 <ProjectsContainerStyled>
-                    <ProjectItemContainer projects={projects} />
-                    {projects.length > 0 && <ProjectItemSelection project={projects[0]} />}
+                    <ProjectContainer projects={projects} />
+                    {projects.length > 0 && <ProjectSelection project={projects[0]} />}
                 </ProjectsContainerStyled>
             </Section>
         </ProjectsStyled>

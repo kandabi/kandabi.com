@@ -1,15 +1,20 @@
 import { Button } from 'components/common/Button';
-import { ProjectTypes } from 'types/project';
 import { ColorType } from 'utils/colors';
 
-const projectTypeConfig: { [key in ProjectTypes]: { color: ColorType; text: string } } = {
-    [ProjectTypes.WEB]: { color: 'blue_100', text: 'Web' },
-    [ProjectTypes.GAME]: { color: 'orange_100', text: 'Game' },
-    [ProjectTypes.OTHER]: { color: 'yellow_100', text: 'Other' },
+export enum ProjectType {
+    WEB = 'WEB',
+    GAME = 'GAME',
+    OTHER = 'OTHER',
+}
+
+const projectTypeConfig: { [key in ProjectType]: { color: ColorType; text: string } } = {
+    [ProjectType.WEB]: { color: 'blue_100', text: 'Web' },
+    [ProjectType.GAME]: { color: 'orange_100', text: 'Game' },
+    [ProjectType.OTHER]: { color: 'yellow_100', text: 'Other' },
 };
 
 interface Props {
-    projectType: ProjectTypes;
+    projectType: ProjectType;
     onClick?: () => void;
     isSelected?: boolean;
     isDisabled?: boolean;

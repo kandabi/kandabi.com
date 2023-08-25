@@ -3,7 +3,7 @@ import { ParallaxLayer } from '@react-spring/parallax';
 import styled from 'styled-components';
 import { ProjectsSection } from './ProjectsSection';
 import { Image } from 'components/common/Image';
-import { IProject, ProjectTagProps } from 'types/project';
+import { ProjectProps, ProjectTagProps } from 'components/common/Project/projectUtils';
 import { Breakpoint } from 'utils/breakpoints';
 import { styles } from 'utils/styles';
 import waveDesktop_1 from 'assets/svgs/wave-desktop-1.svg';
@@ -51,7 +51,7 @@ const GlViewStyled = styled.div`
 
 interface IProjectsAboutSection {
     glViewport: RefObject<HTMLDivElement>;
-    projects: IProject[];
+    projects: ProjectProps[];
     projectTags: ProjectTagProps[];
 }
 

@@ -8,8 +8,8 @@ import { CenterSection } from 'components/HomePage/CenterSection';
 import { ContactSection } from 'components/HomePage/ContactSection';
 import { HeroSection } from 'components/HomePage/HeroSection';
 import { Header, HeaderVariants } from 'components/common/Header';
+import { ProjectProps, ProjectTagProps } from 'components/common/Project/projectUtils';
 import { CenterScene, HeroScene } from 'components/scenes';
-import { IProject, ProjectTagProps } from 'types/project';
 
 const HomePageStyled = styled.div`
     position: absolute;
@@ -22,7 +22,7 @@ const ParallaxStyled = styled(Parallax)`
 `;
 
 interface Props {
-    projects: IProject[];
+    projects: ProjectProps[];
     projectTags: ProjectTagProps[];
 }
 

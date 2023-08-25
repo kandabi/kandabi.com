@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import { Image } from 'components/common/Image';
 import { Link } from 'components/common/Link';
 import { ProjectTag } from 'components/common/Project/ProjectTag';
-import { ProjectType } from 'components/common/Project/ProjectType';
-import { IProject } from 'types/project';
-import { getMediaItemUrl } from 'utils/getMediaItemUrl';
+import { ProjectType } from 'components/common/Project/ProjectTypeButton';
+import { ProjectProps } from 'components/common/Project/projectUtils';
+import { getMediaItemUrl } from 'utils/mediaItem';
 import { styles } from 'utils/styles';
 
-const ProjectItemSelectionStyled = styled.div`
+const ProjectSelectionStyled = styled.div`
     background: linear-gradient(180deg, #212e52 57.76%, #344982 100%);
     box-shadow: 2px 4px 5px 3px rgba(0, 0, 0, 0.25);
     border-radius: 0px 25px;
@@ -54,15 +54,15 @@ const ProjectTagsContainer = styled.div`
 `;
 
 interface IProjectItemSelection {
-    project: IProject;
+    project: ProjectProps;
 }
 
-export const ProjectItemSelection = ({ project }: IProjectItemSelection) => {
+export const ProjectSelection = ({ project }: IProjectItemSelection) => {
     const { thumbnail, title, description, projectType, tags, link } = project.attributes;
     // console.log('link', link);
 
     return (
-        <ProjectItemSelectionStyled>
+        <ProjectSelectionStyled>
             <Image src={getMediaItemUrl(thumbnail)} width='100%' height={315} alt='Project thumbnail' />
             <ContentStyled>
                 {link ? (
@@ -82,6 +82,6 @@ export const ProjectItemSelection = ({ project }: IProjectItemSelection) => {
                     ))}
                 </ProjectTagsContainer>
             </ContentStyled>
-        </ProjectItemSelectionStyled>
+        </ProjectSelectionStyled>
     );
 };

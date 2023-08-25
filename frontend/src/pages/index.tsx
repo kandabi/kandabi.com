@@ -1,12 +1,12 @@
 import { GetStaticProps } from 'next';
 import { HomePage } from 'components/HomePage';
 import { ProjectsSectionProps } from 'components/HomePage/CenterSection/ProjectsSection';
-import { IProject, ProjectTagProps } from 'types/project';
+import { ProjectProps, ProjectTagProps } from 'components/common/Project/projectUtils';
 import { ProjectsApi } from 'api/projects';
 import { TagsApi } from 'api/tags';
 
 export const getStaticProps: GetStaticProps<ProjectsSectionProps> = async () => {
-    let projects: IProject[] = [];
+    let projects: ProjectProps[] = [];
     let projectTags: ProjectTagProps[] = [];
     const jwtToken = process.env.JWT_API_TOKEN!;
     if (!jwtToken) {
@@ -34,7 +34,7 @@ export const getStaticProps: GetStaticProps<ProjectsSectionProps> = async () => 
 };
 
 interface Props {
-    projects: IProject[];
+    projects: ProjectProps[];
     projectTags: ProjectTagProps[];
 }
 

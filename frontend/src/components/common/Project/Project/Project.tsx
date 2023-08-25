@@ -2,10 +2,9 @@ import { useState } from 'react';
 import { animated, easings, useSpring } from '@react-spring/web';
 import styled from 'styled-components';
 import { Image } from 'components/common/Image';
-import { ProjectTag } from 'components/common/Project/ProjectTag';
-import { ProjectType } from 'components/common/Project/ProjectType';
-import { IProject } from 'types/project';
-import { getMediaItemUrl } from 'utils/getMediaItemUrl';
+import { ProjectTag, ProjectTagProps } from 'components/common/Project/ProjectTag';
+import { ProjectType } from 'components/common/Project/ProjectTypeButton';
+import { MediaItemProps, getMediaItemUrl } from 'utils/mediaItem';
 import { styles } from 'utils/styles';
 
 const cardHoverStyles = [
@@ -15,7 +14,7 @@ const cardHoverStyles = [
     'rotateX(0deg) rotateY(0deg) translate3d(-10px, -8px, 0px)',
 ];
 
-const ProjectItemStyled = styled(animated.div)`
+const ProjectStyled = styled(animated.div)`
     background: linear-gradient(180deg, #212e52 57.76%, #344982 100%);
     box-shadow: 1px 2px 2px 2px rgba(0, 0, 0, 0.3);
     transition: box-shadow 0.5s ease-out;
@@ -55,12 +54,21 @@ const TypeAndTagsContainer = styled.div`
     gap: 6px;
 `;
 
-interface Props {
-    project: IProject;
+export interface ProjectProps {
+    id: number;
+    attributes: {
+        description: string;
+        title: string;
+        link?: string;
+        projectType: ProjectType;
+        tags: { data: ProjectTagProps[] };
+        thumbnail: MediaItemProps;
+        video?: MediaItemProps;
+    };
 }
 
-export const ProjectItem = ({ project }: Props) => {
-    const { title, thumbnail, projectType, tags } = project.attributes;
+export const Project = ({ attributes }: ProjectProps) => {
+    const { title, thumbnail, projectType, tags } = attributes;
     const [isHovering, setIsHovering] = useState<boolean>(false);
 
     const { cardHover } = useSpring({
@@ -70,7 +78,7 @@ export const ProjectItem = ({ project }: Props) => {
     });
 
     return (
-        <ProjectItemStyled
+        <ProjectStyled
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
             style={{
@@ -91,6 +99,6 @@ export const ProjectItem = ({ project }: Props) => {
                     ))}
                 </TypeAndTagsContainer>
             </ContentStyled>
-        </ProjectItemStyled>
+        </ProjectStyled>
     );
 };

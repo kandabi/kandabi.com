@@ -1,5 +1,13 @@
 import { Button } from 'components/common/Button';
-import { ProjectTagProps } from 'types/project';
+import { ColorType } from 'utils/colors';
+
+export interface ProjectTagProps {
+    id?: number;
+    attributes: {
+        title: string;
+        color: ColorType;
+    };
+}
 
 interface Props {
     projectTag: ProjectTagProps;

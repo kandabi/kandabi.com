@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { ProjectType } from './ProjectType';
-import { ProjectTypes } from 'types/project';
+import { ProjectType } from './ProjectTypeButton';
+import { ProjectTypes } from 'components/common/Project/projectUtils';
 import { styles } from 'utils/styles';
 
 const ProjectTypesContainerStyled = styled.div`
