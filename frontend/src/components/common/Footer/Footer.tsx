@@ -12,8 +12,10 @@ const FooterStyled = styled.footer`
     filter: drop-shadow(0px -3px 5px rgba(0, 0, 0, 0.3));
     background-color: ${styles.color.blue_900};
     ${styles.flex.center};
+    position: absolute;
     height: 250px;
     width: 100%;
+    bottom: 0;
 `;
 
 const LogoFooterStyled = styled(Logo)`
