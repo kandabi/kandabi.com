@@ -8,7 +8,8 @@ import { CenterSection } from 'components/HomePage/CenterSection';
 import { ContactSection } from 'components/HomePage/ContactSection';
 import { HeroSection } from 'components/HomePage/HeroSection';
 import { Header, HeaderVariants } from 'components/common/Header';
-import { ProjectProps, ProjectTagProps } from 'components/common/Project/projectUtils';
+import { ProjectProps } from 'components/common/Project/ProjectCard';
+import { ProjectTagProps } from 'components/common/Project/ProjectTag';
 import { CenterScene, HeroScene } from 'components/scenes';
 
 const HomePageStyled = styled.div`

@@ -23,6 +23,7 @@ const ProjectStyled = styled(animated.div)`
     pointer-events: initial;
     padding-bottom: 15px;
     position: relative;
+    max-height: 320px;
     cursor: pointer;
     z-index: 5000;
     width: 100%;

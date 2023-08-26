@@ -9,7 +9,7 @@ const ContainerStyled = styled.div`
     top: -10px;
 `;
 
-const ItemsContainerStyled = styled.div`
+const GridStyled = styled.div`
     grid-template-columns: repeat(3, 30%);
     justify-content: space-between;
     border-radius: 0px 25px;
@@ -44,11 +44,11 @@ interface Props {
 export const ProjectContainer = ({ projects }: Props) => {
     return (
         <ContainerStyled>
-            <ItemsContainerStyled>
+            <GridStyled>
                 {projects.map(({ id, attributes }) => (
                     <Project id={id} attributes={attributes} />
                 ))}
-            </ItemsContainerStyled>
+            </GridStyled>
             <InnerShadowStyled />
         </ContainerStyled>
     );

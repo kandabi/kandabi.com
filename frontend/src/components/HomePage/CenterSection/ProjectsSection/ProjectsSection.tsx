@@ -22,7 +22,7 @@ const TitleStyled = styled.h2`
     }
 `;
 
-const ProjectsContainerStyled = styled.div`
+const ProjectContainerStyled = styled.div`
     ${styles.flex.between}
     height: 640px;
     width: 100%;
@@ -58,10 +58,10 @@ export const ProjectsSection = ({ projects, projectTags }: ProjectsSectionProps)
                         projectTags={projectTags}
                     />
                 </ProjectFiltersStyled>
-                <ProjectsContainerStyled>
+                <ProjectContainerStyled>
                     <ProjectContainer projects={projects} />
                     {projects.length > 0 && <ProjectSelection project={projects[0]} />}
-                </ProjectsContainerStyled>
+                </ProjectContainerStyled>
             </Section>
         </ProjectsStyled>
     );
