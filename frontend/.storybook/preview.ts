@@ -6,12 +6,7 @@ const preview: Preview = {
     parameters: {
         backgrounds: {
             default: 'dark',
-            values: [
-                {
-                    name: 'dark',
-                    value: colorConfig[Color.blue_500],
-                },
-            ],
+            values: [{ name: 'dark', value: colorConfig[Color.blue_500] }],
         },
     },
 };

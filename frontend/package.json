@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "dev": "yarn open-browser && next dev",
+        "dev": "npm run open-browser && next dev",
         "build": "next build",
         "export": "next build && next export",
         "start": "next start",
@@ -13,12 +13,12 @@
         "lint": "eslint . --ext .ts,.tsx"
     },
     "dependencies": {
-        "@react-spring/parallax": "^9.7.2",
-        "@react-spring/web": "^9.7.1",
+        "@react-spring/parallax": "^9.7.3",
+        "@react-spring/web": "^9.7.3",
         "@react-three/drei": "^9.56.24",
         "@react-three/fiber": "^8.11.1",
-        "axios": "^1.3.2",
-        "is-mobile": "^3.1.1",
+        "axios": "^1.5.0",
+        "is-mobile": "^4.0.0",
         "leva": "^0.9.34",
         "next": "13.1.5",
         "react": "18.2.0",
@@ -26,19 +26,19 @@
         "react-use-refs": "^1.0.1",
         "styled-components": "^5.3.9",
         "three": "^0.149.0",
-        "zustand": "^4.3.2"
+        "zustand": "^4.4.1"
     },
     "devDependencies": {
-        "@storybook/addon-essentials": "^7.3.2",
-        "@storybook/addon-interactions": "^7.3.2",
-        "@storybook/addon-links": "^7.3.2",
+        "@storybook/addon-essentials": "^7.4.0",
+        "@storybook/addon-interactions": "^7.4.0",
+        "@storybook/addon-links": "^7.4.0",
         "@storybook/addon-onboarding": "^1.0.8",
-        "@storybook/blocks": "^7.3.2",
-        "@storybook/nextjs": "^7.3.2",
-        "@storybook/react": "^7.3.2",
+        "@storybook/blocks": "^7.4.0",
+        "@storybook/nextjs": "^7.4.0",
+        "@storybook/react": "^7.4.0",
         "@storybook/testing-library": "^0.2.0",
         "@trivago/prettier-plugin-sort-imports": "^4.2.0",
-        "@types/lodash": "^4.14.191",
+        "@types/lodash": "^4.14.197",
         "@types/node": "^18.11.18",
         "@types/react": "^18.0.27",
         "@types/react-dom": "^18.0.10",
@@ -46,10 +46,10 @@
         "@types/three": "^0.149.0",
         "eslint": "^8.48.0",
         "eslint-config-next": "^13.4.19",
-        "eslint-config-prettier": "^8.8.0",
+        "eslint-config-prettier": "^9.0.0",
         "eslint-plugin-storybook": "^0.6.13",
         "sass": "^1.58.0",
-        "storybook": "^7.3.2",
+        "storybook": "^7.4.0",
         "typescript": "^5.2.2"
     }
 }
