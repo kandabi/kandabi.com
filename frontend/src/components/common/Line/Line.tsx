@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import styled from 'styled-components';
-import { styles } from 'utils/styles';
+import { styles } from 'utils/styleUtils';
 
 interface LineStyledProps {
     bottom?: string;

@@ -4,7 +4,7 @@ import { ProjectContainer, ProjectProps, ProjectSelection } from 'components/com
 import { ProjectTagContainer, ProjectTagProps } from 'components/common/Project/ProjectTag';
 import { ProjectType, ProjectTypeContainer } from 'components/common/Project/ProjectType';
 import { Section } from 'components/common/Section';
-import { styles } from 'utils/styles';
+import { styles } from 'utils/styleUtils';
 
 const ProjectsStyled = styled.div`
     ${styles.flex.start}

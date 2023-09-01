@@ -9,7 +9,7 @@ import { Header } from 'components/common/Header';
 import { HeaderVariants } from 'components/common/Header';
 import { Image } from 'components/common/Image';
 import { Section } from 'components/common/Section';
-import { styles } from 'utils/styles';
+import { styles } from 'utils/styleUtils';
 import arrowDown from 'assets/svgs/arrow-down.svg';
 
 const HeroStyled = styled.div`

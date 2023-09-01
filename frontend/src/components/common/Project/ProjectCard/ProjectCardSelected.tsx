@@ -4,8 +4,8 @@ import { Image } from 'components/common/Image';
 import { Link } from 'components/common/Link';
 import { ProjectTag } from 'components/common/Project/ProjectTag';
 import { ProjectTypeButton } from 'components/common/Project/ProjectType';
-import { getMediaItemUrl } from 'utils/mediaItem';
-import { styles } from 'utils/styles';
+import { getMediaUrl } from 'utils/mediaUtils';
+import { styles } from 'utils/styleUtils';
 
 const ProjectSelectionStyled = styled.div`
     background: linear-gradient(180deg, #212e52 57.76%, #344982 100%);
@@ -63,7 +63,7 @@ export const ProjectSelection = ({ project }: Props) => {
 
     return (
         <ProjectSelectionStyled>
-            <Image src={getMediaItemUrl(thumbnail)} width='100%' height={315} alt='Project thumbnail' />
+            <Image src={getMediaUrl(thumbnail)} width='100%' height={315} alt='Project thumbnail' />
             <ContentStyled>
                 {link ? (
                     <LinkStyled text={title} href={link!} styles={{ lineBottom: '-2px', iconWidth: 16 }} />

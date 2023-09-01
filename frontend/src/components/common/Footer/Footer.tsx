@@ -6,7 +6,7 @@ import { Logo } from 'components/common/Logo';
 import { Navbar, NavbarItemProps } from 'components/common/Navbar';
 import { NavbarItemVariants } from 'components/common/Navbar/NavbarItem';
 import { Section } from 'components/common/Section';
-import { styles } from 'utils/styles';
+import { styles } from 'utils/styleUtils';
 
 const FooterStyled = styled.footer`
     filter: drop-shadow(0px -3px 5px rgba(0, 0, 0, 0.3));

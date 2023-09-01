@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { Image } from 'components/common/Image';
 import { ProjectTag, ProjectTagProps } from 'components/common/Project/ProjectTag';
 import { ProjectType, ProjectTypeButton } from 'components/common/Project/ProjectType';
-import { MediaItemProps, getMediaItemUrl } from 'utils/mediaItem';
-import { styles } from 'utils/styles';
+import { MediaProps, getMediaUrl } from 'utils/mediaUtils';
+import { styles } from 'utils/styleUtils';
 
 const cardHoverStyles = [
     'rotateX(0deg) rotateY(0deg) translate3d(-10px, -8px, -8px)',
@@ -63,8 +63,8 @@ export interface ProjectProps {
         link?: string;
         projectType: ProjectType;
         tags: { data: ProjectTagProps[] };
-        thumbnail: MediaItemProps;
-        video?: MediaItemProps;
+        thumbnail: MediaProps;
+        video?: MediaProps;
     };
 }
 
@@ -90,7 +90,7 @@ export const Project = ({ id, attributes }: ProjectProps) => {
             }}
             key={id}
         >
-            <Image src={getMediaItemUrl(thumbnail)} width='100%' height={165} alt='Project thumbnail' />
+            <Image src={getMediaUrl(thumbnail)} width='100%' height={165} alt='Project thumbnail' />
             <ContentStyled>
                 <TitleStyled>{title}</TitleStyled>
                 <SeparatorStyled />

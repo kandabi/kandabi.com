@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { ProjectProps } from 'components/common/Project/projectUtils';
-import { NEXT_PUBLIC_API_URL } from 'utils/constants';
+import { NEXT_PUBLIC_API_URL } from 'utils/constantUtils';
 
 const projectsUrl = `${NEXT_PUBLIC_API_URL}/api/projects?populate=*&sort=order`;
 

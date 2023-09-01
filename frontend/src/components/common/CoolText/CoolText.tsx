@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { styles } from 'utils/styles';
+import { styles } from 'utils/styleUtils';
 
 interface CoolTextStyledProps {
     $_fontSize?: number;

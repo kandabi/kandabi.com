@@ -1,7 +1,7 @@
 import { ProjectType } from './ProjectType';
 import { Button } from 'components/common/Button';
-import { ColorType } from 'utils/colors';
-import { MapConfig } from 'utils/types';
+import { ColorType } from 'utils/colorUtils';
+import { MapConfig } from 'utils/typeUtils';
 
 const projectTypeConfig: MapConfig<ProjectType, { color: ColorType; text: string }> = {
     [ProjectType.WEB]: { color: 'blue_100', text: 'Web' },

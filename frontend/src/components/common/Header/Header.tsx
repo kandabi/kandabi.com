@@ -7,8 +7,8 @@ import { Logo } from 'components/common/Logo';
 import { Navbar } from 'components/common/Navbar';
 import { NavbarItemProps } from 'components/common/Navbar';
 import { NavbarItemVariants } from 'components/common/Navbar/NavbarItem';
-import { styles } from 'utils/styles';
-import { MapConfig } from 'utils/types';
+import { styles } from 'utils/styleUtils';
+import { MapConfig } from 'utils/typeUtils';
 
 const headerStyles = css`
     background: linear-gradient(346deg, rgba(15, 23, 42, 0.75) 10%, rgba(15, 23, 42, 0.75) 65%);

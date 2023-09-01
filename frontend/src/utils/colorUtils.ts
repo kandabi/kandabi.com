@@ -1,4 +1,4 @@
-import { MapConfig } from './types';
+import { MapConfig } from './typeUtils';
 import { Color as ThreeColor } from 'three';
 
 export enum Color {

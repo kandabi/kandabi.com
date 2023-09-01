@@ -1,4 +1,4 @@
-import { MapConfig } from './types';
+import { MapConfig } from './typeUtils';
 
 export enum Breakpoint {
     xs = 'xs',

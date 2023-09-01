@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { useControls } from 'leva';
 import { Color, ShaderMaterial, Vector2 } from 'three';
-import { ColorType, colorConfig, getThreeColor } from 'utils/colors';
+import { ColorType, colorConfig, getThreeColor } from 'utils/colorUtils';
 
 const vertexShader = `
    varying vec2 vUv;

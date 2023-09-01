@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 import { Gutters } from 'components/common/Gutters';
-import { styles } from 'utils/styles';
+import { styles } from 'utils/styleUtils';
 
 interface SectionStyledProps {
     gap?: string;

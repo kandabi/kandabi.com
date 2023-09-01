@@ -1,6 +1,6 @@
-import { MapConfig } from './types';
-import { Breakpoint, breakpointConfig } from 'utils/breakpoints';
-import { Color, HexColor, colorConfig } from 'utils/colors';
+import { MapConfig } from './typeUtils';
+import { Breakpoint, breakpointConfig } from 'utils/breakpointUtils';
+import { Color, HexColor, colorConfig } from 'utils/colorUtils';
 
 type FlexProps = {
     justifyContent: string;
