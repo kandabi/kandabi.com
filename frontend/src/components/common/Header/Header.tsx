@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import styled, { FlattenInterpolation, ThemeProps, css } from 'styled-components';
 import { Device, useDeviceDetector } from 'hooks/useDeviceDetector';
-import { useStore } from 'store';
+import { useAppStore } from 'store';
 import { Gutters } from 'components/common/Gutters';
 import { Logo } from 'components/common/Logo';
 import { Navbar } from 'components/common/Navbar';
@@ -98,9 +98,9 @@ interface Props {
 
 export const Header = ({ variant = HeaderVariants.FIXED }: Props) => {
     const { device } = useDeviceDetector();
-    const { currentScrollPosition, setGoToScrollPosition } = useStore(state => ({
-        currentScrollPosition: state.currentScrollPosition,
-        setGoToScrollPosition: state.setGoToScrollPosition,
+    const { currentScrollPosition, setGoToScrollPosition } = useAppStore(state => ({
+        currentScrollPosition: state.currentScrollPercentage,
+        setGoToScrollPosition: state.setGoToScrollPercentage,
     }));
 
     const config = headerConfig[variant];

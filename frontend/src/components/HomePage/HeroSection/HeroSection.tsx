@@ -2,7 +2,7 @@ import { RefObject } from 'react';
 import { ParallaxLayer } from '@react-spring/parallax';
 import styled from 'styled-components';
 import { Device, useDeviceDetector } from 'hooks/useDeviceDetector';
-import { useStore } from 'store';
+import { useAppStore } from 'store';
 import { Button } from 'components/common/Button';
 import { CoolText } from 'components/common/CoolText';
 import { Header } from 'components/common/Header';
@@ -113,9 +113,11 @@ interface Props {
 export const HeroSection = ({ glViewport }: Props) => {
     const { device } = useDeviceDetector();
     const { gap } = parallaxConfig[device];
-    const currentScrollPosition = useStore(({ currentScrollPosition }) => currentScrollPosition);
+    const currentScrollPosition = useAppStore(
+        ({ currentScrollPercentage: currentScrollPosition }) => currentScrollPosition,
+    );
 
-    const setGoToScrollPosition = useStore(state => state.setGoToScrollPosition);
+    const setGoToScrollPosition = useAppStore(state => state.setGoToScrollPercentage);
     const handleScrollDown = () => setGoToScrollPosition(0.35);
 
     return (

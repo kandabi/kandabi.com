@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useStore } from 'store';
+import { useAppStore } from 'store';
 import { Image } from 'components/common/Image';
 import logoFull from 'assets/svgs/logo-full.svg';
 
@@ -14,7 +14,7 @@ interface Props {
 }
 
 export const Logo = ({ className }: Props) => {
-    const setGoToScrollPosition = useStore(state => state.setGoToScrollPosition);
+    const setGoToScrollPosition = useAppStore(state => state.setGoToScrollPercentage);
 
     return (
         <LogoStyled

@@ -1,2 +1,2 @@
 export * from './ParallaxScroll';
-export * from './ParallaxViewport';
+export * from './Parallax';

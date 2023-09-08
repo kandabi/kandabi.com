@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import styled from 'styled-components';
-import { useStore } from 'store';
+import { useAppStore } from 'store';
 import { Link } from 'components/common/Link';
 import { Logo } from 'components/common/Logo';
 import { Navbar, NavbarItemProps } from 'components/common/Navbar';
@@ -50,7 +50,7 @@ const SitemapStyled = styled(Link)`
 `;
 
 export const Footer = () => {
-    const setGoToScrollPosition = useStore(state => state.setGoToScrollPosition);
+    const setGoToScrollPosition = useAppStore(state => state.setGoToScrollPercentage);
     const navbarItems: NavbarItemProps[] = useMemo(
         () => [
             { title: 'Home', onClick: () => setGoToScrollPosition(0) },

@@ -1,16 +1,16 @@
 import { create } from 'zustand';
 
-interface StoreState {
-    currentScrollPosition: number;
-    setCurrentScrollPosition: (position: number) => void;
-    goToScrollPosition: number;
-    setGoToScrollPosition: (position: number) => void;
+interface AppState {
+    currentScrollPercentage: number;
+    setCurrentScrollPercentage: (percentage: number) => void;
+    goToScrollPercentage: number;
+    setGoToScrollPercentage: (percentage: number) => void;
 }
 
-export const useStore = create<StoreState>(set => ({
-    currentScrollPosition: 0,
-    setCurrentScrollPosition: (position: number) => set(() => ({ currentScrollPosition: position })),
+export const useAppStore = create<AppState>(set => ({
+    currentScrollPercentage: 0,
+    setCurrentScrollPercentage: percentage => set(() => ({ currentScrollPercentage: percentage })),
 
-    goToScrollPosition: -1,
-    setGoToScrollPosition: (position: number) => set(() => ({ goToScrollPosition: position })),
+    goToScrollPercentage: NaN,
+    setGoToScrollPercentage: percentage => set(() => ({ goToScrollPercentage: percentage })),
 }));
