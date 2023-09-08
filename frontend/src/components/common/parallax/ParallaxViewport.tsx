@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { useDeviceDetector } from 'hooks/useDeviceDetector';
+import { Device, useDeviceDetector } from 'hooks/useDeviceDetector';
 import { throttle } from 'lodash';
 import { useStore } from 'store';
 
@@ -20,6 +20,15 @@ const ViewportStyled = styled.div<ViewportStyledProps>`
     z-index: 5;
 `;
 
+interface ConfigType {
+    throttleMs: number;
+}
+
+const parallaxViewportConfig: Record<Device, ConfigType> = {
+    [Device.DESKTOP]: { throttleMs: 100 },
+    [Device.MOBILE]: { throttleMs: 200 },
+};
+
 interface Props {
     distanceToCamera?: number;
     children?: any;
@@ -27,7 +36,10 @@ interface Props {
 
 export const ParallaxViewport = ({ distanceToCamera, children }: Props) => {
     const viewportRef = useRef<HTMLDivElement>(null);
-    const { isDesktop } = useDeviceDetector();
+    const { device } = useDeviceDetector();
+
+    const { throttleMs } = parallaxViewportConfig[device];
+
     const { goToScrollPosition, setGoToScrollPosition, setCurrentScrollPosition } = useStore(state => ({
         goToScrollPosition: state.goToScrollPosition,
         setGoToScrollPosition: state.setGoToScrollPosition,
@@ -47,10 +59,10 @@ export const ParallaxViewport = ({ distanceToCamera, children }: Props) => {
 
     useEffect(() => {
         const viewport = viewportRef.current;
-        const throttledScroll = throttle(handleMouseScroll, isDesktop ? 100 : 200);
+        const throttledScroll = throttle(handleMouseScroll, throttleMs);
         viewport?.addEventListener('scroll', throttledScroll);
         return () => viewport?.removeEventListener('scroll', throttledScroll);
-    }, [viewportRef, handleMouseScroll, isDesktop]);
+    }, [viewportRef, handleMouseScroll, throttleMs]);
 
     useEffect(() => {
         let viewport = viewportRef.current;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { CoolText } from 'components/common/CoolText';
-import { ColorType } from 'utils/colorUtils';
+import { Color } from 'utils/colorUtils';
 import { styles } from 'utils/styleUtils';
 
 const ButtonTextStyled = styled(CoolText)`
@@ -9,11 +9,11 @@ const ButtonTextStyled = styled(CoolText)`
 `;
 
 interface ButtonBackgroundStyledProps {
-    backgroundColor?: ColorType;
+    backgroundColor?: Color;
 }
 
 const ButtonBackgroundStyled = styled.div<ButtonBackgroundStyledProps>`
-    background-color: ${({ backgroundColor = 'yellow_100' }) => styles.color[backgroundColor] || backgroundColor};
+    background-color: ${({ backgroundColor = Color.yellow_100 }) => styles.color[backgroundColor]};
     transition: width 0.35s ease-out, opacity 0.25s ease-out;
     transform: translate(-50%, -50%);
     border-radius: 25px;
@@ -26,7 +26,7 @@ const ButtonBackgroundStyled = styled.div<ButtonBackgroundStyledProps>`
 `;
 
 interface ButtonStyledProps {
-    borderColor?: ColorType;
+    borderColor?: Color;
     isDisabled?: boolean;
     $_padding?: string;
     $_height?: string;
@@ -34,7 +34,7 @@ interface ButtonStyledProps {
 }
 
 const ButtonStyled = styled.button<ButtonStyledProps>`
-    border: 2px solid ${({ borderColor = 'yellow_100' }) => styles.color[borderColor] || borderColor};
+    border: 2px solid ${({ borderColor = Color.yellow_100 }) => styles.color[borderColor]};
     padding: ${({ $_padding = '0 32px' }) => $_padding};
     height: ${({ $_height = '40px' }) => $_height};
     transition: transform 0.2s ease-out;
@@ -77,7 +77,7 @@ interface Props {
         padding?: string;
         height?: string;
         margin?: string;
-        color?: ColorType;
+        color?: Color;
     };
 }
 

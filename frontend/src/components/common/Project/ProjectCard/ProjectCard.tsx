@@ -68,7 +68,7 @@ export interface ProjectProps {
     };
 }
 
-export const Project = ({ id, attributes }: ProjectProps) => {
+export const Project = ({ attributes }: Omit<ProjectProps, 'id'>) => {
     const { title, thumbnail, projectType, tags } = attributes;
     const [isHovering, setIsHovering] = useState<boolean>(false);
 
@@ -88,7 +88,6 @@ export const Project = ({ id, attributes }: ProjectProps) => {
                     output: cardHoverStyles,
                 }),
             }}
-            key={id}
         >
             <Image src={getMediaUrl(thumbnail)} width='100%' height={165} alt='Project thumbnail' />
             <ContentStyled>

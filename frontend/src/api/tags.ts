@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ProjectTagProps } from 'components/common/Project/projectUtils';
+import { ProjectTagProps } from 'components/common/Project/ProjectTag';
 import { NEXT_PUBLIC_API_URL } from 'utils/constantUtils';
 
 const tagsUrl = `${NEXT_PUBLIC_API_URL}/api/tags?populate=*&sort=order`;

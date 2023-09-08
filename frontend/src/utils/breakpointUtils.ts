@@ -1,5 +1,3 @@
-import { MapConfig } from './typeUtils';
-
 export enum Breakpoint {
     xs = 'xs',
     sm = 'sm',
@@ -9,7 +7,7 @@ export enum Breakpoint {
     xxl = 'xxl',
 }
 
-export const mediaSizesConfig: MapConfig<Breakpoint, string> = {
+export const mediaSizesConfig: Record<Breakpoint, string> = {
     [Breakpoint.xs]: '(min-width: 320px)',
     [Breakpoint.sm]: '(min-width: 576px)',
     [Breakpoint.md]: '(min-width: 768px)',
@@ -18,7 +16,7 @@ export const mediaSizesConfig: MapConfig<Breakpoint, string> = {
     [Breakpoint.xxl]: '(min-width: 1400px)',
 };
 
-export const breakpointConfig: MapConfig<Breakpoint, string> = {
+export const breakpointConfig: Record<Breakpoint, string> = {
     [Breakpoint.xs]: `@media ${mediaSizesConfig.xs}`,
     [Breakpoint.sm]: `@media ${mediaSizesConfig.sm}`,
     [Breakpoint.md]: `@media ${mediaSizesConfig.md}`,

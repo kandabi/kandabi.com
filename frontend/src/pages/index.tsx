@@ -1,7 +1,8 @@
 import { GetStaticProps } from 'next';
 import { HomePage } from 'components/HomePage';
 import { ProjectsSectionProps } from 'components/HomePage/CenterSection/ProjectsSection';
-import { ProjectProps, ProjectTagProps } from 'components/common/Project/projectUtils';
+import { ProjectProps } from 'components/common/Project/ProjectCard';
+import { ProjectTagProps } from 'components/common/Project/ProjectTag';
 import { ProjectsApi } from 'api/projects';
 import { TagsApi } from 'api/tags';
 

@@ -1,4 +1,3 @@
-import { MapConfig } from './typeUtils';
 import { Color as ThreeColor } from 'three';
 
 export enum Color {
@@ -26,9 +25,8 @@ export enum Color {
 }
 
 export type HexColor = `#${string}`;
-export type ColorType = keyof typeof Color | HexColor;
 
-export const colorConfig: MapConfig<Color, HexColor> = {
+export const colorConfig: Record<Color, HexColor> = {
     [Color.white_100]: '#FFFFFF',
     [Color.white_200]: '#F2F8FF',
     [Color.white_300]: '#AEBCCC',
@@ -52,6 +50,6 @@ export const colorConfig: MapConfig<Color, HexColor> = {
     [Color.red_200]: '#E23C50',
 };
 
-export const getThreeColor = (color: ColorType) => {
-    return new ThreeColor(colorConfig[color] || color);
+export const getThreeColor = (color: Color) => {
+    return new ThreeColor(colorConfig[color]);
 };

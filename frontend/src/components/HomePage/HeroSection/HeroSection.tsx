@@ -1,7 +1,7 @@
 import { RefObject } from 'react';
 import { ParallaxLayer } from '@react-spring/parallax';
 import styled from 'styled-components';
-import { useDeviceDetector } from 'hooks/useDeviceDetector';
+import { Device, useDeviceDetector } from 'hooks/useDeviceDetector';
 import { useStore } from 'store';
 import { Button } from 'components/common/Button';
 import { CoolText } from 'components/common/CoolText';
@@ -98,14 +98,12 @@ const GlViewStyled = styled.div`
 `;
 
 interface ParallaxConfigType {
-    distanceToCamera: number;
-    scale: number;
     gap: string;
 }
 
-const parallaxConfig: { desktop: ParallaxConfigType; mobile: ParallaxConfigType } = {
-    desktop: { distanceToCamera: 4, scale: 1.7, gap: '20px' },
-    mobile: { distanceToCamera: 3, scale: 1.5, gap: '8px' },
+const parallaxConfig: Record<Device, ParallaxConfigType> = {
+    [Device.DESKTOP]: { gap: '20px' },
+    [Device.MOBILE]: { gap: '8px' },
 };
 
 interface Props {
@@ -113,8 +111,8 @@ interface Props {
 }
 
 export const HeroSection = ({ glViewport }: Props) => {
-    const { isMobile } = useDeviceDetector();
-    const { distanceToCamera, scale, gap } = isMobile ? parallaxConfig.mobile : parallaxConfig.desktop;
+    const { device } = useDeviceDetector();
+    const { gap } = parallaxConfig[device];
     const currentScrollPosition = useStore(({ currentScrollPosition }) => currentScrollPosition);
 
     const setGoToScrollPosition = useStore(state => state.setGoToScrollPosition);
@@ -131,7 +129,7 @@ export const HeroSection = ({ glViewport }: Props) => {
                     <SubtitleStyled>Freelance Software Developer</SubtitleStyled>
                     <TechStyled text='Javascript | Typescript | React | C# | Node.js | Three.js' />
                     <Button onClick={handleScrollDown} text='My Work' styles={{ margin: '15px 0 0 0' }} />
-                    {!isMobile && (
+                    {device === Device.DESKTOP && (
                         <CenterContainerStyled $_isVisible={currentScrollPosition < 0.2}>
                             <ScrollDownContainerStyled onClick={handleScrollDown}>
                                 <ScrollDownTextStyled>Scroll Down</ScrollDownTextStyled>

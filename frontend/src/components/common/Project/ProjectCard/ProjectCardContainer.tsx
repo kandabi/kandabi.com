@@ -46,7 +46,7 @@ export const ProjectContainer = ({ projects }: Props) => {
         <ContainerStyled>
             <GridStyled>
                 {projects.map(({ id, attributes }) => (
-                    <Project id={id} attributes={attributes} />
+                    <Project key={id} attributes={attributes} />
                 ))}
             </GridStyled>
             <InnerShadowStyled />

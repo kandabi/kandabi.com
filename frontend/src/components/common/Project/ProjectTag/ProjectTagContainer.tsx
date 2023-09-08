@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import { ProjectTag } from './ProjectTag';
-import { ProjectTagProps } from 'components/common/Project/projectUtils';
+import { ProjectTag, ProjectTagProps } from './ProjectTag';
 import { styles } from 'utils/styleUtils';
 
 const ProjectTypesContainerStyled = styled.div`

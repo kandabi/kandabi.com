@@ -1,12 +1,11 @@
 import { ProjectType } from './ProjectType';
 import { Button } from 'components/common/Button';
-import { ColorType } from 'utils/colorUtils';
-import { MapConfig } from 'utils/typeUtils';
+import { Color } from 'utils/colorUtils';
 
-const projectTypeConfig: MapConfig<ProjectType, { color: ColorType; text: string }> = {
-    [ProjectType.WEB]: { color: 'blue_100', text: 'Web' },
-    [ProjectType.GAME]: { color: 'orange_100', text: 'Game' },
-    [ProjectType.OTHER]: { color: 'yellow_100', text: 'Other' },
+const projectTypeConfig: Record<ProjectType, { color: Color; text: string }> = {
+    [ProjectType.WEB]: { color: Color.blue_100, text: 'Web' },
+    [ProjectType.GAME]: { color: Color.orange_100, text: 'Game' },
+    [ProjectType.OTHER]: { color: Color.yellow_100, text: 'Other' },
 };
 
 interface Props {

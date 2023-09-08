@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import styled, { FlattenInterpolation, ThemeProps, css } from 'styled-components';
-import { useDeviceDetector } from 'hooks/useDeviceDetector';
+import { Device, useDeviceDetector } from 'hooks/useDeviceDetector';
 import { useStore } from 'store';
 import { Gutters } from 'components/common/Gutters';
 import { Logo } from 'components/common/Logo';
@@ -8,7 +8,6 @@ import { Navbar } from 'components/common/Navbar';
 import { NavbarItemProps } from 'components/common/Navbar';
 import { NavbarItemVariants } from 'components/common/Navbar/NavbarItem';
 import { styles } from 'utils/styleUtils';
-import { MapConfig } from 'utils/typeUtils';
 
 const headerStyles = css`
     background: linear-gradient(346deg, rgba(15, 23, 42, 0.75) 10%, rgba(15, 23, 42, 0.75) 65%);
@@ -63,7 +62,7 @@ interface IHeaderVariants {
     top?: string;
 }
 
-const headerConfig: MapConfig<HeaderVariants, { visible: IHeaderVariants; hidden?: IHeaderVariants }> = {
+const headerConfig: Record<HeaderVariants, { visible: IHeaderVariants; hidden?: IHeaderVariants }> = {
     [HeaderVariants.FIXED]: {
         visible: {
             lineStyles: { bottom: '-12px' },
@@ -98,7 +97,7 @@ interface Props {
 }
 
 export const Header = ({ variant = HeaderVariants.FIXED }: Props) => {
-    const { isMobile } = useDeviceDetector();
+    const { device } = useDeviceDetector();
     const { currentScrollPosition, setGoToScrollPosition } = useStore(state => ({
         currentScrollPosition: state.currentScrollPosition,
         setGoToScrollPosition: state.setGoToScrollPosition,
@@ -122,7 +121,7 @@ export const Header = ({ variant = HeaderVariants.FIXED }: Props) => {
     return (
         <HeaderStyled headerStyles={styles?.headerStyles} $_opacity={styles?.opacity} top={styles?.top}>
             <Logo />
-            {!isMobile ? <Navbar items={navbarItems} lineStyles={styles?.lineStyles} /> : null}
+            {device === Device.DESKTOP && <Navbar items={navbarItems} lineStyles={styles?.lineStyles} />}
             {styles?.showProgress && <HeaderProgressStyled $_width={`${Math.round(currentScrollPosition * 100)}%`} />}
         </HeaderStyled>
     );

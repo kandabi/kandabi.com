@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { ProjectType } from './ProjectType';
 import { ProjectTypeButton } from './ProjectTypeButton';
+import { getEnumValues } from 'utils/enumUtils';
 import { styles } from 'utils/styleUtils';
 
 const ProjectTypesContainerStyled = styled.div`
@@ -28,7 +29,7 @@ export const ProjectTypeContainer = ({ activeProjectType, setActiveProjectType }
         <ProjectTypesContainerStyled>
             <span>Project Type -</span>
             <ButtonContainerStyled>
-                {Object.keys(ProjectType).map(key => (
+                {getEnumValues(ProjectType).map(key => (
                     <ProjectTypeButton
                         onClick={() => handleProjectTypeClick(ProjectType[key])}
                         isSelected={ProjectType[key] === activeProjectType}

@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { useControls } from 'leva';
-import { Color, ShaderMaterial, Vector2 } from 'three';
-import { ColorType, colorConfig, getThreeColor } from 'utils/colorUtils';
+import { ShaderMaterial, Color as ThreeColor, Vector2 } from 'three';
+import { Color, colorConfig, getThreeColor } from 'utils/colorUtils';
 
 const vertexShader = `
    varying vec2 vUv;
@@ -38,8 +38,8 @@ interface ILinearGradient {
     baseStrength: number;
     strength?: number;
     length?: number;
-    topColor: ColorType;
-    bottomColor: ColorType;
+    topColor: Color;
+    bottomColor: Color;
     size?: Vector2;
 }
 
@@ -58,7 +58,7 @@ export const LinearGradient = ({
             value: colorConfig[topColor] || topColor,
             onChange: value => {
                 if (shaderRef?.current) {
-                    shaderRef.current.uniforms.uTopColor.value = new Color(value);
+                    shaderRef.current.uniforms.uTopColor.value = new ThreeColor(value);
                 }
             },
         },
@@ -66,7 +66,7 @@ export const LinearGradient = ({
             value: colorConfig[bottomColor] || bottomColor,
             onChange: value => {
                 if (shaderRef?.current) {
-                    shaderRef.current.uniforms.uBottomColor.value = new Color(value);
+                    shaderRef.current.uniforms.uBottomColor.value = new ThreeColor(value);
                 }
             },
         },
