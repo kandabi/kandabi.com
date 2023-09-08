@@ -1,11 +1,11 @@
 import { Button } from 'components/common/Button';
-import { ColorType } from 'utils/colorUtils';
+import { Color } from 'utils/colorUtils';
 
 export interface ProjectTagProps {
     id?: number;
     attributes: {
         title: string;
-        color: ColorType;
+        color: Color;
     };
 }
 
