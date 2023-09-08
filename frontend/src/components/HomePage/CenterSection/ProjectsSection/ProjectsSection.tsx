@@ -14,7 +14,7 @@ const ProjectsStyled = styled.div`
 
 const TitleStyled = styled.h2`
     text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.75);
-    color: ${styles.color.white_100};
+    color: ${styles.color.WHITE_100};
     line-height: 1.16em;
     font-size: 40px;
     ${styles.breakpoint.md} {

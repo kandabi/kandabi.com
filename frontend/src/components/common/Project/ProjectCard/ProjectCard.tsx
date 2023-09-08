@@ -43,7 +43,7 @@ const TitleStyled = styled.b`
 `;
 
 const SeparatorStyled = styled.div`
-    border-bottom: 1px solid ${styles.color.white_100};
+    border-bottom: 1px solid ${styles.color.WHITE_100};
     margin: 4px 0 12px 0;
     width: 100%;
 `;

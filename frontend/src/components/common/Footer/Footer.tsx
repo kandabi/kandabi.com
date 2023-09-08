@@ -10,7 +10,7 @@ import { styles } from 'utils/styleUtils';
 
 const FooterStyled = styled.footer`
     filter: drop-shadow(0px -3px 5px rgba(0, 0, 0, 0.3));
-    background-color: ${styles.color.blue_900};
+    background-color: ${styles.color.BLUE_900};
     ${styles.flex.center};
     position: absolute;
     height: 250px;
@@ -42,7 +42,7 @@ const PreviousWebsiteStyled = styled(Link)`
 `;
 
 const SitemapStyled = styled(Link)`
-    color: ${styles.color.grey_100};
+    color: ${styles.color.GREY_100};
     font-size: 12px;
     ${styles.breakpoint.md} {
         font-size: 14px;

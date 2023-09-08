@@ -8,7 +8,7 @@ interface CoolTextStyledProps {
 
 const CoolTextStyled = styled.span<CoolTextStyledProps>`
     font-size: ${({ $_fontSize = 18 }) => `${$_fontSize}px`};
-    color: ${styles.color.white_100};
+    color: ${styles.color.WHITE_100};
     letter-spacing: 0.15em;
     ${styles.font.rubik};
 `;

@@ -40,7 +40,7 @@ interface HeaderProgressStyledProps {
 }
 
 const HeaderProgressStyled = styled.div<HeaderProgressStyledProps>`
-    border-bottom: 2px solid ${styles.color.grey_200};
+    border-bottom: 2px solid ${styles.color.GREY_200};
     width: ${({ $_width }) => $_width};
     transition: width 0.6s ease-out;
     border-radius: 1px;

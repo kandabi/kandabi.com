@@ -17,7 +17,7 @@ const LineStyled = styled.div<LineStyledProps>`
     }
 
     &::after {
-        border-bottom: 2px solid ${styles.color.white_100};
+        border-bottom: 2px solid ${styles.color.WHITE_100};
         transition: width 0.4s, opacity 0.5s ease-out;
         bottom: ${({ bottom = '-8px' }) => bottom};
         transform: translate(-50%, 0);

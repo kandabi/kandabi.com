@@ -3,9 +3,9 @@ import { Button } from 'components/common/Button';
 import { Color } from 'utils/colorUtils';
 
 const projectTypeConfig: Record<ProjectType, { color: Color; text: string }> = {
-    [ProjectType.WEB]: { color: Color.blue_100, text: 'Web' },
-    [ProjectType.GAME]: { color: Color.orange_100, text: 'Game' },
-    [ProjectType.OTHER]: { color: Color.yellow_100, text: 'Other' },
+    [ProjectType.WEB]: { color: Color.BLUE_100, text: 'Web' },
+    [ProjectType.GAME]: { color: Color.ORANGE_100, text: 'Game' },
+    [ProjectType.OTHER]: { color: Color.YELLOW_100, text: 'Other' },
 };
 
 interface Props {

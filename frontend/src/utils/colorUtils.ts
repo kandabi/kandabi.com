@@ -1,55 +1,63 @@
+import { parseEnum } from './enumUtils';
 import { Color as ThreeColor } from 'three';
 
 export enum Color {
-    white_100 = 'white_100',
-    white_200 = 'white_200',
-    white_300 = 'white_300',
-    white_400 = 'white_400',
-    black_100 = 'black_100',
-    yellow_100 = 'yellow_100',
-    orange_100 = 'orange_100',
-    blue_100 = 'blue_100',
-    blue_500 = 'blue_500',
-    blue_600 = 'blue_600',
-    blue_700 = 'blue_700',
-    blue_800 = 'blue_800',
-    blue_900 = 'blue_900',
-    blue_1000 = 'blue_1000',
-    grey_100 = 'grey_100',
-    grey_200 = 'grey_200',
-    green_100 = 'green_100',
-    green_200 = 'green_200',
-    pink_100 = 'pink_100',
-    red_100 = 'red_100',
-    red_200 = 'red_200',
+    WHITE_100 = 'WHITE_100',
+    WHITE_200 = 'WHITE_200',
+    WHITE_300 = 'WHITE_300',
+    WHITE_400 = 'WHITE_400',
+    BLACK_100 = 'BLACK_100',
+    YELLOW_100 = 'YELLOW_100',
+    ORANGE_100 = 'ORANGE_100',
+    BLUE_100 = 'BLUE_100',
+    BLUE_500 = 'BLUE_500',
+    BLUE_600 = 'BLUE_600',
+    BLUE_700 = 'BLUE_700',
+    BLUE_800 = 'BLUE_800',
+    BLUE_900 = 'BLUE_900',
+    BLUE_1000 = 'BLUE_1000',
+    GREY_100 = 'GREY_100',
+    GREY_200 = 'GREY_200',
+    GREEN_100 = 'GREEN_100',
+    GREEN_200 = 'GREEN_200',
+    PINK_100 = 'PINK_100',
+    RED_100 = 'RED_100',
+    RED_200 = 'RED_200',
 }
 
 export type HexColor = `#${string}`;
+export type ColorType = Color | HexColor;
 
 export const colorConfig: Record<Color, HexColor> = {
-    [Color.white_100]: '#FFFFFF',
-    [Color.white_200]: '#F2F8FF',
-    [Color.white_300]: '#AEBCCC',
-    [Color.white_400]: '#6686A5',
-    [Color.black_100]: '#000000',
-    [Color.yellow_100]: '#FCE46A',
-    [Color.orange_100]: '#FA7828',
-    [Color.blue_100]: '#00B2FF',
-    [Color.blue_500]: '#1a3d70',
-    [Color.blue_600]: '#0E1E35',
-    [Color.blue_700]: '#0A1120',
-    [Color.blue_800]: '#0F243D',
-    [Color.blue_900]: '#090E15',
-    [Color.blue_1000]: '#0B1327',
-    [Color.grey_100]: '#7B7B7B',
-    [Color.grey_200]: '#CCCCCC',
-    [Color.green_100]: '#9CFF6E',
-    [Color.green_200]: '#50D400',
-    [Color.pink_100]: '#ED7EFF',
-    [Color.red_100]: '#FF001F',
-    [Color.red_200]: '#E23C50',
+    [Color.WHITE_100]: '#FFFFFF',
+    [Color.WHITE_200]: '#F2F8FF',
+    [Color.WHITE_300]: '#AEBCCC',
+    [Color.WHITE_400]: '#6686A5',
+    [Color.BLACK_100]: '#000000',
+    [Color.YELLOW_100]: '#FCE46A',
+    [Color.ORANGE_100]: '#FA7828',
+    [Color.BLUE_100]: '#00B2FF',
+    [Color.BLUE_500]: '#1a3d70',
+    [Color.BLUE_600]: '#0E1E35',
+    [Color.BLUE_700]: '#0A1120',
+    [Color.BLUE_800]: '#0F243D',
+    [Color.BLUE_900]: '#090E15',
+    [Color.BLUE_1000]: '#0B1327',
+    [Color.GREY_100]: '#7B7B7B',
+    [Color.GREY_200]: '#CCCCCC',
+    [Color.GREEN_100]: '#9CFF6E',
+    [Color.GREEN_200]: '#50D400',
+    [Color.PINK_100]: '#ED7EFF',
+    [Color.RED_100]: '#FF001F',
+    [Color.RED_200]: '#E23C50',
 };
 
-export const getThreeColor = (color: Color) => {
-    return new ThreeColor(colorConfig[color]);
+export const getColor = (colorType: ColorType): HexColor => {
+    const color = parseEnum(Color, colorType);
+
+    return color ? colorConfig[color] : (colorType as HexColor);
+};
+
+export const getThreeColor = (colorType: ColorType) => {
+    return new ThreeColor(getColor(colorType));
 };

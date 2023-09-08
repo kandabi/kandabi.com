@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { ProjectTag, ProjectTagProps } from './ProjectTag';
+import { Color } from 'utils/colorUtils';
 import { styles } from 'utils/styleUtils';
 
 const ProjectTypesContainerStyled = styled.div`
@@ -48,7 +49,7 @@ export const ProjectTagContainer = ({ projectTags, activeProjectTags, setActiveP
                     styles={{ padding: '0 16px' }}
                     projectTag={{
                         attributes: {
-                            color: 'white_100',
+                            color: Color.WHITE_100,
                             title: 'Show More',
                         },
                     }}
