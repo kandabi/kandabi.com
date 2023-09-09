@@ -7,6 +7,7 @@ import { Logo } from 'components/common/Logo';
 import { Navbar } from 'components/common/Navbar';
 import { NavbarItemProps } from 'components/common/Navbar';
 import { NavbarItemVariants } from 'components/common/Navbar/NavbarItem';
+import { ScrollToSection } from 'utils/scrollToSectionUtils';
 import { styles } from 'utils/styleUtils';
 
 const headerStyles = css`
@@ -98,9 +99,9 @@ interface Props {
 
 export const Header = ({ variant = HeaderVariants.FIXED }: Props) => {
     const { device } = useDeviceDetector();
-    const { currentScrollPosition, setGoToScrollPosition } = useAppStore(state => ({
+    const { currentScrollPosition, setScrollToSection } = useAppStore(state => ({
         currentScrollPosition: state.currentScrollPercentage,
-        setGoToScrollPosition: state.setGoToScrollPercentage,
+        setScrollToSection: state.setScrollToSection,
     }));
 
     const config = headerConfig[variant];
@@ -109,13 +110,13 @@ export const Header = ({ variant = HeaderVariants.FIXED }: Props) => {
 
     const navbarItems: NavbarItemProps[] = useMemo(
         () => [
-            { title: 'Home', onClick: () => setGoToScrollPosition(0) },
-            { title: 'Projects', onClick: () => setGoToScrollPosition(0.35) },
-            { title: 'About', onClick: () => setGoToScrollPosition(0.6) },
-            { title: 'Contact', onClick: () => setGoToScrollPosition(0.9) },
+            { title: 'Home', onClick: () => setScrollToSection(ScrollToSection.HERO) },
+            { title: 'Projects', onClick: () => setScrollToSection(ScrollToSection.PROJECTS) },
+            { title: 'About', onClick: () => setScrollToSection(ScrollToSection.ABOUT_ME) },
+            { title: 'Contact', onClick: () => setScrollToSection(ScrollToSection.CONTACT) },
             { title: 'Github', link: 'https://example.com', variant: NavbarItemVariants.Link },
         ],
-        [setGoToScrollPosition],
+        [setScrollToSection],
     );
 
     return (

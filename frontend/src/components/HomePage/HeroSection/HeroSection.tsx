@@ -9,6 +9,7 @@ import { Header } from 'components/common/Header';
 import { HeaderVariants } from 'components/common/Header';
 import { Image } from 'components/common/Image';
 import { Section } from 'components/common/Section';
+import { ScrollToSection } from 'utils/scrollToSectionUtils';
 import { styles } from 'utils/styleUtils';
 import arrowDown from 'assets/svgs/arrow-down.svg';
 
@@ -117,8 +118,8 @@ export const HeroSection = ({ glViewport }: Props) => {
         ({ currentScrollPercentage: currentScrollPosition }) => currentScrollPosition,
     );
 
-    const setGoToScrollPosition = useAppStore(state => state.setGoToScrollPercentage);
-    const handleScrollDown = () => setGoToScrollPosition(0.35);
+    const setScrollToSection = useAppStore(state => state.setScrollToSection);
+    const handleScrollDown = () => setScrollToSection(ScrollToSection.PROJECTS);
 
     return (
         <ParallaxLayer factor={1.0} offset={0} speed={0.4}>

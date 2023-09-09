@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { NavbarItem, NavbarItemProps } from './NavbarItem';
 
 const NavbarItemsStyled = styled.ul`
+    list-style-type: none;
     pointer-events: initial;
     flex-wrap: wrap;
     display: flex;

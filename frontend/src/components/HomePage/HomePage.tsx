@@ -2,12 +2,11 @@ import useRefs from 'react-use-refs';
 import { Canvas } from '@react-three/fiber';
 import styled from 'styled-components';
 import { Leva } from 'leva';
-import { useAppStore } from 'store';
 import { CenterSection } from 'components/HomePage/CenterSection';
 import { ContactSection } from 'components/HomePage/ContactSection';
 import { HeroSection } from 'components/HomePage/HeroSection';
 import { Header, HeaderVariants } from 'components/common/Header';
-import { Parallax } from 'components/common/Parallax';
+import { ParallaxContainer } from 'components/common/ParallaxContainer';
 import { ProjectProps } from 'components/common/Project/ProjectCard';
 import { ProjectTagProps } from 'components/common/Project/ProjectTag';
 import { CenterScene, HeroScene } from 'components/scenes';
@@ -29,11 +28,11 @@ export const HomePage = ({ projects, projectTags }: Props) => {
     return (
         <HomePageStyled ref={containerRef}>
             <Header variant={HeaderVariants.STICKY} />
-            <Parallax pages={2.5}>
+            <ParallaxContainer pages={2.6}>
                 <HeroSection glViewport={glHeroRef} />
                 <CenterSection glViewport={glCenterRef} projects={projects} projectTags={projectTags} />
                 <ContactSection />
-            </Parallax>
+            </ParallaxContainer>
             <Leva hidden />
             <Canvas eventSource={containerRef}>
                 <HeroScene glViewport={glHeroRef} />

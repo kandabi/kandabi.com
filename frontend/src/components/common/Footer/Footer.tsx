@@ -6,6 +6,7 @@ import { Logo } from 'components/common/Logo';
 import { Navbar, NavbarItemProps } from 'components/common/Navbar';
 import { NavbarItemVariants } from 'components/common/Navbar/NavbarItem';
 import { Section } from 'components/common/Section';
+import { ScrollToSection } from 'utils/scrollToSectionUtils';
 import { styles } from 'utils/styleUtils';
 
 const FooterStyled = styled.footer`
@@ -50,16 +51,16 @@ const SitemapStyled = styled(Link)`
 `;
 
 export const Footer = () => {
-    const setGoToScrollPosition = useAppStore(state => state.setGoToScrollPercentage);
+    const setScrollToSection = useAppStore(state => state.setScrollToSection);
     const navbarItems: NavbarItemProps[] = useMemo(
         () => [
-            { title: 'Home', onClick: () => setGoToScrollPosition(0) },
+            { title: 'Home', onClick: () => setScrollToSection(ScrollToSection.HERO) },
             { title: 'Github', link: 'https://example.com', variant: NavbarItemVariants.Link },
             { title: 'LinkedIn', link: 'https://example.com', variant: NavbarItemVariants.Link },
             { title: 'Facebook', link: 'https://example.com', variant: NavbarItemVariants.Link },
             { title: 'Upwork', link: 'https://example.com', variant: NavbarItemVariants.Link },
         ],
-        [setGoToScrollPosition],
+        [setScrollToSection],
     );
 
     return (

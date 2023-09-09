@@ -7,7 +7,6 @@ const ContactStyled = styled.div`
     align-items: center;
     position: relative;
     display: flex;
-    /* height: 100vh; */
     height: 120vh;
     width: 100%;
 `;
@@ -19,8 +18,7 @@ const TitleStyled = styled.h1`
 
 export const ContactSection = () => {
     return (
-        // <ParallaxLayer offset={1.5} factor={1.0} speed={0.4}>
-        <ParallaxLayer offset={1.5} factor={1.2} speed={0.4}>
+        <ParallaxLayer offset={1.6} factor={1.25} speed={0.4}>
             <ContactStyled>
                 <TitleStyled>Hello!!!!!!!!!!</TitleStyled>
             </ContactStyled>

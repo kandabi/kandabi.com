@@ -1,6 +1,7 @@
 import { RefObject } from 'react';
 import { ParallaxLayer } from '@react-spring/parallax';
 import styled from 'styled-components';
+import { AboutMeSection } from './AboutMeSection/AboutMeSection';
 import { ProjectsSection } from './ProjectsSection';
 import { Image } from 'components/common/Image';
 import { ProjectProps } from 'components/common/Project/ProjectCard';
@@ -13,6 +14,7 @@ import waveMobile_1 from 'assets/svgs/wave-mobile-1.svg';
 import waveMobile_2 from 'assets/svgs/wave-mobile-2.svg';
 
 const CenterSectionStyled = styled.div`
+    padding-top: 200px;
     position: relative;
     height: 100%;
     width: 100%;
@@ -58,7 +60,7 @@ interface IProjectsAboutSection {
 
 export const CenterSection = ({ glViewport, projects, projectTags }: IProjectsAboutSection) => {
     return (
-        <ParallaxLayer factor={2.0} offset={0.99} speed={1.2}>
+        <ParallaxLayer factor={2.1} offset={0.99} speed={1.2}>
             <CenterSectionStyled>
                 <TopWaveStyled
                     sources={[{ src: waveDesktop_1.src, breakpoint: Breakpoint.lg }]}
@@ -67,6 +69,7 @@ export const CenterSection = ({ glViewport, projects, projectTags }: IProjectsAb
                     width={1920}
                 />
                 <ProjectsSection projects={projects} projectTags={projectTags} />
+                <AboutMeSection />
                 <BottomWaveStyled
                     sources={[{ src: waveDesktop_2.src, breakpoint: Breakpoint.lg }]}
                     alt='Wave bottom decoration'

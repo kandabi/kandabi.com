@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useAppStore } from 'store';
 import { Image } from 'components/common/Image';
+import { ScrollToSection } from 'utils/scrollToSectionUtils';
 import logoFull from 'assets/svgs/logo-full.svg';
 
 const LogoStyled = styled(Image)`
@@ -14,11 +15,11 @@ interface Props {
 }
 
 export const Logo = ({ className }: Props) => {
-    const setGoToScrollPosition = useAppStore(state => state.setGoToScrollPercentage);
+    const setScrollToSection = useAppStore(state => state.setScrollToSection);
 
     return (
         <LogoStyled
-            onClick={() => setGoToScrollPosition(0)}
+            onClick={() => setScrollToSection(ScrollToSection.HERO)}
             alt='aviv kandabi main logo'
             className={className}
             src={logoFull.src}

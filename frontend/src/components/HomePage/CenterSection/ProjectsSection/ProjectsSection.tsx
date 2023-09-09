@@ -6,12 +6,6 @@ import { ProjectType, ProjectTypeContainer } from 'components/common/Project/Pro
 import { Section } from 'components/common/Section';
 import { styles } from 'utils/styleUtils';
 
-const ProjectsStyled = styled.div`
-    ${styles.flex.start}
-    position: relative;
-    top: 200px;
-`;
-
 const TitleStyled = styled.h2`
     text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.75);
     color: ${styles.color.WHITE_100};
@@ -44,25 +38,23 @@ export const ProjectsSection = ({ projects, projectTags }: ProjectsSectionProps)
     const [activeProjectType, setActiveProjectType] = useState<ProjectType>();
 
     return (
-        <ProjectsStyled>
-            <Section gap='26px'>
-                <TitleStyled>Projects</TitleStyled>
-                <ProjectFiltersStyled>
-                    <ProjectTypeContainer
-                        setActiveProjectType={setActiveProjectType}
-                        activeProjectType={activeProjectType}
-                    />
-                    <ProjectTagContainer
-                        setActiveProjectTags={setActiveProjectTags}
-                        activeProjectTags={activeProjectTags}
-                        projectTags={projectTags}
-                    />
-                </ProjectFiltersStyled>
-                <ProjectContainerStyled>
-                    <ProjectContainer projects={projects} />
-                    {projects.length > 0 && <ProjectSelection project={projects[0]} />}
-                </ProjectContainerStyled>
-            </Section>
-        </ProjectsStyled>
+        <Section gap='26px'>
+            <TitleStyled>Projects</TitleStyled>
+            <ProjectFiltersStyled>
+                <ProjectTypeContainer
+                    setActiveProjectType={setActiveProjectType}
+                    activeProjectType={activeProjectType}
+                />
+                <ProjectTagContainer
+                    setActiveProjectTags={setActiveProjectTags}
+                    activeProjectTags={activeProjectTags}
+                    projectTags={projectTags}
+                />
+            </ProjectFiltersStyled>
+            <ProjectContainerStyled>
+                <ProjectContainer projects={projects} />
+                {projects.length > 0 && <ProjectSelection project={projects[0]} />}
+            </ProjectContainerStyled>
+        </Section>
     );
 };
