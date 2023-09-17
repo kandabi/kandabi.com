@@ -1,0 +1,15 @@
+**/*.jpg
+**/*.png
+**/*.ico
+**/*.svg
+**/*.mp4
+**/.gitkeep
+**/*.txt
+build/
+dist/
+.cache
+.tmp
+.env
+.env.*
+.prettierignore
+.editorconfig

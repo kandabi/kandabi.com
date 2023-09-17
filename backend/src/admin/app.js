@@ -1,12 +1,12 @@
 const config = {
-  locales: [],
+    locales: [],
 };
 
-const bootstrap = (app) => {
-  console.log(app);
+const bootstrap = app => {
+    console.log(app);
 };
 
 export default {
-  config,
-  bootstrap,
+    config,
+    bootstrap,
 };
