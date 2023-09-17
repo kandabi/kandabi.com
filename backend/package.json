@@ -8,12 +8,14 @@
         "start": "strapi start",
         "build": "strapi build",
         "strapi": "strapi",
-        "prettier": "prettier --write \"**/*.*\""
+        "prettier": "prettier --write \"**/*.*\"",
+        "copy-ts-files": "node ./copy-ts-files.js"
     },
     "dependencies": {
         "@strapi/plugin-users-permissions": "^4.13.6",
         "@strapi/strapi": "^4.13.6",
-        "better-sqlite3": "^8.6.0"
+        "better-sqlite3": "^8.6.0",
+        "strapi-plugin-schemas-to-ts": "^1.1.10"
     },
     "devDependencies": {
         "prettier": "^3.0.3"

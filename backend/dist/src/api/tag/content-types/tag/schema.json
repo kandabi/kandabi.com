@@ -1,0 +1,33 @@
+{
+    "kind": "collectionType",
+    "collectionName": "tags",
+    "info": {
+        "singularName": "tag",
+        "pluralName": "tags",
+        "displayName": "Tag",
+        "description": ""
+    },
+    "options": {
+        "draftAndPublish": false
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "title": {
+            "type": "string",
+            "unique": true,
+            "required": true,
+            "maxLength": 80
+        },
+        "color": {
+            "type": "string"
+        },
+        "order": {
+            "type": "integer",
+            "max": 256,
+            "min": 1,
+            "unique": true,
+            "required": false,
+            "default": 1
+        }
+    }
+}
