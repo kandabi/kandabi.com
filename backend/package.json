@@ -11,9 +11,9 @@
         "prettier": "prettier --write \"**/*.*\""
     },
     "dependencies": {
-        "@strapi/plugin-users-permissions": "^4.6.1",
-        "@strapi/strapi": "^4.6.1",
-        "better-sqlite3": "^8.1.0"
+        "@strapi/plugin-users-permissions": "^4.13.6",
+        "@strapi/strapi": "^4.13.6",
+        "better-sqlite3": "^8.6.0"
     },
     "devDependencies": {
         "prettier": "^3.0.3"
