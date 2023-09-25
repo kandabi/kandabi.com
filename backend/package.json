@@ -8,8 +8,7 @@
         "start": "strapi start",
         "build": "strapi build",
         "strapi": "strapi",
-        "prettier": "prettier --write \"**/*.*\"",
-        "copy-ts-files": "node ./copy-ts-files.js"
+        "prettier": "prettier --write \"**/*.*\""
     },
     "dependencies": {
         "@strapi/plugin-users-permissions": "^4.13.6",
