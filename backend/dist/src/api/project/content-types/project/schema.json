@@ -1,0 +1,69 @@
+{
+    "kind": "collectionType",
+    "collectionName": "projects",
+    "info": {
+        "singularName": "project",
+        "pluralName": "projects",
+        "displayName": "Project",
+        "description": ""
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "title": {
+            "type": "string",
+            "required": true,
+            "unique": true,
+            "maxLength": 80
+        },
+        "description": {
+            "type": "richtext",
+            "maxLength": 300
+        },
+        "video": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
+            "allowedTypes": [
+                "videos"
+            ]
+        },
+        "tags": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::tag.tag"
+        },
+        "projectType": {
+            "type": "enumeration",
+            "enum": [
+                "WEB",
+                "GAME",
+                "OTHER"
+            ],
+            "required": true,
+            "default": "WEB",
+            "enumName": "ProjectType"
+        },
+        "thumbnail": {
+            "type": "media",
+            "multiple": false,
+            "required": true,
+            "allowedTypes": [
+                "images"
+            ]
+        },
+        "link": {
+            "type": "string"
+        },
+        "order": {
+            "type": "integer",
+            "default": 0,
+            "required": true,
+            "unique": true,
+            "min": 0,
+            "max": 256
+        }
+    }
+}
