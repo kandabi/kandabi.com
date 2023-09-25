@@ -8,17 +8,16 @@
         "start": "strapi start",
         "build": "strapi build",
         "strapi": "strapi",
-        "prettier": "prettier --write \"**/*.*\"",
-        "generate-schema": "strapi ts:generate-types"
+        "prettier": "prettier --write \"**/*.*\""
     },
     "dependencies": {
         "@strapi/plugin-graphql": "^4.13.7",
         "@strapi/plugin-users-permissions": "^4.13.6",
         "@strapi/strapi": "^4.13.6",
-        "better-sqlite3": "^8.6.0",
-        "strapi-plugin-schemas-to-ts": "^1.1.10"
+        "better-sqlite3": "^8.6.0"
     },
     "devDependencies": {
+        "@types/node": "^20.6.5",
         "prettier": "^3.0.3"
     },
     "author": {
