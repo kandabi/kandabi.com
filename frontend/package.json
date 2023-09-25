@@ -11,7 +11,7 @@
         "storybook": "storybook dev -p 6006",
         "prettier": "prettier --write \"**/*.*\"",
         "lint": "tsc --noEmit && next lint",
-        "codegen": "graphql-codegen --config codegen.ts"
+        "generate-types": "graphql-codegen --config codegen.ts && prettier --log-level silent --write \"src/types/*\""
     },
     "dependencies": {
         "@react-spring/parallax": "^9.7.3",
@@ -32,7 +32,13 @@
         "zustand": "^4.4.1"
     },
     "devDependencies": {
-        "@graphql-codegen/cli": "5.0.0",
+        "@graphql-codegen/cli": "^5.0.0",
+        "@graphql-codegen/client-preset": "4.1.0",
+        "@graphql-codegen/introspection": "4.0.0",
+        "@graphql-codegen/typescript": "^4.0.1",
+        "@graphql-codegen/typescript-graphql-request": "^5.0.0",
+        "@graphql-codegen/typescript-operations": "^4.0.1",
+        "@graphql-codegen/typescript-react-apollo": "^3.3.7",
         "@next/eslint-plugin-next": "^13.4.19",
         "@storybook/addon-essentials": "^7.4.0",
         "@storybook/addon-interactions": "^7.4.0",
@@ -55,8 +61,6 @@
         "prettier": "^3.0.3",
         "sass": "^1.66.1",
         "storybook": "^7.4.0",
-        "typescript": "^5.1.6",
-        "@graphql-codegen/introspection": "4.0.0",
-        "@graphql-codegen/client-preset": "4.1.0"
+        "typescript": "^5.1.6"
     }
 }
