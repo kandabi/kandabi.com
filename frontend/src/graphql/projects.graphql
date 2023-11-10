@@ -2,6 +2,9 @@ query getProjects {
     projects {
         data {
             id
+            attributes {
+                title
+            }
         }
     }
 }

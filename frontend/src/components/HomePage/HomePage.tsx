@@ -7,9 +7,9 @@ import { ContactSection } from 'components/HomePage/ContactSection';
 import { HeroSection } from 'components/HomePage/HeroSection';
 import { Header, HeaderVariant } from 'components/common/Header';
 import { ParallaxContainer } from 'components/common/ParallaxContainer';
-import { ProjectProps } from 'components/common/Project/ProjectCard';
 import { ProjectTagProps } from 'components/common/Project/ProjectTag';
 import { CenterScene, HeroScene } from 'components/scenes';
+import { ProjectEntity } from 'types/graphql';
 
 const HomePageStyled = styled.div`
     position: absolute;
@@ -18,7 +18,7 @@ const HomePageStyled = styled.div`
 `;
 
 type Props = {
-    projects: ProjectProps[];
+    projects: ProjectEntity[];
     projectTags: ProjectTagProps[];
 };
 

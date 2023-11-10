@@ -1,4 +1,3 @@
-import { parseEnum } from './enumUtils';
 import { Color as ThreeColor } from 'three';
 
 export enum Color {
@@ -53,9 +52,7 @@ export const colorConfig: Record<Color, HexColor> = {
 };
 
 export const getColor = (colorType: ColorType): HexColor => {
-    const color = parseEnum(Color, colorType);
-
-    return color ? colorConfig[color] : (colorType as HexColor);
+    return colorConfig?.[colorType as Color] || colorType;
 };
 
 export const getThreeColor = (colorType: ColorType) => {

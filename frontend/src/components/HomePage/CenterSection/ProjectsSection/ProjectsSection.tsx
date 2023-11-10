@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { ProjectContainer, ProjectProps, ProjectSelection } from 'components/common/Project/ProjectCard';
+import { ProjectContainer, ProjectSelection } from 'components/common/Project/ProjectCard';
 import { ProjectTagContainer, ProjectTagProps } from 'components/common/Project/ProjectTag';
 import { ProjectType, ProjectTypeContainer } from 'components/common/Project/ProjectType';
 import { Section } from 'components/common/Section';
 import { styles } from 'utils/styleUtils';
+import { ProjectEntity } from 'types/graphql';
 
 const TitleStyled = styled.h2`
     text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.75);
@@ -29,7 +30,7 @@ const ProjectFiltersStyled = styled.div`
 `;
 
 export type ProjectsSectionProps = {
-    projects: ProjectProps[];
+    projects: ProjectEntity[];
     projectTags: ProjectTagProps[];
 };
 
@@ -53,7 +54,7 @@ export const ProjectsSection = ({ projects, projectTags }: ProjectsSectionProps)
             </ProjectFiltersStyled>
             <ProjectContainerStyled>
                 <ProjectContainer projects={projects} />
-                {projects.length > 0 && <ProjectSelection project={projects[0]} />}
+                {/* {projectsData.projects?.data.length > 0 && <ProjectSelection project={projectsData[0]} />} */}
             </ProjectContainerStyled>
         </Section>
     );

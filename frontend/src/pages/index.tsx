@@ -2,12 +2,10 @@ import { GetStaticProps } from 'next';
 import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
 
 import { HomePage } from 'components/HomePage';
-import { ProjectsSectionProps } from 'components/HomePage/CenterSection/ProjectsSection';
-import { ProjectProps } from 'components/common/Project/ProjectCard';
 import { ProjectTagProps } from 'components/common/Project/ProjectTag';
-import { GetProjectsDocument, GetProjectsQuery } from 'types/graphql';
+import { GetProjectsDocument, GetProjectsQuery, ProjectEntity } from 'types/graphql';
 
-export const getGqlClient = (jwtToken: string, baseUrl: string) => {
+export const getClient = (jwtToken: string, baseUrl: string) => {
     return new ApolloClient({
         cache: new InMemoryCache(),
         link: new HttpLink({
@@ -19,11 +17,16 @@ export const getGqlClient = (jwtToken: string, baseUrl: string) => {
 };
 
 type Props = {
-    projects?: GetProjectsQuery;
+    projects: ProjectEntity[];
+};
+
+const Index = ({ projects }: Props) => {
+    console.log('projects', projects);
+    return <HomePage projects={projects} projectTags={[]} />;
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-    let projects: GetProjectsQuery | undefined = undefined;
+    let projects: ProjectEntity[] = [];
     let projectTags: ProjectTagProps[] = [];
 
     const baseUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -31,18 +34,18 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     if (!jwtToken || !baseUrl) {
         console.error('Missing JWT_API_TOKEN or NEXT_PUBLIC_API_URL have you added it to environment variables??');
         return {
-            props: {},
+            props: { projects },
         };
     }
 
-    const gqlClient = getGqlClient(jwtToken, baseUrl);
+    const client = getClient(jwtToken, baseUrl);
 
     try {
-        const { data } = await gqlClient.query({
+        const { data } = await client.query({
             query: GetProjectsDocument,
         });
 
-        projects = data;
+        projects = data.projects?.data || [];
     } catch (ex) {
         console.log('ex', ex);
     }
@@ -50,10 +53,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     return {
         props: { projects, projectTags },
     };
-};
-
-const Index = ({ projects }: Props) => {
-    return <HomePage projects={[]} projectTags={[]} />;
 };
 
 export default Index;

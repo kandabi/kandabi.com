@@ -23,20 +23,20 @@ const ButtonBackgroundStyled = styled.div<{ backgroundColor?: ColorType }>`
 `;
 
 type ButtonStyledProps = {
-    borderColor?: ColorType;
-    isDisabled?: boolean;
+    $_borderColor?: ColorType;
+    $_isDisabled?: boolean;
     $_padding?: string;
     $_height?: string;
     $_margin?: string;
 };
 
 const ButtonStyled = styled.button<ButtonStyledProps>`
-    border: 2px solid ${({ borderColor = Color.YELLOW_100 }) => getColor(borderColor)};
+    border: 2px solid ${({ $_borderColor = Color.YELLOW_100 }) => getColor($_borderColor)};
     padding: ${({ $_padding = '0 32px' }) => $_padding};
     height: ${({ $_height = '40px' }) => $_height};
     transition: transform 0.2s ease-out;
     margin: ${({ $_margin }) => $_margin};
-    pointer-events: ${({ isDisabled }) => isDisabled && 'none'};
+    pointer-events: ${({ $_isDisabled }) => $_isDisabled && 'none'};
     border-radius: 40px;
     position: relative;
     background: none;
@@ -82,11 +82,11 @@ export const Button = ({ text, onClick, isSelected, isDisabled, className, style
     return (
         <ButtonStyled
             data-active={isSelected && !isDisabled}
-            borderColor={styles?.color}
+            $_borderColor={styles?.color}
             $_padding={styles?.padding}
             $_margin={styles?.margin}
             $_height={styles?.height}
-            isDisabled={isDisabled}
+            $_isDisabled={isDisabled}
             className={className}
             onClick={onClick}
         >

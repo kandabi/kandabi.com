@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { AboutMeSection } from './AboutMeSection/AboutMeSection';
 import { ProjectsSection } from './ProjectsSection';
 import { Image } from 'components/common/Image';
-import { ProjectProps } from 'components/common/Project/ProjectCard';
 import { ProjectTagProps } from 'components/common/Project/ProjectTag';
 import { Breakpoint } from 'utils/breakpointUtils';
 import { styles } from 'utils/styleUtils';
@@ -12,6 +11,7 @@ import waveDesktop_1 from 'assets/svgs/wave-desktop-1.svg';
 import waveDesktop_2 from 'assets/svgs/wave-desktop-2.svg';
 import waveMobile_1 from 'assets/svgs/wave-mobile-1.svg';
 import waveMobile_2 from 'assets/svgs/wave-mobile-2.svg';
+import { ProjectEntity } from 'types/graphql';
 
 const CenterSectionStyled = styled.div`
     padding-top: 200px;
@@ -54,7 +54,7 @@ const GlViewStyled = styled.div`
 
 type IProjectsAboutSection = {
     glViewport: RefObject<HTMLDivElement>;
-    projects: ProjectProps[];
+    projects: ProjectEntity[];
     projectTags: ProjectTagProps[];
 };
 

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Project, ProjectProps } from './ProjectCard';
+import { GetProjectsQuery, ProjectEntity } from 'types/graphql';
 
 const ContainerStyled = styled.div`
     position: relative;
@@ -38,16 +39,16 @@ const InnerShadowStyled = styled.div`
 `;
 
 type Props = {
-    projects: ProjectProps[];
+    projects: ProjectEntity[];
 };
 
 export const ProjectContainer = ({ projects }: Props) => {
     return (
         <ContainerStyled>
             <GridStyled>
-                {projects.map(({ id, attributes }) => (
+                {/* {projects.map(({ id, attributes }) => (
                     <Project key={id} attributes={attributes} />
-                ))}
+                ))} */}
             </GridStyled>
             <InnerShadowStyled />
         </ContainerStyled>

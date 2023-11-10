@@ -1097,7 +1097,11 @@ export type GetProjectsQuery = {
     __typename?: 'Query';
     projects?: {
         __typename?: 'ProjectEntityResponseCollection';
-        data: Array<{ __typename?: 'ProjectEntity'; id?: string | null }>;
+        data: Array<{
+            __typename?: 'ProjectEntity';
+            id?: string | null;
+            attributes?: { __typename?: 'Project'; title: string } | null;
+        }>;
     } | null;
 };
 
@@ -1122,7 +1126,19 @@ export const GetProjectsDocument = {
                                     name: { kind: 'Name', value: 'data' },
                                     selectionSet: {
                                         kind: 'SelectionSet',
-                                        selections: [{ kind: 'Field', name: { kind: 'Name', value: 'id' } }],
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                                            {
+                                                kind: 'Field',
+                                                name: { kind: 'Name', value: 'attributes' },
+                                                selectionSet: {
+                                                    kind: 'SelectionSet',
+                                                    selections: [
+                                                        { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                                                    ],
+                                                },
+                                            },
+                                        ],
                                     },
                                 },
                             ],
