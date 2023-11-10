@@ -4,14 +4,13 @@ import styled from 'styled-components';
 import { AboutMeSection } from './AboutMeSection/AboutMeSection';
 import { ProjectsSection } from './ProjectsSection';
 import { Image } from 'components/common/Image';
-import { ProjectTagProps } from 'components/common/Project/ProjectTag';
 import { Breakpoint } from 'utils/breakpointUtils';
 import { styles } from 'utils/styleUtils';
 import waveDesktop_1 from 'assets/svgs/wave-desktop-1.svg';
 import waveDesktop_2 from 'assets/svgs/wave-desktop-2.svg';
 import waveMobile_1 from 'assets/svgs/wave-mobile-1.svg';
 import waveMobile_2 from 'assets/svgs/wave-mobile-2.svg';
-import { ProjectEntity } from 'types/graphql';
+import { GetProjectsQuery, GetTagsQuery } from 'types/graphql';
 
 const CenterSectionStyled = styled.div`
     padding-top: 200px;
@@ -54,11 +53,11 @@ const GlViewStyled = styled.div`
 
 type IProjectsAboutSection = {
     glViewport: RefObject<HTMLDivElement>;
-    projects: ProjectEntity[];
-    projectTags: ProjectTagProps[];
+    projectsQuery?: GetProjectsQuery;
+    tagsQuery?: GetTagsQuery;
 };
 
-export const CenterSection = ({ glViewport, projects, projectTags }: IProjectsAboutSection) => {
+export const CenterSection = ({ glViewport, projectsQuery, tagsQuery }: IProjectsAboutSection) => {
     return (
         <ParallaxLayer factor={2.1} offset={0.99} speed={1.2}>
             <CenterSectionStyled>
@@ -68,7 +67,7 @@ export const CenterSection = ({ glViewport, projects, projectTags }: IProjectsAb
                     src={waveMobile_1.src}
                     width={1920}
                 />
-                <ProjectsSection projects={projects} projectTags={projectTags} />
+                <ProjectsSection projectsQuery={projectsQuery} tagsQuery={tagsQuery} />
                 <AboutMeSection />
                 <BottomWaveStyled
                     sources={[{ src: waveDesktop_2.src, breakpoint: Breakpoint.lg }]}

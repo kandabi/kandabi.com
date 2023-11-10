@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { ProjectType } from './ProjectType';
 import { ProjectTypeButton } from './ProjectTypeButton';
 import { styles } from 'utils/styleUtils';
+import { ProjectType } from 'types/graphql';
 
 const ProjectTypesContainerStyled = styled.div`
     ${styles.flex.start};

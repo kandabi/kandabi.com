@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { ProjectContainer, ProjectSelection } from 'components/common/Project/ProjectCard';
+import { ProjectContainer } from 'components/common/Project/ProjectCard';
 import { ProjectTagContainer, ProjectTagProps } from 'components/common/Project/ProjectTag';
-import { ProjectType, ProjectTypeContainer } from 'components/common/Project/ProjectType';
+import { ProjectTypeContainer } from 'components/common/Project/ProjectType';
 import { Section } from 'components/common/Section';
 import { styles } from 'utils/styleUtils';
-import { ProjectEntity } from 'types/graphql';
+import { GetProjectsQuery, GetTagsQuery } from 'types/graphql';
 
 const TitleStyled = styled.h2`
     text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.75);
@@ -30,13 +30,13 @@ const ProjectFiltersStyled = styled.div`
 `;
 
 export type ProjectsSectionProps = {
-    projects: ProjectEntity[];
-    projectTags: ProjectTagProps[];
+    projectsQuery?: GetProjectsQuery;
+    tagsQuery?: GetTagsQuery;
 };
 
-export const ProjectsSection = ({ projects, projectTags }: ProjectsSectionProps) => {
+export const ProjectsSection = ({ projectsQuery, tagsQuery }: ProjectsSectionProps) => {
     const [activeProjectTags, setActiveProjectTags] = useState<ProjectTagProps[]>([]);
-    const [activeProjectType, setActiveProjectType] = useState<ProjectType>();
+    const [activeProjectType, setActiveProjectType] = useState<any>();
 
     return (
         <Section gap='26px'>
@@ -49,11 +49,11 @@ export const ProjectsSection = ({ projects, projectTags }: ProjectsSectionProps)
                 <ProjectTagContainer
                     setActiveProjectTags={setActiveProjectTags}
                     activeProjectTags={activeProjectTags}
-                    projectTags={projectTags}
+                    tagsQuery={tagsQuery}
                 />
             </ProjectFiltersStyled>
             <ProjectContainerStyled>
-                <ProjectContainer projects={projects} />
+                <ProjectContainer projectsQuery={projectsQuery} />
                 {/* {projectsData.projects?.data.length > 0 && <ProjectSelection project={projectsData[0]} />} */}
             </ProjectContainerStyled>
         </Section>

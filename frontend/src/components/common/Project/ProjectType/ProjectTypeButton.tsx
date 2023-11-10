@@ -1,5 +1,5 @@
-import { ProjectType } from './ProjectType';
 import { Button } from 'components/common/Button';
+import { ProjectType } from 'types/graphql';
 import { Color } from 'utils/colorUtils';
 
 const projectTypeConfig: Record<ProjectType, { color: Color; text: string }> = {

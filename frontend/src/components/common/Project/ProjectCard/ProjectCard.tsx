@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import { animated, easings, useSpring } from '@react-spring/web';
 import styled from 'styled-components';
-import { Image } from 'components/common/Image';
-import { ProjectTag, ProjectTagProps } from 'components/common/Project/ProjectTag';
-import { ProjectType, ProjectTypeButton } from 'components/common/Project/ProjectType';
-import { MediaProps, getMediaUrl } from 'utils/mediaUtils';
+import { ProjectTypeButton } from 'components/common/Project/ProjectType';
 import { styles } from 'utils/styleUtils';
+import { Maybe, Project } from 'types/graphql';
 
 const cardHoverStyles = [
     'rotateX(0deg) rotateY(0deg) translate3d(-10px, -8px, -8px)',
@@ -55,21 +53,9 @@ const TypeAndTagsContainer = styled.div`
     gap: 6px;
 `;
 
-export type ProjectProps = {
-    id: number;
-    attributes: {
-        description: string;
-        title: string;
-        link?: string;
-        projectType: ProjectType;
-        tags: { data: ProjectTagProps[] };
-        thumbnail: MediaProps;
-        video?: MediaProps;
-    };
-};
+type Props = Partial<Project>;
 
-export const Project = ({ attributes }: Omit<ProjectProps, 'id'>) => {
-    const { title, thumbnail, projectType, tags } = attributes;
+export const ProjectCard = ({ title, /*thumbnail*/ projectType /*tags*/ }: Props) => {
     const [isHovering, setIsHovering] = useState<boolean>(false);
 
     const { cardHover } = useSpring({
@@ -89,15 +75,15 @@ export const Project = ({ attributes }: Omit<ProjectProps, 'id'>) => {
                 }),
             }}
         >
-            <Image src={getMediaUrl(thumbnail)} width='100%' height={165} alt='Project thumbnail' />
+            {/* <Image src={getMediaUrl(thumbnail)} width='100%' height={165} alt='Project thumbnail' /> */}
             <ContentStyled>
                 <TitleStyled>{title}</TitleStyled>
                 <SeparatorStyled />
                 <TypeAndTagsContainer>
                     <ProjectTypeButton projectType={projectType} isDisabled />
-                    {tags.data.map(projectTag => (
+                    {/* {tags?.data.map(projectTag => (
                         <ProjectTag projectTag={projectTag} key={projectTag.id} isDisabled />
-                    ))}
+                    ))} */}
                 </TypeAndTagsContainer>
             </ContentStyled>
         </ProjectStyled>

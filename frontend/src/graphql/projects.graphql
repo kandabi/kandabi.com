@@ -8,3 +8,16 @@ query getProjects {
         }
     }
 }
+
+query getTags {
+    tags {
+        data {
+            id
+            attributes {
+                title
+                order
+                color
+            }
+        }
+    }
+}

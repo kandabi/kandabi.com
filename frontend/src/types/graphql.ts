@@ -1105,6 +1105,20 @@ export type GetProjectsQuery = {
     } | null;
 };
 
+export type GetTagsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetTagsQuery = {
+    __typename?: 'Query';
+    tags?: {
+        __typename?: 'TagEntityResponseCollection';
+        data: Array<{
+            __typename?: 'TagEntity';
+            id?: string | null;
+            attributes?: { __typename?: 'Tag'; title: string; order?: number | null; color?: string | null } | null;
+        }>;
+    } | null;
+};
+
 export const GetProjectsDocument = {
     kind: 'Document',
     definitions: [
@@ -1149,3 +1163,49 @@ export const GetProjectsDocument = {
         },
     ],
 } as unknown as DocumentNode<GetProjectsQuery, GetProjectsQueryVariables>;
+export const GetTagsDocument = {
+    kind: 'Document',
+    definitions: [
+        {
+            kind: 'OperationDefinition',
+            operation: 'query',
+            name: { kind: 'Name', value: 'getTags' },
+            selectionSet: {
+                kind: 'SelectionSet',
+                selections: [
+                    {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'tags' },
+                        selectionSet: {
+                            kind: 'SelectionSet',
+                            selections: [
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'data' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                                            {
+                                                kind: 'Field',
+                                                name: { kind: 'Name', value: 'attributes' },
+                                                selectionSet: {
+                                                    kind: 'SelectionSet',
+                                                    selections: [
+                                                        { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                                                        { kind: 'Field', name: { kind: 'Name', value: 'order' } },
+                                                        { kind: 'Field', name: { kind: 'Name', value: 'color' } },
+                                                    ],
+                                                },
+                                            },
+                                        ],
+                                    },
+                                },
+                            ],
+                        },
+                    },
+                ],
+            },
+        },
+    ],
+} as unknown as DocumentNode<GetTagsQuery, GetTagsQueryVariables>;

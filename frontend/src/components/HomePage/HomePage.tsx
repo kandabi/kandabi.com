@@ -7,9 +7,8 @@ import { ContactSection } from 'components/HomePage/ContactSection';
 import { HeroSection } from 'components/HomePage/HeroSection';
 import { Header, HeaderVariant } from 'components/common/Header';
 import { ParallaxContainer } from 'components/common/ParallaxContainer';
-import { ProjectTagProps } from 'components/common/Project/ProjectTag';
 import { CenterScene, HeroScene } from 'components/scenes';
-import { ProjectEntity } from 'types/graphql';
+import { GetProjectsQuery, GetTagsQuery } from 'types/graphql';
 
 const HomePageStyled = styled.div`
     position: absolute;
@@ -18,11 +17,11 @@ const HomePageStyled = styled.div`
 `;
 
 type Props = {
-    projects: ProjectEntity[];
-    projectTags: ProjectTagProps[];
+    projectsQuery?: GetProjectsQuery;
+    tagsQuery?: GetTagsQuery;
 };
 
-export const HomePage = ({ projects, projectTags }: Props) => {
+export const HomePage = ({ projectsQuery, tagsQuery }: Props) => {
     const [containerRef, glHeroRef, glCenterRef] = useRefs<HTMLDivElement>(null!);
 
     return (
@@ -30,7 +29,7 @@ export const HomePage = ({ projects, projectTags }: Props) => {
             <Header variant={HeaderVariant.STICKY} />
             <ParallaxContainer pages={2.6}>
                 <HeroSection glViewport={glHeroRef} />
-                <CenterSection glViewport={glCenterRef} projects={projects} projectTags={projectTags} />
+                <CenterSection glViewport={glCenterRef} projectsQuery={projectsQuery} tagsQuery={tagsQuery} />
                 <ContactSection />
             </ParallaxContainer>
             <Leva hidden />

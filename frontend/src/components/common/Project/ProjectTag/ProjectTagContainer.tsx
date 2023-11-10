@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { ProjectTag, ProjectTagProps } from './ProjectTag';
-import { Color } from 'utils/colorUtils';
+import { ProjectTagProps } from './ProjectTag';
 import { styles } from 'utils/styleUtils';
+import { GetTagsQuery } from 'types/graphql';
 
 const ProjectTypesContainerStyled = styled.div`
     ${styles.flex.start};
@@ -15,12 +15,12 @@ const ButtonContainerStyled = styled.div`
 `;
 
 type Props = {
-    projectTags: ProjectTagProps[];
+    tagsQuery?: GetTagsQuery;
     activeProjectTags: ProjectTagProps[];
     setActiveProjectTags: (projectType: ProjectTagProps[]) => void;
 };
 
-export const ProjectTagContainer = ({ projectTags, activeProjectTags, setActiveProjectTags }: Props) => {
+export const ProjectTagContainer = ({ tagsQuery, activeProjectTags, setActiveProjectTags }: Props) => {
     const handleProjectTagClick = (projectTag: ProjectTagProps) => {
         const newProjectTags: ProjectTagProps[] = activeProjectTags.includes(projectTag)
             ? activeProjectTags.filter(activeTag => projectTag !== activeTag)
@@ -29,13 +29,13 @@ export const ProjectTagContainer = ({ projectTags, activeProjectTags, setActiveP
         setActiveProjectTags(newProjectTags);
     };
 
-    const displayTags = projectTags.slice(0, 4);
+    // const displayTags = projectTags.slice(0, 4);
 
     return (
         <ProjectTypesContainerStyled>
             <span>Project Tags -</span>
             <ButtonContainerStyled>
-                {displayTags.map(projectTag => (
+                {/* {displayTags.map(projectTag => (
                     <ProjectTag
                         isSelected={activeProjectTags.includes(projectTag)}
                         onClick={() => handleProjectTagClick(projectTag)}
@@ -53,7 +53,7 @@ export const ProjectTagContainer = ({ projectTags, activeProjectTags, setActiveP
                             title: 'Show More',
                         },
                     }}
-                />
+                />*/}
             </ButtonContainerStyled>
         </ProjectTypesContainerStyled>
     );

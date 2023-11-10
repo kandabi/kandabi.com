@@ -2,8 +2,7 @@ import { GetStaticProps } from 'next';
 import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
 
 import { HomePage } from 'components/HomePage';
-import { ProjectTagProps } from 'components/common/Project/ProjectTag';
-import { GetProjectsDocument, GetProjectsQuery, ProjectEntity } from 'types/graphql';
+import { GetProjectsDocument, GetProjectsQuery, GetTagsDocument, GetTagsQuery } from 'types/graphql';
 
 export const getClient = (jwtToken: string, baseUrl: string) => {
     return new ApolloClient({
@@ -17,41 +16,41 @@ export const getClient = (jwtToken: string, baseUrl: string) => {
 };
 
 type Props = {
-    projects: ProjectEntity[];
+    projectsQuery?: GetProjectsQuery;
+    tagsQuery?: GetTagsQuery;
 };
 
-const Index = ({ projects }: Props) => {
-    console.log('projects', projects);
-    return <HomePage projects={projects} projectTags={[]} />;
+const Index = ({ projectsQuery, tagsQuery }: Props) => {
+    return <HomePage projectsQuery={projectsQuery} tagsQuery={tagsQuery} />;
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-    let projects: ProjectEntity[] = [];
-    let projectTags: ProjectTagProps[] = [];
+    let projectsQuery: GetProjectsQuery | undefined;
+    let tagsQuery: GetTagsQuery | undefined;
 
     const baseUrl = process.env.NEXT_PUBLIC_API_URL;
     const jwtToken = process.env.JWT_API_TOKEN;
     if (!jwtToken || !baseUrl) {
-        console.error('Missing JWT_API_TOKEN or NEXT_PUBLIC_API_URL have you added it to environment variables??');
+        console.error('Missing JWT_API_TOKEN or NEXT_PUBLIC_API_URL have you added it to environment variables?');
         return {
-            props: { projects },
+            props: {},
         };
     }
 
     const client = getClient(jwtToken, baseUrl);
 
     try {
-        const { data } = await client.query({
-            query: GetProjectsDocument,
-        });
+        const projectsResult = await client.query({ query: GetProjectsDocument });
+        const tagsResult = await client.query({ query: GetTagsDocument });
 
-        projects = data.projects?.data || [];
+        projectsQuery = projectsResult.data;
+        tagsQuery = tagsResult.data;
     } catch (ex) {
         console.log('ex', ex);
     }
 
     return {
-        props: { projects, projectTags },
+        props: { projectsQuery, tagsQuery },
     };
 };
 
