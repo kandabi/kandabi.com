@@ -1,7 +1,7 @@
 import { Button } from 'components/common/Button';
 import { ColorType } from 'utils/colorUtils';
 
-export interface ProjectTagProps {
+export type ProjectTagProps = {
     id: number;
     attributes: {
         createdAt: Date;
@@ -11,9 +11,9 @@ export interface ProjectTagProps {
         color?: ColorType;
         order?: number;
     };
-}
+};
 
-interface Props {
+type Props = {
     projectTag: ProjectTagProps;
     onClick?: () => void;
     isSelected?: boolean;
@@ -21,7 +21,7 @@ interface Props {
     styles?: {
         padding?: string;
     };
-}
+};
 
 export const ProjectTag = ({
     projectTag,

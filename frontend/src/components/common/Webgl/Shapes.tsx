@@ -17,7 +17,6 @@ const vertexShader = /* glsl */ `
    attribute float size;
    attribute float type;
    
-   varying vec4 vColour;
    varying vec2 vAngle;
    varying float vType;
    
@@ -46,15 +45,15 @@ const fragmentShader = /* glsl */ `
    }
 `;
 
-interface IShape {
+type Shape = {
     position: Vector3;
     rotation: number;
     speed: number;
     type: number;
     size: number;
-}
+};
 
-const updateShapes = (shapes: IShape[], time: number) => {
+const updateShapes = (shapes: Shape[], time: number) => {
     for (const shape of shapes) {
         shape.rotation = time * shape.speed * 0.25;
         shape.position.y += shape.speed * 0.001;
@@ -62,7 +61,7 @@ const updateShapes = (shapes: IShape[], time: number) => {
     }
 };
 
-const addShapes = (shapes: IShape[]): IShape[] => {
+const addShapes = (shapes: Shape[]): Shape[] => {
     const newShapes = shapes.filter(shape => shape.position.y < 4);
 
     for (let i = newShapes.length; i < MAX_SHAPES; i++) {
@@ -79,7 +78,7 @@ const addShapes = (shapes: IShape[]): IShape[] => {
     return newShapes;
 };
 
-const updateGeometry = (shapes: IShape[], geometry: BufferGeometry) => {
+const updateGeometry = (shapes: Shape[], geometry: BufferGeometry) => {
     const positions: number[] = [];
     const angles: number[] = [];
     const types: number[] = [];
@@ -106,7 +105,7 @@ const updateGeometry = (shapes: IShape[], geometry: BufferGeometry) => {
 export const Shapes = () => {
     const geometryRef = useRef<BufferGeometry>(null!);
     const shaderRef = useRef<ShaderMaterial>(null);
-    const shapesRef = useRef<IShape[]>([]);
+    const shapesRef = useRef<Shape[]>([]);
     const texture = useTexture(shapesTexture.src);
 
     useFrame(({ clock: { elapsedTime } }) => {

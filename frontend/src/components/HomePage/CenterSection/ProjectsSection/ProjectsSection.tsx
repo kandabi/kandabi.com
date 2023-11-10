@@ -28,10 +28,10 @@ const ProjectFiltersStyled = styled.div`
     gap: 40px;
 `;
 
-export interface ProjectsSectionProps {
+export type ProjectsSectionProps = {
     projects: ProjectProps[];
     projectTags: ProjectTagProps[];
-}
+};
 
 export const ProjectsSection = ({ projects, projectTags }: ProjectsSectionProps) => {
     const [activeProjectTags, setActiveProjectTags] = useState<ProjectTagProps[]>([]);

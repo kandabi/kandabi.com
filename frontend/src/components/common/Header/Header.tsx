@@ -16,14 +16,16 @@ const headerStyles = css`
     backdrop-filter: blur(6px);
 `;
 
-interface HeaderStyledProps {
+type HeaderStyledProps = {
     headerStyles?: FlattenInterpolation<ThemeProps<any>>;
     $_opacity?: number;
     top?: string;
-}
+};
 
 const HeaderStyled = styled.header<HeaderStyledProps>`
-    transition: top 0.65s ease-out, opacity 0.5s ease-out;
+    transition:
+        top 0.65s ease-out,
+        opacity 0.5s ease-out;
     opacity: ${({ $_opacity = 1 }) => $_opacity};
     top: ${({ top = '0' }) => top};
     pointer-events: none;
@@ -36,11 +38,7 @@ const HeaderStyled = styled.header<HeaderStyledProps>`
     ${Gutters}
 `;
 
-interface HeaderProgressStyledProps {
-    $_width: string;
-}
-
-const HeaderProgressStyled = styled.div<HeaderProgressStyledProps>`
+const HeaderProgressStyled = styled.div<{ $_width: string }>`
     border-bottom: 2px solid ${styles.color.GREY_200};
     width: ${({ $_width }) => $_width};
     transition: width 0.6s ease-out;
@@ -50,21 +48,21 @@ const HeaderProgressStyled = styled.div<HeaderProgressStyledProps>`
     left: 0;
 `;
 
-export enum HeaderVariants {
+export enum HeaderVariant {
     FIXED = 'FIXED',
     STICKY = 'STICKY',
 }
 
-interface IHeaderVariants {
+type HeaderVariantProps = {
     headerStyles?: FlattenInterpolation<ThemeProps<any>>;
     lineStyles: { bottom: string };
     showProgress?: boolean;
     opacity?: number;
     top?: string;
-}
+};
 
-const headerConfig: Record<HeaderVariants, { visible: IHeaderVariants; hidden?: IHeaderVariants }> = {
-    [HeaderVariants.FIXED]: {
+const headerConfig: Record<HeaderVariant, { visible: HeaderVariantProps; hidden?: HeaderVariantProps }> = {
+    [HeaderVariant.FIXED]: {
         visible: {
             lineStyles: { bottom: '-12px' },
             headerStyles: css`
@@ -75,7 +73,7 @@ const headerConfig: Record<HeaderVariants, { visible: IHeaderVariants; hidden?: 
             top: '6.5vh',
         },
     },
-    [HeaderVariants.STICKY]: {
+    [HeaderVariant.STICKY]: {
         visible: {
             lineStyles: { bottom: '-8px' },
             showProgress: true,
@@ -93,11 +91,11 @@ const headerConfig: Record<HeaderVariants, { visible: IHeaderVariants; hidden?: 
     },
 };
 
-interface Props {
-    variant: HeaderVariants;
-}
+type Props = {
+    variant: HeaderVariant;
+};
 
-export const Header = ({ variant = HeaderVariants.FIXED }: Props) => {
+export const Header = ({ variant = HeaderVariant.FIXED }: Props) => {
     const { device } = useDeviceDetector();
     const { currentScrollPosition, setScrollToSection } = useAppStore(state => ({
         currentScrollPosition: state.currentScrollPercentage,
@@ -105,7 +103,7 @@ export const Header = ({ variant = HeaderVariants.FIXED }: Props) => {
     }));
 
     const config = headerConfig[variant];
-    const isActive = variant === HeaderVariants.FIXED || currentScrollPosition > 0.15;
+    const isActive = variant === HeaderVariant.FIXED || currentScrollPosition > 0.15;
     const styles = isActive ? config.visible : config.hidden;
 
     const navbarItems: NavbarItemProps[] = useMemo(
@@ -114,7 +112,7 @@ export const Header = ({ variant = HeaderVariants.FIXED }: Props) => {
             { title: 'Projects', onClick: () => setScrollToSection(ScrollToSection.PROJECTS) },
             { title: 'About', onClick: () => setScrollToSection(ScrollToSection.ABOUT_ME) },
             { title: 'Contact', onClick: () => setScrollToSection(ScrollToSection.CONTACT) },
-            { title: 'Github', link: 'https://example.com', variant: NavbarItemVariants.Link },
+            { title: 'Github', link: 'https://example.com', variant: NavbarItemVariants.LINK },
         ],
         [setScrollToSection],
     );

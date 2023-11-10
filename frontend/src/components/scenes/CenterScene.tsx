@@ -1,9 +1,9 @@
 import { MutableRefObject } from 'react';
 import { Shapes, Viewport } from 'components/common/Webgl';
 
-interface Props {
+type Props = {
     glViewport: MutableRefObject<HTMLDivElement>;
-}
+};
 
 export const CenterScene = ({ glViewport }: Props) => {
     return (

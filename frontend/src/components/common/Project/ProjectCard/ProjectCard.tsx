@@ -55,7 +55,7 @@ const TypeAndTagsContainer = styled.div`
     gap: 6px;
 `;
 
-export interface ProjectProps {
+export type ProjectProps = {
     id: number;
     attributes: {
         description: string;
@@ -66,7 +66,7 @@ export interface ProjectProps {
         thumbnail: MediaProps;
         video?: MediaProps;
     };
-}
+};
 
 export const Project = ({ attributes }: Omit<ProjectProps, 'id'>) => {
     const { title, thumbnail, projectType, tags } = attributes;

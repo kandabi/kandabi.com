@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { Breakpoint, mediaSizesConfig } from 'utils/breakpointUtils';
 
-interface ImageStyledProps {
+type ImageStyledProps = {
     height?: number | string;
     width: number | string;
-}
+};
 
 const ImageStyled = styled.img<ImageStyledProps>`
     width: ${({ width = '100%' }) => {
@@ -17,7 +17,7 @@ const ImageStyled = styled.img<ImageStyledProps>`
     }};
 `;
 
-interface Props {
+type Props = {
     sources?: { src: string; breakpoint: Breakpoint }[];
     loading?: 'eager' | 'lazy';
     onClick?: () => void;
@@ -26,7 +26,7 @@ interface Props {
     width: number | string;
     src: string;
     alt: string;
-}
+};
 
 export const Image = ({ onClick, className, height, width, alt, src, sources, loading = 'lazy' }: Props) => {
     return (

@@ -4,11 +4,7 @@ import { Line } from 'components/common/Line';
 import { styles } from 'utils/styleUtils';
 import linkIcon from 'assets/svgs/link.svg';
 
-interface LinkStyledProps {
-    fontSize?: number;
-}
-
-const LinkStyled = styled.a<LinkStyledProps>`
+const LinkStyled = styled.a<{ fontSize?: number }>`
     font-size: ${({ fontSize = 18 }) => `${fontSize}px`};
     ${styles.flex.center};
     position: relative;
@@ -16,7 +12,7 @@ const LinkStyled = styled.a<LinkStyledProps>`
     gap: 3px;
 `;
 
-interface Props {
+type Props = {
     className?: string;
     text: string;
     href: string;
@@ -26,7 +22,7 @@ interface Props {
         iconWidth?: number;
         fontSize?: number;
     };
-}
+};
 
 export const Link = ({ className, text, href, styles, showLine = true }: Props) => {
     const renderLink = () => {

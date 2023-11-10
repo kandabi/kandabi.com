@@ -3,9 +3,9 @@ import { Viewport } from 'components/common/Webgl';
 
 // import { Vector2 } from 'three';
 
-interface Props {
+type Props = {
     glViewport: MutableRefObject<HTMLDivElement>;
-}
+};
 
 export const HeroScene = ({ glViewport }: Props) => {
     return (

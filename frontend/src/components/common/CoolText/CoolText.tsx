@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { styles } from 'utils/styleUtils';
 
-interface CoolTextStyledProps {
+type CoolTextStyledProps = {
     $_fontSize?: number;
     margin?: string;
-}
+};
 
 const CoolTextStyled = styled.span<CoolTextStyledProps>`
     font-size: ${({ $_fontSize = 18 }) => `${$_fontSize}px`};
@@ -13,13 +13,13 @@ const CoolTextStyled = styled.span<CoolTextStyledProps>`
     ${styles.font.rubik};
 `;
 
-interface Props {
+type Props = {
     className?: string;
     text: string;
     styles?: {
         fontSize?: number;
     };
-}
+};
 
 export const CoolText = ({ text, className, styles }: Props) => {
     return (

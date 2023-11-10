@@ -7,13 +7,11 @@ const ButtonTextStyled = styled(CoolText)`
     z-index: 1;
 `;
 
-interface ButtonBackgroundStyledProps {
-    backgroundColor?: ColorType;
-}
-
-const ButtonBackgroundStyled = styled.div<ButtonBackgroundStyledProps>`
+const ButtonBackgroundStyled = styled.div<{ backgroundColor?: ColorType }>`
     background-color: ${({ backgroundColor = Color.YELLOW_100 }) => getColor(backgroundColor)};
-    transition: width 0.35s ease-out, opacity 0.25s ease-out;
+    transition:
+        width 0.35s ease-out,
+        opacity 0.25s ease-out;
     transform: translate(-50%, -50%);
     border-radius: 25px;
     position: absolute;
@@ -24,13 +22,13 @@ const ButtonBackgroundStyled = styled.div<ButtonBackgroundStyledProps>`
     top: 50%;
 `;
 
-interface ButtonStyledProps {
+type ButtonStyledProps = {
     borderColor?: ColorType;
     isDisabled?: boolean;
     $_padding?: string;
     $_height?: string;
     $_margin?: string;
-}
+};
 
 const ButtonStyled = styled.button<ButtonStyledProps>`
     border: 2px solid ${({ borderColor = Color.YELLOW_100 }) => getColor(borderColor)};
@@ -65,22 +63,20 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
     }
 `;
 
-type NewType = {
-    fontSize?: number;
-    padding?: string;
-    height?: string;
-    margin?: string;
-    color?: ColorType;
-};
-
-interface Props {
+type Props = {
     text: string;
     onClick?: () => void;
     isSelected?: boolean;
     isDisabled?: boolean;
     className?: string;
-    styles?: NewType;
-}
+    styles?: {
+        fontSize?: number;
+        padding?: string;
+        height?: string;
+        margin?: string;
+        color?: ColorType;
+    };
+};
 
 export const Button = ({ text, onClick, isSelected, isDisabled, className, styles }: Props) => {
     return (

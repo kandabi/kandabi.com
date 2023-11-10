@@ -29,7 +29,6 @@
         "react-use-refs": "^1.0.1",
         "styled-components": "^5.3.9",
         "three": "^0.149.0",
-        "ts-enum-util": "^4.0.2",
         "zustand": "^4.4.1"
     },
     "devDependencies": {

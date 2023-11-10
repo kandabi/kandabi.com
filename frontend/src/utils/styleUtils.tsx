@@ -15,7 +15,7 @@ type FontProps = {
 
 type GuttersBreakpoint = Breakpoint.xs | Breakpoint.md | Breakpoint.lg;
 
-interface StylesConfig {
+type StylesConfig = {
     breakpoint: Record<Breakpoint, string>;
     color: Record<Color, HexColor>;
     gutters: Record<GuttersBreakpoint, { width: string; padding: string }>;
@@ -28,7 +28,7 @@ interface StylesConfig {
         center: FlexProps;
         start: FlexProps;
     };
-}
+};
 
 export const styles: StylesConfig = {
     breakpoint: breakpointConfig,

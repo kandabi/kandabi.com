@@ -9,11 +9,11 @@ const NavbarItemsStyled = styled.ul`
     gap: 5px 40px;
 `;
 
-interface Props {
+type Props = {
     lineStyles?: { bottom: string };
     className?: string;
     items: NavbarItemProps[];
-}
+};
 
 export const Navbar = ({ className, lineStyles, items }: Props) => {
     return (

@@ -8,12 +8,12 @@ const projectTypeConfig: Record<ProjectType, { color: Color; text: string }> = {
     [ProjectType.OTHER]: { color: Color.YELLOW_100, text: 'Other' },
 };
 
-interface Props {
+type Props = {
     projectType: ProjectType;
     onClick?: () => void;
     isSelected?: boolean;
     isDisabled?: boolean;
-}
+};
 
 export const ProjectTypeButton = ({ projectType, onClick, isSelected, isDisabled }: Props) => {
     const { color, text } = projectTypeConfig[projectType];

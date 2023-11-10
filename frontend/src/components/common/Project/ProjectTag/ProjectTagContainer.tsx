@@ -14,11 +14,11 @@ const ButtonContainerStyled = styled.div`
     gap: 6px;
 `;
 
-interface Props {
+type Props = {
     projectTags: ProjectTagProps[];
     activeProjectTags: ProjectTagProps[];
     setActiveProjectTags: (projectType: ProjectTagProps[]) => void;
-}
+};
 
 export const ProjectTagContainer = ({ projectTags, activeProjectTags, setActiveProjectTags }: Props) => {
     const handleProjectTagClick = (projectTag: ProjectTagProps) => {

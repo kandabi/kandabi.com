@@ -5,7 +5,7 @@ import { Leva } from 'leva';
 import { CenterSection } from 'components/HomePage/CenterSection';
 import { ContactSection } from 'components/HomePage/ContactSection';
 import { HeroSection } from 'components/HomePage/HeroSection';
-import { Header, HeaderVariants } from 'components/common/Header';
+import { Header, HeaderVariant } from 'components/common/Header';
 import { ParallaxContainer } from 'components/common/ParallaxContainer';
 import { ProjectProps } from 'components/common/Project/ProjectCard';
 import { ProjectTagProps } from 'components/common/Project/ProjectTag';
@@ -17,17 +17,17 @@ const HomePageStyled = styled.div`
     width: 100%;
 `;
 
-interface Props {
+type Props = {
     projects: ProjectProps[];
     projectTags: ProjectTagProps[];
-}
+};
 
 export const HomePage = ({ projects, projectTags }: Props) => {
     const [containerRef, glHeroRef, glCenterRef] = useRefs<HTMLDivElement>(null!);
 
     return (
         <HomePageStyled ref={containerRef}>
-            <Header variant={HeaderVariants.STICKY} />
+            <Header variant={HeaderVariant.STICKY} />
             <ParallaxContainer pages={2.6}>
                 <HeroSection glViewport={glHeroRef} />
                 <CenterSection glViewport={glCenterRef} projects={projects} projectTags={projectTags} />

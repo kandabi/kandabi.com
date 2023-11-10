@@ -2,11 +2,7 @@ import { ReactNode } from 'react';
 import styled from 'styled-components';
 import { styles } from 'utils/styleUtils';
 
-interface LineStyledProps {
-    bottom?: string;
-}
-
-const LineStyled = styled.div<LineStyledProps>`
+const LineStyled = styled.div<{ bottom?: string }>`
     ${styles.flex.center}
     padding: 4px 6px;
     gap: 3px;
@@ -18,7 +14,9 @@ const LineStyled = styled.div<LineStyledProps>`
 
     &::after {
         border-bottom: 2px solid ${styles.color.WHITE_100};
-        transition: width 0.4s, opacity 0.5s ease-out;
+        transition:
+            width 0.4s,
+            opacity 0.5s ease-out;
         bottom: ${({ bottom = '-8px' }) => bottom};
         transform: translate(-50%, 0);
         border-radius: 8px;
@@ -30,12 +28,12 @@ const LineStyled = styled.div<LineStyledProps>`
     }
 `;
 
-interface Props {
+type Props = {
     children: ReactNode;
     styles?: {
         bottom?: string;
     };
-}
+};
 
 export const Line = ({ children, styles }: Props) => {
     return <LineStyled bottom={styles?.bottom}>{children}</LineStyled>;

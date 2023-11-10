@@ -3,8 +3,8 @@ import { Line } from 'components/common/Line';
 import { Link } from 'components/common/Link';
 
 export enum NavbarItemVariants {
-    Link = 'Link',
-    Scroll = 'Scroll',
+    LINK = 'LINK',
+    SCROLL = 'SCROLL',
 }
 
 const NavbarItemStyled = styled.li`
@@ -14,24 +14,24 @@ const NavbarItemStyled = styled.li`
     cursor: pointer;
 `;
 
-export interface NavbarItemProps {
+export type NavbarItemProps = {
     lineStyles?: { bottom: string };
     variant?: NavbarItemVariants;
     onClick?: () => void;
     title: string;
     link?: string;
-}
+};
 
 export const NavbarItem = ({
     title,
     link,
     onClick,
     lineStyles,
-    variant = NavbarItemVariants.Scroll,
+    variant = NavbarItemVariants.SCROLL,
 }: NavbarItemProps) => {
     return (
         <NavbarItemStyled>
-            {variant === NavbarItemVariants.Link ? (
+            {variant === NavbarItemVariants.LINK ? (
                 <Link styles={{ lineBottom: lineStyles?.bottom }} text={title} href={link!} />
             ) : (
                 <Line styles={{ bottom: lineStyles?.bottom }}>

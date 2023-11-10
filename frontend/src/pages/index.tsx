@@ -18,9 +18,9 @@ export const getGqlClient = (jwtToken: string, baseUrl: string) => {
     });
 };
 
-interface Props {
+type Props = {
     projects?: GetProjectsQuery;
-}
+};
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
     let projects: GetProjectsQuery | undefined = undefined;

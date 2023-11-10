@@ -55,10 +55,10 @@ export const Footer = () => {
     const navbarItems: NavbarItemProps[] = useMemo(
         () => [
             { title: 'Home', onClick: () => setScrollToSection(ScrollToSection.HERO) },
-            { title: 'Github', link: 'https://example.com', variant: NavbarItemVariants.Link },
-            { title: 'LinkedIn', link: 'https://example.com', variant: NavbarItemVariants.Link },
-            { title: 'Facebook', link: 'https://example.com', variant: NavbarItemVariants.Link },
-            { title: 'Upwork', link: 'https://example.com', variant: NavbarItemVariants.Link },
+            { title: 'Github', link: 'https://example.com', variant: NavbarItemVariants.LINK },
+            { title: 'LinkedIn', link: 'https://example.com', variant: NavbarItemVariants.LINK },
+            { title: 'Facebook', link: 'https://example.com', variant: NavbarItemVariants.LINK },
+            { title: 'Upwork', link: 'https://example.com', variant: NavbarItemVariants.LINK },
         ],
         [setScrollToSection],
     );

@@ -53,9 +53,9 @@ const ProjectTagsContainer = styled.div`
     gap:8px;
 `;
 
-interface Props {
+type Props = {
     project: ProjectProps;
-}
+};
 
 export const ProjectSelection = ({ project }: Props) => {
     const { thumbnail, title, description, projectType, tags, link } = project.attributes;

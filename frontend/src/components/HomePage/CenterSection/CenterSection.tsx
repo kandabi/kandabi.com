@@ -52,11 +52,11 @@ const GlViewStyled = styled.div`
     top: 0;
 `;
 
-interface IProjectsAboutSection {
+type IProjectsAboutSection = {
     glViewport: RefObject<HTMLDivElement>;
     projects: ProjectProps[];
     projectTags: ProjectTagProps[];
-}
+};
 
 export const CenterSection = ({ glViewport, projects, projectTags }: IProjectsAboutSection) => {
     return (

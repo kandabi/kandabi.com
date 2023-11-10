@@ -6,7 +6,7 @@ import { useAppStore } from 'store';
 import { Button } from 'components/common/Button';
 import { CoolText } from 'components/common/CoolText';
 import { Header } from 'components/common/Header';
-import { HeaderVariants } from 'components/common/Header';
+import { HeaderVariant } from 'components/common/Header';
 import { Image } from 'components/common/Image';
 import { Section } from 'components/common/Section';
 import { ScrollToSection } from 'utils/scrollToSectionUtils';
@@ -54,11 +54,7 @@ const TechStyled = styled(CoolText)`
     font-size: 14px;
 `;
 
-interface CenterContainerStyledProps {
-    $_isVisible: boolean;
-}
-
-const CenterContainerStyled = styled.div<CenterContainerStyledProps>`
+const CenterContainerStyled = styled.div<{ $_isVisible: boolean }>`
     opacity: ${({ $_isVisible }) => ($_isVisible ? 1 : 0)};
     transition: opacity 0.2s ease-out;
     ${styles.flex.center}
@@ -98,18 +94,18 @@ const GlViewStyled = styled.div`
     width: 100%;
 `;
 
-interface ParallaxConfigType {
+type ParallaxConfigType = {
     gap: string;
-}
+};
 
 const parallaxConfig: Record<Device, ParallaxConfigType> = {
     [Device.DESKTOP]: { gap: '20px' },
     [Device.MOBILE]: { gap: '8px' },
 };
 
-interface Props {
+type Props = {
     glViewport: RefObject<HTMLDivElement>;
-}
+};
 
 export const HeroSection = ({ glViewport }: Props) => {
     const { device } = useDeviceDetector();
@@ -123,7 +119,7 @@ export const HeroSection = ({ glViewport }: Props) => {
 
     return (
         <ParallaxLayer factor={1.0} offset={0} speed={0.4}>
-            <Header variant={HeaderVariants.FIXED} />
+            <Header variant={HeaderVariant.FIXED} />
             <HeroStyled>
                 <Section gap={gap}>
                     <TitleStyled>

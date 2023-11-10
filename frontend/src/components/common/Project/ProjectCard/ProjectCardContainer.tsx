@@ -37,9 +37,9 @@ const InnerShadowStyled = styled.div`
     inset: 0px;
 `;
 
-interface Props {
+type Props = {
     projects: ProjectProps[];
-}
+};
 
 export const ProjectContainer = ({ projects }: Props) => {
     return (

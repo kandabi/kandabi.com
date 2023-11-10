@@ -22,10 +22,10 @@ const scrollToSectionConfig: Record<ScrollToSection, { percentage: number }> = {
     [ScrollToSection.CONTACT]: { percentage: 0.9 },
 };
 
-interface Props {
+type Props = {
     pages: number;
     children?: ReactNode;
-}
+};
 
 export const ParallaxContainer = ({ children, pages }: Props) => {
     const { device } = useDeviceDetector();

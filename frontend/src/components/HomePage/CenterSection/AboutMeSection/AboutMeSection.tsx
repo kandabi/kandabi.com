@@ -19,21 +19,17 @@ const ContentContainer = styled.div`
     gap: 12px;
 `;
 
-interface SubtitleStyledProps {
+type SubtitleStyledProps = {
     $_fontSize?: string;
     $_margin?: string;
-}
+};
 
 const SubtitleStyled = styled.span<SubtitleStyledProps>`
     font-size: ${({ $_fontSize = '18px' }) => $_fontSize};
     margin: ${({ $_margin }) => $_margin};
 `;
 
-interface ListStyledProps {
-    $_margin?: string;
-}
-
-const ListStyled = styled.ul<ListStyledProps>`
+const ListStyled = styled.ul<{ $_margin?: string }>`
     margin: ${({ $_margin = '0 0 8px 0' }) => $_margin};
     flex-direction: column;
     padding-left: 25px;

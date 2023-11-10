@@ -34,14 +34,14 @@ const fragmentShader = `
    }
 `;
 
-interface ILinearGradient {
+type Props = {
     baseStrength: number;
     strength?: number;
     length?: number;
     topColor: Color;
     bottomColor: Color;
     size?: Vector2;
-}
+};
 
 export const LinearGradient = ({
     topColor,
@@ -50,7 +50,7 @@ export const LinearGradient = ({
     strength = 1,
     length = 1,
     size = new Vector2(14, 8),
-}: ILinearGradient) => {
+}: Props) => {
     const shaderRef = useRef<ShaderMaterial>(null);
 
     useControls('Gradient', {

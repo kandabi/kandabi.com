@@ -10,9 +10,9 @@ const LogoStyled = styled(Image)`
     height: 26px;
 `;
 
-interface Props {
+type Props = {
     className?: string;
-}
+};
 
 export const Logo = ({ className }: Props) => {
     const setScrollToSection = useAppStore(state => state.setScrollToSection);
