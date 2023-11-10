@@ -3,16 +3,16 @@ import { throttle } from 'lodash';
 
 const useScrollEvent = (
     elementRef: MutableRefObject<HTMLDivElement> | undefined,
-    onScrollChange: (scrollPercentage: number) => void,
+    onScroll: (scrollPercentage: number) => void,
     throttleMilliseconds: number,
 ) => {
     const handleMouseScroll = useCallback(() => {
         const element = elementRef?.current;
         if (element) {
             const clientHeight = element.scrollHeight - element.clientHeight;
-            onScrollChange?.(element.scrollTop / clientHeight);
+            onScroll?.(element.scrollTop / clientHeight);
         }
-    }, [elementRef, onScrollChange]);
+    }, [elementRef, onScroll]);
 
     useEffect(() => {
         const element = elementRef?.current;
@@ -20,7 +20,7 @@ const useScrollEvent = (
         element?.addEventListener('scroll', throttledScroll);
 
         return () => element?.removeEventListener('scroll', throttledScroll);
-    }, [elementRef, handleMouseScroll, onScrollChange, throttleMilliseconds]);
+    }, [elementRef, handleMouseScroll, onScroll, throttleMilliseconds]);
 };
 
 export default useScrollEvent;
