@@ -1,6 +1,4 @@
-'use strict';
-/**
- * project router
- */
-const { createCoreRouter } = require('@strapi/strapi').factories;
-module.exports = createCoreRouter('api::project.project');
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const strapi_1 = require("@strapi/strapi");
+exports.default = strapi_1.factories.createCoreRouter('api::project.project');

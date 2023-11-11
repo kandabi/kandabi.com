@@ -1,6 +1,4 @@
-'use strict';
-/**
- * tag service
- */
-const { createCoreService } = require('@strapi/strapi').factories;
-module.exports = createCoreService('api::tag.tag');
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const strapi_1 = require("@strapi/strapi");
+exports.default = strapi_1.factories.createCoreService('api::tag.tag');

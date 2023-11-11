@@ -1,19 +1,8 @@
 import { GetStaticProps } from 'next';
-import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
 
 import { HomePage } from 'components/HomePage';
 import { GetProjectsDocument, GetProjectsQuery, GetTagsDocument, GetTagsQuery } from 'types/graphql';
-
-export const getClient = (jwtToken: string, baseUrl: string) => {
-    return new ApolloClient({
-        cache: new InMemoryCache(),
-        link: new HttpLink({
-            headers: { Authorization: `Bearer ${jwtToken}` },
-            uri: `${baseUrl}/graphql`,
-            fetch,
-        }),
-    });
-};
+import { getApolloClient } from 'utils/clientUtils';
 
 type Props = {
     projectsQuery?: GetProjectsQuery;
@@ -37,7 +26,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
         };
     }
 
-    const client = getClient(jwtToken, baseUrl);
+    const client = getApolloClient(jwtToken, baseUrl);
 
     try {
         const projectsResult = await client.query({ query: GetProjectsDocument });

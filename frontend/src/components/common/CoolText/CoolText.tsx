@@ -1,12 +1,7 @@
 import styled from 'styled-components';
 import { styles } from 'utils/styleUtils';
 
-type CoolTextStyledProps = {
-    $_fontSize?: number;
-    margin?: string;
-};
-
-const CoolTextStyled = styled.span<CoolTextStyledProps>`
+const CoolTextStyled = styled.span<{ $_fontSize?: number }>`
     font-size: ${({ $_fontSize = 18 }) => `${$_fontSize}px`};
     color: ${styles.color.WHITE_100};
     letter-spacing: 0.15em;
