@@ -1,7 +1,6 @@
-/* eslint-disable */
 import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
-export type Maybe<T> = T | null;
-export type InputMaybe<T> = Maybe<T>;
+export type Maybe<T> = T | undefined;
+export type InputMaybe<T> = T | undefined;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
@@ -1095,28 +1094,34 @@ export type GetProjectsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetProjectsQuery = {
     __typename?: 'Query';
-    projects?: {
-        __typename?: 'ProjectEntityResponseCollection';
-        data: Array<{
-            __typename?: 'ProjectEntity';
-            id?: string | null;
-            attributes?: { __typename?: 'Project'; title: string } | null;
-        }>;
-    } | null;
+    projects?:
+        | {
+              __typename?: 'ProjectEntityResponseCollection';
+              data: Array<{
+                  __typename?: 'ProjectEntity';
+                  id?: string | undefined;
+                  attributes?: { __typename?: 'Project'; title: string } | undefined;
+              }>;
+          }
+        | undefined;
 };
 
 export type GetTagsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetTagsQuery = {
     __typename?: 'Query';
-    tags?: {
-        __typename?: 'TagEntityResponseCollection';
-        data: Array<{
-            __typename?: 'TagEntity';
-            id?: string | null;
-            attributes?: { __typename?: 'Tag'; title: string; order?: number | null; color?: string | null } | null;
-        }>;
-    } | null;
+    tags?:
+        | {
+              __typename?: 'TagEntityResponseCollection';
+              data: Array<{
+                  __typename?: 'TagEntity';
+                  id?: string | undefined;
+                  attributes?:
+                      | { __typename?: 'Tag'; title: string; order?: number | undefined; color?: string | undefined }
+                      | undefined;
+              }>;
+          }
+        | undefined;
 };
 
 export const GetProjectsDocument = {

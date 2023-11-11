@@ -39,7 +39,7 @@ const InnerShadowStyled = styled.div`
 `;
 
 type Props = {
-    projectsQuery?: GetProjectsQuery;
+    projectsQuery: GetProjectsQuery;
 };
 
 export const ProjectContainer = ({ projectsQuery }: Props) => {

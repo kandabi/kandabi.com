@@ -17,8 +17,8 @@ const HomePageStyled = styled.div`
 `;
 
 type Props = {
-    projectsQuery?: GetProjectsQuery;
-    tagsQuery?: GetTagsQuery;
+    projectsQuery: GetProjectsQuery;
+    tagsQuery: GetTagsQuery;
 };
 
 export const HomePage = ({ projectsQuery, tagsQuery }: Props) => {

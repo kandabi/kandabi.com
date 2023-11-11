@@ -30,8 +30,8 @@ const ProjectFiltersStyled = styled.div`
 `;
 
 export type ProjectsSectionProps = {
-    projectsQuery?: GetProjectsQuery;
-    tagsQuery?: GetTagsQuery;
+    projectsQuery: GetProjectsQuery;
+    tagsQuery: GetTagsQuery;
 };
 
 export const ProjectsSection = ({ projectsQuery, tagsQuery }: ProjectsSectionProps) => {

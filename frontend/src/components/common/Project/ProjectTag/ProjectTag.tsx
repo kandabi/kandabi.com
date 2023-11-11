@@ -1,20 +1,9 @@
 import { Button } from 'components/common/Button';
-import { ColorType } from 'utils/colorUtils';
-
-export type ProjectTagProps = {
-    id: number;
-    attributes: {
-        createdAt: Date;
-        updatedAt: Date;
-        publishedAt?: Date;
-        title: string;
-        color?: ColorType;
-        order?: number;
-    };
-};
+import { Tag } from 'types/graphql';
+import { getColor } from 'utils/colorUtils';
 
 type Props = {
-    projectTag: ProjectTagProps;
+    projectTag: Tag;
     onClick?: () => void;
     isSelected?: boolean;
     isDisabled?: boolean;
@@ -32,10 +21,10 @@ export const ProjectTag = ({
         padding: '0 16px',
     },
 }: Props) => {
-    const { title, color } = projectTag.attributes;
+    const { title, color } = projectTag;
     return (
         <Button
-            styles={{ color, fontSize: 13, height: '32px', padding: styles?.padding }}
+            styles={{ color: getColor(color), fontSize: 13, height: '32px', padding: styles?.padding }}
             isSelected={isSelected}
             isDisabled={isDisabled}
             onClick={onClick}

@@ -21,6 +21,7 @@ type Props = {
 };
 
 export const ProjectTagContainer = ({ tagsQuery, activeProjectTags, setActiveProjectTags }: Props) => {
+    console.log('tagsQuery', tagsQuery);
     const handleProjectTagClick = (projectTag: ProjectTagProps) => {
         const newProjectTags: ProjectTagProps[] = activeProjectTags.includes(projectTag)
             ? activeProjectTags.filter(activeTag => projectTag !== activeTag)
@@ -29,7 +30,7 @@ export const ProjectTagContainer = ({ tagsQuery, activeProjectTags, setActivePro
         setActiveProjectTags(newProjectTags);
     };
 
-    // const displayTags = projectTags.slice(0, 4);
+    const displayTags = tagsQuery?.tags?.data.slice(0, 4);
 
     return (
         <ProjectTypesContainerStyled>
@@ -53,7 +54,7 @@ export const ProjectTagContainer = ({ tagsQuery, activeProjectTags, setActivePro
                             title: 'Show More',
                         },
                     }}
-                />*/}
+                /> */}
             </ButtonContainerStyled>
         </ProjectTypesContainerStyled>
     );

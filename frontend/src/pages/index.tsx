@@ -5,8 +5,8 @@ import { GetProjectsDocument, GetProjectsQuery, GetTagsDocument, GetTagsQuery } 
 import { getApolloClient } from 'utils/clientUtils';
 
 type Props = {
-    projectsQuery?: GetProjectsQuery;
-    tagsQuery?: GetTagsQuery;
+    projectsQuery: GetProjectsQuery;
+    tagsQuery: GetTagsQuery;
 };
 
 const Index = ({ projectsQuery, tagsQuery }: Props) => {
@@ -14,15 +14,15 @@ const Index = ({ projectsQuery, tagsQuery }: Props) => {
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-    let projectsQuery: GetProjectsQuery | undefined;
-    let tagsQuery: GetTagsQuery | undefined;
+    let projectsQuery: GetProjectsQuery = {};
+    let tagsQuery: GetTagsQuery = {};
 
     const baseUrl = process.env.NEXT_PUBLIC_API_URL;
     const jwtToken = process.env.JWT_API_TOKEN;
     if (!jwtToken || !baseUrl) {
         console.error('Missing JWT_API_TOKEN or NEXT_PUBLIC_API_URL have you added it to environment variables?');
         return {
-            props: {},
+            props: { projectsQuery, tagsQuery },
         };
     }
 

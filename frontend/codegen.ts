@@ -10,11 +10,11 @@ const config: CodegenConfig = {
             avoidOptionals: true,
             enumValues: 'keep',
         },
+        maybeValue: 'T | undefined',
     },
     generates: {
-        './src/types/': {
-            preset: 'client',
-            plugins: [],
+        './src/types/graphql.ts': {
+            plugins: ['typescript', 'typescript-operations', 'typed-document-node'],
         },
     },
 };

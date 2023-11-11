@@ -53,8 +53,8 @@ const GlViewStyled = styled.div`
 
 type IProjectsAboutSection = {
     glViewport: RefObject<HTMLDivElement>;
-    projectsQuery?: GetProjectsQuery;
-    tagsQuery?: GetTagsQuery;
+    projectsQuery: GetProjectsQuery;
+    tagsQuery: GetTagsQuery;
 };
 
 export const CenterSection = ({ glViewport, projectsQuery, tagsQuery }: IProjectsAboutSection) => {
