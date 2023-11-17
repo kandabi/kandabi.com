@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { ProjectContainer } from 'components/common/Project/ProjectCard';
-import { ProjectTagContainer, ProjectTagProps } from 'components/common/Project/ProjectTag';
+import { ProjectTagContainer } from 'components/common/Project/ProjectTag';
 import { ProjectTypeContainer } from 'components/common/Project/ProjectType';
 import { Section } from 'components/common/Section';
 import { styles } from 'utils/styleUtils';
-import { GetProjectsQuery, GetTagsQuery } from 'types/graphql';
+import { GetProjectsQuery, GetTagsQuery, TagEntity } from 'types/graphql';
 
 const TitleStyled = styled.h2`
     text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.75);
@@ -35,7 +35,7 @@ export type ProjectsSectionProps = {
 };
 
 export const ProjectsSection = ({ projectsQuery, tagsQuery }: ProjectsSectionProps) => {
-    const [activeProjectTags, setActiveProjectTags] = useState<ProjectTagProps[]>([]);
+    const [activeProjectTags, setActiveProjectTags] = useState<TagEntity[]>([]);
     const [activeProjectType, setActiveProjectType] = useState<any>();
 
     return (
@@ -53,7 +53,7 @@ export const ProjectsSection = ({ projectsQuery, tagsQuery }: ProjectsSectionPro
                 />
             </ProjectFiltersStyled>
             <ProjectContainerStyled>
-                <ProjectContainer projectsQuery={projectsQuery} />
+                {/* <ProjectContainer projectsQuery={projectsQuery} /> */}
                 {/* {projectsData.projects?.data.length > 0 && <ProjectSelection project={projectsData[0]} />} */}
             </ProjectContainerStyled>
         </Section>

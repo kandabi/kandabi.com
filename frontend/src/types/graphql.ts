@@ -1,6 +1,6 @@
 import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
-export type Maybe<T> = T | undefined;
-export type InputMaybe<T> = T | undefined;
+export type Maybe<T> = T;
+export type InputMaybe<T> = T;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
@@ -103,7 +103,6 @@ export type DateTimeFilterInput = {
 };
 
 export type Error = {
-    __typename?: 'Error';
     code: Scalars['String']['output'];
     message?: Maybe<Scalars['String']['output']>;
 };
@@ -249,7 +248,6 @@ export type LongFilterInput = {
 };
 
 export type Mutation = {
-    __typename?: 'Mutation';
     /** Change user password. Confirm with the current password. */
     changePassword?: Maybe<UsersPermissionsLoginPayload>;
     createProject?: Maybe<ProjectEntityResponse>;
@@ -422,7 +420,6 @@ export type MutationUploadArgs = {
 };
 
 export type Pagination = {
-    __typename?: 'Pagination';
     page: Scalars['Int']['output'];
     pageCount: Scalars['Int']['output'];
     pageSize: Scalars['Int']['output'];
@@ -437,7 +434,6 @@ export type PaginationArg = {
 };
 
 export type Project = {
-    __typename?: 'Project';
     createdAt?: Maybe<Scalars['DateTime']['output']>;
     description?: Maybe<Scalars['String']['output']>;
     link?: Maybe<Scalars['String']['output']>;
@@ -458,18 +454,15 @@ export type ProjectTagsArgs = {
 };
 
 export type ProjectEntity = {
-    __typename?: 'ProjectEntity';
     attributes?: Maybe<Project>;
     id?: Maybe<Scalars['ID']['output']>;
 };
 
 export type ProjectEntityResponse = {
-    __typename?: 'ProjectEntityResponse';
     data?: Maybe<ProjectEntity>;
 };
 
 export type ProjectEntityResponseCollection = {
-    __typename?: 'ProjectEntityResponseCollection';
     data: Array<ProjectEntity>;
     meta: ResponseCollectionMeta;
 };
@@ -503,7 +496,6 @@ export type ProjectInput = {
 };
 
 export type ProjectRelationResponseCollection = {
-    __typename?: 'ProjectRelationResponseCollection';
     data: Array<ProjectEntity>;
 };
 
@@ -519,7 +511,6 @@ export enum PublicationState {
 }
 
 export type Query = {
-    __typename?: 'Query';
     me?: Maybe<UsersPermissionsMe>;
     project?: Maybe<ProjectEntityResponse>;
     projects?: Maybe<ProjectEntityResponseCollection>;
@@ -597,7 +588,6 @@ export type QueryUsersPermissionsUsersArgs = {
 };
 
 export type ResponseCollectionMeta = {
-    __typename?: 'ResponseCollectionMeta';
     pagination: Pagination;
 };
 
@@ -627,7 +617,6 @@ export type StringFilterInput = {
 };
 
 export type Tag = {
-    __typename?: 'Tag';
     color?: Maybe<Scalars['String']['output']>;
     createdAt?: Maybe<Scalars['DateTime']['output']>;
     order?: Maybe<Scalars['Int']['output']>;
@@ -636,18 +625,15 @@ export type Tag = {
 };
 
 export type TagEntity = {
-    __typename?: 'TagEntity';
     attributes?: Maybe<Tag>;
     id?: Maybe<Scalars['ID']['output']>;
 };
 
 export type TagEntityResponse = {
-    __typename?: 'TagEntityResponse';
     data?: Maybe<TagEntity>;
 };
 
 export type TagEntityResponseCollection = {
-    __typename?: 'TagEntityResponseCollection';
     data: Array<TagEntity>;
     meta: ResponseCollectionMeta;
 };
@@ -671,7 +657,6 @@ export type TagInput = {
 };
 
 export type TagRelationResponseCollection = {
-    __typename?: 'TagRelationResponseCollection';
     data: Array<TagEntity>;
 };
 
@@ -701,7 +686,6 @@ export type TimeFilterInput = {
 };
 
 export type UploadFile = {
-    __typename?: 'UploadFile';
     alternativeText?: Maybe<Scalars['String']['output']>;
     caption?: Maybe<Scalars['String']['output']>;
     createdAt?: Maybe<Scalars['DateTime']['output']>;
@@ -722,18 +706,15 @@ export type UploadFile = {
 };
 
 export type UploadFileEntity = {
-    __typename?: 'UploadFileEntity';
     attributes?: Maybe<UploadFile>;
     id?: Maybe<Scalars['ID']['output']>;
 };
 
 export type UploadFileEntityResponse = {
-    __typename?: 'UploadFileEntityResponse';
     data?: Maybe<UploadFileEntity>;
 };
 
 export type UploadFileEntityResponseCollection = {
-    __typename?: 'UploadFileEntityResponseCollection';
     data: Array<UploadFileEntity>;
     meta: ResponseCollectionMeta;
 };
@@ -783,12 +764,10 @@ export type UploadFileInput = {
 };
 
 export type UploadFileRelationResponseCollection = {
-    __typename?: 'UploadFileRelationResponseCollection';
     data: Array<UploadFileEntity>;
 };
 
 export type UploadFolder = {
-    __typename?: 'UploadFolder';
     children?: Maybe<UploadFolderRelationResponseCollection>;
     createdAt?: Maybe<Scalars['DateTime']['output']>;
     files?: Maybe<UploadFileRelationResponseCollection>;
@@ -812,18 +791,15 @@ export type UploadFolderFilesArgs = {
 };
 
 export type UploadFolderEntity = {
-    __typename?: 'UploadFolderEntity';
     attributes?: Maybe<UploadFolder>;
     id?: Maybe<Scalars['ID']['output']>;
 };
 
 export type UploadFolderEntityResponse = {
-    __typename?: 'UploadFolderEntityResponse';
     data?: Maybe<UploadFolderEntity>;
 };
 
 export type UploadFolderEntityResponseCollection = {
-    __typename?: 'UploadFolderEntityResponseCollection';
     data: Array<UploadFolderEntity>;
     meta: ResponseCollectionMeta;
 };
@@ -853,17 +829,14 @@ export type UploadFolderInput = {
 };
 
 export type UploadFolderRelationResponseCollection = {
-    __typename?: 'UploadFolderRelationResponseCollection';
     data: Array<UploadFolderEntity>;
 };
 
 export type UsersPermissionsCreateRolePayload = {
-    __typename?: 'UsersPermissionsCreateRolePayload';
     ok: Scalars['Boolean']['output'];
 };
 
 export type UsersPermissionsDeleteRolePayload = {
-    __typename?: 'UsersPermissionsDeleteRolePayload';
     ok: Scalars['Boolean']['output'];
 };
 
@@ -874,13 +847,11 @@ export type UsersPermissionsLoginInput = {
 };
 
 export type UsersPermissionsLoginPayload = {
-    __typename?: 'UsersPermissionsLoginPayload';
     jwt?: Maybe<Scalars['String']['output']>;
     user: UsersPermissionsMe;
 };
 
 export type UsersPermissionsMe = {
-    __typename?: 'UsersPermissionsMe';
     blocked?: Maybe<Scalars['Boolean']['output']>;
     confirmed?: Maybe<Scalars['Boolean']['output']>;
     email?: Maybe<Scalars['String']['output']>;
@@ -890,7 +861,6 @@ export type UsersPermissionsMe = {
 };
 
 export type UsersPermissionsMeRole = {
-    __typename?: 'UsersPermissionsMeRole';
     description?: Maybe<Scalars['String']['output']>;
     id: Scalars['ID']['output'];
     name: Scalars['String']['output'];
@@ -898,12 +868,10 @@ export type UsersPermissionsMeRole = {
 };
 
 export type UsersPermissionsPasswordPayload = {
-    __typename?: 'UsersPermissionsPasswordPayload';
     ok: Scalars['Boolean']['output'];
 };
 
 export type UsersPermissionsPermission = {
-    __typename?: 'UsersPermissionsPermission';
     action: Scalars['String']['output'];
     createdAt?: Maybe<Scalars['DateTime']['output']>;
     role?: Maybe<UsersPermissionsRoleEntityResponse>;
@@ -911,18 +879,15 @@ export type UsersPermissionsPermission = {
 };
 
 export type UsersPermissionsPermissionEntity = {
-    __typename?: 'UsersPermissionsPermissionEntity';
     attributes?: Maybe<UsersPermissionsPermission>;
     id?: Maybe<Scalars['ID']['output']>;
 };
 
 export type UsersPermissionsPermissionEntityResponse = {
-    __typename?: 'UsersPermissionsPermissionEntityResponse';
     data?: Maybe<UsersPermissionsPermissionEntity>;
 };
 
 export type UsersPermissionsPermissionEntityResponseCollection = {
-    __typename?: 'UsersPermissionsPermissionEntityResponseCollection';
     data: Array<UsersPermissionsPermissionEntity>;
     meta: ResponseCollectionMeta;
 };
@@ -944,7 +909,6 @@ export type UsersPermissionsPermissionInput = {
 };
 
 export type UsersPermissionsPermissionRelationResponseCollection = {
-    __typename?: 'UsersPermissionsPermissionRelationResponseCollection';
     data: Array<UsersPermissionsPermissionEntity>;
 };
 
@@ -955,7 +919,6 @@ export type UsersPermissionsRegisterInput = {
 };
 
 export type UsersPermissionsRole = {
-    __typename?: 'UsersPermissionsRole';
     createdAt?: Maybe<Scalars['DateTime']['output']>;
     description?: Maybe<Scalars['String']['output']>;
     name: Scalars['String']['output'];
@@ -978,18 +941,15 @@ export type UsersPermissionsRoleUsersArgs = {
 };
 
 export type UsersPermissionsRoleEntity = {
-    __typename?: 'UsersPermissionsRoleEntity';
     attributes?: Maybe<UsersPermissionsRole>;
     id?: Maybe<Scalars['ID']['output']>;
 };
 
 export type UsersPermissionsRoleEntityResponse = {
-    __typename?: 'UsersPermissionsRoleEntityResponse';
     data?: Maybe<UsersPermissionsRoleEntity>;
 };
 
 export type UsersPermissionsRoleEntityResponseCollection = {
-    __typename?: 'UsersPermissionsRoleEntityResponseCollection';
     data: Array<UsersPermissionsRoleEntity>;
     meta: ResponseCollectionMeta;
 };
@@ -1017,17 +977,14 @@ export type UsersPermissionsRoleInput = {
 };
 
 export type UsersPermissionsRoleRelationResponseCollection = {
-    __typename?: 'UsersPermissionsRoleRelationResponseCollection';
     data: Array<UsersPermissionsRoleEntity>;
 };
 
 export type UsersPermissionsUpdateRolePayload = {
-    __typename?: 'UsersPermissionsUpdateRolePayload';
     ok: Scalars['Boolean']['output'];
 };
 
 export type UsersPermissionsUser = {
-    __typename?: 'UsersPermissionsUser';
     blocked?: Maybe<Scalars['Boolean']['output']>;
     confirmed?: Maybe<Scalars['Boolean']['output']>;
     createdAt?: Maybe<Scalars['DateTime']['output']>;
@@ -1039,18 +996,15 @@ export type UsersPermissionsUser = {
 };
 
 export type UsersPermissionsUserEntity = {
-    __typename?: 'UsersPermissionsUserEntity';
     attributes?: Maybe<UsersPermissionsUser>;
     id?: Maybe<Scalars['ID']['output']>;
 };
 
 export type UsersPermissionsUserEntityResponse = {
-    __typename?: 'UsersPermissionsUserEntityResponse';
     data?: Maybe<UsersPermissionsUserEntity>;
 };
 
 export type UsersPermissionsUserEntityResponseCollection = {
-    __typename?: 'UsersPermissionsUserEntityResponseCollection';
     data: Array<UsersPermissionsUserEntity>;
     meta: ResponseCollectionMeta;
 };
@@ -1086,42 +1040,21 @@ export type UsersPermissionsUserInput = {
 };
 
 export type UsersPermissionsUserRelationResponseCollection = {
-    __typename?: 'UsersPermissionsUserRelationResponseCollection';
     data: Array<UsersPermissionsUserEntity>;
 };
 
 export type GetProjectsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetProjectsQuery = {
-    __typename?: 'Query';
-    projects?:
-        | {
-              __typename?: 'ProjectEntityResponseCollection';
-              data: Array<{
-                  __typename?: 'ProjectEntity';
-                  id?: string | undefined;
-                  attributes?: { __typename?: 'Project'; title: string } | undefined;
-              }>;
-          }
-        | undefined;
+    projects?: {
+        data: Array<{ id?: string; attributes?: { title: string; projectType: ProjectType; link?: string } }>;
+    };
 };
 
 export type GetTagsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetTagsQuery = {
-    __typename?: 'Query';
-    tags?:
-        | {
-              __typename?: 'TagEntityResponseCollection';
-              data: Array<{
-                  __typename?: 'TagEntity';
-                  id?: string | undefined;
-                  attributes?:
-                      | { __typename?: 'Tag'; title: string; order?: number | undefined; color?: string | undefined }
-                      | undefined;
-              }>;
-          }
-        | undefined;
+    tags?: { data: Array<{ id?: string; attributes?: { title: string; order?: number; color?: string } }> };
 };
 
 export const GetProjectsDocument = {
@@ -1154,6 +1087,8 @@ export const GetProjectsDocument = {
                                                     kind: 'SelectionSet',
                                                     selections: [
                                                         { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                                                        { kind: 'Field', name: { kind: 'Name', value: 'projectType' } },
+                                                        { kind: 'Field', name: { kind: 'Name', value: 'link' } },
                                                     ],
                                                 },
                                             },

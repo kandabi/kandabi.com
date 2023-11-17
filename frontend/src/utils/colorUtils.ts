@@ -24,7 +24,7 @@ export enum Color {
     RED_200 = 'RED_200',
 }
 
-export type HexColor = `#${string}`;
+export type HexColor = `#${string}` | string;
 export type ColorType = Color | HexColor;
 
 export const colorConfig: Record<Color, HexColor> = {
@@ -51,10 +51,14 @@ export const colorConfig: Record<Color, HexColor> = {
     [Color.RED_200]: '#E23C50',
 };
 
-export const getColor = (colorType: ColorType): HexColor => {
+export const getColor = (colorType?: ColorType): HexColor | undefined => {
+    if (!colorType) return;
+
     return colorConfig?.[colorType as Color] || colorType;
 };
 
-export const getThreeColor = (colorType: ColorType) => {
-    return new ThreeColor(getColor(colorType));
+export const getThreeColor = (colorType: ColorType): ThreeColor | undefined => {
+    const hexColor = getColor(colorType);
+
+    return hexColor ? new ThreeColor(hexColor) : undefined;
 };

@@ -9,9 +9,9 @@ type Props = {
     tagsQuery: GetTagsQuery;
 };
 
-const Index = ({ projectsQuery, tagsQuery }: Props) => {
+export default function Index({ projectsQuery, tagsQuery }: Props) {
     return <HomePage projectsQuery={projectsQuery} tagsQuery={tagsQuery} />;
-};
+}
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
     let projectsQuery: GetProjectsQuery = {};
@@ -26,11 +26,11 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
         };
     }
 
-    const client = getApolloClient(jwtToken, baseUrl);
+    const apolloClient = getApolloClient(jwtToken, baseUrl);
 
     try {
-        const projectsResult = await client.query({ query: GetProjectsDocument });
-        const tagsResult = await client.query({ query: GetTagsDocument });
+        const projectsResult = await apolloClient.query({ query: GetProjectsDocument });
+        const tagsResult = await apolloClient.query({ query: GetTagsDocument });
 
         projectsQuery = projectsResult.data;
         tagsQuery = tagsResult.data;
@@ -42,5 +42,3 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
         props: { projectsQuery, tagsQuery },
     };
 };
-
-export default Index;

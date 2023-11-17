@@ -6,11 +6,12 @@ const config: CodegenConfig = {
     schema: './src/graphql/schema.graphql',
     documents: './src/graphql/*.graphql',
     config: {
+        skipTypename: true,
+        // avoidOptionals: true,
         namingConvention: {
-            avoidOptionals: true,
             enumValues: 'keep',
         },
-        maybeValue: 'T | undefined',
+        maybeValue: 'T',
     },
     generates: {
         './src/types/graphql.ts': {

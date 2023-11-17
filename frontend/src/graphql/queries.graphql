@@ -4,6 +4,8 @@ query getProjects {
             id
             attributes {
                 title
+                projectType
+                link
             }
         }
     }

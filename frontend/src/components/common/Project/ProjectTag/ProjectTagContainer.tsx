@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import { ProjectTagProps } from './ProjectTag';
+import { ProjectTag } from './ProjectTag';
 import { styles } from 'utils/styleUtils';
-import { GetTagsQuery } from 'types/graphql';
+import { GetTagsQuery, TagEntity } from 'types/graphql';
+import { Color } from 'utils/colorUtils';
 
 const ProjectTypesContainerStyled = styled.div`
     ${styles.flex.start};
@@ -16,14 +17,14 @@ const ButtonContainerStyled = styled.div`
 
 type Props = {
     tagsQuery?: GetTagsQuery;
-    activeProjectTags: ProjectTagProps[];
-    setActiveProjectTags: (projectType: ProjectTagProps[]) => void;
+    activeProjectTags: TagEntity[];
+    setActiveProjectTags: (projectType: TagEntity[]) => void;
 };
 
 export const ProjectTagContainer = ({ tagsQuery, activeProjectTags, setActiveProjectTags }: Props) => {
     console.log('tagsQuery', tagsQuery);
-    const handleProjectTagClick = (projectTag: ProjectTagProps) => {
-        const newProjectTags: ProjectTagProps[] = activeProjectTags.includes(projectTag)
+    const handleProjectTagClick = (projectTag: TagEntity) => {
+        const newProjectTags: TagEntity[] = activeProjectTags.includes(projectTag)
             ? activeProjectTags.filter(activeTag => projectTag !== activeTag)
             : [...activeProjectTags, projectTag];
 
@@ -36,25 +37,23 @@ export const ProjectTagContainer = ({ tagsQuery, activeProjectTags, setActivePro
         <ProjectTypesContainerStyled>
             <span>Project Tags -</span>
             <ButtonContainerStyled>
-                {/* {displayTags.map(projectTag => (
-                    <ProjectTag
-                        isSelected={activeProjectTags.includes(projectTag)}
-                        onClick={() => handleProjectTagClick(projectTag)}
-                        styles={{ padding: '0 16px' }}
-                        projectTag={projectTag}
-                        key={projectTag.id}
-                    />
-                ))}
+                {displayTags?.map(
+                    projectTag =>
+                        projectTag?.attributes && (
+                            <ProjectTag
+                                isSelected={activeProjectTags.includes(projectTag)}
+                                onClick={() => handleProjectTagClick(projectTag)}
+                                styles={{ padding: '0 16px' }}
+                                projectTag={projectTag.attributes}
+                                key={projectTag.id}
+                            />
+                        ),
+                )}
                 <ProjectTag
                     onClick={() => console.log('Show More')}
                     styles={{ padding: '0 16px' }}
-                    projectTag={{
-                        attributes: {
-                            color: Color.WHITE_100,
-                            title: 'Show More',
-                        },
-                    }}
-                /> */}
+                    projectTag={{ color: Color.WHITE_100, title: 'Show More' }}
+                />
             </ButtonContainerStyled>
         </ProjectTypesContainerStyled>
     );
