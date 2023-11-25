@@ -4,7 +4,6 @@ body {
     -webkit-font-smoothing: subpixel-antialiased;
     -moz-osx-font-smoothing: grayscale;
     background: linear-gradient(180deg, #070d1c 0%, #002a68 100%);
-    box-sizing: border-box;
     user-select: none;
     font-style: normal;
     font-weight: 300;
@@ -75,7 +74,9 @@ input {
     font-style: normal;
     font-weight: 300;
     font-display: swap;
-    src: url('/fonts/rubik.woff2') format('woff2'), url('/fonts/rubik.woff') format('woff'),
+    src:
+        url('/fonts/rubik.woff2') format('woff2'),
+        url('/fonts/rubik.woff') format('woff'),
         url('/fonts/rubik.ttf') format('truetype');
 }
 
@@ -84,13 +85,16 @@ input {
     font-style: normal;
     font-weight: 800;
     font-display: swap;
-    src: url('/fonts/catamaran.woff2') format('woff2'), url('/fonts/catamaran.woff') format('woff'),
+    src:
+        url('/fonts/catamaran.woff2') format('woff2'),
+        url('/fonts/catamaran.woff') format('woff'),
         url('/fonts/catamaran.ttf') format('truetype');
 }
 
 * {
     scrollbar-color: #f2f8ff #344982;
     scrollbar-width: auto;
+    box-sizing: border-box;
 }
 
 *::-webkit-scrollbar {

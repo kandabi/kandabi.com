@@ -27,7 +27,7 @@ export const HomePage = ({ projectsQuery, tagsQuery }: Props) => {
     return (
         <HomePageStyled ref={containerRef}>
             <Header variant={HeaderVariant.STICKY} />
-            <ParallaxContainer pages={2.6}>
+            <ParallaxContainer pages={4}>
                 <HeroSection glViewport={glHeroRef} />
                 <CenterSection glViewport={glCenterRef} projectsQuery={projectsQuery} tagsQuery={tagsQuery} />
                 <ContactSection />

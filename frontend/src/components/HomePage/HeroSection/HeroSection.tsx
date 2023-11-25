@@ -118,7 +118,7 @@ export const HeroSection = ({ glViewport }: Props) => {
     const handleScrollDown = () => setScrollToSection(ScrollToSection.PROJECTS);
 
     return (
-        <ParallaxLayer factor={1.0} offset={0} speed={0.4}>
+        <ParallaxLayer factor={1.0} offset={0} speed={0.1}>
             <Header variant={HeaderVariant.FIXED} />
             <HeroStyled>
                 <Section gap={gap}>

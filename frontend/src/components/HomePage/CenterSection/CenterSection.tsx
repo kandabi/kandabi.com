@@ -59,7 +59,7 @@ type IProjectsAboutSection = {
 
 export const CenterSection = ({ glViewport, projectsQuery, tagsQuery }: IProjectsAboutSection) => {
     return (
-        <ParallaxLayer factor={2.1} offset={0.99} speed={1.2}>
+        <ParallaxLayer factor={2} offset={1} speed={1}>
             <CenterSectionStyled>
                 <TopWaveStyled
                     sources={[{ src: waveDesktop_1.src, breakpoint: Breakpoint.lg }]}

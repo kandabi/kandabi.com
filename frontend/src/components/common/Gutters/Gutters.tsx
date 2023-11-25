@@ -2,13 +2,13 @@ import { FlattenInterpolation, ThemeProps, css } from 'styled-components';
 import { styles } from 'utils/styleUtils';
 
 export const Gutters: FlattenInterpolation<ThemeProps<any>> = css`
-    ${styles.gutters.xs};
+    width: calc(100% - var(--scrollbar-width));
+    padding: 0 28px;
 
     ${styles.breakpoint.md} {
-        ${styles.gutters.md};
+        padding: 0 7.5vw;
     }
-
     ${styles.breakpoint.lg} {
-        ${styles.gutters.lg};
+        padding: 0 10vw;
     }
 `;

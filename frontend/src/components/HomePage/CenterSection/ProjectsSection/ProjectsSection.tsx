@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { ProjectContainer } from 'components/common/Project/ProjectCard';
 import { ProjectTagContainer } from 'components/common/Project/ProjectTag';
 import { ProjectTypeContainer } from 'components/common/Project/ProjectType';
 import { Section } from 'components/common/Section';
@@ -26,7 +25,9 @@ const ProjectContainerStyled = styled.div`
 
 const ProjectFiltersStyled = styled.div`
     ${styles.flex.start}
-    gap: 40px;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 20px 40px;
 `;
 
 export type ProjectsSectionProps = {

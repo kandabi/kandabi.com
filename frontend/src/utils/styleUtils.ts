@@ -13,12 +13,9 @@ type FontProps = {
     fontStyle: string;
 };
 
-type GuttersBreakpoint = Breakpoint.xs | Breakpoint.md | Breakpoint.lg;
-
 type StylesConfig = {
     breakpoint: Record<Breakpoint, string>;
     color: Record<Color, HexColor>;
-    gutters: Record<GuttersBreakpoint, { width: string; padding: string }>;
     font: {
         catamaran: FontProps;
         rubik: FontProps;
@@ -33,22 +30,6 @@ type StylesConfig = {
 export const styles: StylesConfig = {
     breakpoint: breakpointConfig,
     color: colorConfig,
-
-    gutters: {
-        [Breakpoint.xs]: {
-            width: 'calc(100% - 56px)',
-            padding: '0 28px',
-        },
-        [Breakpoint.md]: {
-            width: 'calc(100% - 15vw - var(--scrollbar-width))',
-            padding: '0 7.5vw',
-        },
-        [Breakpoint.lg]: {
-            width: 'calc(100% - 20vw - var(--scrollbar-width))',
-            padding: '0 10vw',
-        },
-    },
-
     font: {
         catamaran: {
             fontFamily: '"Catamaran", sans-serif',
