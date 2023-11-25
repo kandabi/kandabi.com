@@ -43,7 +43,7 @@ export const ProjectTagContainer = ({ tagsQuery, activeProjectTags, setActivePro
                             <ProjectTag
                                 isSelected={activeProjectTags.includes(projectTag)}
                                 onClick={() => handleProjectTagClick(projectTag)}
-                                styles={{ padding: '0 16px' }}
+                                padding={'0 16px'}
                                 projectTag={projectTag.attributes}
                                 key={projectTag.id}
                             />
@@ -51,8 +51,8 @@ export const ProjectTagContainer = ({ tagsQuery, activeProjectTags, setActivePro
                 )}
                 <ProjectTag
                     onClick={() => console.log('Show More')}
-                    styles={{ padding: '0 16px' }}
                     projectTag={{ color: Color.WHITE_100, title: 'Show More' }}
+                    padding={'0 16px'}
                 />
             </ButtonContainerStyled>
         </ProjectTypesContainerStyled>

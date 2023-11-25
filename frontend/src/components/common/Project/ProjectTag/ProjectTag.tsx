@@ -7,24 +7,17 @@ type Props = {
     onClick?: () => void;
     isSelected?: boolean;
     isDisabled?: boolean;
-    styles?: {
-        padding?: string;
-    };
+    padding?: string;
 };
 
-export const ProjectTag = ({
-    projectTag,
-    onClick,
-    isSelected,
-    isDisabled,
-    styles = {
-        padding: '0 16px',
-    },
-}: Props) => {
+export const ProjectTag = ({ projectTag, onClick, isSelected, isDisabled, padding = '0 16px' }: Props) => {
     const { title, color } = projectTag;
     return (
         <Button
-            styles={{ color: getColor(color), fontSize: 13, height: '32px', padding: styles?.padding }}
+            color={getColor(color)}
+            fontSize={13}
+            height={'32px'}
+            padding={padding}
             isSelected={isSelected}
             isDisabled={isDisabled}
             onClick={onClick}

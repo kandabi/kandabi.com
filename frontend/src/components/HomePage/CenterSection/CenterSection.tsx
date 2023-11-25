@@ -1,5 +1,4 @@
 import { RefObject } from 'react';
-import { ParallaxLayer } from '@react-spring/parallax';
 import styled from 'styled-components';
 import { AboutMeSection } from './AboutMeSection/AboutMeSection';
 import { ProjectsSection } from './ProjectsSection';
@@ -59,24 +58,22 @@ type IProjectsAboutSection = {
 
 export const CenterSection = ({ glViewport, projectsQuery, tagsQuery }: IProjectsAboutSection) => {
     return (
-        <ParallaxLayer factor={2} offset={1} speed={1}>
-            <CenterSectionStyled>
-                <TopWaveStyled
-                    sources={[{ src: waveDesktop_1.src, breakpoint: Breakpoint.lg }]}
-                    alt='Wave top decoration'
-                    src={waveMobile_1.src}
-                    width={1920}
-                />
-                <ProjectsSection projectsQuery={projectsQuery} tagsQuery={tagsQuery} />
-                <AboutMeSection />
-                <BottomWaveStyled
-                    sources={[{ src: waveDesktop_2.src, breakpoint: Breakpoint.lg }]}
-                    alt='Wave bottom decoration'
-                    src={waveMobile_2.src}
-                    width={1920}
-                />
-                <GlViewStyled ref={glViewport} />
-            </CenterSectionStyled>
-        </ParallaxLayer>
+        <CenterSectionStyled>
+            <TopWaveStyled
+                sources={[{ src: waveDesktop_1.src, breakpoint: Breakpoint.lg }]}
+                alt='Wave top decoration'
+                src={waveMobile_1.src}
+                width={1920}
+            />
+            <ProjectsSection projectsQuery={projectsQuery} tagsQuery={tagsQuery} />
+            <AboutMeSection />
+            <BottomWaveStyled
+                sources={[{ src: waveDesktop_2.src, breakpoint: Breakpoint.lg }]}
+                alt='Wave bottom decoration'
+                src={waveMobile_2.src}
+                width={1920}
+            />
+            <GlViewStyled ref={glViewport} />
+        </CenterSectionStyled>
     );
 };

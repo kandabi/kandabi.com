@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Color, ColorType, getColor } from 'utils/colorUtils';
+import { Color, getColor } from 'utils/colorUtils';
 import { styles } from 'utils/styleUtils';
 
 const INPUT_COLOR = getColor(Color.WHITE_100);

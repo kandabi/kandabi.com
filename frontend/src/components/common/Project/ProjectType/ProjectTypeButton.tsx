@@ -20,7 +20,10 @@ export const ProjectTypeButton = ({ projectType, onClick, isSelected, isDisabled
 
     return (
         <Button
-            styles={{ color, fontSize: 13, height: '32px', padding: '0 24px' }}
+            color={color}
+            fontSize={13}
+            height={'32px'}
+            padding={'0 24px'}
             isSelected={isSelected}
             isDisabled={isDisabled}
             onClick={onClick}

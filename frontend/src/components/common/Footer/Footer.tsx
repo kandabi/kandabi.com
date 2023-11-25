@@ -13,10 +13,8 @@ const FooterStyled = styled.footer`
     filter: drop-shadow(0px -3px 5px rgba(0, 0, 0, 0.3));
     background-color: ${styles.color.BLUE_900};
     ${styles.flex.center};
-    position: absolute;
-    height: 250px;
+    height: 300px;
     width: 100%;
-    bottom: 0;
 `;
 
 const LogoFooterStyled = styled(Logo)`
@@ -24,7 +22,7 @@ const LogoFooterStyled = styled(Logo)`
 `;
 
 const NavbarFooterStyled = styled(Navbar)`
-    margin-bottom: 14px;
+    margin-bottom: 10px;
 `;
 
 const CopyrightStyled = styled.p`

@@ -5,6 +5,8 @@ import { ProjectTag } from 'components/common/Project/ProjectTag';
 import { ProjectTypeButton } from 'components/common/Project/ProjectType';
 import { styles } from 'utils/styleUtils';
 
+import { Text } from 'components/common/Text';
+
 const ProjectSelectionStyled = styled.div`
     background: linear-gradient(180deg, #212e52 57.76%, #344982 100%);
     box-shadow: 2px 4px 5px 3px rgba(0, 0, 0, 0.25);
@@ -42,10 +44,6 @@ const DescriptionStyled = styled.span`
     font-size: 16px;
 `;
 
-const SmallTextStyled = styled.span`
-    font-size: 14px;
-`;
-
 const ProjectTagsContainer = styled.div`
     ${styles.flex.start}
     gap:8px;
@@ -69,11 +67,11 @@ export const ProjectSelection = ({ project }: Props) => {
                     <TitleStyled>{title}</TitleStyled>
                 )}
                 <SeparatorStyled />
-                <DescriptionStyled>{description}</DescriptionStyled>
+                <Text fontSize={16}>{description}</Text>
                 <SeparatorStyled />
-                <SmallTextStyled>Project Type -</SmallTextStyled>
+                <Text fontSize={14}>Project Type -</Text>
                 <ProjectTypeButton projectType={projectType} isDisabled />
-                <SmallTextStyled>Project Tags -</SmallTextStyled>
+                <Text fontSize={14}>Project Tags -</Text>
                 <ProjectTagsContainer>
                     {tags.data.map(projectTag => (
                         <ProjectTag projectTag={projectTag} key={projectTag.id} isDisabled />

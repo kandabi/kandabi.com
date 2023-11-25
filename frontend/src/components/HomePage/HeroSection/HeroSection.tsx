@@ -1,10 +1,9 @@
 import { RefObject } from 'react';
-import { ParallaxLayer } from '@react-spring/parallax';
 import styled from 'styled-components';
 import { Device, useDeviceDetector } from 'hooks/useDeviceDetector';
 import { useAppStore } from 'store';
 import { Button } from 'components/common/Button';
-import { CoolText } from 'components/common/CoolText';
+import { Text } from 'components/common/Text';
 import { Header } from 'components/common/Header';
 import { HeaderVariant } from 'components/common/Header';
 import { Image } from 'components/common/Image';
@@ -37,21 +36,19 @@ const TitleStyled = styled.h1`
     }
 `;
 
-const SubtitleStyled = styled.p`
-    font-size: 20px;
+const SubtitleStyled = styled(Text)`
     ${styles.breakpoint.md} {
         font-size: 32px;
     }
 `;
 
-const TechStyled = styled(CoolText)`
+const TechStyled = styled(Text)`
     ${styles.breakpoint.md} {
         margin-top: 20px;
         font-size: 20px;
     }
     line-height: 1.5rem;
     margin-top: 10px;
-    font-size: 14px;
 `;
 
 const CenterContainerStyled = styled.div<{ $_isVisible: boolean }>`
@@ -118,16 +115,18 @@ export const HeroSection = ({ glViewport }: Props) => {
     const handleScrollDown = () => setScrollToSection(ScrollToSection.PROJECTS);
 
     return (
-        <ParallaxLayer factor={1.0} offset={0} speed={0.1}>
+        <>
             <Header variant={HeaderVariant.FIXED} />
             <HeroStyled>
                 <Section gap={gap}>
                     <TitleStyled>
                         <YellowStyled>A</YellowStyled>viv <YellowStyled>K</YellowStyled>andabi
                     </TitleStyled>
-                    <SubtitleStyled>Freelance Software Developer</SubtitleStyled>
-                    <TechStyled text='Javascript | Typescript | React | C# | Node.js | Three.js' />
-                    <Button onClick={handleScrollDown} text='My Work' styles={{ margin: '15px 0 0 0' }} />
+                    <SubtitleStyled fontSize={20}>Freelance Software Developer</SubtitleStyled>
+                    <TechStyled letterSpacing={0.15} fontSize={14}>
+                        Javascript | Typescript | React | C# | Node.js | Three.js
+                    </TechStyled>
+                    <Button onClick={handleScrollDown} text='My Work' margin={'15px 0 0 0'} />
                     {device === Device.DESKTOP && (
                         <CenterContainerStyled $_isVisible={currentScrollPosition < 0.2}>
                             <ScrollDownContainerStyled onClick={handleScrollDown}>
@@ -139,6 +138,6 @@ export const HeroSection = ({ glViewport }: Props) => {
                 </Section>
                 <GlViewStyled ref={glViewport} />
             </HeroStyled>
-        </ParallaxLayer>
+        </>
     );
 };

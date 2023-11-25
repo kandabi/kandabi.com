@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { animated, easings, useSpring } from '@react-spring/web';
 import styled from 'styled-components';
-import { ProjectTypeButton } from 'components/common/Project/ProjectType';
+// import { ProjectTypeButton } from 'components/common/Project/ProjectType';
 import { styles } from 'utils/styleUtils';
-import { Maybe, Project } from 'types/graphql';
+import { Project } from 'types/graphql';
 
 const cardHoverStyles = [
     'rotateX(0deg) rotateY(0deg) translate3d(-10px, -8px, -8px)',
@@ -80,7 +80,7 @@ export const ProjectCard = ({ title, /*thumbnail*/ projectType /*tags*/ }: Props
                 <TitleStyled>{title}</TitleStyled>
                 <SeparatorStyled />
                 <TypeAndTagsContainer>
-                    <ProjectTypeButton projectType={projectType} isDisabled />
+                    {/* <ProjectTypeButton projectType={projectType} isDisabled /> */}
                     {/* {tags?.data.map(projectTag => (
                         <ProjectTag projectTag={projectTag} key={projectTag.id} isDisabled />
                     ))} */}

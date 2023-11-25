@@ -44,7 +44,8 @@ const ListItemStyled = styled.li`
 
 export const AboutMeSection = () => {
     return (
-        <Section gap='26px' margin='160px 0'>
+        // <Section gap='26px' margin='160px 0'>
+        <Section gap='26px' margin='0'>
             <TitleStyled>About Me</TitleStyled>
             <ContentContainer>
                 <SubtitleStyled>🚀 Senior Software Developer</SubtitleStyled>

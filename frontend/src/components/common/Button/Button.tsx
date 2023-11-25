@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { CoolText } from 'components/common/CoolText';
+import { Text } from 'components/common/Text';
 import { Color, ColorType, getColor } from 'utils/colorUtils';
 
-const ButtonTextStyled = styled(CoolText)`
+const ButtonTextStyled = styled(Text)`
     position: relative;
     z-index: 1;
 `;
@@ -69,29 +69,38 @@ type Props = {
     isSelected?: boolean;
     isDisabled?: boolean;
     className?: string;
-    styles?: {
-        fontSize?: number;
-        padding?: string;
-        height?: string;
-        margin?: string;
-        color?: ColorType;
-    };
+    fontSize?: number;
+    padding?: string;
+    height?: string;
+    margin?: string;
+    color?: ColorType;
 };
 
-export const Button = ({ text, onClick, isSelected, isDisabled, className, styles }: Props) => {
+export const Button = ({
+    text,
+    onClick,
+    isSelected,
+    isDisabled,
+    className,
+    fontSize = 18,
+    padding,
+    height,
+    margin,
+    color,
+}: Props) => {
     return (
         <ButtonStyled
             data-active={isSelected && !isDisabled}
-            $_borderColor={styles?.color}
-            $_padding={styles?.padding}
-            $_margin={styles?.margin}
-            $_height={styles?.height}
+            $_borderColor={color}
+            $_padding={padding}
+            $_margin={margin}
+            $_height={height}
             $_isDisabled={isDisabled}
             className={className}
             onClick={onClick}
         >
-            <ButtonTextStyled text={text} styles={{ fontSize: styles?.fontSize ?? 18 }} />
-            <ButtonBackgroundStyled backgroundColor={styles?.color} />
+            <ButtonTextStyled fontSize={fontSize}>{text}</ButtonTextStyled>
+            <ButtonBackgroundStyled backgroundColor={color} />
         </ButtonStyled>
     );
 };
