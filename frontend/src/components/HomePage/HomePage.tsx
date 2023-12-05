@@ -50,15 +50,13 @@ export const HomePage = ({ projectsQuery, tagsQuery }: Props) => {
     const [containerRef, glHeroRef, glCenterRef] = useRefs<HTMLDivElement>(null!);
 
     const { device } = useDeviceDetector();
-    const { isSsr } = useSsrDetector();
+    // const { isSsr } = useSsrDetector();
     const { pages, hero, center, contact } = parallaxConfig[device];
 
-    if (isSsr) {
-        return null;
-    }
+    // console.log('isSsr', isSsr);
 
     return (
-        <HomePageStyled key={device} ref={containerRef}>
+        <HomePageStyled ref={containerRef}>
             <Header variant={HeaderVariant.STICKY} />
             <ParallaxContainer pages={pages}>
                 <ParallaxLayer {...hero}>

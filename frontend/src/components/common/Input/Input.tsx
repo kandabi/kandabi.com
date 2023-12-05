@@ -7,7 +7,7 @@ const INPUT_COLOR = getColor(Color.WHITE_100);
 
 const StyledInput = styled.input`
     border: 1px solid ${INPUT_COLOR};
-    background-color: transparent;
+    /* background-color: transparent; */
     color: ${INPUT_COLOR};
     padding: 10px 20px;
     border-radius: 0;

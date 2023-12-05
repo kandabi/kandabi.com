@@ -1,26 +1,25 @@
-import { MutableRefObject, useCallback, useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { throttle } from 'lodash';
 
-const useScrollEvent = (
-    elementRef: MutableRefObject<HTMLDivElement> | undefined,
-    onScroll: (scrollPercentage: number) => void,
-    throttleMilliseconds: number,
-) => {
-    const handleMouseScroll = useCallback(() => {
-        const element = elementRef?.current;
-        if (element) {
-            const clientHeight = element.scrollHeight - element.clientHeight;
-            onScroll?.(element.scrollTop / clientHeight);
-        }
-    }, [elementRef, onScroll]);
+import { MouseEvent } from 'react';
+
+export const useScrollEvent = (onScroll: (scrollPercentage: number) => void, throttleMilliseconds: number) => {
+    const handleMouseScroll = useCallback(
+        (event: MouseEvent<HTMLDivElement>) => {
+            const element = event.currentTarget;
+            if (element) {
+                const clientHeight = element.scrollHeight - element.clientHeight;
+                onScroll?.(element.scrollTop / clientHeight);
+            }
+        },
+        [onScroll],
+    );
 
     useEffect(() => {
-        const element = elementRef?.current;
-        const throttledScroll = throttle(handleMouseScroll, throttleMilliseconds);
+        const element = document.querySelector('.parallax-container');
+        const throttledScroll = throttle(handleMouseScroll, throttleMilliseconds) as any;
+
         element?.addEventListener('scroll', throttledScroll);
-
         return () => element?.removeEventListener('scroll', throttledScroll);
-    }, [elementRef, handleMouseScroll, onScroll, throttleMilliseconds]);
+    }, [handleMouseScroll, throttleMilliseconds]);
 };
-
-export default useScrollEvent;

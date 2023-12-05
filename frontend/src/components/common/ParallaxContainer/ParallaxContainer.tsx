@@ -2,7 +2,7 @@ import { ReactNode, useEffect, useRef } from 'react';
 import { IParallax, Parallax as ReactSpringParallax } from '@react-spring/parallax';
 import styled from 'styled-components';
 import { Device, useDeviceDetector } from 'hooks/useDeviceDetector';
-import useScrollEvent from 'hooks/useScrollEvent';
+import { useScrollEvent } from 'hooks/useScrollEvent';
 import { useAppStore } from 'store';
 import { ScrollToSection } from 'utils/scrollToSectionUtils';
 
@@ -30,7 +30,7 @@ type Props = {
 export const ParallaxContainer = ({ children, pages }: Props) => {
     const { device } = useDeviceDetector();
     const parallaxRef = useRef<IParallax>(null);
-    const containerRef = parallaxRef?.current?.container;
+    // const containerRef = parallaxRef?.current?.container;
 
     const { scrollToSection, setScrollToSection, setCurrentScrollPercentage } = useAppStore(state => ({
         scrollToSection: state.scrollToSection,
@@ -39,7 +39,7 @@ export const ParallaxContainer = ({ children, pages }: Props) => {
     }));
 
     const { throttleMilliseconds } = parallaxConfig[device];
-    useScrollEvent(containerRef, setCurrentScrollPercentage, throttleMilliseconds);
+    useScrollEvent(setCurrentScrollPercentage, throttleMilliseconds);
 
     useEffect(() => {
         const parallax = parallaxRef.current;
@@ -52,7 +52,7 @@ export const ParallaxContainer = ({ children, pages }: Props) => {
     }, [parallaxRef, scrollToSection, setScrollToSection, pages]);
 
     return (
-        <ParallaxContainerStyled ref={parallaxRef} pages={pages}>
+        <ParallaxContainerStyled className='parallax-container' pages={pages}>
             {children}
         </ParallaxContainerStyled>
     );
