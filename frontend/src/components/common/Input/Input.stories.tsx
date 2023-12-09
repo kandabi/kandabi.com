@@ -15,7 +15,7 @@ type Story = StoryObj<typeof meta>;
 
 export const InputStory: Story = {
     args: {
-        placeholder: 'Name',
+        placeholder: 'Enter text here',
         value: '',
         name: 'name',
     },
@@ -23,7 +23,7 @@ export const InputStory: Story = {
 
 export const TextAreaStory: Story = {
     args: {
-        placeholder: 'Name',
+        placeholder: 'Enter text here',
         as: 'textarea',
         name: 'name',
         value: '',

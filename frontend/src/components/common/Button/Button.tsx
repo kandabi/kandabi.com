@@ -41,8 +41,10 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
     position: relative;
     background: none;
     cursor: pointer;
+    outline: 0;
 
     &[data-active='true'],
+    &:focus,
     &:hover {
         ${ButtonTextStyled} {
             color: black;

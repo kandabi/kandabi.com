@@ -11,7 +11,6 @@ import { CenterScene, HeroScene } from 'components/scenes';
 import { GetProjectsQuery, GetTagsQuery } from 'types/graphql';
 import { ParallaxLayer } from '@react-spring/parallax';
 import { Device, useDeviceDetector } from 'hooks/useDeviceDetector';
-import { useSsrDetector } from 'hooks/useSsrDetector';
 
 const HomePageStyled = styled.div`
     position: absolute;
@@ -50,10 +49,7 @@ export const HomePage = ({ projectsQuery, tagsQuery }: Props) => {
     const [containerRef, glHeroRef, glCenterRef] = useRefs<HTMLDivElement>(null!);
 
     const { device } = useDeviceDetector();
-    // const { isSsr } = useSsrDetector();
     const { pages, hero, center, contact } = parallaxConfig[device];
-
-    // console.log('isSsr', isSsr);
 
     return (
         <HomePageStyled ref={containerRef}>

@@ -9,7 +9,6 @@ export enum NavbarItemVariants {
 
 const NavbarItemStyled = styled.li`
     list-style-type: none;
-    position: relative;
     font-size: 18px;
     cursor: pointer;
 `;

@@ -20,6 +20,7 @@ const TitleStyled = styled.h3`
 const SmallInputContainer = styled.div`
     ${styles.flex.between}
     margin-top: 5px;
+    width: 100%;
     gap: 12px;
 `;
 

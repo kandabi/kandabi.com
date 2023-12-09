@@ -11,7 +11,7 @@ const ParallaxContainerStyled = styled(ReactSpringParallax)`
 `;
 
 const parallaxConfig: Record<Device, { throttleMilliseconds: number }> = {
-    [Device.DESKTOP]: { throttleMilliseconds: 100 },
+    [Device.DESKTOP]: { throttleMilliseconds: 25 },
     [Device.MOBILE]: { throttleMilliseconds: 200 },
 };
 
@@ -30,7 +30,6 @@ type Props = {
 export const ParallaxContainer = ({ children, pages }: Props) => {
     const { device } = useDeviceDetector();
     const parallaxRef = useRef<IParallax>(null);
-    // const containerRef = parallaxRef?.current?.container;
 
     const { scrollToSection, setScrollToSection, setCurrentScrollPercentage } = useAppStore(state => ({
         scrollToSection: state.scrollToSection,

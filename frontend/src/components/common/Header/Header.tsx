@@ -30,6 +30,7 @@ const HeaderStyled = styled.header<HeaderStyledProps>`
     top: ${({ top = '0' }) => top};
     pointer-events: none;
     position: absolute;
+    overflow-x: hidden;
     z-index: 100;
     height: 68px;
 
