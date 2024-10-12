@@ -1,0 +1,12 @@
+---
+interface LinkProps {
+  fontSize?: number;
+}
+
+const { fontSize = 18, ...props } = Astro.props;
+const classes = `items-center flex justify-center relative cursor-pointer text-white gap-1 text-[${fontSize}px]`;
+---
+
+<a class={classes} {...props}>
+  <slot />
+</a>

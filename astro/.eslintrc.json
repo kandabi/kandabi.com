@@ -1,0 +1,27 @@
+{
+  "extends": [
+    "prettier",
+    "plugin:storybook/recommended",
+    "next/core-web-vitals"
+  ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2021": true
+  },
+  "rules": {
+    "no-unused-vars": "off",
+    // "@typescript-eslint/no-unused-vars": "on",
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          {
+            "group": ["../*"],
+            "message": "Dynamic imports from parent components are restricted. Use absolute imports instead. Example: \"import Component from 'components/Component'\"."
+          }
+        ]
+      }
+    ]
+  }
+}

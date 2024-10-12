@@ -1,0 +1,12 @@
+---
+interface LineProps {
+  isOpen?: boolean;
+}
+
+const { isOpen = false } = Astro.props;
+---
+
+<div class="relative flex w-full items-center justify-between gap-1">
+  <slot />
+  <div class="absolute hover:w-full hover:opacity-100">aaa</div>
+</div>
