@@ -9,7 +9,7 @@ const INPUT_COLOR = getColor(Color.WHITE_100);
 const StyledInput = styled.input`
     transition: box-shadow ease-out 0.35s;
     box-shadow: 0px 2px 2px 2px rgba(0, 0, 0, 0.15);
-    background-color: ${styles.color.BLUE_400};
+    background-color: ${styles.color.BLUE_500};
     border-radius: 8px 8px 2px 2px;
     color: ${INPUT_COLOR};
     padding: 16px 24px;

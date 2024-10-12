@@ -1,0 +1,129 @@
+html,
+body {
+   font-family: 'Rubik', Arial, sans-serif;
+   -webkit-font-smoothing: subpixel-antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   // background-color: #0f243d;
+   background: linear-gradient(180deg, #070d1c 0%, #002a68 100%);
+   box-sizing: border-box;
+   user-select: none;
+   font-style: normal;
+   font-weight: 300;
+   line-height: 1.2;
+   font-size: 14px;
+   color: #ffffff;
+   height: 100%;
+   padding: 0;
+   margin: 0;
+}
+
+header,
+footer,
+input,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+   padding: 0;
+   margin: 0;
+}
+
+b,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+   font-family: 'Catamaran', Arial, sans-serif;
+}
+
+a {
+   text-decoration: none;
+   cursor: pointer;
+   color: inherit;
+   margin: 0;
+}
+
+ul,
+li {
+   list-style-type: none;
+}
+
+canvas {
+   pointer-events: none;
+   position: absolute;
+   z-index: 4;
+}
+
+button {
+   border-radius: 40px;
+   border-style: solid;
+   border-width: 2px;
+   position: relative;
+   background: none;
+   cursor: pointer;
+}
+
+img {
+   max-width: 100%;
+   display: block;
+   height: auto;
+}
+
+input {
+   border: none;
+}
+
+:root {
+   --scrollbar-width: 12px;
+}
+
+@font-face {
+   font-family: 'Rubik';
+   src: url('/fonts/rubik.ttf');
+   font-style: normal;
+   font-weight: 300;
+}
+
+@font-face {
+   font-family: 'Rubik';
+   font-style: normal;
+   font-weight: 300;
+   font-display: swap;
+   src: url('/fonts/rubik.woff2') format('woff2'), url('/fonts/rubik.woff') format('woff'),
+      url('/fonts/rubik.ttf') format('truetype');
+}
+
+@font-face {
+   font-family: 'Catamaran';
+   font-style: normal;
+   font-weight: 800;
+   font-display: swap;
+   src: url('/fonts/catamaran.woff2') format('woff2'), url('/fonts/catamaran.woff') format('woff'),
+      url('/fonts/catamaran.ttf') format('truetype');
+}
+
+* {
+   scrollbar-color: #f2f8ff #344982;
+   scrollbar-width: auto;
+}
+
+*::-webkit-scrollbar {
+   width: var(--scrollbar-width);
+}
+
+*::-webkit-scrollbar-track {
+   background: #182339;
+}
+
+*::-webkit-scrollbar-thumb {
+   background-color: #344982;
+   border: 2px solid #182339;
+   border-radius: 10px;
+}
