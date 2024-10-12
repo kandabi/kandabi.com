@@ -28,6 +28,9 @@ devDependencies:
   prettier-plugin-astro:
     specifier: ^0.14.1
     version: 0.14.1
+  prettier-plugin-classnames:
+    specifier: ^0.7.3
+    version: 0.7.3(prettier-plugin-astro@0.14.1)(prettier@3.3.3)
   prettier-plugin-tailwindcss:
     specifier: ^0.6.8
     version: 0.6.8(prettier-plugin-astro@0.14.1)(prettier@3.3.3)
@@ -4215,6 +4218,26 @@ packages:
       "@astrojs/compiler": 2.10.3
       prettier: 3.3.3
       sass-formatter: 0.7.9
+
+  /prettier-plugin-classnames@0.7.3(prettier-plugin-astro@0.14.1)(prettier@3.3.3):
+    resolution:
+      {
+        integrity: sha512-pl7RENikiCq0FpjyO/7XayLV49VXPGyBkbPnEmEkaicGweOnO0GrUaCeo2GvqB/rzERGvBRurB6/yQPF70WPTQ==,
+      }
+    engines: { node: ">=14" }
+    peerDependencies:
+      prettier: ^2 || ^3
+      prettier-plugin-astro: "*"
+      prettier-plugin-svelte: "*"
+    peerDependenciesMeta:
+      prettier-plugin-astro:
+        optional: true
+      prettier-plugin-svelte:
+        optional: true
+    dependencies:
+      prettier: 3.3.3
+      prettier-plugin-astro: 0.14.1
+    dev: true
 
   /prettier-plugin-tailwindcss@0.6.8(prettier-plugin-astro@0.14.1)(prettier@3.3.3):
     resolution:

@@ -1,6 +1,11 @@
 /** @type {import("prettier").Config} */
 export default {
-  plugins: ["prettier-plugin-astro"],
+  printWidth: 80,
+  plugins: [
+    "prettier-plugin-astro",
+    "prettier-plugin-tailwindcss",
+    "prettier-plugin-classnames",
+  ],
   overrides: [
     {
       files: "*.astro",
