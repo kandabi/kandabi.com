@@ -1,6 +1,5 @@
 ---
-import Line from "../components/Line.astro";
-import Link from "../components/Link.astro";
+import App from "../components/App.astro";
 ---
 
 <!doctype html>
@@ -13,16 +12,21 @@ import Link from "../components/Link.astro";
     <meta name="generator" content={Astro.generator} />
     <title>Aviv Kandabi</title>
   </head>
-  <body class="bg-slate-600">
-    <Line>
-      <span>Content goes here</span>
-    </Line>
+  <body class="bg-blue-950">
+    <div class='bg-[25vw_-25vh] w-full h-full bg-gradient-radial from-blue-950 to-black'>
+      <App />
+    </div>
   </body>
 </html>
 
 <style>
   * {
     box-sizing: border-box;
+  }
+
+  html, body {
+    height: 100%;
+    width: 100%;
   }
 
   @media (prefers-reduced-motion: no-preference) {

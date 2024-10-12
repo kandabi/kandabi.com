@@ -2,18 +2,15 @@
 interface LineProps {
   isOpen?: boolean;
 }
-
 ---
 
 <div
-  class="group relative top-2 flex w-min cursor-pointer items-center justify-between
-    gap-1"
+  class="group relative top-2 flex w-max cursor-pointer items-center justify-between gap-1"
 >
   <slot />
   <div
-    class="absolute -bottom-2 left-1/2 w-0 -translate-x-1/2 transform border-b-2
-      border-white opacity-0 transition-all duration-[400ms] group-hover:w-full
-      group-hover:opacity-100"
+    class="absolute -bottom-2 left-1/2 w-0 -translate-x-1/2 transform border-b-2 border-white
+      opacity-0 transition-all duration-[400ms] group-hover:w-full group-hover:opacity-100"
   >
   </div>
 </div>

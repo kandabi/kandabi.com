@@ -1,6 +1,6 @@
 /** @type {import("prettier").Config} */
 export default {
-  printWidth: 80,
+  printWidth: 90,
   plugins: [
     "prettier-plugin-astro",
     "prettier-plugin-tailwindcss",
